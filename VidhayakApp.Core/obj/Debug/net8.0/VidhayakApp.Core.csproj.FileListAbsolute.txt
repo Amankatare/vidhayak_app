@@ -1,0 +1,14 @@
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\VidhayakApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\VidhayakApp.Core.AssemblyInfoInputs.cache
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\VidhayakApp.Core.AssemblyInfo.cs
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\VidhayakApp.Core.csproj.CoreCompileInputs.cache
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\VidhayakApp.Core.sourcelink.json
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\bin\Debug\net8.0\VidhayakApp.Core.deps.json
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\bin\Debug\net8.0\VidhayakApp.Core.runtimeconfig.json
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\bin\Debug\net8.0\VidhayakApp.Core.dll
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\bin\Debug\net8.0\VidhayakApp.Core.pdb
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\VidhayakApp.Core.dll
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\refint\VidhayakApp.Core.dll
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\VidhayakApp.Core.pdb
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\VidhayakApp.Core.genruntimeconfig.cache
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.Core\obj\Debug\net8.0\ref\VidhayakApp.Core.dll

@@ -1,0 +1,14 @@
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\bin\Debug\net8.0\VidhayakApp.SharedKernel.deps.json
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\bin\Debug\net8.0\VidhayakApp.SharedKernel.runtimeconfig.json
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\bin\Debug\net8.0\VidhayakApp.SharedKernel.dll
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\bin\Debug\net8.0\VidhayakApp.SharedKernel.pdb
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.GeneratedMSBuildEditorConfig.editorconfig
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.AssemblyInfoInputs.cache
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.AssemblyInfo.cs
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.csproj.CoreCompileInputs.cache
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.sourcelink.json
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.dll
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\refint\VidhayakApp.SharedKernel.dll
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.pdb
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.genruntimeconfig.cache
+F:\.net ASP WEBAPI\VidhayakApp\VidhayakApp.SharedKernel\obj\Debug\net8.0\ref\VidhayakApp.SharedKernel.dll

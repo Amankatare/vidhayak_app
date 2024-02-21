@@ -1,0 +1,53 @@
+﻿    @using VidhayakApp.Web.ViewModels
+    @model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="card">
+    <div class="card-body">
+
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" asp-controller="Account" class="form-control" id="Name" aria-describedby="NameHelp">
+                <!--<div id="UserNameHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+            </div>
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label"></label>
+                <input asp-for="UserName" asp-controller="Account" class="form-control" id="UserName" aria-describedby="UserNameHelp">
+                <div id="UserNameHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label asp-for=" Dob" class="form-label"></label>
+                <input asp-for=" Dob" asp-controller="Account" class="form-control" id=" Dob" aria-describedby= "DobHelp">
+              
+            </div>
+            <div class="mb-3">
+                <label asp-for="Address" class="form-label"></label>
+                <input asp-for="Address" asp-controller="Account" class="form-control" id="Address " aria-describedby="AddressHelp">
+            
+            </div>
+            <div class="mb-3">
+                <label asp-for="Ward" class="form-label"></label>
+                <input asp-for="Ward" asp-controller="Account" class="form-control" id="Ward" aria-describedby="WardHelp">
+               
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" id="Password">
+            </div>
+            <div class="mb-3">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" id="ConfirmPassword">
+            </div>
+            <div class="mb-3">
+                <label asp-for="MobileNumber" class="form-label"></label>
+                <input asp-for="MobileNumber" class="form-control" id="MobileNumber">
+            </div>
+     
+            <button asp-action="Register" asp-controller="Account" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
