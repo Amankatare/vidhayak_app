@@ -17,11 +17,17 @@ namespace VidhayakApp.Core.Entities
       
         public string PasswordHash { get; set; } // Store hashed passwords
 
-        // Add other fields 
+
+        //foreign key
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
         
+        
+        // Add other fields 
+
         //optional fields
 
-       
+
 
     }
 }

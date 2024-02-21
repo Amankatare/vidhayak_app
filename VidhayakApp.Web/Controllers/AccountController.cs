@@ -5,16 +5,25 @@ using System.Threading.Tasks;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Core.Entities;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using VidhayakApp.Web.MiddleWare;
 
 namespace VidhayakApp.Web.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IUserService _userService;
-
-        public AccountController(IUserService userService)
+        //private readonly IRoleService _roleService;
+        private readonly IConfiguration _configuration;
+       
+        public AccountController(IUserService userService, IConfiguration configuration)
         {
             _userService = userService;
+           // _roleService = _roleService;
+         
         }
 
         [HttpPost]
@@ -29,28 +38,29 @@ namespace VidhayakApp.Web.Controllers
                 {
                     UserName = model.UserName,
                     PasswordHash = model.Password,
-                  
+
                     MobileNumber = model.MobileNumber,
                     Name = model.Name,
                     Dob = model.Dob,
                     Address = model.Address,
+                    RoleId = 1,
                     Ward = model.Ward
                 };
 
                 //we don't want this details from every user so
                 //we can check if user filled this detail or not 
                 //like Admin and AppUser might  not fill all these details
-/*
-                if (!string.IsNullOrEmpty(model.Education)) user.Education = model.Education;
-                if (!string.IsNullOrEmpty(model.AadharNumber)) user.AadharNumber = model.AadharNumber;
-                if (!string.IsNullOrEmpty(model.Caste)) user.Caste = model.Caste;
-                if (!string.IsNullOrEmpty(model.SamagraID)) user.SamagraID = model.SamagraID;
-                if (!string.IsNullOrEmpty(model.VoterID)) user.VoterID = model.VoterID;
-*/
+                /*
+                                if (!string.IsNullOrEmpty(model.Education)) user.Education = model.Education;
+                                if (!string.IsNullOrEmpty(model.AadharNumber)) user.AadharNumber = model.AadharNumber;
+                                if (!string.IsNullOrEmpty(model.Caste)) user.Caste = model.Caste;
+                                if (!string.IsNullOrEmpty(model.SamagraID)) user.SamagraID = model.SamagraID;
+                                if (!string.IsNullOrEmpty(model.VoterID)) user.VoterID = model.VoterID;
+                */
                 var registerUser = await _userService.RegisterUserAsync(user);
 
                 // if user is successfullly registered then redirected to account 
-                
+
                 if (registerUser) return RedirectToAction("Index", "Home");
 
                 else return RedirectToAction("registration not possible");
@@ -62,10 +72,10 @@ namespace VidhayakApp.Web.Controllers
             }
         }
 
-           [HttpPost]
-            //public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
-            public async Task<IActionResult> Login(LoginViewModel model)
-            {
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
+        //public async Task<IActionResult> Login(LoginViewModel model)
+        {
 
             if (ModelState.IsValid)
             {
@@ -75,43 +85,92 @@ namespace VidhayakApp.Web.Controllers
                 var AuthenticUser = await _userService.AuthenticateAsync(model.UserName, model.Password);
                 Console.WriteLine(AuthenticUser + "2");
 
+                if (AuthenticUser != null)
+                {
+                    var token = GenerateJwtToken(AuthenticUser);
+                    Console.WriteLine(token);
 
+                    if (token != null)
+                    {
+                        Response.Cookies.Append("JwtToken", token,new CookieOptions
+                        {
+                            HttpOnly = true,
+                            SameSite = SameSiteMode.Strict,
+                            Secure = true,  // Set to true if using HTTPS
+                            Expires = DateTime.UtcNow.AddHours(1)
 
-
-                // if (AuthenticUser.IsCompletedSuccessfully){
-                //
-
-
-
-
-                // return View(model);
-
-             //    }
-
-                // else return BadRequest();
-
+                        });
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "token failed");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "token failed");
+                }
+            }
+                ViewData["ReturnUrl"] = returnUrl;
+                return RedirectToPage(returnUrl);
 
             }
 
-              return RedirectToAction("Index", "Home");
-                 return View(model); // Return with errors if ModelState is not valid 
-             }
-
-        public IActionResult Register()
+        //Generating custom Jwt token
+        public string GenerateJwtToken(User user)
         {
-            return View();
+            var claims = new List<Claim>
+            {
+                //Adding User ClaimTypes
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.MobilePhone, user.MobileNumber)
+                
+                
+                // Add other claims as needed
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expires = DateTime.Now.AddHours(1); // Token expiration time
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: claims,
+                expires: expires,
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private IActionResult RedirectToLocal(string returnUrl)
+            {
+                if (Url.IsLocalUrl(returnUrl))  return Redirect(returnUrl);
+                else return RedirectToAction("Index", "Home");
+
+            }
+
+            public IActionResult Register()
+            {
+                return View();
+            }
+
+
+            public IActionResult Login()
+            {
+                return View();
+            }
+
+            public async Task<IActionResult> Logout()
+            {
+                // Handle logout logic
+                return RedirectToAction("Index", "Home");
+            }
         }
 
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        public async Task<IActionResult> Logout()
-        {
-            // Handle logout logic
-            return RedirectToAction("Index", "Home");
-        }
     }
-}
+    

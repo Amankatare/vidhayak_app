@@ -268,3 +268,11 @@ E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\refint\VidhayakApp.Web.dll
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\VidhayakApp.Web.pdb
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\VidhayakApp.Web.genruntimeconfig.cache
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\ref\VidhayakApp.Web.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

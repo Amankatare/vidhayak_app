@@ -14,7 +14,9 @@ namespace VidhayakApp.Infrastructure.Data
         }
 
         public DbSet<User> Users { get; set; }
-        public UserDetail UserDetails {  get; set; }
+        public DbSet<UserDetail> UserDetails {  get; set; }
+
+        public DbSet<Role> Roles { get; set; }
         // Add DbSet properties for other entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,16 +36,24 @@ namespace VidhayakApp.Infrastructure.Data
                 entity.Property(e => e.PasswordHash).IsRequired();
                 //entity.Property(e => e.Password).IsRequired();
             });
+            /*
                 modelBuilder.Entity<UserDetail>(entity =>
                 {
+                    entity.HasKey(e => e.DetailId);
                     entity.Property(e => e.Education).IsRequired();
                     entity.Property(e => e.AadharNumber).IsRequired();
                     entity.Property(e => e.SamagraID).IsRequired();
                     entity.Property(e => e.VoterID).IsRequired();
                     entity.Property(e => e.Caste).IsRequired();
 
+                    // Define the foreign key relationship
+                    entity.HasOne(e => e.User)
+                          .WithMany(u => u.UserDetails)
+                          .HasForeignKey(e => e.UserId)
+                          .OnDelete(DeleteBehavior.Cascade);
+            */
                     // Add configuration for other properties and relationships as necessary
-                });
+               // });
 
                 // Add configuration for other entities
 
