@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Web\\VidhayakApp.Web.csproj": {}
+    "E:\\vidhayak_app\\VidhayakApp.Web\\VidhayakApp.Web.csproj": {}
   },
   "projects": {
-    "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Application\\VidhayakApp.Application.csproj": {
+    "E:\\vidhayak_app\\VidhayakApp.Application\\VidhayakApp.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Application\\VidhayakApp.Application.csproj",
+        "projectUniqueName": "E:\\vidhayak_app\\VidhayakApp.Application\\VidhayakApp.Application.csproj",
         "projectName": "VidhayakApp.Application",
-        "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Application\\VidhayakApp.Application.csproj",
+        "projectPath": "E:\\vidhayak_app\\VidhayakApp.Application\\VidhayakApp.Application.csproj",
         "packagesPath": "C:\\Users\\katar\\.nuget\\packages\\",
-        "outputPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Application\\obj\\",
+        "outputPath": "E:\\vidhayak_app\\VidhayakApp.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\katar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
-                "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj"
+              "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
+                "projectPath": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj"
               }
             }
           }
@@ -83,14 +83,14 @@
         }
       }
     },
-    "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
+    "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
+        "projectUniqueName": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
         "projectName": "VidhayakApp.Core",
-        "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
+        "projectPath": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
         "packagesPath": "C:\\Users\\katar\\.nuget\\packages\\",
-        "outputPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\obj\\",
+        "outputPath": "E:\\vidhayak_app\\VidhayakApp.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\katar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -146,14 +146,14 @@
         }
       }
     },
-    "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj": {
+    "E:\\vidhayak_app\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj",
+        "projectUniqueName": "E:\\vidhayak_app\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj",
         "projectName": "VidhayakApp.Infastructure",
-        "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj",
+        "projectPath": "E:\\vidhayak_app\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj",
         "packagesPath": "C:\\Users\\katar\\.nuget\\packages\\",
-        "outputPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Infastructure\\obj\\",
+        "outputPath": "E:\\vidhayak_app\\VidhayakApp.Infastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\katar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -170,8 +170,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
-                "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj"
+              "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
+                "projectPath": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj"
               }
             }
           }
@@ -221,14 +221,14 @@
         }
       }
     },
-    "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Web\\VidhayakApp.Web.csproj": {
+    "E:\\vidhayak_app\\VidhayakApp.Web\\VidhayakApp.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Web\\VidhayakApp.Web.csproj",
+        "projectUniqueName": "E:\\vidhayak_app\\VidhayakApp.Web\\VidhayakApp.Web.csproj",
         "projectName": "VidhayakApp.Web",
-        "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Web\\VidhayakApp.Web.csproj",
+        "projectPath": "E:\\vidhayak_app\\VidhayakApp.Web\\VidhayakApp.Web.csproj",
         "packagesPath": "C:\\Users\\katar\\.nuget\\packages\\",
-        "outputPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Web\\obj\\",
+        "outputPath": "E:\\vidhayak_app\\VidhayakApp.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\katar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -245,14 +245,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Application\\VidhayakApp.Application.csproj": {
-                "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Application\\VidhayakApp.Application.csproj"
+              "E:\\vidhayak_app\\VidhayakApp.Application\\VidhayakApp.Application.csproj": {
+                "projectPath": "E:\\vidhayak_app\\VidhayakApp.Application\\VidhayakApp.Application.csproj"
               },
-              "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
-                "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj"
+              "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
+                "projectPath": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj"
               },
-              "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj": {
-                "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj"
+              "E:\\vidhayak_app\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj": {
+                "projectPath": "E:\\vidhayak_app\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj"
               }
             }
           }

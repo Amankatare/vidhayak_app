@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VidhayakApp.SharedKernel")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3429069338e06f8483572b217e1f41e6b32926c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3193a70552f51dd5648df6fc184fdd99e1f09847")]
 [assembly: System.Reflection.AssemblyProductAttribute("VidhayakApp.SharedKernel")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VidhayakApp.SharedKernel")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

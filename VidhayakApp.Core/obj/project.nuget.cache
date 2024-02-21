@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A7GHDwFnxPVlsAXisEnqY2sAUbO7qdYX7WPockAnM/ssSe9GiuOeemAnJtl29Nuc7goHhCjs5dBRIl2vsmz67A==",
+  "dgSpecHash": "nglWNo6BDu4oWGXykTEpY133kcwRQYWR/Zfdw/pJmz7XJdsEkGWPLGTydiqatRjS8uMwXWMHjopjVbQayp9t9w==",
   "success": true,
-  "projectFilePath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
+  "projectFilePath": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\katar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\katar\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

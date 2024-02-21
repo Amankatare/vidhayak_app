@@ -2188,11 +2188,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
+      "projectUniqueName": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
       "projectName": "VidhayakApp.Core",
-      "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
+      "projectPath": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj",
       "packagesPath": "C:\\Users\\katar\\.nuget\\packages\\",
-      "outputPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.Core\\obj\\",
+      "outputPath": "E:\\vidhayak_app\\VidhayakApp.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\katar\\AppData\\Roaming\\NuGet\\NuGet.Config",

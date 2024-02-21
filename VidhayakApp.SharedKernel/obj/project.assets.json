@@ -2188,11 +2188,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.SharedKernel\\VidhayakApp.SharedKernel.csproj",
+      "projectUniqueName": "E:\\vidhayak_app\\VidhayakApp.SharedKernel\\VidhayakApp.SharedKernel.csproj",
       "projectName": "VidhayakApp.SharedKernel",
-      "projectPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.SharedKernel\\VidhayakApp.SharedKernel.csproj",
+      "projectPath": "E:\\vidhayak_app\\VidhayakApp.SharedKernel\\VidhayakApp.SharedKernel.csproj",
       "packagesPath": "C:\\Users\\katar\\.nuget\\packages\\",
-      "outputPath": "F:\\.net ASP WEBAPI\\VidhayakApp\\VidhayakApp.SharedKernel\\obj\\",
+      "outputPath": "E:\\vidhayak_app\\VidhayakApp.SharedKernel\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\katar\\AppData\\Roaming\\NuGet\\NuGet.Config",
