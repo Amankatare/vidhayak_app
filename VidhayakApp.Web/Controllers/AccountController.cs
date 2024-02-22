@@ -1,15 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 //using VidhayakApp.Application.Services;
 using VidhayakApp.Web.ViewModels;
-using System.Threading.Tasks;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Core.Entities;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using VidhayakApp.Web.MiddleWare;
 
 namespace VidhayakApp.Web.Controllers
 {
@@ -43,7 +36,7 @@ namespace VidhayakApp.Web.Controllers
                     Name = model.Name,
                     Dob = model.Dob,
                     Address = model.Address,
-                    RoleId = 1,
+                   // RoleId = 1,
                     Ward = model.Ward
                 };
 
@@ -73,23 +66,24 @@ namespace VidhayakApp.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
-        //public async Task<IActionResult> Login(LoginViewModel model)
+        //public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
 
             if (ModelState.IsValid)
             {
-                Console.WriteLine("1");
+            
                 // Authenticate and redirect or show an error
 
                 var AuthenticUser = await _userService.AuthenticateAsync(model.UserName, model.Password);
-                Console.WriteLine(AuthenticUser + "2");
+             
 
                 if (AuthenticUser != null)
                 {
-                    var token = GenerateJwtToken(AuthenticUser);
-                    Console.WriteLine(token);
-
+                    return RedirectToAction("Dashboard", "Account");
+                    //var token = GenerateJwtToken(AuthenticUser);
+                    //Console.WriteLine(token);
+                    /*
                     if (token != null)
                     {
                         Response.Cookies.Append("JwtToken", token,new CookieOptions
@@ -100,8 +94,9 @@ namespace VidhayakApp.Web.Controllers
                             Expires = DateTime.UtcNow.AddHours(1)
 
                         });
-                        return RedirectToLocal(returnUrl);
-                    }
+                    */
+                    // return RedirectToLocal(returnUrl);
+                }
                     else
                     {
                         ModelState.AddModelError(string.Empty, "token failed");
@@ -111,22 +106,23 @@ namespace VidhayakApp.Web.Controllers
                 {
                     ModelState.AddModelError(string.Empty, "token failed");
                 }
-            }
-                ViewData["ReturnUrl"] = returnUrl;
-                return RedirectToPage(returnUrl);
+            return RedirectToAction("Index", "Home");
 
-            }
+        }
+            //  ViewData["ReturnUrl"] = returnUrl;
+
+            
 
         //Generating custom Jwt token
+        /*
         public string GenerateJwtToken(User user)
         {
+            Console.WriteLine("GenerateJwtToken method entered");
             var claims = new List<Claim>
             {
                 //Adding User ClaimTypes
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.MobilePhone, user.MobileNumber)
-                
+                new Claim(JwtRegisteredClaimNames.Name, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Name, user.Name),
                 
                 // Add other claims as needed
             };
@@ -145,7 +141,7 @@ namespace VidhayakApp.Web.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
+        */
         private IActionResult RedirectToLocal(string returnUrl)
             {
                 if (Url.IsLocalUrl(returnUrl))  return Redirect(returnUrl);
@@ -153,7 +149,11 @@ namespace VidhayakApp.Web.Controllers
 
             }
 
-            public IActionResult Register()
+        public IActionResult DashBoard()
+        {
+            return View();
+        }
+        public IActionResult Register()
             {
                 return View();
             }

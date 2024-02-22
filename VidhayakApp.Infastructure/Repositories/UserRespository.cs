@@ -47,13 +47,13 @@ namespace VidhayakApp.Infrastructure.Repositories
         public async Task<User> GetByUsernameAsync(string username)
         {
             User record = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
-            Console.WriteLine(record+ " 4 ");
+          
             if (record != null)
             {
-                Console.WriteLine(record + " 4 ");
+             
                 return record;
             }
-            Console.WriteLine(record + " 4 ");
+        
             return record;
         }
 

@@ -28,7 +28,7 @@ namespace VidhayakApp.Application.Services
             // Implement registration logic, including password hashing
             // Check if user already exists, etc.
 
-            var existingUser = _userRepository.GetByUsernameAsync(user.UserName);
+            var existingUser =await _userRepository.GetByUsernameAsync(user.UserName);
 
             // if User is already present 
             if (existingUser == null) {  return false; }
@@ -55,7 +55,7 @@ namespace VidhayakApp.Application.Services
 
 
             User record = await _userRepository.GetByUsernameAsync(username);
-            Console.WriteLine(record + "3");
+          
             if (record != null) { 
                 var passwordHash = record.PasswordHash;
                 var Matched = BCrypt.Net.BCrypt.EnhancedVerify(password, passwordHash);
