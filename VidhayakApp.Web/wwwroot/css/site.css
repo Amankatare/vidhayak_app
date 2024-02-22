@@ -24,3 +24,7 @@ body {
 .endlast {
     justify-content: end;  !important;
 }
+.img-size{
+    width:100vdw; !important;
+    height:50vdh; !important;
+}

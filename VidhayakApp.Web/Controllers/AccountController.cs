@@ -80,7 +80,7 @@ namespace VidhayakApp.Web.Controllers
 
                 if (AuthenticUser != null)
                 {
-                    return RedirectToAction("Dashboard", "Account");
+                    return RedirectToAction("Dashboard", "User");
                     //var token = GenerateJwtToken(AuthenticUser);
                     //Console.WriteLine(token);
                     /*
