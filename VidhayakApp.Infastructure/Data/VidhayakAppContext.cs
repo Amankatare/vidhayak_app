@@ -17,6 +17,10 @@ namespace VidhayakApp.Infrastructure.Data
         public DbSet<UserDetail> UserDetails {  get; set; }
 
         public DbSet<Role> Roles { get; set; }
+
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Communication> Communications { get; set; }
+
         // Add DbSet properties for other entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -2,13 +2,11 @@
 
 namespace VidhayakApp.Web.Controllers
 {
-    public class UserController : Controller
+    public class FormController : Controller
     {
-        public IActionResult Dashboard()
+        public IActionResult Form()
         {
             return View();
         }
-
-
     }
 }
