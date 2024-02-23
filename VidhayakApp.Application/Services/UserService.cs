@@ -31,15 +31,18 @@ namespace VidhayakApp.Application.Services
             var existingUser =await _userRepository.GetByUsernameAsync(user.UserName);
 
             // if User is already present 
-            if (existingUser == null) {  return false; }
+            if (existingUser == null)
+            {
+               
 
-            string hashPassword = HashPassword(user.PasswordHash);
+                string hashPassword = HashPassword(user.PasswordHash);
 
-            user.PasswordHash = hashPassword;
+                user.PasswordHash = hashPassword;
 
-            await _userRepository.AddAsync(user);
-
-            return true;
+                await _userRepository.AddAsync(user);
+                return true;
+            }
+            return false;
         }
 
         private string HashPassword(string password)

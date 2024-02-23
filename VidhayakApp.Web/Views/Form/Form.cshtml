@@ -1,4 +1,6 @@
-﻿@model FormViewModel
+﻿@using VidhayakApp.Web.ViewModels
+
+@model FormViewModel
 
 <p>
     <h1>Form</h1>
@@ -6,82 +8,139 @@
 
     <form class="row g-3" method="post">
         <div class="col-md-6">
-            <label asp-for="Title" class="form-label"></label>
+        <label asp-for="Title" class="form-label">Title</label>
             <input asp-for="Title" class="form-control" id="Title">
         </div>
         <div class="col-md-6">
-            <label asp-for="Description" class="form-label">Password</label>
-            <input asp-for="Description" class="form-control" id="Description">
+        <label asp-for="Description" class="form-label">Description</label>
+        <input asp-for="Description" class="form-control" id="Description">
         </div>
-        <div class="col-md-4">
-            <label for="inputState" class="form-label">State</label>
-            <select id="inputState" class="form-select">
-                <option selected>Choose...</option>
-                <option>...</option>
-            </select>
-        </div>
-
-    <div class="col-12">
-            <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="col-12">
-            <label for="inputAddress2" class="form-label">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-        </div>
-        <div class="col-md-6">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity">
-        </div>
-      
-        <div class="col-md-2">
-            <label for="inputZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-        </div>
-        <div class="col-12">
+        <br>
+        <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Options</legend>
+        <div class="col-sm-10">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
+                <input asp-for="Radio1Value" class="form-check-input" type="radio" name="option" id="option1" value="option1" checked>
+                <label asp-for="Radio1Value" class="form-check-label" for="gridRadios2">
+                    Suggession
                 </label>
             </div>
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-        <fieldset class="row mb-3">
-            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                    <label class="form-check-label" for="gridRadios1">
-                        First radio
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                    <label class="form-check-label" for="gridRadios2">
-                        Second radio
-                    </label>
-                </div>
-                <div class="form-check disabled">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-                    <label class="form-check-label" for="gridRadios3">
-                        Third disabled radio
-                    </label>
-                </div>
+            <div class="form-check">
+                <input asp-for="Radio1Value" class="form-check-input" type="radio" name="option" id="option2" value="option2">
+                <label asp-for="Radio1Value" class="form-check-label" for="gridRadios1">
+                    Complaint
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Radio1Value" class="form-check-input" type="radio" name="option" id="option3" value="option3">
+                <label asp-for="Radio1Value" class="form-check-label" for="gridRadios2">
+                     Demand
+                </label>
             </div>
         </fieldset>
-        <div class="row mb-3">
-            <div class="col-sm-10 offset-sm-2">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck1">
-                    <label class="form-check-label" for="gridCheck1">
-                        Example checkbox
-                    </label>
-                </div>
+
+    <fieldset2 class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Options</legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="option1" value="option1" checked>
+                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios2">
+                    Government Scheme Related
+                </label>
             </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+            <div class="form-check">
+                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="option2" value="option2">
+                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios1">
+                    Private Institution Related
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="option3" value="option3">
+                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios2">
+                    Individual Related
+                </label>
+            </div>
+    </fieldset2>
+
+    <fieldset3 class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Options</legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="option1" value="option1" checked>
+                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios2">
+                    Government Office Related
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="option2" value="option2">
+                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios1">
+                    Private Institution Related
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="option3" value="option3">
+                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios2">
+                    Individual Related
+                </label>
+            </div>
+    </fieldset3>
+
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Schemes</label>
+            <select id="inputState" class="form-select"> 
+                <option selected>Select...</option>
+                <option>Samagra ID</option>
+                <option>Aadhar Card</option>
+                <option>Eligibility Certificate (Ration)</option>
+                <option>BPL Card</option>
+                <option>Birth Certificate</option>
+                <option>Death Certificate</option>
+                <option>Marriage Certificate</option>
+                <option>Non-Creamy Layer Certificate</option>
+                <option>Pradhan Mantri Awas Yojana</option>
+                <option>Building Permit</option>
+                <option>Old Age Pension</option>
+                <option>Widow Pension</option>
+                <option>Handicap Pension</option>
+                <option>Widowhood Pension</option>
+                <option>Divyang Pension</option>
+                <option>Orphan Girl Pension</option>
+                <option>Empowerment Card</option>
+                <option>Building Construction Labor Card</option>
+                <option>Funeral Assistance</option>
+                <option>Grace Assistance</option>
+                <option>Ladli Sister Scheme</option>
+                <option>Matru Vandana Yojana</option>
+                <option>Nutrition Food</option>
+                <option>Path Vendor Registration</option>
+                <option>Path Vendor Loan</option>
+                <option>Self-Employment Loan</option>
+                <option>Conversion Diversion</option>
+                <option>Patta (Land Ownership Document)</option>
+                <option>Land Lease</option>
+                <option>New Water Connection</option>
+                <option>Inter-caste Marriage Incentive Amount</option>
+                <option>Chief Minister's Kanyadan</option>
+                </select>
+           </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+
+
+
+ 
+
+  
    
+ 
+
+ 
+
+
+
+ 
+
+
+    

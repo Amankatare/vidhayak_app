@@ -54,9 +54,9 @@ namespace VidhayakApp.Web.Controllers
 
                 // if user is successfullly registered then redirected to account 
 
-                if (registerUser) return RedirectToAction("Index", "Home");
+                if (registerUser) return RedirectToAction("Successfull", "Account");
 
-                else return RedirectToAction("registration not possible");
+                else return RedirectToAction("Unsuccessfull","Account");
 
             }
             else
@@ -163,8 +163,16 @@ namespace VidhayakApp.Web.Controllers
             {
                 return View();
             }
+            public IActionResult Unsuccessfull()
+            {
+                return View();
+            }
+            public IActionResult Successfull()
+            {
+                return View();
+            }
 
-            public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Logout()
             {
                 // Handle logout logic
                 return RedirectToAction("Index", "Home");

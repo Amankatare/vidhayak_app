@@ -4,7 +4,7 @@
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public bool Check { get; set; }
-        public string RadioValue { get; set; }
+        public string Radio1Value { get; set; }
+        public string Radio2Value { get; set; }
     }
 }
