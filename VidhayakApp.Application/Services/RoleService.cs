@@ -20,10 +20,27 @@ namespace VidhayakApp.Application.Services
 
             _connectionstring = configuration.GetConnectionString("VidhayakAppConnection");
         }
+        /*
+            public async Task<User> GetRoleByUserNameAsync(User user)
+            {
+            var username  = _roleRepository.GetByUsernameAsync(user.UserName);
 
-        public Task<Role> AuthenticateRoleAsync(string username, string password)
-        {
-            throw new NotImplementedException();
+            if (username != null  && user.Role.RoleName == "SuperAdmin" )
+            {
+             
+            }
+            else if (username != null && user.Role.RoleName == "Admin") 
+            { 
+            
+            }else if (username != null && user.Role.RoleName == "AppUser")
+            {
+
+            }else if (username != null && user.Role.RoleName == "User") 
+            {
+            
+            }
+        */
+
         }
     }
-}
+

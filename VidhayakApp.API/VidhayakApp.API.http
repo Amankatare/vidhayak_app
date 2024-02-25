@@ -1,0 +1,6 @@
+@VidhayakApp.API_HostAddress = http://localhost:5252
+
+GET {{VidhayakApp.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

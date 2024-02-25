@@ -49,9 +49,9 @@ namespace VidhayakApp.Infastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        Task<Role> IRepository<Role>.GetByUsernameAsync(string username)
+        public async Task<Role> GetByUsernameAsync(string roleName)
         {
-            throw new NotImplementedException();
+            return await _context.Roles.FirstOrDefaultAsync(u => u.RoleName == roleName);
         }
     }
 }

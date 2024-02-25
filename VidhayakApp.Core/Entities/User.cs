@@ -19,8 +19,8 @@ namespace VidhayakApp.Core.Entities
 
 
         //foreign key
-        //public int RoleId { get; set; }
-        //public Role Role { get; set; }
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
         
         
         // Add other fields 

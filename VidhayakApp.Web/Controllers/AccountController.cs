@@ -3,20 +3,28 @@
 using VidhayakApp.Web.ViewModels;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Core.Entities;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using VidhayakApp.Web.MiddleWare;
+using VidhayakApp.Infastructure.Repositories;
 
 namespace VidhayakApp.Web.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IUserService _userService;
-        //private readonly IRoleService _roleService;
         private readonly IConfiguration _configuration;
+        private readonly RoleBasedAuthenticationMiddleware _middleware;
+        private readonly RoleRepository _roleRepository;
        
-        public AccountController(IUserService userService, IConfiguration configuration)
+        public AccountController(IUserService userService, IConfiguration configuration, RoleBasedAuthenticationMiddleware middleware, RoleRepository roleRepository)
         {
             _userService = userService;
-           // _roleService = _roleService;
-         
+            _configuration = configuration;
+            _middleware = middleware;
+            _roleRepository = roleRepository;
         }
 
         [HttpPost]
@@ -36,7 +44,7 @@ namespace VidhayakApp.Web.Controllers
                     Name = model.Name,
                     Dob = model.Dob,
                     Address = model.Address,
-                   // RoleId = 1,
+                    RoleId = 4,
                     Ward = model.Ward
                 };
 
@@ -72,21 +80,53 @@ namespace VidhayakApp.Web.Controllers
 
             if (ModelState.IsValid)
             {
-            
+
                 // Authenticate and redirect or show an error
 
                 var AuthenticUser = await _userService.AuthenticateAsync(model.UserName, model.Password);
-             
+                IEnumerable<Role> roles = await _roleRepository.ListAllAsync();
 
                 if (AuthenticUser != null)
                 {
-                    return RedirectToAction("Dashboard", "User");
-                    //var token = GenerateJwtToken(AuthenticUser);
-                    //Console.WriteLine(token);
-                    /*
+                    if (AuthenticUser.Role.RoleName == "SuperAdmin")
+                    {
+
+                         RedirectToAction("Dashboard", "SuperAdmin");
+
+                    }
+                    else if (AuthenticUser.Role.RoleName == "Admin")
+                    {
+
+                         RedirectToAction("Dashboard", "Admin");
+
+                    }
+
+                    else if (AuthenticUser.Role.RoleName == "AppUser")
+                    {
+
+                         RedirectToAction("Dashboard", "AppUser");
+
+                    }
+
+                    else if (AuthenticUser.Role.RoleName == "User")
+                    {
+
+                         RedirectToAction("Dashboard", "User");
+
+                    }
+
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "token failed");
+                    }
+                
+                    var token = _middleware.GenerateJwtToken(AuthenticUser,roles);
+
+                    Console.WriteLine(token);
+
                     if (token != null)
                     {
-                        Response.Cookies.Append("JwtToken", token,new CookieOptions
+                        Response.Cookies.Append("JwtToken", token, new CookieOptions
                         {
                             HttpOnly = true,
                             SameSite = SameSiteMode.Strict,
@@ -94,68 +134,47 @@ namespace VidhayakApp.Web.Controllers
                             Expires = DateTime.UtcNow.AddHours(1)
 
                         });
-                    */
-                    // return RedirectToLocal(returnUrl);
-                }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, "token failed");
+
                     }
+
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "token failed");
                 }
+                
+
+            }
             return RedirectToAction("Index", "Home");
 
         }
+
+            // return RedirectToLocal(returnUrl);
+
+
+
             //  ViewData["ReturnUrl"] = returnUrl;
 
-            
 
-        //Generating custom Jwt token
-        /*
-        public string GenerateJwtToken(User user)
-        {
-            Console.WriteLine("GenerateJwtToken method entered");
-            var claims = new List<Claim>
-            {
-                //Adding User ClaimTypes
-                new Claim(JwtRegisteredClaimNames.Name, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Name, user.Name),
-                
-                // Add other claims as needed
-            };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.Now.AddHours(1); // Token expiration time
 
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: expires,
-                signingCredentials: creds
-            );
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-        */
-        private IActionResult RedirectToLocal(string returnUrl)
-            {
-                if (Url.IsLocalUrl(returnUrl))  return Redirect(returnUrl);
-                else return RedirectToAction("Index", "Home");
 
-            }
 
-        public IActionResult DashBoard()
-        {
-            return View();
-        }
-        public IActionResult Register()
+           // private IActionResult RedirectToLocal(string returnUrl)
+          //  {
+            //    if (Url.IsLocalUrl(returnUrl))  return Redirect(returnUrl);
+            //    else return RedirectToAction("Index", "Home");
+
+            //}
+
+            public IActionResult DashBoard()
             {
                 return View();
+            }
+            public IActionResult Register()
+            {
+                    return View();
             }
 
 
@@ -172,13 +191,11 @@ namespace VidhayakApp.Web.Controllers
                 return View();
             }
 
-        public async Task<IActionResult> Logout()
-            {
-                // Handle logout logic
-                return RedirectToAction("Index", "Home");
+            public async Task<IActionResult> Logout()
+                {
+                    // Handle logout logic
+                    return RedirectToAction("Index", "Home");
+                }
             }
-        }
-
-
     }
     

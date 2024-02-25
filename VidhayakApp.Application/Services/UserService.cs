@@ -69,6 +69,7 @@ namespace VidhayakApp.Application.Services
 
                         UserName = username,
                         PasswordHash = passwordHash
+                        
                     };
 
                     if (user != null) return user;
