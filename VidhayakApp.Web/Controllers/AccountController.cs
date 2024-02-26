@@ -86,44 +86,15 @@ namespace VidhayakApp.Web.Controllers
 
                 if (AuthenticUser != null)
                 {
-                    TempData["UserName"] = AuthenticUser.UserName;
+                    ViewData["UserName"] = AuthenticUser.UserName;
+                    ViewData["UserRoleId"] = AuthenticUser.RoleId;
+
                     var user = await _userRepository.GetByUsernameAsync(AuthenticUser.UserName);
 
                     HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("Name", user.Name);
                     HttpContext.Session.SetString("RoleName", user.Role.RoleName);
 
-                    if (user.RoleId == 1)
-                    {
-
-                         RedirectToAction("Dashboard", "SuperAdmin");
-
-                    }
-                    else if (user.RoleId == 2)
-                    {
-
-                         RedirectToAction("Dashboard", "Admin");
-
-                    }
-
-                    else if (user.RoleId == 3)
-                    {
-
-                         RedirectToAction("Dashboard", "AppUser");
-
-                    }
-
-                    else if (user.RoleId == 4)
-                    {
-
-                         RedirectToAction("Dashboard", "User");
-
-                    }
-
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, "token failed");
-                    }
                 
                     var token = _middleware.GenerateJwtToken(user,roles);
 
@@ -146,6 +117,38 @@ namespace VidhayakApp.Web.Controllers
 
                         
 
+                    }
+
+                    if (user.RoleId == 1)
+                    {
+
+                        return RedirectToAction("Dashboard", "SuperAdmin");
+
+                    }
+                    else if (user.RoleId == 2)
+                    {
+
+                        return RedirectToAction("Dashboard", "Admin");
+
+                    }
+
+                    else if (user.RoleId == 3)
+                    {
+
+                        return RedirectToAction("Dashboard", "AppUser");
+
+                    }
+
+                    else if (user.RoleId == 4)
+                    {
+
+                        return RedirectToAction("Dashboard", "User");
+
+                    }
+
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "token failed");
                     }
 
                 }
