@@ -24,12 +24,12 @@ builder.Services.AddDbContext<VidhayakAppContext>(options =>
 ));
 
 //builder.Services.Configure<AppConfig>(Configuration.GetSection("VidhayakAppConnection"));
+
+builder.Services.AddSingleton<RoleBasedAuthenticationMiddleware>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddTransient<IRoleService, RoleService>();
-builder.Services.AddTransient<RoleBasedAuthenticationMiddleware>();
-
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -53,14 +53,25 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
+
+
+
 builder.Services.AddControllers();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-app.UseMiddleware<RoleBasedAuthenticationMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -73,20 +84,17 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseMiddleware<RoleBasedAuthenticationMiddleware>();
 
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
+app.MapControllerRoute(
+      name: "default",
+      pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers(); // For Web API controllers
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}"
-    );
-
-});
 
 
 app.Run();

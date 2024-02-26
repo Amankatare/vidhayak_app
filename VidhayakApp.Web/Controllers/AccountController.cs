@@ -3,28 +3,26 @@
 using VidhayakApp.Web.ViewModels;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Core.Entities;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using VidhayakApp.Web.MiddleWare;
-using VidhayakApp.Infastructure.Repositories;
 
 namespace VidhayakApp.Web.Controllers
 {
     public class AccountController : Controller
     {
+        private bool isAuthenticated = false;
         private readonly IUserService _userService;
         private readonly IConfiguration _configuration;
         private readonly RoleBasedAuthenticationMiddleware _middleware;
-        private readonly RoleRepository _roleRepository;
+        private readonly IRoleRepository _roleRepository;
+        private readonly IUserRepository _userRepository;
        
-        public AccountController(IUserService userService, IConfiguration configuration, RoleBasedAuthenticationMiddleware middleware, RoleRepository roleRepository)
+        public AccountController(IUserService userService, IConfiguration configuration, RoleBasedAuthenticationMiddleware middleware, IRoleRepository roleRepository, IUserRepository userRepository)
         {
             _userService = userService;
             _configuration = configuration;
             _middleware = middleware;
             _roleRepository = roleRepository;
+            _userRepository = userRepository;
         }
 
         [HttpPost]
@@ -88,27 +86,34 @@ namespace VidhayakApp.Web.Controllers
 
                 if (AuthenticUser != null)
                 {
-                    if (AuthenticUser.Role.RoleName == "SuperAdmin")
+                    TempData["UserName"] = AuthenticUser.UserName;
+                    var user = await _userRepository.GetByUsernameAsync(AuthenticUser.UserName);
+
+                    HttpContext.Session.SetString("UserName", user.UserName);
+                    HttpContext.Session.SetString("Name", user.Name);
+                    HttpContext.Session.SetString("RoleName", user.Role.RoleName);
+
+                    if (user.RoleId == 1)
                     {
 
                          RedirectToAction("Dashboard", "SuperAdmin");
 
                     }
-                    else if (AuthenticUser.Role.RoleName == "Admin")
+                    else if (user.RoleId == 2)
                     {
 
                          RedirectToAction("Dashboard", "Admin");
 
                     }
 
-                    else if (AuthenticUser.Role.RoleName == "AppUser")
+                    else if (user.RoleId == 3)
                     {
 
                          RedirectToAction("Dashboard", "AppUser");
 
                     }
 
-                    else if (AuthenticUser.Role.RoleName == "User")
+                    else if (user.RoleId == 4)
                     {
 
                          RedirectToAction("Dashboard", "User");
@@ -120,20 +125,26 @@ namespace VidhayakApp.Web.Controllers
                         ModelState.AddModelError(string.Empty, "token failed");
                     }
                 
-                    var token = _middleware.GenerateJwtToken(AuthenticUser,roles);
+                    var token = _middleware.GenerateJwtToken(user,roles);
 
                     Console.WriteLine(token);
 
                     if (token != null)
                     {
-                        Response.Cookies.Append("JwtToken", token, new CookieOptions
+
+                        var cookieOptions = new CookieOptions
                         {
                             HttpOnly = true,
                             SameSite = SameSiteMode.Strict,
                             Secure = true,  // Set to true if using HTTPS
                             Expires = DateTime.UtcNow.AddHours(1)
+                        };
 
-                        });
+                        // Assuming 'Response' is an instance of HttpResponse in your ASP.NET Core controller
+                        Response.Cookies.Append("JwtToken", token, cookieOptions);
+                        //HttpContext.Session.SetString("JwtToken", token);
+
+                        
 
                     }
 
@@ -192,10 +203,11 @@ namespace VidhayakApp.Web.Controllers
             }
 
             public async Task<IActionResult> Logout()
-                {
+            {
                     // Handle logout logic
                     return RedirectToAction("Index", "Home");
-                }
             }
+            
+         }
     }
     

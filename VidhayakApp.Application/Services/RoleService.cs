@@ -9,7 +9,7 @@ using VidhayakApp.Core.Interfaces;
 
 namespace VidhayakApp.Application.Services
 {
-    public class RoleService:IRoleService
+    public class RoleService : IRoleService
     {
         private readonly IRoleRepository _roleRepository;
         private readonly string _connectionstring;
@@ -41,6 +41,5 @@ namespace VidhayakApp.Application.Services
             }
         */
 
-        }
     }
-
+}

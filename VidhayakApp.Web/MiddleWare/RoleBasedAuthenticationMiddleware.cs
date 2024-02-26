@@ -1,4 +1,7 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -9,57 +12,50 @@ using VidhayakApp.Infrastructure.Repositories;
 
 namespace VidhayakApp.Web.MiddleWare
 {
-    public class RoleBasedAuthenticationMiddleware
+    public class RoleBasedAuthenticationMiddleware : IMiddleware
     {
-
-        private readonly RequestDelegate _next;
         private readonly IConfiguration _configuration;
-
-
-        public RoleBasedAuthenticationMiddleware(RequestDelegate next, IConfiguration configuration)
+        public RoleBasedAuthenticationMiddleware(IConfiguration configuration)
         {
-             _next = next;
             _configuration = configuration;
-
         }
-
-        public async Task Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, RequestDelegate _next)
         {
-            // Check if the request is for a Web API endpoint
-            if (context.Request.Path.StartsWithSegments("/api"))
+            var userRoles = context.User.FindAll(ClaimTypes.Role).Select(c => c.Value);
+
+            // Check for roles and perform role-specific logic
+            if (userRoles.Contains("Admin"))
             {
-                // Web API logic
-                var apiKey = context.Request.Headers["Api-Key"].FirstOrDefault();
-                if (!IsValidApiKey(apiKey))
-                {
-                    context.Response.StatusCode = 401; // Unauthorized
-                    return;
-                }
-
-                // Continue processing the Web API request
-                await _next(context); // Invoke the next middleware in the pipeline
+                // Perform Admin-specific logic
+                context.Response.WriteAsync("Welcome, Admin! This is the admin dashboard.");
+                context.Response.Redirect("/Admin/Dashboard");
+                return;
             }
-            else
+            else if (userRoles.Contains("AppUser"))
             {
-                // MVC logic
-                var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-                if (!IsValidToken(token))
-                {
-                    context.Response.Redirect("/login"); // Redirect to login for MVC requests
-                    return;
-                }
-
-                // Continue processing the MVC request
-                await _next(context); // Invoke the next middleware in the pipeline
+                // Perform Admin-specific logic
+                context.Response.WriteAsync("Welcome, Admin! This is the admin dashboard.");
+                context.Response.Redirect("/AppUser/Dashboard");
+                return;
             }
-        }
+            else if (userRoles.Contains("User"))
+            {
+                // Perform User-specific logic
+                context.Response.WriteAsync("Welcome, User! This is the user dashboard.");
+                context.Response.Redirect("/User/Dashboard");
+                return;
+            }
+            // Add more role checks as needed...
 
-        // ... rest of the middleware code ...
+            // If the user doesn't have a specific role, you can handle it here
+          //  else {
+           //   context.Response.WriteAsync("Unauthorized access.");
+             //    return;
+             //}
 
-        private bool IsValidApiKey(string apiKey)
-        {
-            // Replace with your API key validation logic
-            return !string.IsNullOrEmpty(apiKey) && apiKey == "your-api-key";
+            // Continue processing the MVC request
+
+            await _next(context); // Invoke the next middleware in the pipeline
         }
 
         private bool IsValidToken(string token)
@@ -96,7 +92,7 @@ namespace VidhayakApp.Web.MiddleWare
     
 
     //Generating custom Jwt token
-    public string GenerateJwtToken(User user,IEnumerable<Role> role)
+    public string GenerateJwtToken(User user,IEnumerable<Role> roles)
         {
             Console.WriteLine("GenerateJwtToken method entered");
             var claims = new List<Claim>
@@ -109,9 +105,17 @@ namespace VidhayakApp.Web.MiddleWare
 
                 // Add other claims as needed
             };
+            
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.RoleName));
+            }
+
+            var identity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var creds = new SigningCredentials(key, SecurityAlgorithms.Aes128CbcHmacSha256);
             var expires = DateTime.Now.AddHours(1); // Token expiration time
 
             var token = new JwtSecurityToken(
