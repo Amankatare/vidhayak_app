@@ -102,11 +102,7 @@ namespace VidhayakApp.Web.Controllers
 
                     if (token != null)
                     {
-                        var isValidToken = _middleware.IsValidToken(token);
-
-                        if (isValidToken)
-                        {
-
+                       
                             var cookieOptions = new CookieOptions
                             {
                                 HttpOnly = true,
@@ -118,6 +114,12 @@ namespace VidhayakApp.Web.Controllers
                             // Assuming 'Response' is an instance of HttpResponse in your ASP.NET Core controller
                             Response.Cookies.Append("JwtToken", token, cookieOptions);
                             //HttpContext.Session.SetString("JwtToken", token);
+
+                        var isValidToken = _middleware.IsValidToken(token);
+
+                        if (isValidToken)
+                        {
+                            Console.WriteLine("---------------"+isValidToken+"-------------------");
 
                         }
 

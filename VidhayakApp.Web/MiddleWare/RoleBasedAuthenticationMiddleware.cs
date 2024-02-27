@@ -70,7 +70,7 @@ namespace VidhayakApp.Web.MiddleWare
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.UTF8.GetBytes("your-secret-key"); // Replace with your actual secret key
+                var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]); // Replace with your actual secret key
 
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
@@ -115,6 +115,7 @@ namespace VidhayakApp.Web.MiddleWare
             var principal = new ClaimsPrincipal(identity);
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+
             var creds = new SigningCredentials(key, SecurityAlgorithms.Aes128CbcHmacSha256);
             var expires = DateTime.Now.AddHours(1); // Token expiration time
 

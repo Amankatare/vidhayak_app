@@ -6,6 +6,10 @@ namespace VidhayakApp.Web.Controllers
     {
         public IActionResult Dashboard()
         {
+            //if (HttpContext.Session.GetString("UserName") != null)
+            //{
+            //    return RedirectToAction("Dashboard");
+            //}
             return View();
         }
         public IActionResult Profile()
