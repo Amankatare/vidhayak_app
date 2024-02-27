@@ -1,9 +1,9 @@
 ﻿    @using VidhayakApp.Web.ViewModels
     @model LoginViewModel
-    
-    @{
-         ViewData["Title"] = "Login";
-    }
+
+@{
+    ViewData["Title"] = "Login";
+}
 
 <body class="login-page" style="min-height: 495.6px;">
     <div class="login-box">
@@ -43,7 +43,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button asp-action="login" asp-controller="Account" type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -84,22 +84,3 @@
     <script src="/_framework/aspnetcore-browser-refresh.js"></script>
 
 </body>
-    
-    <div class="card">
-            <div class="card-body">
-        
-        <form method="post">
-            <div class="mb-3">
-                <label asp-for="UserName" class="form-label"></label>
-                <input asp-for="UserName" asp-controller="Account" class="form-control" id="UserName" aria-describedby="UserNameHelp">
-                <div id="UserNameHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Password" class="form-label"></label>
-                <input asp-for="Password" class="form-control" id="Password">
-            </div>
-            
-            <button asp-action="login" asp-controller="Account" type="submit" class="btn btn-primary">Submit</button>
-        </form>
-            </div>
-        </div>

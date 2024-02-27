@@ -11,7 +11,25 @@ using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.Infrastructure.Repositories;
 using VidhayakApp.Web.MiddleWare;
 
+//write the session service just below the build line as shown
+//var builder = WebApplication.CreateBuilder(args);
+
+//builder.Services.AddSession();
+
+//var app = builder.Build();
+
+//app.UseSession();
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 // Configuration
 builder.Configuration.AddJsonFile("appsettings.json");
@@ -72,6 +90,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

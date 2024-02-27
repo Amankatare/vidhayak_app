@@ -102,20 +102,24 @@ namespace VidhayakApp.Web.Controllers
 
                     if (token != null)
                     {
+                        var isValidToken = _middleware.IsValidToken(token);
 
-                        var cookieOptions = new CookieOptions
+                        if (isValidToken)
                         {
-                            HttpOnly = true,
-                            SameSite = SameSiteMode.Strict,
-                            Secure = true,  // Set to true if using HTTPS
-                            Expires = DateTime.UtcNow.AddHours(1)
-                        };
 
-                        // Assuming 'Response' is an instance of HttpResponse in your ASP.NET Core controller
-                        Response.Cookies.Append("JwtToken", token, cookieOptions);
-                        //HttpContext.Session.SetString("JwtToken", token);
+                            var cookieOptions = new CookieOptions
+                            {
+                                HttpOnly = true,
+                                SameSite = SameSiteMode.Strict,
+                                Secure = true,  // Set to true if using HTTPS
+                                Expires = DateTime.UtcNow.AddHours(1)
+                            };
 
-                        
+                            // Assuming 'Response' is an instance of HttpResponse in your ASP.NET Core controller
+                            Response.Cookies.Append("JwtToken", token, cookieOptions);
+                            //HttpContext.Session.SetString("JwtToken", token);
+
+                        }
 
                     }
 

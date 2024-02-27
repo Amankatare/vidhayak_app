@@ -58,7 +58,7 @@ namespace VidhayakApp.Web.MiddleWare
             await _next(context); // Invoke the next middleware in the pipeline
         }
 
-        private bool IsValidToken(string token)
+        public bool IsValidToken(string token)
         {
             // Replace with your JWT token validation logic
             return !string.IsNullOrEmpty(token) && ValidateToken(token);

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VidhayakApp.Infastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc1cf4f708e34c2afdd7dff68d2b215a9f4728a6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22e939873541ba89330b1e066025aaa90d2f2d5f")]
 [assembly: System.Reflection.AssemblyProductAttribute("VidhayakApp.Infastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VidhayakApp.Infastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
