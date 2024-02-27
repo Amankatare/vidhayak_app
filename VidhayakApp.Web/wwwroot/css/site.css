@@ -28,3 +28,17 @@ body {
     width:100vdw; !important;
     height:200px; !important;
 }
+
+.streach {
+    display: contents; !important;
+    position: absolute; !important;
+}
+
+.new-footer {
+    position: absolute;!important ;
+    bottom: 0px; !important ;
+    width: 100%; !important ;
+    display: flex; !important ;
+    justify-content: space-between; !important;
+    margin:0px; !important;
+}

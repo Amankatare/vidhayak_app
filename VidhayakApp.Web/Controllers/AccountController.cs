@@ -169,25 +169,6 @@ namespace VidhayakApp.Web.Controllers
 
         }
 
-            // return RedirectToLocal(returnUrl);
-
-
-
-            //  ViewData["ReturnUrl"] = returnUrl;
-
-
-
-
-
-
-
-           // private IActionResult RedirectToLocal(string returnUrl)
-          //  {
-            //    if (Url.IsLocalUrl(returnUrl))  return Redirect(returnUrl);
-            //    else return RedirectToAction("Index", "Home");
-
-            //}
-
             public IActionResult DashBoard()
             {
                 return View();
@@ -200,23 +181,33 @@ namespace VidhayakApp.Web.Controllers
 
             public IActionResult Login()
             {
+                if (HttpContext.Session.GetString("UserName") != null)
+                {
+                    return RedirectToAction("Dashboard");
+                }
+
                 return View();
             }
             public IActionResult Unsuccessfull()
-            {
-                return View();
-            }
-            public IActionResult Successfull()
-            {
-                return View();
-            }
+                {
+                    return View();
+                }
+                public IActionResult Successfull()
+                {
+                    return View();
+                }
 
             public async Task<IActionResult> Logout()
             {
-                    // Handle logout logic
-                    return RedirectToAction("Index", "Home");
+                if (HttpContext.Session.GetString("UserName") != null)
+                {
+                    HttpContext.Session.Remove("UserName");
+                    return RedirectToAction("Login");
+                }
+                // Handle logout logic
+                return RedirectToAction("Index", "Home");
             }
-            
-         }
+
+        }
     }
     

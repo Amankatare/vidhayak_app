@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
 using System.IdentityModel.Tokens.Jwt;
@@ -21,8 +22,23 @@ namespace VidhayakApp.Web.MiddleWare
         }
         public async Task InvokeAsync(HttpContext context, RequestDelegate _next)
         {
-            var userRoles = context.User.FindAll(ClaimTypes.Role).Select(c => c.Value);
+            //if ()
+            //{
+            //    context.Response.Redirect("/Account");
+            //    return;
+            //}
 
+            //if (context.Session.GetString("UserName") != null)
+            //{
+            //    Console.WriteLine(context.Session.GetString("UserName"));
+            //    string role = context.Session.GetString("RoleName");
+            //    Console.WriteLine(role);
+            //    context.Response.Redirect($"{role}/Dashboard");
+            //    Console.WriteLine($"{role}/Dashboard");
+            //    return;
+            //}
+
+            var userRoles = context.User.FindAll(ClaimTypes.Role).Select(c => c.Value);
             // Check for roles and perform role-specific logic
             if (userRoles.Contains("Admin"))
             {
