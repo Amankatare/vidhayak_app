@@ -36,30 +36,30 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="~/Frontend/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="~/Frontend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="~/Frontend/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="~/Frontend/plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="~/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="~/Frontend/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="~/Frontend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="~/Frontend/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-    <link rel="stylesheet" href="~/Frontend/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="~/Frontend/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="~dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -68,9 +68,7 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        @* <a href="index3.html" class="nav-link">Home</a> *@
+      </li><li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
@@ -199,140 +197,8 @@
       </li>
     </ul>
   </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
- @*  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">VidhayakApp</span>
-    </a>
-
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
-                <a href="index3.html" class="brand-link">
-                    <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text font-weight-light">VidhayakApp</span>
-                </a>
-
-                <div class="sidebar">
-
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        
-                        @if (TempData == null)
-                        {
-                            <!-- Display login and signup when user is not logged in -->
-                            <div class="info" alt="Login">
-                                <a asp-action="Login"  asp-controller="Account" href="/login" class="d-block">Login</a>
-                                <a asp-action="Register" asp-controller="Account" href="/signup" class="d-block">Signup</a>
-                            </div>
-                        }
-                        else
-                        {
-                            <!-- Display user information when user is logged in -->
-                            <div class="image">
-                                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                            </div>
-                            <div class="info">
-                                <a href="#" class="d-block"> @TempData["UserName"]</a>
-                            </div>
-                        }
-                    </div>
-
-                    <div class="form-inline">
-                        <div class="input-group" data-widget="sidebar-search">
-                            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-sidebar">
-                                    <i class="fas fa-search fa-fw"></i>
-                                </button>
-                            </div>
-                        </div><div class="sidebar-search-results"><div class="list-group"><a href="#" class="list-group-item"><div class="search-title"><strong class="text-light"></strong>N<strong class="text-light"></strong>o<strong class="text-light"></strong> <strong class="text-light"></strong>e<strong class="text-light"></strong>l<strong class="text-light"></strong>e<strong class="text-light"></strong>m<strong class="text-light"></strong>e<strong class="text-light"></strong>n<strong class="text-light"></strong>t<strong class="text-light"></strong> <strong class="text-light"></strong>f<strong class="text-light"></strong>o<strong class="text-light"></strong>u<strong class="text-light"></strong>n<strong class="text-light"></strong>d<strong class="text-light"></strong>!<strong class="text-light"></strong></div><div class="search-path"></div></a></div></div>
-                    </div>
-
-                    <nav class="mt-2">
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                            <li class="nav-item menu-open">
-                                <a href="#" class="nav-link active">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Dashboard
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="./index.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Dashboard v1</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </ul>
-                        </nav>
-
-              
-
-                    <li class="sidebar-item selected">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="@GetProfileLink(userRole)" aria-expanded="false">
-                            <i class="mdi mdi-account-network"></i>
-                            <span class="hide-menu">Profile</span>
-                        </a>
-                    </li>
-
-                        
-
-                    <li class="sidebar-item selected">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="pages-profile.cshtml" aria-expanded="false"><i class="mdi mdi-account-network"></i><span class="hide-menu">Profile</span></a>
-                    </li>
-
-                </div>
-
-            </aside>
-
-            -------------------------------------------
-
-            <ul id="sidebarnav" class="in">
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
-                </li>
-               
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-basic.html" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">Table</span></a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="icon-material.html" aria-expanded="false"><i class="mdi mdi-face"></i><span class="hide-menu">Icon</span></a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="starter-kit.html" aria-expanded="false"><i class="mdi mdi-file"></i><span class="hide-menu">Blank</span></a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="error-404.html" aria-expanded="false"><i class="mdi mdi-alert-outline"></i><span class="hide-menu">404</span></a>
-                </li>
-                <li class="text-center p-40 upgrade-btn">
-                    <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/" class="btn d-block w-100 btn-danger text-white" target="_blank">Upgrade to Pro</a>
-                </li>
-            </ul>
- *@
-
-            @* -------------------------------------------
- *@
-
-    <!-- Sidebar -->
-    @* <div class="sidebar"> *@
-      <!-- Sidebar user panel (optional) -->
-      @* <div class="user-panel mt-3 pb-3 mb-3 d-flex"> *@
-      
-         
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  @* </aside> *@
-
+ 
   <!-- Content Wrapper. Contains page content -->
-    <div class="">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -386,32 +252,32 @@
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-    <script src="~/Frontend/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-    <script src="~/Frontend/plugins/chart.js/Chart.min.js"></script>
+    <script src="~/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-    <script src="~/Frontend/plugins/sparklines/sparkline.js"></script>
+    <script src="~/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
-    <script src="~/Frontend/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/Frontend/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
-    <script src="~/Frontend/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
-    <script src="~/Frontend/plugins/moment/moment.min.js"></script>
-    <script src="~/FrontEnd/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/plugins/moment/moment.min.js"></script>
+    <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-    <script src="~/Frontend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-    <script src="~/Frontend/plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-    <script src="~/Frontend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-    <script src="~/Frontend/dist/js/adminlte.js"></script>
+    <script src="~/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-    <script src="~/Frontend/dist/js/demo.js"></script>
+    <script src="~/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="~/Frontend/dist/js/pages/dashboard.js"></script>
+    <script src="~/dist/js/pages/dashboard.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
@@ -419,66 +285,3 @@
 
 
 
-@* <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - VidhayakApp.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/VidhayakApp.Web.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">VidhayakApp.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                <div class="navbar-collapse collapse d-sm-inline-flex end justify-content-end ">
-                    <ul class="navbar-nav flex-grow-1 endlast ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                        </li>
-                    </ul>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - VidhayakApp.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-   
-</body>
-</html>
- *@

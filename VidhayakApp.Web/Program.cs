@@ -1,15 +1,12 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System.Configuration;
 using System.Text;
 using VidhayakApp.Application.Services;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.Infrastructure.Repositories;
-using VidhayakApp.Web.MiddleWare;
 
 //write the session service just below the build line as shown
 //var builder = WebApplication.CreateBuilder(args);
@@ -37,13 +34,11 @@ builder.Configuration.AddJsonFile("appsettings.json");
 //MySQL Connection :-
 builder.Services.AddDbContext<VidhayakAppContext>(options =>
        options.UseMySQL(builder.Configuration.GetConnectionString("VidhayakAppConnection") // ,
-       //new MySqlServerVersion(new Version(8, 0, 2)))); // Adjust the version accordingly 
-       // MySql version 8.0.27 
+                                                                                           //new MySqlServerVersion(new Version(8, 0, 2)))); // Adjust the version accordingly 
+                                                                                           // MySql version 8.0.27 
 ));
 
-//builder.Services.Configure<AppConfig>(Configuration.GetSection("VidhayakAppConnection"));
 
-builder.Services.AddSingleton<RoleBasedAuthenticationMiddleware>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
@@ -53,13 +48,13 @@ builder.Services.AddAuthentication(options =>
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
+})
     .AddJwtBearer(o =>
     {
-       // o.Authority = "VidhayakApp";
+        // o.Authority = "VidhayakApp";
         o.TokenValidationParameters = new TokenValidationParameters
         {
-            
+
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey
@@ -71,14 +66,6 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
-builder.Services.AddDistributedMemoryCache();
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromMinutes(30);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
-
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
@@ -86,7 +73,7 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddControllers();
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 var app = builder.Build();
 
@@ -103,7 +90,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseMiddleware<RoleBasedAuthenticationMiddleware>();
 
 app.UseRouting();
 app.UseAuthentication();
