@@ -1,7 +1,7 @@
 ﻿@using VidhayakApp.Web.Controllers
 @model AccountController
 
-@{
+@* @{
     var userRoleId = ViewData["UserRoleId"] as int?;
 }
 
@@ -23,7 +23,7 @@
                 return "#";
         }
     }
-}
+} *@
 
 
 <!DOCTYPE html>
@@ -195,8 +195,15 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block " alt="Login">
+        <a asp-action="Login" asp-controller="Account" asp-route-id="5"  class="nav-link text-dark">Login</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block" alt="Register">
+                    <a asp-action="Register" asp-controller="Account" asp-route-id="6" class="nav-link text-dark">Signup</a>
+      </li>
     </ul>
   </nav>
+
  
   <!-- Content Wrapper. Contains page content -->
     <!-- Content Header (Page header) -->
@@ -221,20 +228,26 @@
     <section class="content">
       <div class="container-fluid">
           @RenderBody();
+        
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer new-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
-
+    <!-- Main Footer -->
+    <footer class="main-footer new-footer mt-auto">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+                </div>
+                <div class="col text-right">
+                    <b>Version</b> 3.2.0
+                </div>
+            </div>
+        </div>
+    </footer>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

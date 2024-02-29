@@ -6,7 +6,7 @@ namespace VidhayakApp.Web.Controllers
     {
         public IActionResult Dashboard()
         {
-
+            
             return View();
         }
         public IActionResult Profile()
@@ -25,6 +25,9 @@ namespace VidhayakApp.Web.Controllers
         }
 
         public IActionResult Suggession()
+        {
+            return View();
+        }   public IActionResult _DashboardPartial()
         {
             return View();
         }

@@ -86,10 +86,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDb21wbGFpbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/vidhayak_app/VidhayakApp.Web/Views/User/Dashboard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEYXNoYm9hcmQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/vidhayak_app/VidhayakApp.Web/Views/User/Dashboard1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEYXNoYm9hcmQxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -108,6 +104,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/User/Suggession.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTdWdnZXNzaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/vidhayak_app/VidhayakApp.Web/Views/User/_DashboardPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfRGFzaGJvYXJkUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/_ViewImports.cshtml]
