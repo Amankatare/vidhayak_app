@@ -1,12 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
 
 namespace VidhayakApp.Web.Controllers
 {
     public class UserController : Controller
     {
+        
+        public UserController() {
+
+             
+        }
+
         public IActionResult Dashboard()
         {
-            
+            var ss = HttpContext.Session.GetString("UserName");
+            Console.WriteLine("#######################\n" + ss+ "\n#########################");
+
             return View();
         }
         public IActionResult Profile()

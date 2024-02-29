@@ -1,3 +1,39 @@
-﻿@{
+﻿
+@* @{
+    var roleId = HttpContext.Session.User.IsInRole("Administrator")
+}
+
+@if (roleId.HasValue)
+{
+    @switch (roleId.Value)
+    {
+        case int roleValue when roleValue == 1:
+            Layout = "_SuperAdminLayout";
+            break;
+
+        case int roleValue when roleValue == 2:
+            Layout = "_AdminLayout";
+            break;
+
+        case int roleValue when roleValue == 3:
+            Layout = "_AppUserLayout";
+            break;
+
+        case int roleValue when roleValue == 4:
+            Layout = "_UserLayout";
+            break;
+
+        // Add more cases for other roles as needed
+
+        default:
+            Layout = "_Layout";
+            break;
+    }
+    
+}
+else *@
+@{
     Layout = "_Layout";
 }
+
+

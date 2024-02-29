@@ -7,7 +7,7 @@ using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.Infrastructure.Repositories;
-
+ 
 //write the session service just below the build line as shown
 //var builder = WebApplication.CreateBuilder(args);
 
@@ -38,8 +38,7 @@ builder.Services.AddDbContext<VidhayakAppContext>(options =>
                                                                                            // MySql version 8.0.27 
 ));
 
-
-
+builder.Services.AddSingleton<AuthMiddleware>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -66,6 +65,7 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
@@ -78,6 +78,7 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 var app = builder.Build();
 
 app.UseSession();
+//app.UseMiddleware<AuthMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -94,7 +95,6 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseSession();
 app.MapControllerRoute(
       name: "default",
       pattern: "{controller=Home}/{action=Index}/{id?}"

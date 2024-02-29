@@ -9,10 +9,6 @@ namespace VidhayakApp.Infrastructure.Data
         {
         }
 
-        public VidhayakAppContext()
-        {
-        }
-
         public DbSet<User> Users { get; set; }
         public DbSet<UserDetail> UserDetails {  get; set; }
 

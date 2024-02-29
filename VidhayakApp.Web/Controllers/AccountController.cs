@@ -8,9 +8,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace VidhayakApp.Web.Controllers
 {
+  
     public class AccountController : Controller
     {
         private bool isAuthenticated = false;
@@ -74,7 +78,7 @@ namespace VidhayakApp.Web.Controllers
                 return View(model);
             }
         }
-
+      
         [HttpPost]
         //public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -100,8 +104,12 @@ namespace VidhayakApp.Web.Controllers
                     HttpContext.Session.SetString("Name", user.Name);
                     HttpContext.Session.SetInt32("RoleId", user.RoleId);
                     HttpContext.Session.SetString("RoleName", user.Role.RoleName);
-
+                    
+                    ViewData["RoleId"] = user.RoleId;
                     var role = user.Role.RoleName;
+
+                    var ss = HttpContext.Session.GetString("UserName");
+                    Console.WriteLine("--------------------ss"+ss+"-------------------");
 
                     var identity = new ClaimsIdentity(new[]
                     {
@@ -119,8 +127,10 @@ namespace VidhayakApp.Web.Controllers
 
                     HttpContext.User = principal;
 
-                    var token = GenerateJwtToken(user, roles);
+                    var logins = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
+                    var token = GenerateJwtToken(user, roles);
+                 
                     Console.WriteLine(token);
 
                     if (token != null)
@@ -137,6 +147,7 @@ namespace VidhayakApp.Web.Controllers
                         // Assuming 'Response' is an instance of HttpResponse in your ASP.NET Core controller
                         Response.Cookies.Append("JwtToken", token, cookieOptions);
                         //HttpContext.Session.SetString("JwtToken", token);
+
 
                         var isValidToken = IsValidToken(token);
 
