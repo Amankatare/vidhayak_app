@@ -37,7 +37,8 @@ namespace VidhayakApp.Web.Controllers
         public IActionResult Suggession()
         {
             return View();
-        }   public IActionResult _DashboardPartial()
+        }   
+        public IActionResult Feedback()
         {
             return View();
         }

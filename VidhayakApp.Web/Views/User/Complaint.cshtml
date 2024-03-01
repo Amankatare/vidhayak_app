@@ -3,75 +3,78 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<div class="col-sm-6">
+<section class="content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-sm-10">
 
-<div class="card card-danger">
-    <div class="card-header">
-        Complaint Form
-    </div>
-    <div class="card-body">
-        <form>
-            <div class="row">
-                <div class="col-sm-6">
-
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                <div class="card card-danger">
+                    <div class="card-header">
+                        Complaint Form
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-sm-6">
+                    <div class="card-body">
+                        <form>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                </div>
 
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Select</label>
+                                    <select id="inputState" class="form-control">
+                                        <!-- Options here -->
+                                        <option selected="">Select...</option>
+                                        <option>Samagra ID</option>
+                                        <option>Aadhar Card</option>
+                                        <option>Eligibility Certificate (Ration)</option>
+                                        <option>BPL Card</option>
+                                        <option>Birth Certificate</option>
+                                        <option>Death Certificate</option>
+                                        <option>Marriage Certificate</option>
+                                        <option>Non-Creamy Layer Certificate</option>
+                                        <option>Pradhan Mantri Awas Yojana</option>
+                                        <option>Building Permit</option>
+                                        <option>Old Age Pension</option>
+                                        <option>Widow Pension</option>
+                                        <option>Handicap Pension</option>
+                                        <option>Widowhood Pension</option>
+                                        <option>Divyang Pension</option>
+                                        <option>Orphan Girl Pension</option>
+                                        <option>Empowerment Card</option>
+                                        <option>Building Construction Labor Card</option>
+                                        <option>Funeral Assistance</option>
+                                        <option>Grace Assistance</option>
+                                        <option>Ladli Sister Scheme</option>
+                                        <option>Matru Vandana Yojana</option>
+                                        <option>Nutrition Food</option>
+                                        <option>Path Vendor Registration</option>
+                                        <option>Path Vendor Loan</option>
+                                        <option>Self-Employment Loan</option>
+                                        <option>Conversion Diversion</option>
+                                        <option>Patta (Land Ownership Document)</option>
+                                        <option>Land Lease</option>
+                                        <option>New Water Connection</option>
+                                        <option>Inter-caste Marriage Incentive Amount</option>
+                                        <option>Chief Minister's Kanyadan</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="text-center">
+                            <button class="btn btn-primary col-sm-12" type="button" formaction="/">Submit</button>
                         </div>
                     </div>
+
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-
-                        <div class="form-group">
-                            <label>Select</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Select...</option>
-                                <option>Samagra ID</option>
-                                <option>Aadhar Card</option>
-                                <option>Eligibility Certificate (Ration)</option>
-                                <option>BPL Card</option>
-                                <option>Birth Certificate</option>
-                                <option>Death Certificate</option>
-                                <option>Marriage Certificate</option>
-                                <option>Non-Creamy Layer Certificate</option>
-                                <option>Pradhan Mantri Awas Yojana</option>
-                                <option>Building Permit</option>
-                                <option>Old Age Pension</option>
-                                <option>Widow Pension</option>
-                                <option>Handicap Pension</option>
-                                <option>Widowhood Pension</option>
-                                <option>Divyang Pension</option>
-                                <option>Orphan Girl Pension</option>
-                                <option>Empowerment Card</option>
-                                <option>Building Construction Labor Card</option>
-                                <option>Funeral Assistance</option>
-                                <option>Grace Assistance</option>
-                                <option>Ladli Sister Scheme</option>
-                                <option>Matru Vandana Yojana</option>
-                                <option>Nutrition Food</option>
-                                <option>Path Vendor Registration</option>
-                                <option>Path Vendor Loan</option>
-                                <option>Self-Employment Loan</option>
-                                <option>Conversion Diversion</option>
-                                <option>Patta (Land Ownership Document)</option>
-                                <option>Land Lease</option>
-                                <option>New Water Connection</option>
-                                <option>Inter-caste Marriage Incentive Amount</option>
-                                <option>Chief Minister's Kanyadan</option>
-                            </select>
-                        </div>
-                    </div>
-        </form>
+            </div>
+        </div>
     </div>
-
-</div>
+</section>
