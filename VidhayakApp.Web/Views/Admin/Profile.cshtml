@@ -1,8 +1,8 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <html dir="ltr" lang="en">
 <link type="text/css" id="dark-mode" rel="stylesheet" href="">
 <head>
@@ -44,7 +44,7 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin6">
+       @*  <header class="topbar" data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-header" data-logobg="skin6">
                     <!-- ============================================================== -->
@@ -125,14 +125,14 @@
                     </ul>
                 </div>
             </nav>
-        </header>
+        </header> *@
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
+       @*  <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
@@ -164,7 +164,7 @@
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
-        </aside>
+        </aside> *@
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -184,17 +184,13 @@
                                     <a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Profile
+                                    @ViewData["Title"]
                                 </li>
                             </ol>
                         </nav>
-                        <h1 class="mb-0 fw-bold">Profile</h1>
+                        <h1 class="mb-0 fw-bold">@ViewData["Title"]</h1>
                     </div>
-                    <div class="col-6">
-                        <div class="text-end upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/" class="btn btn-primary text-white" target="_blank">Upgrade to Pro</a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <!-- ============================================================== -->

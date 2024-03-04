@@ -1,29 +1,6 @@
 ﻿@using VidhayakApp.Web.Controllers
 @model AccountController
 
-@* @{
-    var userRoleId = ViewData["UserRoleId"] as int?;
-}
-
-
-@functions {
-    string GetProfileLink(int userRoleId)
-    {
-        switch (userRoleId)
-        {
-            case 1:
-                return Url.Action("Profile", "SuperAdmin");
-            case 2:
-                return Url.Action("Profile", "Admin");
-            case 3:
-                return Url.Action("Profile", "AppUser");
-            case 4:
-                return Url.Action("Profile", "User");
-            default:
-                return "#";
-        }
-    }
-} *@
 
 
 <!DOCTYPE html>
@@ -55,6 +32,7 @@
     <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -205,7 +183,7 @@
   </nav>
 
  
- @*  <!-- Content Wrapper. Contains page content -->
+   <!-- Content Wrapper. Contains page content -->
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -222,7 +200,7 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content-header --> *@
+    <!-- /.content-header --> 
 
     <!-- Main content -->
     <section class="content">

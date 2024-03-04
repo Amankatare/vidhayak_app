@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Frontend\**" />
+    <Content Remove="wwwroot\Frontend\**" />
+    <EmbeddedResource Remove="wwwroot\Frontend\**" />
+    <None Remove="wwwroot\Frontend\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\build\config\postcss.config.js" />
     <None Include="wwwroot\build\config\rollup.config.js" />
     <None Include="wwwroot\build\js\AdminLTE.js" />
@@ -1745,10 +1752,6 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\Frontend\" />
   </ItemGroup>
 
 </Project>

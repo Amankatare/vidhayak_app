@@ -1,7 +1,4 @@
-﻿@using VidhayakApp.Web.Controllers
-@model AccountController
-
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="~/css/site.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
+    <script nonce="ec04942b-44a4-4369-a2b5-e05962364918">try { (function (w, d) { !function (ct, cu, cv, cw) { ct[cv] = ct[cv] || {}; ct[cv].executed = []; ct.zaraz = { deferred: [], listeners: [] }; ct.zaraz.q = []; ct.zaraz._f = function (cx) { return async function () { var cy = Array.prototype.slice.call(arguments); ct.zaraz.q.push({ m: cx, a: cy }) } }; for (const cz of ["track", "set", "debug"]) ct.zaraz[cz] = ct.zaraz._f(cz); ct.zaraz.init = () => { var cA = cu.getElementsByTagName(cw)[0], cB = cu.createElement(cw), cC = cu.getElementsByTagName("title")[0]; cC && (ct[cv].t = cu.getElementsByTagName("title")[0].text); ct[cv].x = Math.random(); ct[cv].w = ct.screen.width; ct[cv].h = ct.screen.height; ct[cv].j = ct.innerHeight; ct[cv].e = ct.innerWidth; ct[cv].l = ct.location.href; ct[cv].r = cu.referrer; ct[cv].k = ct.screen.colorDepth; ct[cv].n = cu.characterSet; ct[cv].o = (new Date).getTimezoneOffset(); if (ct.dataLayer) for (const cG of Object.entries(Object.entries(dataLayer).reduce(((cH, cI) => ({ ...cH[1], ...cI[1] })), {}))) zaraz.set(cG[0], cG[1], { scope: "page" }); ct[cv].q = []; for (; ct.zaraz.q.length;) { const cJ = ct.zaraz.q.shift(); ct[cv].q.push(cJ) } cB.defer = !0; for (const cK of [localStorage, sessionStorage]) Object.keys(cK || {}).filter((cM => cM.startsWith("_zaraz_"))).forEach((cL => { try { ct[cv]["z_" + cL.slice(7)] = JSON.parse(cK.getItem(cL)) } catch { ct[cv]["z_" + cL.slice(7)] = cK.getItem(cL) } })); cB.referrerPolicy = "origin"; cB.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(ct[cv]))); cA.parentNode.insertBefore(cB, cA) };["complete", "interactive"].includes(cu.readyState) ? zaraz.init() : ct.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
     <title>Responsive Dashboard Design #2 | VidhayakApp</title>
 </head>
 
@@ -23,21 +41,54 @@
             <div class="logo-name"><span>Vidhayak</span>App</div>
         </a>
         <ul class="side-menu">
-            <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="#"><i class='bx bx-store-alt'></i>Shop</a></li>
-            <li class="active"><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li>
-            <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
-            <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
-            <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
-        </ul>
-        <ul class="side-menu">
+            <li><a asp-action="Dashboard" asp-controller="Admin"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Users
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a asp-action="AppUsers" asp-controller="Admin" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>All Users</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="CreateUser" asp-controller="Admin" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="DeleteUser" asp-controller="Admin" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Delete</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="UpdateUser" asp-controller="Admin" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Update</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a asp-action="Profile" asp-controller="Admin"><i class='bx bx-cog'></i>Profile</a></li>
+
             <li>
-                <a href="#" class="logout">
+                <a asp-action="Logout" asp-controller="Account" class="logout">
                     <i class='bx bx-log-out-circle'></i>
                     Logout
                 </a>
             </li>
         </ul>
+
     </div>
     <!-- End of Sidebar -->
     <!-- Main Content -->
@@ -64,41 +115,45 @@
 
         <!-- End of Navbar -->
 
-        <main>
-            <div class="header">
-                <div class="left">
-                    <h1>Dashboard</h1>
-                    <ul class="breadcrumb">
-                        <li>
-                            <a href="#">
-                                Analytics
-                            </a>
-                        </li>
-                        /
-                        <li><a href="#" class="active">Shop</a></li>
-                    </ul>
-                </div>
-                <a href="#" class="report">
-                    <i class='bx bx-cloud-download'></i>
-                    <span>Download CSV</span>
-                </a>
-            </div>
-
-            <!-- Insights -->
-            <ul class="insights">
-                <!-- ... (Your existing code for Insights) ... -->
-            </ul>
-            <!-- End of Insights -->
-
-            <div class="bottom-data">
-                <!-- ... (Your existing code for Recent Orders and Reminders) ... -->
-            </div>
-
-        </main>
-
         @RenderBody()
+
     </div>
 
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/plugins/moment/moment.min.js"></script>
+    <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/dist/js/pages/dashboard.js"></script>
     <script src="~/js/site.js"></script>
 </body>
 

@@ -6,4 +6,73 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
 
+<main>
+    <div class="header">
+        <div class="left">
+            <h1>@ViewData["Title"]</h1>
+            
+        </div>
+        <a href="#" class="report">
+            <i class='bx bx-cloud-download'></i>
+            <span>Download CSV</span>
+        </a>
+    </div>
+
+    <!-- Insights -->
+    <ul class="insights">
+        <!-- ... (Your existing code for Insights) ... -->
+        <div class="col-md-4">
+
+            <div class="card card-widget widget-user shadow">
+
+                <div class="widget-user-header bg-info">
+                    <h3 class="widget-user-username">Alexander Pierce</h3>
+                    <h5 class="widget-user-desc">AppUser &amp; Ward</h5>
+                </div>
+                <div class="widget-user-image">
+                    <img class="img-circle elevation-2" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">3,200</h5>
+                                <span class="description-text">COMPLAINTS</span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">13,000</h5>
+                                <span class="description-text">DEMAND</span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="description-block">
+                                <h5 class="description-header">35</h5>
+                                <span class="description-text">SUGGESSION</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </ul>
+    <!-- End of Insights -->
+
+    <div class="bottom-data">
+        <!-- ... (Your existing code for Recent Orders and Reminders) ... -->
+    </div>
+
+</main>
