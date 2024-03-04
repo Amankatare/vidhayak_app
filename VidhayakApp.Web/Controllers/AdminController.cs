@@ -40,57 +40,57 @@ namespace VidhayakApp.Web.Controllers
         }
 
 
+        public async Task<ActionResult> Create()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         //[Authorize(Roles = "Admin")]
-        public async Task<ActionResult<User>> CreateUser([FromBody] CreateUserModel model)
+        [Route("Admin/CreateUser")]
+        public async Task<ActionResult<User>> CreateUser(CreateUserModel model)
         {
             if (ModelState.IsValid)
             {
-                try
+
+                if (model.Name == null)
                 {
-                    if (model.Name == null)
-                    {
-                        // Handle the case where Name is null
-                        throw new ArgumentNullException(nameof(model.Name), "Name cannot be null");
-                    }
-                    else if (model.UserName == null)
-                    {
-                        throw new ArgumentException(nameof(model.UserName), "UserName doesn't contain @");
-                    }
-                    else if (model.Ward == null)
-                    {
-                        throw new ArgumentException(nameof(model.Ward), "Ward cannot contain numerical values");
-                    }
-                    else
-                    {
-                        var user = new User
-                        {
-                            Name = model.Name,
-                            UserName = model.UserName,
-                            Ward = model.Ward,
-                            MobileNumber = model.MobileNumber,
-                            Address = model.Address,
-                            RoleId = 3
-                        };
-
-                        await _db.Users.AddAsync(user);
-                        await _db.SaveChangesAsync();
-
-                        TempData["Message"] = "User created successfully.";
-
-                        return View(user);
-                    }
+                    // Handle the case where Name is null
+                    throw new ArgumentNullException(nameof(model.Name), "Name cannot be null");
                 }
-                catch (Exception ex)
+                else if (model.UserName == null)
                 {
-                  
-                    ModelState.AddModelError(string.Empty, ex.Message);
-                    return BadRequest(ModelState); 
+                    throw new ArgumentException(nameof(model.UserName), "UserName doesn't contain @");
+                }
+                else if (model.Ward == null)
+                {
+                    throw new ArgumentException(nameof(model.Ward), "Ward cannot contain numerical values");
+                }
+                else
+                {
+                    var user = new User
+                    {
+                        Name = model.Name,
+                        UserName = model.UserName,
+                        Ward = model.Ward,
+                        MobileNumber = model.MobileNumber,
+                        Address = model.Address,
+                        PasswordHash = "$2a$11$82IdIaryQRhzpZWv8lDeZOFUevkJpdPh2MBCwdioBzcH2qSYRv2Mi",
+                        RoleId = 3
+                    };
+
+                    await _db.Users.AddAsync(user);
+                    await _db.SaveChangesAsync();
+
+                    TempData["Message"] = "User created successfully.";
+                    Console.WriteLine(TempData["Message"]); 
+                    Console.WriteLine(user);
+                
+
                 }
             }
-
-            return View(ModelState);
+            return RedirectToAction("Create", "Admin");
         }
     }
 }

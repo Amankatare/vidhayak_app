@@ -22,6 +22,6 @@ namespace VidhayakApp.Web.ViewModels
         [Required(ErrorMessage = "Username is required")]
         public string UserName { get; set; }
 
-        public List<User> AppUsers { get; set; }
+       
     }
 }

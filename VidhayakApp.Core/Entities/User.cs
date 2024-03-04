@@ -14,6 +14,7 @@ namespace VidhayakApp.Core.Entities
         public string Address { get; set; }
         public string Ward { get; set; }
         public string MobileNumber { get; set; }
+
       
         public string PasswordHash { get; set; } // Store hashed passwords
 

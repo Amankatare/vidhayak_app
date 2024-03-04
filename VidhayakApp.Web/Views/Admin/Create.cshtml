@@ -1,0 +1,61 @@
+﻿@using VidhayakApp.Web.ViewModels
+@model CreateUserModel
+
+@{
+    ViewData["Title"] = "Create AppUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 m-5">
+@TempData["Message"]
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-sm-10">
+
+                <div class="card card-danger">
+                    <div class="card-header">
+                        Form
+                    </div>
+
+                    <div class="card-body">
+
+
+                        <form class="row g-3" method="post" asp-action="/Admin/CreateUser" >
+                <div class="col-md-6">
+                    <label asp-for="Name" class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control" id="Name">
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Ward" class="form-label">Ward</label>
+                    <input asp-for="Ward" class="form-control" id="Ward">
+                </div>
+                <div class="col-12">
+                    <label asp-for="Address" class="form-label">Address</label>
+                    <input asp-for="Address" class="form-control" id="Address" placeholder="1234 Main St">
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="UserName" class="form-label">UserName</label>
+                    <input asp-for="UserName" class="form-control" id="UserName" placeholder="Enter UserName...">
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="MobileNumber" class="form-label">MobileNumber</label>
+                    <input asp-for="MobileNumber" class="form-control" id="MobileNumber" placeholder="Enter MobileNumber...">
+                </div>
+
+                <div class="col-12 m-4">
+                       <button asp-action="CreateUser" asp-controller="Admin" class="btn btn-primary">Submit</button>
+                </div>
+        
+            </form>
+
+                        
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

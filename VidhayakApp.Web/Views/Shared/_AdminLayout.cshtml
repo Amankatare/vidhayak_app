@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script nonce="ec04942b-44a4-4369-a2b5-e05962364918">try { (function (w, d) { !function (ct, cu, cv, cw) { ct[cv] = ct[cv] || {}; ct[cv].executed = []; ct.zaraz = { deferred: [], listeners: [] }; ct.zaraz.q = []; ct.zaraz._f = function (cx) { return async function () { var cy = Array.prototype.slice.call(arguments); ct.zaraz.q.push({ m: cx, a: cy }) } }; for (const cz of ["track", "set", "debug"]) ct.zaraz[cz] = ct.zaraz._f(cz); ct.zaraz.init = () => { var cA = cu.getElementsByTagName(cw)[0], cB = cu.createElement(cw), cC = cu.getElementsByTagName("title")[0]; cC && (ct[cv].t = cu.getElementsByTagName("title")[0].text); ct[cv].x = Math.random(); ct[cv].w = ct.screen.width; ct[cv].h = ct.screen.height; ct[cv].j = ct.innerHeight; ct[cv].e = ct.innerWidth; ct[cv].l = ct.location.href; ct[cv].r = cu.referrer; ct[cv].k = ct.screen.colorDepth; ct[cv].n = cu.characterSet; ct[cv].o = (new Date).getTimezoneOffset(); if (ct.dataLayer) for (const cG of Object.entries(Object.entries(dataLayer).reduce(((cH, cI) => ({ ...cH[1], ...cI[1] })), {}))) zaraz.set(cG[0], cG[1], { scope: "page" }); ct[cv].q = []; for (; ct.zaraz.q.length;) { const cJ = ct.zaraz.q.shift(); ct[cv].q.push(cJ) } cB.defer = !0; for (const cK of [localStorage, sessionStorage]) Object.keys(cK || {}).filter((cM => cM.startsWith("_zaraz_"))).forEach((cL => { try { ct[cv]["z_" + cL.slice(7)] = JSON.parse(cK.getItem(cL)) } catch { ct[cv]["z_" + cL.slice(7)] = cK.getItem(cL) } })); cB.referrerPolicy = "origin"; cB.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(ct[cv]))); cA.parentNode.insertBefore(cB, cA) };["complete", "interactive"].includes(cu.readyState) ? zaraz.init() : ct.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
     <title>Responsive Dashboard Design #2 | VidhayakApp</title>
 </head>
@@ -41,46 +42,15 @@
             <div class="logo-name"><span>Vidhayak</span>App</div>
         </a>
         <ul class="side-menu">
-            <li><a asp-action="Dashboard" asp-controller="Admin"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Users
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a asp-action="AppUsers" asp-controller="Admin" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Users</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="CreateUser" asp-controller="Admin" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="DeleteUser" asp-controller="Admin" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Delete</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="UpdateUser" asp-controller="Admin" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Update</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li><a asp-action="Profile" asp-controller="Admin"><i class='bx bx-cog'></i>Profile</a></li>
-
+            <li class="active"><a asp-action="Dashboard" asp-controller="Admin"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+           
+            <li><a asp-action="AppUsers" asp-controller="Admin">&nbsp &nbsp <i class="fa-solid fa-bars"></i>&nbsp &nbsp List AppUsers</a></li>
+            <li><a asp-action="Create" asp-controller="Admin">&nbsp &nbsp <i class="fa-solid fa-folder-plus"></i>&nbsp &nbsp Create AppUser</a></li>
+            <li><a asp-action="EditAppUser" asp-controller="Admin">&nbsp &nbsp<i class="fa-solid fa-user-pen"></i>&nbsp &nbsp Edit AppUser</a></li>
+            <li><a asp-action="DeleteAppUser" asp-controller="Admin">&nbsp &nbsp <i class="fa-solid fa-trash"></i>&nbsp &nbsp Delete AppUser</a></li>
+            <li><a asp-action="Profile" asp-controller="Admin">&nbsp<i class='bx bx-cog'></i>Profile</a></li>
+        </ul>
+        <ul class="side-menu">
             <li>
                 <a asp-action="Logout" asp-controller="Account" class="logout">
                     <i class='bx bx-log-out-circle'></i>
@@ -88,9 +58,9 @@
                 </a>
             </li>
         </ul>
-
     </div>
     <!-- End of Sidebar -->
+
     <!-- Main Content -->
     <div class="content">
         <!-- Navbar -->
