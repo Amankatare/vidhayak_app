@@ -128,14 +128,21 @@ namespace VidhayakApp.Web.Controllers
             return RedirectToAction("AppUsers");
         }
 
-        public async Task<ActionResult<User>> UpdateAppUser(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var userToDelete = await _user.GetByIdAsync(id);
+            var userRecord = await _user.GetByIdAsync(id);
+         
+            return View(userRecord);
+        }
 
-            if (userToDelete != null)
+        public async Task<ActionResult<User>> UpdateAppUser(User s)
+        {
+            var userToUpdate = await _user.GetByIdAsync(s.UserId);
+
+            if (userToUpdate != null)
             {
-                await _user.DeleteAsync(userToDelete);
-                TempData["Message"] = "User deleted successfully.";
+                await _user.UpdateAsync(userToUpdate);
+                TempData["Message"] = "User Updated successfully.";
             }
             else
             {

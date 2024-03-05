@@ -155,3 +155,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+//Translator code :-
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+            'google_translate_element'
+        );
+    }
+
+    function toggleLanguage() {
+        // Get the current language code
+        var currentLanguage = google.translate.TranslateElement.getInstance().getLang();
+
+        // Toggle between English ('en') and Hindi ('hi')
+        var targetLanguage = (currentLanguage === 'en') ? 'hi' : 'en';
+
+        // Change the language
+        google.translate.TranslateElement.getInstance().changeLanguage(targetLanguage);
+    }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+

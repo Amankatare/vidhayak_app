@@ -71,7 +71,7 @@
                         <td>@(obj?.Address ?? "N/A")</td>
                         <td>@(obj?.MobileNumber ?? "N/A")</td>
                         <td>
-                            <a asp-controller="Admin" asp-action="UpdateAppUser" asp-route-id="@obj.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
+                            <a asp-controller="Admin" asp-action="Edit" asp-route-id="@obj.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
                             <a asp-controller="Admin" asp-action="DeleteAppUser" asp-route-id="@obj.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
