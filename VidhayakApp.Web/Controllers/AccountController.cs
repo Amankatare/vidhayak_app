@@ -11,6 +11,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using VidhayakApp.Infastructure.Repositories;
 
 namespace VidhayakApp.Web.Controllers
 {

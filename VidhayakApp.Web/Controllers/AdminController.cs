@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using VidhayakApp.Core.Entities;
+using VidhayakApp.Core.Interfaces;
+using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.Web.ViewModels;
 
@@ -10,9 +12,16 @@ namespace VidhayakApp.Web.Controllers
     public class AdminController : Controller
     {
         private readonly VidhayakAppContext _db;
-        public AdminController(VidhayakAppContext db)
+        private readonly IUserRepository _user;
+        private readonly IUserService _userService;
+
+        
+        
+        public AdminController(VidhayakAppContext db, IUserRepository user, IUserService userService)
         {
             _db= db;
+            _user= user;
+            _userService= userService;
         }
         public IActionResult Dashboard()
         {
@@ -92,5 +101,33 @@ namespace VidhayakApp.Web.Controllers
             }
             return RedirectToAction("Create", "Admin");
         }
+
+        public async Task<ActionResult> Delete()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult<User>> DeleteAppUser(int id)
+        {
+            var userToDelete = await _user.GetByIdAsync(id);
+
+            if (userToDelete != null)
+            {
+                await _user.DeleteAsync(userToDelete);
+                TempData["Message"] = "User deleted successfully.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "User not found.";
+            }
+
+            return RedirectToAction("AppUser", "Admin");
+        }
+
+
+
+
     }
 }

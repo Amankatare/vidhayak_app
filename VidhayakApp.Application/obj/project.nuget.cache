@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XPgdQiK/EycqrwCT312NFtRscUwFBWLx0UYJmY78h8Q/e4ps94ThclgJLrkD+Z/r91SbMIMC16PngJUZaHBZ6Q==",
+  "dgSpecHash": "BE+GDZumwzx0zd12rMFmxHmEKY8kiettlLAJXWn67mma5ibSSd2GudoU+XS1reFmsdPwUhoCkkutQsSJw4Da6A==",
   "success": true,
   "projectFilePath": "E:\\vidhayak_app\\VidhayakApp.Application\\VidhayakApp.Application.csproj",
   "expectedPackageFiles": [
@@ -38,6 +38,7 @@
     "C:\\Users\\katar\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\katar\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\katar\\.nuget\\packages\\mysql.data\\8.3.0\\mysql.data.8.3.0.nupkg.sha512",
+    "C:\\Users\\katar\\.nuget\\packages\\mysql.entityframeworkcore\\8.0.0\\mysql.entityframeworkcore.8.0.0.nupkg.sha512",
     "C:\\Users\\katar\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\katar\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\katar\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",

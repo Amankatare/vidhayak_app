@@ -1,0 +1,13 @@
+﻿@using VidhayakApp.Core.Entities
+@model User
+  
+<form method="post">
+<div>
+
+     <a asp-controller="Admin" asp-action="DeleteAppUser" aria-pressed="true"></a>
+        <div class="alert alert-success" role="alert">
+            @TempData["Message"]
+        </div>
+        <button asp-action="AppUsers" asp-controller="Admin" class="btn btn-dark btn-lg active text-center" role="button" aria-pressed="true">Back To List</button>
+</div>
+</form>       

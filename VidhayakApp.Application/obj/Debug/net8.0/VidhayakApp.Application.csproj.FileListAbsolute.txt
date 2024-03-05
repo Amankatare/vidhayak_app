@@ -34,3 +34,5 @@ E:\vidhayak_app\VidhayakApp.Application\obj\Debug\net8.0\refint\VidhayakApp.Appl
 E:\vidhayak_app\VidhayakApp.Application\obj\Debug\net8.0\VidhayakApp.Application.pdb
 E:\vidhayak_app\VidhayakApp.Application\obj\Debug\net8.0\VidhayakApp.Application.genruntimeconfig.cache
 E:\vidhayak_app\VidhayakApp.Application\obj\Debug\net8.0\ref\VidhayakApp.Application.dll
+E:\vidhayak_app\VidhayakApp.Application\bin\Debug\net8.0\VidhayakApp.Infastructure.dll
+E:\vidhayak_app\VidhayakApp.Application\bin\Debug\net8.0\VidhayakApp.Infastructure.pdb

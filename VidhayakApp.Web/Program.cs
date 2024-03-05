@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using VidhayakApp.Application.Services;
+using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
@@ -39,8 +40,8 @@ builder.Services.AddDbContext<VidhayakAppContext>(options =>
 ));
 
 builder.Services.AddSingleton<AuthMiddleware>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddScoped<IRoleRepository,RoleRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddAuthentication(options =>
 {

@@ -30,6 +30,9 @@
             "projectReferences": {
               "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
                 "projectPath": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj"
+              },
+              "E:\\vidhayak_app\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj": {
+                "projectPath": "E:\\vidhayak_app\\VidhayakApp.Infastructure\\VidhayakApp.Infastructure.csproj"
               }
             }
           }

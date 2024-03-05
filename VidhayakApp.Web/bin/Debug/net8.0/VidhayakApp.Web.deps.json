@@ -1331,7 +1331,8 @@
           "BCrypt.Net-Next": "4.0.3",
           "Microsoft.Extensions.Configuration": "8.0.0",
           "MySql.Data": "8.3.0",
-          "VidhayakApp.Core": "1.0.0"
+          "VidhayakApp.Core": "1.0.0",
+          "VidhayakApp.Infastructure": "1.0.0"
         },
         "runtime": {
           "VidhayakApp.Application.dll": {}

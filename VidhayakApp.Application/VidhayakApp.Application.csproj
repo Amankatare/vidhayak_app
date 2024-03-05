@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VidhayakApp.Core\VidhayakApp.Core.csproj" />
+    <ProjectReference Include="..\VidhayakApp.Infastructure\VidhayakApp.Infastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
