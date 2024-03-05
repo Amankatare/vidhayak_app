@@ -21,21 +21,27 @@ namespace VidhayakApp.Infastructure.Repositories
         public async Task<T> AddAsync(T entity)
         {
             var addedEntity = _context.Set<T>().Add(entity).Entity;
-            await _context.SaveChangesAsync(); // Assuming you want to save changes immediately
+            await _context.SaveChangesAsync(); 
 
             return addedEntity;
         }
 
         public async Task DeleteAsync(T entity)
-        {
-            var existingEntity = await _context.Set<T>().FindAsync(entity);
-
-            if (existingEntity != null)
-            {
-                _context.Set<T>().Remove(existingEntity);
+        { 
+                _context.Set<T>().Remove(entity);
                 await _context.SaveChangesAsync();
-            }
+
         }
+        //public async Task DeletebyIdAsync(int entity)
+        //{
+        //    var existingEntity = await _context.Set<T>().FindAsync(entity);
+
+        //    if (existingEntity != null)
+        //    {
+        //        _context.Set<T>().Remove(existingEntity);
+        //        await _context.SaveChangesAsync();
+        //    }
+        //}
 
         public async Task<T> GetByIdAsync(int id)
         {

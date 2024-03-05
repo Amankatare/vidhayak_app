@@ -10,4 +10,6 @@ namespace VidhayakApp.Infrastructure.Repositories
     {
         public UserRepository(VidhayakAppContext context) : base(context) { }
     }
+
+    
 }

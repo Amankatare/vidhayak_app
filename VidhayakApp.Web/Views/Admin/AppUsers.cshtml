@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@TempData["Message"]
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,7 +72,7 @@
                         <td>@(obj?.MobileNumber ?? "N/A")</td>
                         <td>
                             <a asp-controller="Admin" asp-action="UpdateAppUser" asp-route-id="@obj.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
-                            <a asp-controller="Admin" asp-action="Delete" asp-route-id="@obj.UserId" class="delete" ><i class="fa-sharp fa-solid fa-trash"></i></a>
+                            <a asp-controller="Admin" asp-action="DeleteAppUser" asp-route-id="@obj.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 }

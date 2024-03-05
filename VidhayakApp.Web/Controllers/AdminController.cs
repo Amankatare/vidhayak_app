@@ -86,7 +86,7 @@ namespace VidhayakApp.Web.Controllers
                         MobileNumber = model.MobileNumber,
                         Address = model.Address,
                         PasswordHash = "$2a$11$82IdIaryQRhzpZWv8lDeZOFUevkJpdPh2MBCwdioBzcH2qSYRv2Mi",
-                        RoleId = 3
+                        RoleId = 3,
                     };
 
                     await _db.Users.AddAsync(user);
@@ -102,13 +102,15 @@ namespace VidhayakApp.Web.Controllers
             return RedirectToAction("Create", "Admin");
         }
 
-        public async Task<ActionResult> Delete()
+        public async Task<ActionResult> Delete(int id)
         {
+            var userRecord =await _user.GetByIdAsync(id);
+            await DeleteAppUser(userRecord.UserId);
             return View();
         }
 
 
-        [HttpPost]
+        
         public async Task<ActionResult<User>> DeleteAppUser(int id)
         {
             var userToDelete = await _user.GetByIdAsync(id);
@@ -123,7 +125,24 @@ namespace VidhayakApp.Web.Controllers
                 TempData["ErrorMessage"] = "User not found.";
             }
 
-            return RedirectToAction("AppUser", "Admin");
+            return RedirectToAction("AppUsers");
+        }
+
+        public async Task<ActionResult<User>> UpdateAppUser(int id)
+        {
+            var userToDelete = await _user.GetByIdAsync(id);
+
+            if (userToDelete != null)
+            {
+                await _user.DeleteAsync(userToDelete);
+                TempData["Message"] = "User deleted successfully.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "User not found.";
+            }
+
+            return RedirectToAction("AppUsers");
         }
 
 
