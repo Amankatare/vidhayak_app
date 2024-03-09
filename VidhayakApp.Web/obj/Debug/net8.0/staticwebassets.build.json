@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wCCyQz5jkXZmxlHecrzEb/lBuFg/w2xdX2tbl/GXPK0=",
+  "Hash": "ijCaHnLkKUFpB1Zeoi+LPGzGwkk+m2h3tzc1QbX+7NY=",
   "Source": "VidhayakApp.Web",
   "BasePath": "_content/VidhayakApp.Web",
   "Mode": "Default",
@@ -3359,6 +3359,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\img\\user6-128x128.jpg"
+    },
+    {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\user68.jpg",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "dist/img/user68.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\img\\user68.jpg"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\user7-128x128.jpg",

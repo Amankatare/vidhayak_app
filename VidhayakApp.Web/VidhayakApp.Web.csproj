@@ -1738,6 +1738,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.2" />
     <PackageReference Include="MySql.Data" Version="8.3.0" />
   </ItemGroup>
 

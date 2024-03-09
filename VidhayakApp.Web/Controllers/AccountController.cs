@@ -81,15 +81,17 @@ namespace VidhayakApp.Web.Controllers
         }
       
         [HttpPost]
-        //public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
-        public async Task<IActionResult> Login(LoginViewModel model)
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
+        //public async Task<IActionResult> Login(LoginViewModel model)
         {
 
             if (ModelState.IsValid)
             {
-
+                return View(model);
+            }
                 // Authenticate and redirect or show an error
-
                 var AuthenticUser = await _userService.AuthenticateAsync(model.UserName, model.Password);
                 IEnumerable<Role> roles = await _roleRepository.ListAllAsync();
 
@@ -199,7 +201,7 @@ namespace VidhayakApp.Web.Controllers
                 }
 
 
-            }
+            
             return RedirectToAction("Index", "Home");
 
         }

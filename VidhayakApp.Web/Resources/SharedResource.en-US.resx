@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="4 Hours Ago" xml:space="preserve">
+    <value>4 Hours Ago</value>
+  </data>
+  <data name="Aadhar Card" xml:space="preserve">
+    <value>Aadhar Card</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="All rights reserved" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="App" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="Birth Certificate" xml:space="preserve">
+    <value>Birth Certificate</value>
+  </data>
+  <data name="BPL Card" xml:space="preserve">
+    <value>BPL Card</value>
+  </data>
+  <data name="Building Construction Labor Card" xml:space="preserve">
+    <value>Building Construction Labor Card</value>
+  </data>
+  <data name="Building Permit" xml:space="preserve">
+    <value>Building Permit</value>
+  </data>
+  <data name="Chief Minister's Kanyadan" xml:space="preserve">
+    <value>Chief Minister's Kanyadan</value>
+  </data>
+  <data name="Complaint" xml:space="preserve">
+    <value>Complaint</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>ConfirmPassword</value>
+  </data>
+  <data name="Conversion Diversion" xml:space="preserve">
+    <value>Conversion Diversion</value>
+  </data>
+  <data name="Create AppUser" xml:space="preserve">
+    <value>Create AppUser</value>
+  </data>
+  <data name="Created On" xml:space="preserve">
+    <value>Created On</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Death Certificate" xml:space="preserve">
+    <value>Death Certificate</value>
+  </data>
+  <data name="Demand" xml:space="preserve">
+    <value>Demand</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Divyang Pension" xml:space="preserve">
+    <value>Divyang Pension</value>
+  </data>
+  <data name="Dob" xml:space="preserve">
+    <value>Dob</value>
+  </data>
+  <data name="Eligibility Certificate" xml:space="preserve">
+    <value>Eligibility Certificate</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Email address" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Empowerment Card" xml:space="preserve">
+    <value>Empowerment Card</value>
+  </data>
+  <data name="Enter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Form" xml:space="preserve">
+    <value>Form</value>
+  </data>
+  <data name="Full Name" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="Funeral Assistance" xml:space="preserve">
+    <value>Funeral Assistance</value>
+  </data>
+  <data name="Grace Assistance" xml:space="preserve">
+    <value>Grace Assistance</value>
+  </data>
+  <data name="Handicap Pension" xml:space="preserve">
+    <value>Handicap Pension</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="I agree to the" xml:space="preserve">
+    <value>I agree to the</value>
+  </data>
+  <data name="ID No." xml:space="preserve">
+    <value>ID No.</value>
+  </data>
+  <data name="Inter-caste Marriage Incentive Amount" xml:space="preserve">
+    <value>Inter-caste Marriage Incentive Amount</value>
+  </data>
+  <data name="Ladli Sister Scheme" xml:space="preserve">
+    <value>Ladli Sister Scheme</value>
+  </data>
+  <data name="Land Lease" xml:space="preserve">
+    <value>Land Lease</value>
+  </data>
+  <data name="List AppUsers" xml:space="preserve">
+    <value>List AppUsers</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Marriage Certificate" xml:space="preserve">
+    <value>Marriage Certificate</value>
+  </data>
+  <data name="Matru Vandana Yojana" xml:space="preserve">
+    <value>Matru Vandana Yojana</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>MobileNumber</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="New Water Connection" xml:space="preserve">
+    <value>New Water Connection</value>
+  </data>
+  <data name="Non-Creamy Layer Certificate" xml:space="preserve">
+    <value>Non-Creamy Layer Certificate</value>
+  </data>
+  <data name="Nutrition Food" xml:space="preserve">
+    <value>Nutrition Food</value>
+  </data>
+  <data name="Old Age Pension" xml:space="preserve">
+    <value>Old Age Pension</value>
+  </data>
+  <data name="Orphan Girl Pension" xml:space="preserve">
+    <value>Orphan Girl Pension</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Path Vendor Loan" xml:space="preserve">
+    <value>Path Vendor Loan</value>
+  </data>
+  <data name="Path Vendor Registration" xml:space="preserve">
+    <value>Path Vendor Registration</value>
+  </data>
+  <data name="Patta (Land Ownership Document)" xml:space="preserve">
+    <value>Patta (Land Ownership Document)</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="Pilgrim Avenue Chevy Chase, MD" xml:space="preserve">
+    <value>Pilgrim Avenue Chevy Chase, MD</value>
+  </data>
+  <data name="Pradhan Mantri Awas Yojana" xml:space="preserve">
+    <value>Pradhan Mantri Awas Yojana</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register a new membership" xml:space="preserve">
+    <value>Register a new membership</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Registration Page" xml:space="preserve">
+    <value>Registration Page</value>
+  </data>
+  <data name="Remember Me" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="Samagra ID" xml:space="preserve">
+    <value> Samagra ID</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Self-Employment Loan" xml:space="preserve">
+    <value>Self-Employment Loan</value>
+  </data>
+  <data name="Sign in to start your session" xml:space="preserve">
+    <value>Sign in to start your session</value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>Signup</value>
+  </data>
+  <data name="Social Profile" xml:space="preserve">
+    <value>Social Profile</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Successfull" xml:space="preserve">
+    <value>Successfull</value>
+  </data>
+  <data name="Suggession" xml:space="preserve">
+    <value>Suggession</value>
+  </data>
+  <data name="terms" xml:space="preserve">
+    <value>terms</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Unsuccessfull" xml:space="preserve">
+    <value>Unsuccessfull</value>
+  </data>
+  <data name="Update Profile" xml:space="preserve">
+    <value> Update Profile</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="User Issues and Recommendation Table" xml:space="preserve">
+    <value>User Issues and Recommendation Table</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Vidhayak" xml:space="preserve">
+    <value>Vidhayak</value>
+  </data>
+  <data name="VidhayakApp" xml:space="preserve">
+    <value>VidhayakApp</value>
+  </data>
+  <data name="Ward" xml:space="preserve">
+    <value>Ward</value>
+  </data>
+  <data name="Widow Pension" xml:space="preserve">
+    <value>Widow Pension</value>
+  </data>
+  <data name="Widowhood Pension" xml:space="preserve">
+    <value>Widowhood Pension</value>
+  </data>
+</root>
