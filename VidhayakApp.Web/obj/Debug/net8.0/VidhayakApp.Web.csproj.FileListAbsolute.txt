@@ -589,3 +589,13 @@ E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Microsoft.Extensions.Localizati
 E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\en-US\VidhayakApp.Web.resources.dll
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\hi-IN\VidhayakApp.Web.resources.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.AspNetCore.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.AspNetCore.Mvc.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.Core.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.Data.Integrity.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.Diagnostics.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.IO.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.Security.Cryptography.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.Threading.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\VidhayakApp.SharedKernel.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\VidhayakApp.SharedKernel.pdb

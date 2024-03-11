@@ -58,8 +58,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/ListUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxMaXN0VXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/Profile.cshtml]
@@ -84,6 +100,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/vidhayak_app/VidhayakApp.Web/Views/Shared/_AppUserLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BcHBVc2VyTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/Shared/_UserLayout.cshtml]

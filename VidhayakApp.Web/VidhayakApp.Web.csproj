@@ -1746,6 +1746,7 @@
     <ProjectReference Include="..\VidhayakApp.Application\VidhayakApp.Application.csproj" />
     <ProjectReference Include="..\VidhayakApp.Core\VidhayakApp.Core.csproj" />
     <ProjectReference Include="..\VidhayakApp.Infastructure\VidhayakApp.Infastructure.csproj" />
+    <ProjectReference Include="..\VidhayakApp.SharedKernel\VidhayakApp.SharedKernel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1753,6 +1754,10 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\NewFolder\" />
   </ItemGroup>
 
 </Project>

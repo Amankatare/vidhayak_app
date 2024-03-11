@@ -41,8 +41,10 @@ builder.Services.AddDbContext<VidhayakAppContext>(options =>
 
 builder.Services.AddSingleton<AuthMiddleware>();
 builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddScoped<IUserDetailRepository,UserDetailRepository>();
 builder.Services.AddScoped<IRoleRepository,RoleRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserDetailService, UserDetailService>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -66,9 +68,24 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+    builder.Services.AddAuthorization(options =>
+    {
+      
+        options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
 
-builder.Services.AddAuthentication();
-builder.Services.AddAuthorization();
+  
+        options.AddPolicy("RequireAppUserRole", policy => policy.RequireRole("AppUser"));
+
+     
+        options.AddPolicy("RequireUserRole", policy => policy.RequireRole("User"));
+
+       
+    });
+
+
+
+//builder.Services.AddAuthentication();
+//builder.Services.AddAuthorization();
 
 
 

@@ -2,6 +2,139 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "Cuemon.AspNetCore/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Cuemon.Core": "8.2.0",
+          "Cuemon.Data.Integrity": "8.2.0",
+          "Cuemon.Diagnostics": "8.2.0",
+          "Cuemon.IO": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Cuemon.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Cuemon.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Cuemon.AspNetCore.Mvc/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Cuemon.AspNetCore": "8.2.0",
+          "Cuemon.Security.Cryptography": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Cuemon.AspNetCore.Mvc.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Cuemon.AspNetCore.Mvc.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Cuemon.Core/8.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Cuemon.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Cuemon.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Cuemon.Data.Integrity/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Cuemon.IO": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Cuemon.Data.Integrity.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Cuemon.Data.Integrity.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Cuemon.Diagnostics/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Cuemon.Core": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Cuemon.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Cuemon.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Cuemon.IO/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Cuemon.Core": "8.2.0",
+          "Cuemon.Threading": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Cuemon.IO.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Cuemon.IO.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Cuemon.Security.Cryptography/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Cuemon.Core": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Cuemon.Security.Cryptography.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Cuemon.Security.Cryptography.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Cuemon.Threading/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Cuemon.Core": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Cuemon.Threading.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Cuemon.Threading.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -832,6 +965,172 @@
     }
   },
   "libraries": {
+    "Cuemon.AspNetCore/8.2.0": {
+      "sha512": "ReqAXX84p4StG7LBj0zW9fFcQ0rZjh+rM7UquN4sZtIxM4pMgqFmgDhTqN12ZJZMW1b9PGFYJtIukBOWAEJRiw==",
+      "type": "package",
+      "path": "cuemon.aspnetcore/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "cuemon.aspnetcore.8.2.0.nupkg.sha512",
+        "cuemon.aspnetcore.nuspec",
+        "icon.png",
+        "lib/net6.0/Cuemon.AspNetCore.dll",
+        "lib/net6.0/Cuemon.AspNetCore.xml",
+        "lib/net7.0/Cuemon.AspNetCore.dll",
+        "lib/net7.0/Cuemon.AspNetCore.xml",
+        "lib/net8.0/Cuemon.AspNetCore.dll",
+        "lib/net8.0/Cuemon.AspNetCore.xml"
+      ]
+    },
+    "Cuemon.AspNetCore.Mvc/8.2.0": {
+      "sha512": "AdM33JGBeqG0OW7rl2HldD9ICalF4RmBmulM3DvQAA6dQ+P/48cXQC3VLcrcugdwqtKSW7zVVUGieWxAyjMooA==",
+      "type": "package",
+      "path": "cuemon.aspnetcore.mvc/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "cuemon.aspnetcore.mvc.8.2.0.nupkg.sha512",
+        "cuemon.aspnetcore.mvc.nuspec",
+        "icon.png",
+        "lib/net6.0/Cuemon.AspNetCore.Mvc.dll",
+        "lib/net6.0/Cuemon.AspNetCore.Mvc.xml",
+        "lib/net7.0/Cuemon.AspNetCore.Mvc.dll",
+        "lib/net7.0/Cuemon.AspNetCore.Mvc.xml",
+        "lib/net8.0/Cuemon.AspNetCore.Mvc.dll",
+        "lib/net8.0/Cuemon.AspNetCore.Mvc.xml"
+      ]
+    },
+    "Cuemon.Core/8.2.0": {
+      "sha512": "0OVTmJiAo2SGgzmOBHt8Utf4t3X09mpQ9E4ZDc+Pdg/e+Jj57oUJvidVA5fChwJWrFUZ34FIHymjbVO+QZ8Tmg==",
+      "type": "package",
+      "path": "cuemon.core/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "cuemon.core.8.2.0.nupkg.sha512",
+        "cuemon.core.nuspec",
+        "icon.png",
+        "lib/net6.0/Cuemon.Core.dll",
+        "lib/net6.0/Cuemon.Core.xml",
+        "lib/net7.0/Cuemon.Core.dll",
+        "lib/net7.0/Cuemon.Core.xml",
+        "lib/net8.0/Cuemon.Core.dll",
+        "lib/net8.0/Cuemon.Core.xml",
+        "lib/netstandard2.0/Cuemon.Core.dll",
+        "lib/netstandard2.0/Cuemon.Core.xml"
+      ]
+    },
+    "Cuemon.Data.Integrity/8.2.0": {
+      "sha512": "vMMb7TxGGAxRRLwB9SUqeHYpvH1Yz0x7XUeTUvTdjQYMS1nG+gIRd4h+LxfNIMNfvQNU7KWghZwnnXRyEwePtg==",
+      "type": "package",
+      "path": "cuemon.data.integrity/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "cuemon.data.integrity.8.2.0.nupkg.sha512",
+        "cuemon.data.integrity.nuspec",
+        "icon.png",
+        "lib/net6.0/Cuemon.Data.Integrity.dll",
+        "lib/net6.0/Cuemon.Data.Integrity.xml",
+        "lib/net7.0/Cuemon.Data.Integrity.dll",
+        "lib/net7.0/Cuemon.Data.Integrity.xml",
+        "lib/net8.0/Cuemon.Data.Integrity.dll",
+        "lib/net8.0/Cuemon.Data.Integrity.xml",
+        "lib/netstandard2.0/Cuemon.Data.Integrity.dll",
+        "lib/netstandard2.0/Cuemon.Data.Integrity.xml"
+      ]
+    },
+    "Cuemon.Diagnostics/8.2.0": {
+      "sha512": "5VYTEtWcoLX6/eqdcfpw66xthf3WWClwliWOleaYZiOXrh91kqtcRcp67mDWafMXVZ7Ax1l4eTvHkcYBzCmAAQ==",
+      "type": "package",
+      "path": "cuemon.diagnostics/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "cuemon.diagnostics.8.2.0.nupkg.sha512",
+        "cuemon.diagnostics.nuspec",
+        "icon.png",
+        "lib/net6.0/Cuemon.Diagnostics.dll",
+        "lib/net6.0/Cuemon.Diagnostics.xml",
+        "lib/net7.0/Cuemon.Diagnostics.dll",
+        "lib/net7.0/Cuemon.Diagnostics.xml",
+        "lib/net8.0/Cuemon.Diagnostics.dll",
+        "lib/net8.0/Cuemon.Diagnostics.xml",
+        "lib/netstandard2.0/Cuemon.Diagnostics.dll",
+        "lib/netstandard2.0/Cuemon.Diagnostics.xml"
+      ]
+    },
+    "Cuemon.IO/8.2.0": {
+      "sha512": "dY+CFi7MlPoJM7Gntr1p1mnwnRdDCwyhsSMUSXgZGRiojNha6vYeNDLDayHeXq7CUehypiGRlKp+8rG4YiabVg==",
+      "type": "package",
+      "path": "cuemon.io/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "cuemon.io.8.2.0.nupkg.sha512",
+        "cuemon.io.nuspec",
+        "icon.png",
+        "lib/net6.0/Cuemon.IO.dll",
+        "lib/net6.0/Cuemon.IO.xml",
+        "lib/net7.0/Cuemon.IO.dll",
+        "lib/net7.0/Cuemon.IO.xml",
+        "lib/net8.0/Cuemon.IO.dll",
+        "lib/net8.0/Cuemon.IO.xml",
+        "lib/netstandard2.0/Cuemon.IO.dll",
+        "lib/netstandard2.0/Cuemon.IO.xml",
+        "lib/netstandard2.1/Cuemon.IO.dll",
+        "lib/netstandard2.1/Cuemon.IO.xml"
+      ]
+    },
+    "Cuemon.Security.Cryptography/8.2.0": {
+      "sha512": "+AydXEXX1lKBizDLqI5fcEB3n/sa8XNlFsc2hhziFsKELnFftZdZCr9QIF1k6bX4bXklun5UtsnK7FU5SX0VDA==",
+      "type": "package",
+      "path": "cuemon.security.cryptography/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "cuemon.security.cryptography.8.2.0.nupkg.sha512",
+        "cuemon.security.cryptography.nuspec",
+        "icon.png",
+        "lib/net6.0/Cuemon.Security.Cryptography.dll",
+        "lib/net6.0/Cuemon.Security.Cryptography.xml",
+        "lib/net7.0/Cuemon.Security.Cryptography.dll",
+        "lib/net7.0/Cuemon.Security.Cryptography.xml",
+        "lib/net8.0/Cuemon.Security.Cryptography.dll",
+        "lib/net8.0/Cuemon.Security.Cryptography.xml",
+        "lib/netstandard2.0/Cuemon.Security.Cryptography.dll",
+        "lib/netstandard2.0/Cuemon.Security.Cryptography.xml"
+      ]
+    },
+    "Cuemon.Threading/8.2.0": {
+      "sha512": "bzSeWGrXxcDLHfrAN0LwlXADZX7svVX4KdZrgVTLXYDPt4Sq0umRHZjqfUHl0uM2VIBcJ4hh1WNVJrZ9W+fDpQ==",
+      "type": "package",
+      "path": "cuemon.threading/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "cuemon.threading.8.2.0.nupkg.sha512",
+        "cuemon.threading.nuspec",
+        "icon.png",
+        "lib/net6.0/Cuemon.Threading.dll",
+        "lib/net6.0/Cuemon.Threading.xml",
+        "lib/net7.0/Cuemon.Threading.dll",
+        "lib/net7.0/Cuemon.Threading.xml",
+        "lib/net8.0/Cuemon.Threading.dll",
+        "lib/net8.0/Cuemon.Threading.xml",
+        "lib/netstandard2.0/Cuemon.Threading.dll",
+        "lib/netstandard2.0/Cuemon.Threading.xml"
+      ]
+    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -2179,6 +2478,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Cuemon.AspNetCore.Mvc >= 8.2.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.2"
     ]
   },
@@ -2221,6 +2521,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Cuemon.AspNetCore.Mvc": {
+            "target": "Package",
+            "version": "[8.2.0, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",

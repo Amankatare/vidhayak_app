@@ -9,5 +9,6 @@ namespace VidhayakApp.Core.Interfaces
 {
     public interface IRoleRepository:IRepository<Role>
     {
+        IEnumerable<string> GetRolesForUser(string username);
     }
 }

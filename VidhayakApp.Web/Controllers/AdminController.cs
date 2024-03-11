@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
-using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.Web.ViewModels;
 
 namespace VidhayakApp.Web.Controllers
 {
+    //[CustomAuthorize("Admin")]
     public class AdminController : Controller
     {
         private readonly VidhayakAppContext _db;

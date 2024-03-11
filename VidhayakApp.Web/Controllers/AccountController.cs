@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using VidhayakApp.Infastructure.Repositories;
+using MySqlX.XDevAPI;
 
 namespace VidhayakApp.Web.Controllers
 {
@@ -82,15 +83,15 @@ namespace VidhayakApp.Web.Controllers
       
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
-        //public async Task<IActionResult> Login(LoginViewModel model)
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
 
-            if (ModelState.IsValid)
-            {
-                return View(model);
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    return View(model);
+            //}
                 // Authenticate and redirect or show an error
                 var AuthenticUser = await _userService.AuthenticateAsync(model.UserName, model.Password);
                 IEnumerable<Role> roles = await _roleRepository.ListAllAsync();
@@ -102,8 +103,10 @@ namespace VidhayakApp.Web.Controllers
 
                     ViewData["UserName"] = user.UserName;
                     ViewData["UserRoleName"] = user.Role.RoleName;
+               
+                
 
-                    HttpContext.Session.SetString("UserName", user.UserName);
+                HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("Name", user.Name);
                     HttpContext.Session.SetInt32("RoleId", user.RoleId);
                     HttpContext.Session.SetString("RoleName", user.Role.RoleName);
@@ -117,18 +120,12 @@ namespace VidhayakApp.Web.Controllers
                     var identity = new ClaimsIdentity(new[]
                     {
                         new Claim(ClaimTypes.Role, role),
+                         
                     });
-
-                    if (!string.IsNullOrEmpty(role))
-                    {
-                        var roleClaims = role.Split(";").Select(role => new Claim(ClaimTypes.Role, role.Trim()));
-
-                        identity.AddClaims(roleClaims);
-                    }
 
                     var principal = new ClaimsPrincipal(identity);
 
-                    HttpContext.User = principal;
+                    
 
                     var logins = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
