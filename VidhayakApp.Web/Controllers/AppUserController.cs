@@ -15,15 +15,17 @@ namespace VidhayakApp.Web.Controllers
         private readonly IUserRepository _user;
         private readonly IUserDetailRepository _userDetails;
         private readonly IUserService _userService;
+        private readonly IUserDetailService _userdetailService;
 
 
 
-        public AppUserController(VidhayakAppContext db, IUserRepository user, IUserService userService, IUserDetailRepository userDetails)
+        public AppUserController(VidhayakAppContext db, IUserRepository user, IUserService userService, IUserDetailRepository userDetails, IUserDetailService userdetailService)
         {
             _db = db;
             _user = user;
             _userService = userService;
             _userDetails= userDetails;
+            _userdetailService= userdetailService;
         }
         public IActionResult Dashboard()
         {
@@ -126,18 +128,31 @@ namespace VidhayakApp.Web.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var userRecord = await _user.GetByIdAsync(id);
-            await DeleteAppUser(userRecord.UserId);
-            return View();
+
+            if (userRecord != null)
+            {
+                await DeleteAppUser(id);
+           
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "User not found.";
+            }
+            return RedirectToAction("ListUsers");
         }
 
-
-
-        public async Task<ActionResult<User>> DeleteAppUser(int id)
+        [HttpPost]
+        public async Task<ActionResult> DeleteAppUser(int id)
         {
             var userToDelete = await _user.GetByIdAsync(id);
+            var userDetailToDelete = await _db.UserDetails.FindAsync(id);
 
-            if (userToDelete != null)
+            if (userToDelete != null && userDetailToDelete != null)
             {
+             
+                await _userDetails.DeleteAsync(userDetailToDelete);
+
+            
                 await _user.DeleteAsync(userToDelete);
                 TempData["Message"] = "User deleted successfully.";
             }
@@ -146,59 +161,68 @@ namespace VidhayakApp.Web.Controllers
                 TempData["ErrorMessage"] = "User not found.";
             }
 
-            return RedirectToAction("AppUsers");
-        }
+            return RedirectToAction("ListUsers");
+    }
 
         
 
         public async Task<ActionResult> Edit(int id)
-        {
-            var userRecord = await _user.GetByIdAsync(id);
-            var userDetails = await _userDetails.GetByIdAsync(id);
+        { 
+            var user = _db.Users.Find(id);
+            var userDetails = _db.UserDetails.FirstOrDefault(d => d.UserId == id);
 
-            var viewModel = new UserViewModel
+          
+            if (user == null || userDetails == null)
             {
-                Name = userRecord.Name,
-                UserName = userRecord.UserName,
-                Dob = userRecord.Dob,
-                Address = userRecord.Address,
-                Ward = userRecord.Ward,
-                MobileNumber = userRecord.MobileNumber,
+                return NotFound();
+            }
+
+            var viewModel = new UserWithDetailsViewModel
+            {
+                UserName = user.UserName,
+                Name = user.Name,
+              
+                Dob = user.Dob,
+                Address = user.Address,
+                Ward = user.Ward,
+                MobileNumber = user.MobileNumber,
+                PasswordHash = user.PasswordHash,
                 RoleId = 4,
 
-                // UserDetail properties
-
-                Education = userDetails?.Education,
-                AadharNumber = userDetails?.AadharNumber,
-                SamagraID = userDetails?.SamagraID,
-                VoterID = userDetails?.VoterID,
-                Caste = userDetails?.Caste
+                // Update properties in userDetails entity
+                Education = userDetails.Education,
+                AadharNumber = userDetails.AadharNumber,
+                SamagraID = userDetails.SamagraID,
+                VoterID = userDetails.VoterID,
+                Caste = userDetails.Caste,
+         
             };
 
             return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserViewModel>> UpdateUser(UserViewModel viewModel)
+        public async Task<ActionResult<ShowUserandItsDetails>> UpdateUser(UserWithDetailsViewModel viewModel)
         {
-            if (ModelState.IsValid)
-            {
-                var userToUpdate = await _user.GetByIdAsync(viewModel.UserId);
-                var userDetailsToUpdate = await _userDetails.GetByIdAsync(viewModel.UserId);
+            var userToUpdate = await _user.GetByUsernameAsync(viewModel.UserName);
 
-                if (userToUpdate != null && userDetailsToUpdate != null)
+            if (userToUpdate != null)
+            {
+                // Get user details based on the user ID
+                var userDetailsToUpdate = await _userdetailService.GetByUserIdAsync(userToUpdate.UserId);
+
+                // If user details exist, proceed with the update
+                if (userDetailsToUpdate != null)
                 {
-                    // Update properties in user entity
                     userToUpdate.Name = viewModel.Name;
                     userToUpdate.UserName = viewModel.UserName;
                     userToUpdate.Dob = viewModel.Dob;
                     userToUpdate.Address = viewModel.Address;
                     userToUpdate.Ward = viewModel.Ward;
                     userToUpdate.MobileNumber = viewModel.MobileNumber;
-                    userToUpdate.PasswordHash = viewModel.PasswordHash;
-                    userToUpdate.RoleId = viewModel.RoleId;
+                    userToUpdate.PasswordHash = "$2a$11$82IdIaryQRhzpZWv8lDeZOFUevkJpdPh2MBCwdioBzcH2qSYRv2Mi";
+                    userToUpdate.RoleId = 4;
 
-                    // Update properties in userDetails entity
                     userDetailsToUpdate.Education = viewModel.Education;
                     userDetailsToUpdate.AadharNumber = viewModel.AadharNumber;
                     userDetailsToUpdate.SamagraID = viewModel.SamagraID;
@@ -210,19 +234,39 @@ namespace VidhayakApp.Web.Controllers
                     await _userDetails.UpdateAsync(userDetailsToUpdate);
 
                     TempData["Message"] = "User Updated successfully.";
+
+                    // Create a new ShowUserandItsDetails view model
+                    var showViewModel = new ShowUserandItsDetails
+                    {
+                        usersTable = new List<User> { userToUpdate },
+                        userDetailsTable = new List<UserDetail> { userDetailsToUpdate }
+                    };
+
+                    // Return the ShowUserandItsDetails view with the updated data
+                    return View("ListUsers", showViewModel);
                 }
                 else
                 {
-                    TempData["ErrorMessage"] = "User not found.";
+                    TempData["ErrorMessage"] = "User details not found.";
                 }
             }
             else
             {
-                // ModelState is not valid, handle accordingly (e.g., redisplay the form with errors)
+                TempData["ErrorMessage"] = "User not found.";
             }
 
-            return RedirectToAction("AppUsers");
+            return View("ListUsers", "AppUser");
         }
+
+
+
+
+
+
+
+
+
+
 
     }
 }

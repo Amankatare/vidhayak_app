@@ -83,7 +83,7 @@
                         <td>@(userDetails?.Caste ?? "N/A")</td>
                         <td>
                             <a asp-controller="AppUser" asp-action="Edit" asp-route-id="@user.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
-                            <a asp-controller="AppUser" asp-action="DeleteUser" asp-route-id="@user.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
+                            <a asp-controller="AppUser" asp-action="Delete" asp-route-id="@user.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 }

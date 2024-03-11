@@ -1,9 +1,12 @@
 ﻿using System.Threading.Tasks;
 using VidhayakApp.Core.Entities;
+using VidhayakApp.Core.Interfaces;
 
-public interface IUserDetailRepository
+
+namespace VidhayakApp.Core.Interfaces
 {
-    Task<UserDetail> GetByIdAsync(int id);
-    Task UpdateAsync(UserDetail userDetail);
-    // Add other methods as needed
+    public interface IUserDetailRepository : IRepository<UserDetail>
+    {
+
+    }
 }

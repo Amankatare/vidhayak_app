@@ -1,15 +1,18 @@
 ﻿@using VidhayakApp.Core.Entities
 @model User
 
-
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AppUserLayout.cshtml";
+}
   
 <form method="post">
 <div>
 
-        <a asp-controller="AppUser" asp-action="DeleteAppUser" aria-pressed="true"></a>
+        <a asp-controller="AppUser" asp-action="Delete" aria-pressed="true"></a>
         <div class="alert alert-success" role="alert">
            Record Deleted
         </div>
-        <button  asp-controller="AppUser" asp-action="ListUsers"  class="btn btn-dark btn-lg active text-center" role="button" aria-pressed="true">Back To List</button>
+        <button  asp-controller="AppUser" asp-action="ListUsers" class="btn btn-dark btn-lg active text-center" role="button" aria-pressed="true">Back To List</button>
 </div>
 </form>       

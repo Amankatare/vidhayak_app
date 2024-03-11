@@ -32,20 +32,21 @@ namespace VidhayakApp.Infastructure.Repositories
                 await _context.SaveChangesAsync();
 
         }
-        //public async Task DeletebyIdAsync(int entity)
-        //{
-        //    var existingEntity = await _context.Set<T>().FindAsync(entity);
+        public async Task DeletebyIdAsync(int entity)
+        {
+            var existingEntity = await _context.Set<T>().FindAsync(entity);
 
-        //    if (existingEntity != null)
-        //    {
-        //        _context.Set<T>().Remove(existingEntity);
-        //        await _context.SaveChangesAsync();
-        //    }
-        //}
+            if (existingEntity != null)
+            {
+                _context.Set<T>().Remove(existingEntity);
+                await _context.SaveChangesAsync();
+            }
+        }
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            var record =await _context.Set<T>().FindAsync(id);
+            return record;
         }
 
         public async Task<T> GetByUsernameAsync(string username)
@@ -60,9 +61,10 @@ namespace VidhayakApp.Infastructure.Repositories
             return _context.Set<T>().ToList();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+              _context.Set<T>().Update(entity);
+              await _context.SaveChangesAsync();
         }
     }
 }
