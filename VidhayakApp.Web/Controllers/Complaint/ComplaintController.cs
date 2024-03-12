@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VidhayakApp.Core.Entities;
+using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.ViewModels;
 
@@ -7,6 +8,16 @@ namespace VidhayakApp.Web.Controllers.Complaint
 {
     public class ComplaintController : Controller
     {
+        private readonly IUserRepository _user;
+        private readonly IGovtDepartmentRepository _govtd;
+        //private readonly IUserRepository _user;
+        private readonly ISubCategoryRepository _sub;
+        public ComplaintController(IUserRepository user, IGovtDepartmentRepository govtd, ISubCategoryRepository sub)
+        {
+            _user = user;
+            _govtd = govtd;
+            _sub = sub;
+        }
         public IActionResult Index()
         {
             return View();
@@ -28,8 +39,13 @@ namespace VidhayakApp.Web.Controllers.Complaint
         [HttpPost]
         public IActionResult Create(ComplaintViewModel model)
         {
+
             if (ModelState.IsValid)
             {
+
+                var user = _user.GetByIdAsync(model.UserId);
+                var govtDepartment = _govtd.GetByIdAsync(model.DepartmentId);
+
                 // Map the view model to the entity
                 var complaint = new Item
                 {
