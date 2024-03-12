@@ -38,7 +38,8 @@ builder.Services.AddDbContext<VidhayakAppContext>(options =>
                                                                                            //new MySqlServerVersion(new Version(8, 0, 2)))); // Adjust the version accordingly 
                                                                                            // MySql version 8.0.27 
 ));
-
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<AuthMiddleware>();
 builder.Services.AddScoped<IUserRepository,UserRepository>();
 builder.Services.AddScoped<IUserDetailRepository,UserDetailRepository>();

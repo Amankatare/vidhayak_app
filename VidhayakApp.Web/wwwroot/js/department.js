@@ -10,7 +10,7 @@
         var submitInput = document.getElementById('submitId');
 
         // Check if "Related to Personal" is selected
-        if (subCategoryInput.value === 'Related to Personal') {
+        if (subCategoryInput.value === '4') {
             // Disable the Department dropdown
             departmentInput.disabled = true;
             descriptionInput.disabled = true;

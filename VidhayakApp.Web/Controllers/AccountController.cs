@@ -101,9 +101,11 @@ namespace VidhayakApp.Web.Controllers
 
                     var user = await _userRepository.GetByUsernameAsync(AuthenticUser.UserName);
 
+                    ViewData["UserId"] = user.UserId;
                     ViewData["UserName"] = user.UserName;
                     ViewData["UserRoleName"] = user.Role.RoleName;
 
+                    HttpContext.Session.SetInt32("UserId", user.UserId);
                     HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("Name", user.Name);
                     HttpContext.Session.SetInt32("RoleId", user.RoleId);
