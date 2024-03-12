@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-
+<body>
 <section class="content">
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -18,38 +18,21 @@
                         <form>
 
                             <div class="form-group">
-                                <label>Select Schemes</label>
-                                <select id="inputState" class="form-control">
+                                <label>Category</label>
+                                <select id="categoryInput" class="form-control">
                                     <!-- Options here -->
-                                    <option selected="">Select...</option>
-
-                                    <option value="Demand">Demand</option>
-                                    <option value="Complaint">Complaint</option>
-                                    <option value="Suggession">Suggession</option>
+                                    <option selected="" value="Demand">Demand</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label>Demand</label>
-                                <select id="inputState" class="form-control">
+                                <label>Sub-Category</label>
+                                <select id="subCategoryInput" class="form-control" onchange="handleSubCategoryChange()">
                                     <!-- Options here -->
                                     <option selected="">Select...</option>
-
                                     <option value="Related to Government Schemes">Related to Government Schemes</option>
                                     <option value="Related to Private Organization">Related to Private Organization</option>
-                                    <option value="Related to Government Schemes">Related to Personal</option>
-                                </select>
-
-                                <div class="form-group">
-                                </div>
-                                <label>Select Complaint </label>
-                                <select id="inputState" class="form-control">
-                                    <!-- Options here -->
-                                    <option selected="">Select...</option>
-
-                                    <option value="Related to Government Department">Related to Government Department</option>
-                                    <option value="Related to Private Organization">Related to Private Organization</option>
-                                    <option value="Related to Government Schemes">Related to Personal</option>
+                                    <option value="Related to Personal">Related to Personal</option>
                                 </select>
                             </div>
 
@@ -66,75 +49,19 @@
 
                                 <div class="form-group">
                                     <label>Select Schemes</label>
-                                    <select id="inputState" class="form-control">
+                                    <select id="schemeInput" class="form-control" disabled>
                                         <!-- Options here -->
                                         <option selected="">Select...</option>
-
                                         <option value="Samagra ID">Samagra ID</option>
-                                        <option value="Aadhar Card">Aadhar Card</option>
-                                        <option value="Eligibility Certificate (Ration)">Eligibility Certificate (Ration)</option>
-                                        <option value="BPL Card">BPL Card</option>
-                                        <option value="Birth Certificate">Birth Certificate</option>
-                                        <option value="Death Certificate">Death Certificate</option>
-                                        <option value="Marriage Certificate">Marriage Certificate</option>
-                                        <option value="Non-Creamy Layer Certificate">Non-Creamy Layer Certificate</option>
-                                        <option value="Pradhan Mantri Awas Yojana">Pradhan Mantri Awas Yojana</option>
-                                        <option value="Building Permit">Building Permit</option>
-                                        <option value="Old Age Pension">Old Age Pension</option>
-                                        <option value="Widow Pension">Widow Pension</option>
-                                        <option value="Handicap Pension">Handicap Pension</option>
-                                        <option value="Widowhood Pension">Widowhood Pension</option>
-                                        <option value="Divyang Pension">Divyang Pension</option>
-                                        <option value="Orphan Girl Pension">Orphan Girl Pension</option>
-                                        <option value="Empowerment Card">Empowerment Card</option>
-                                        <option value="Building Construction Labor Card">Building Construction Labor Card</option>
-                                        <option value="Funeral Assistance">Funeral Assistance</option>
-                                        <option value="Grace Assistance">Grace Assistance</option>
-                                        <option value="Ladli Sister Scheme">Ladli Sister Scheme</option>
-                                        <option value="Matru Vandana Yojana">Matru Vandana Yojana</option>
-                                        <option value="Nutrition Food">Nutrition Food</option>
-                                        <option value="Path Vendor Registration">Path Vendor Registration</option>
-                                        <option value="Path Vendor Loan">Path Vendor Loan</option>
-                                        <option value="Self-Employment Loan">Self-Employment Loan</option>
-                                        <option value="Conversion Diversion">Conversion Diversion</option>
-                                        <option value="Patta (Land Ownership Document)">Patta (Land Ownership Document)</option>
-                                        <option value="Land Lease">Land Lease</option>
-                                        <option value="New Water Connection">New Water Connection</option>
-                                        <option value="Inter-caste Marriage Incentive Amount">Inter-caste Marriage Incentive Amount</option>
-                                        <option value="Chief Minister's Kanyadan">Chief Minister's Kanyadan</option>
-
-
+                                        <!-- Add other scheme options as needed -->
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="text-center">
+                                <button class="btn btn-primary col-sm-12" type="button" formaction="/">Submit</button>
+                            </div>
                         </form>
-
-                        <div class="form-group">
-                            <label>Select Department</label>
-                            <select id="inputState" class="form-control">
-                                <!-- Options here -->
-                                <option selected="">Select...</option>
-
-                                <option value="Collectorate">Collectorate</option>
-                                <option value="Nagar Tanagam">Nagar Tanagam</option>
-                                <option value="Rajthav Division">Rajthav Division</option>
-                                <option value="Panchayi Division">Panchayi Division</option>
-                                <option value="Adhyay Division">Adhyay Division</option>
-                                <option value="Mahila and Bal Vikas Division">Mahila and Bal Vikas Division</option>
-                                <option value="Samasjik Nyay Division">Samasjik Nyay Division</option>
-                                <option value="Thavathy Division">Thavathy Division</option>
-                                <option value="Lok Tanmayi Division PWD">Lok Tanmayi Division PWD</option>
-                                <option value="Lok Thavathy and Yantriki PHE">Lok Thavathy and Yantriki PHE</option>
-                                <option value="Shiksha Division">Shiksha Division</option>
-                                <option value="Bak">Bak</option>
-                            </select>
-
-
-                        </div>
-
-                        <div class="text-center">
-                            <button class="btn btn-primary col-sm-12" type="button" formaction="/">Submit</button>
-                        </div>
                     </div>
 
                 </div>
@@ -143,7 +70,5 @@
     </div>
 </section>
 
-            
-
-
-
+<script src="~/js/department.js"></script>
+</body>

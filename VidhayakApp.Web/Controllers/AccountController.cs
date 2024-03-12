@@ -103,10 +103,8 @@ namespace VidhayakApp.Web.Controllers
 
                     ViewData["UserName"] = user.UserName;
                     ViewData["UserRoleName"] = user.Role.RoleName;
-               
-                
 
-                HttpContext.Session.SetString("UserName", user.UserName);
+                    HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("Name", user.Name);
                     HttpContext.Session.SetInt32("RoleId", user.RoleId);
                     HttpContext.Session.SetString("RoleName", user.Role.RoleName);
