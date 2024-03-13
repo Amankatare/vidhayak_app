@@ -5,7 +5,7 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
-    ViewData["Title"] = "Complaint";
+    ViewData["Title"] = "Complaint/Demand/Suggession";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
     // Access HttpContext
     var context = HttpContextAccessor.HttpContext;
@@ -21,7 +21,7 @@
                 <div class="col-sm-10">
                     <div class="card card-danger">
                         <div class="card-header">
-                            Complaint Form
+                            @ViewData["Title"]
                         </div>
 
                         <div class="card-body">
@@ -29,7 +29,7 @@
                                 <input type="hidden" asp-for="UserId" value="@context.Session.GetInt32("UserId")" />
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select asp-for="Type"  id="categoryInput" class="form-control">
+                                    <select asp-for="Type" id="categoryInput" class="form-control">
                                         <option selected="" value="">Select...</option>
                                         <option value="0">Demand</option>
                                         <option value="1">Complaint</option>
@@ -42,7 +42,7 @@
 
                                     <div class="form-group">
                                         <label>SubCategory</label>
-                                        <select id="subCategoryInput" class="form-control" asp-for="ItemId" onchange="handleSubCategoryChange()">
+                                        <select id="subCategoryInput" class="form-control" asp-for="ItemId" onchange="handleComplaintSubCategoryChange()">
                                             <!-- Options here -->
                                             <option selected="">Select...</option>
                                             <option value="2">Related to Government Department</option>
@@ -94,7 +94,7 @@
 
                                     <div class="form-group">
                                         <label>Sub-Category</label>
-                                        <select id="subInput" class="form-control" asp-for="ItemId" onchange="handleSubCategoryChange()">
+                                        <select id="SubInput" class="form-control" asp-for="ItemId" onchange="handleDemandSubCategoryChange()">
                                             <!-- Options here -->
                                             <option selected="">Select...</option>
                                             <option value="1">Related to Government Schemes</option>
@@ -119,6 +119,39 @@
                                             <select asp-for="SchemeId" asp-route-id="3" id="schemeInput" class="form-control" disabled>
                                                 <!-- Options here -->
                                                 <option selected="">Select...</option>
+                                                <option selected="">Select...</option>
+                                                <option value="1">Samagra ID</option>
+                                                <option value="2">Aadhar Card</option>
+                                                <option value="3">Eligibility Certificate (Ration)</option>
+                                                <option value="4">BPL Card</option>
+                                                <option value="5">Birth Certificate</option>
+                                                <option value="5">Death Certificate</option>
+                                                <option value="6">Marriage Certificate</option>
+                                                <option value="7">Non-Creamy Layer Certificate</option>
+                                                <option value="8">Pradhan Mantri Awas Yojana</option>
+                                                <option value="9">Building Permit</option>
+                                                <option value="10">Old Age Pension</option>
+                                                <option value="11">Widow Pension</option>
+                                                <option value="12">Handicap Pension</option>
+                                                <option value="13">Widowhood Pension</option>
+                                                <option value="14">Divyang Pension</option>
+                                                <option value="15">Orphan Girl Pension</option>
+                                                <option value="16">Empowerment Card</option>
+                                                <option value="17">Building Construction Labor Card</option>
+                                                <option value="18">Funeral Assistance</option>
+                                                <option value="19">Grace Assistance</option>
+                                                <option value="20">Ladli Sister Scheme</option>
+                                                <option value="21">Matru Vandana Yojana</option>
+                                                <option value="22">Nutrition Food</option>
+                                                <option value="23">Path Vendor Registration</option>
+                                                <option value="24">Path Vendor Loan</option>
+                                                <option value="25">Self-Employment Loan</option>
+                                                <option value="26">Conversion Diversion</option>
+                                                <option value="27">Patta (Land Ownership Document)</option>
+                                                <option value="28">Land Lease</option>
+                                                <option value="29">New Water Connection</option>
+                                                <option value="30">Inter-caste Marriage Incentive Amount</option>
+                                                <option value="31">Chief Minister's Kanyadan</option>
                                                 <!-- Add other options as needed -->
                                             </select>
                                         </div>
