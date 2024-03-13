@@ -1,25 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infrastructure.Data;
+using VidhayakApp.SharedKernel.Utilities;
 using VidhayakApp.Web.ViewModels;
 
 namespace VidhayakApp.Web.Controllers
 {
-    //[CustomAuthorize("Admin")]
+    
     public class AdminController : Controller
     {
         private readonly VidhayakAppContext _db;
         private readonly IUserRepository _user;
         private readonly IUserService _userService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IRoleService _roleService;
 
-        
-        
-        public AdminController(VidhayakAppContext db, IUserRepository user, IUserService userService)
+        public AdminController(VidhayakAppContext db, IUserRepository user, IUserService userService, IHttpContextAccessor httpContextAccessor, IRoleService roleService)
         {
-            _db= db;
-            _user= user;
-            _userService= userService;
+            _db = db;
+            _user = user;
+            _userService = userService;
+            _httpContextAccessor = httpContextAccessor;
+            _roleService = roleService;
         }
         public IActionResult Dashboard()
         {

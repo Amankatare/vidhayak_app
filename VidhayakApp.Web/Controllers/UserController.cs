@@ -7,6 +7,7 @@ using System.Net.Http;
 namespace VidhayakApp.Web.Controllers
 {
     //[Authorize(Policy = "RequireUserRole")]
+    
     public class UserController : Controller
     {
         

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Etwnk4dr52GMudSTXv4j7oIq0MKU4LFJP20AJq/TFSc=",
+  "Hash": "iU6Xp3CNs4dNAFHzytQXkUXGZ1ZATdgWP2Zc+/z9FLk=",
   "Source": "VidhayakApp.Web",
   "BasePath": "_content/VidhayakApp.Web",
   "Mode": "Default",
@@ -6838,12 +6838,12 @@
       "OriginalItemSpec": "wwwroot\\index3.html"
     },
     {
-      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\demand.js",
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\Demand.js",
       "SourceId": "VidhayakApp.Web",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
       "BasePath": "_content/VidhayakApp.Web",
-      "RelativePath": "js/demand.js",
+      "RelativePath": "js/Demand.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -6854,15 +6854,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\demand.js"
+      "OriginalItemSpec": "wwwroot\\js\\Demand.js"
     },
     {
-      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\department.js",
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\DepartmentSchemeDisable.js",
       "SourceId": "VidhayakApp.Web",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
       "BasePath": "_content/VidhayakApp.Web",
-      "RelativePath": "js/department.js",
+      "RelativePath": "js/DepartmentSchemeDisable.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -6873,7 +6873,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\department.js"
+      "OriginalItemSpec": "wwwroot\\js\\DepartmentSchemeDisable.js"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\site.js",

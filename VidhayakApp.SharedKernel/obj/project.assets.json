@@ -961,6 +961,16 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "VidhayakApp.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/VidhayakApp.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VidhayakApp.Core.dll": {}
+        }
       }
     }
   },
@@ -2474,12 +2484,18 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "VidhayakApp.Core/1.0.0": {
+      "type": "project",
+      "path": "../VidhayakApp.Core/VidhayakApp.Core.csproj",
+      "msbuildProject": "../VidhayakApp.Core/VidhayakApp.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Cuemon.AspNetCore.Mvc >= 8.2.0",
-      "Microsoft.EntityFrameworkCore.Design >= 8.0.2"
+      "Microsoft.EntityFrameworkCore.Design >= 8.0.2",
+      "VidhayakApp.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2508,7 +2524,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj": {
+              "projectPath": "E:\\vidhayak_app\\VidhayakApp.Core\\VidhayakApp.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

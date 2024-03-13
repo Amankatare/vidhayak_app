@@ -1522,7 +1522,8 @@
       },
       "VidhayakApp.SharedKernel/1.0.0": {
         "dependencies": {
-          "Cuemon.AspNetCore.Mvc": "8.2.0"
+          "Cuemon.AspNetCore.Mvc": "8.2.0",
+          "VidhayakApp.Core": "1.0.0"
         },
         "runtime": {
           "VidhayakApp.SharedKernel.dll": {}

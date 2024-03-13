@@ -1,0 +1,56 @@
+INSERT INTO govtschemes (SchemeName) VALUES 
+('Samagra ID'), 
+('Aadhar Card'), 
+('Eligibility Certificate (Ration)'), 
+('BPL Card'), 
+('Birth Certificate'), 
+('Death Certificate'), 
+('Marriage Certificate'), 
+('Non-Creamy Layer Certificate'), 
+('Pradhan Mantri Awas Yojana'), 
+('Building Permit'), 
+('Old Age Pension'), 
+('Widow Pension'), 
+('Handicap Pension'), 
+('Widowhood Pension'), 
+('Divyang Pension'), 
+('Orphan Girl Pension'), 
+('Empowerment Card'), 
+('Building Construction Labor Card'), 
+('Funeral Assistance'), 
+('Grace Assistance'), 
+('Ladli Sister Scheme'), 
+('Matru Vandana Yojana'), 
+('Nutrition Food'), 
+('Path Vendor Registration'), 
+('Path Vendor Loan'), 
+('Self-Employment Loan'), 
+('Conversion Diversion'), 
+('Patta (Land Ownership Document)'), 
+('Land Lease'), 
+('New Water Connection'), 
+('Inter-caste Marriage Incentive Amount'), 
+('Chief Minister''s Kanyadan');
+
+
+INSERT INTO govtdepartments (DepartmentName) VALUES
+('Collectorate'),
+('Nagar Tanagam'),
+('Rajthav Division'),
+('Panchayi Division'),
+('Adhyay Division'),
+('Mahila and Bal Vikas Division'),
+('Samasjik Nyay Division'),
+('Thavathy Division'),
+('Lok Tanmayi Division PWD'),
+('Lok Thavathy and Yantriki PHE'),
+('Shiksha Division'),
+('Bak');
+
+
+INSERT INTO Roles (RoleName) VALUES
+('SuperAdmin'),
+('Admin'),
+('AppUser'),
+('User'),
+

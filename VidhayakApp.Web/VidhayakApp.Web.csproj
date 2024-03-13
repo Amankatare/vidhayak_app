@@ -1756,4 +1756,9 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Complaint\" />
+    <Folder Include="Views\Demand\" />
+  </ItemGroup>
+
 </Project>

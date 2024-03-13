@@ -5,6 +5,7 @@ using System.Text;
 using VidhayakApp.Application.Services;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
+using VidhayakApp.Core.Services;
 using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.Infrastructure.Repositories;
@@ -47,6 +48,7 @@ builder.Services.AddScoped<IGovtSchemeRepository, GovtSchemeRepository>();
 builder.Services.AddScoped<IUserDetailRepository,UserDetailRepository>();
 builder.Services.AddScoped<IRoleRepository,RoleRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IUserDetailService, UserDetailService>();
 builder.Services.AddAuthentication(options =>
 {

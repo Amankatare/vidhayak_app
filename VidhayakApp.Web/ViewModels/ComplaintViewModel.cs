@@ -22,8 +22,6 @@ namespace VidhayakApp.ViewModels
         [Required(ErrorMessage = "Category is required")]
         public ItemType Type { get; set; }
         public int UserId { get; set; }
-        public string UserName { get; set; }
-
         public int DepartmentId { get; set; }
     }
 }

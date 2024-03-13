@@ -5,7 +5,7 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
-    ViewData["Title"] = "Complaint/Demand/Suggession";
+    ViewData["Title"] = "Form";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
     // Access HttpContext
     var context = HttpContextAccessor.HttpContext;
@@ -85,7 +85,7 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button asp-action="Create" asp-controller="Complaint" id="submitId" class="btn btn-primary col-sm-12" type="submit">Submit</button>
+                                        <button asp-action="CreateComplaint" asp-controller="Form" id="submitId" class="btn btn-primary col-sm-12" type="submit">Submit</button>
                                     </div>
                                 </div>
 
@@ -158,7 +158,7 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button asp-action="Create" asp-controller="Demand" class="btn btn-primary col-sm-12" id="subId" type="button">Submit</button>
+                                        <button asp-action="CreateDemand" asp-controller="Form" class="btn btn-primary col-sm-12" id="subId" type="button" >Submit</button>
                                     </div>
                                 </div>
                             </form>
@@ -169,7 +169,7 @@
         </div>
     </section>
 
-    <script src="~/js/demand.js"></script>
-    <script src="~/js/department.js"></script>
-
+    <script src="~/js/Demand.js"></script>
+    <script src="~/js/DepartmentSchemeDisable.js"></script>
+    
 </body>

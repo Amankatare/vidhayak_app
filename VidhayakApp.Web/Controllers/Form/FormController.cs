@@ -3,6 +3,7 @@ using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.ViewModels;
+using VidhayakApp.Web.ViewModels;
 
 namespace VidhayakApp.Web.Controllers.Form
 {
@@ -26,12 +27,12 @@ namespace VidhayakApp.Web.Controllers.Form
 
         public IActionResult CreateComplaint()
         {
-            var viewModel = new ComplaintViewModel();
+            var viewModel = new FormViewModel();
             return RedirectToAction("Dashboard", "User", viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateComplaint(ComplaintViewModel model)
+        public async Task<IActionResult> CreateComplaint(FormViewModel model)
         {
 
             var user = await _user.GetByIdAsync(model.UserId);
@@ -54,17 +55,17 @@ namespace VidhayakApp.Web.Controllers.Form
             await _dbContext.SaveChangesAsync();
 
             // Redirect to a success page or another action
-            return RedirectToAction("Complaint", "User");
+            return RedirectToAction("Dashboard", "User");
         }
 
-        public IActionResult Create()
+        public IActionResult CreateDemand()
         {
-            var viewModel = new DemandViewModel();
+            var viewModel = new FormViewModel();
             return RedirectToAction("Dashboard", "User", viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(DemandViewModel model)
+        public async Task<IActionResult> CreateDemand(FormViewModel model)
         {
 
             var user = await _user.GetByIdAsync(model.UserId);
@@ -87,7 +88,7 @@ namespace VidhayakApp.Web.Controllers.Form
             await _dbContext.SaveChangesAsync();
 
             // Redirect to a success page or another action
-            return RedirectToAction("Demand", "User");
+            return RedirectToAction("Dashboard", "User");
         }
     }
 }
