@@ -5,7 +5,7 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
-    ViewData["Title"] = "Complaint";
+    ViewData["Title"] = "Demand";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
     // Access HttpContext
     var context = HttpContextAccessor.HttpContext;
@@ -24,24 +24,20 @@
                     </div>
 
                     <div class="card-body">
-                        <form>
+                        <form method="post">
 
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select asp-for="Type" asp-items="Html.GetEnumSelectList<ItemType>()" id="categoryInput" class="form-control">
+                                    <select asp-for="Type" asp-items="Html.GetEnumSelectList<ItemType>()" id="catInput" class="form-control">
                                         <option selected="" value="">Select...</option>
                                     </select>
-                                    @* <select id="categoryInput" class="form-control">
-                                    <!-- Options here -->
-                                    <option selected="" value="Complaint">Complaint</option>
-                                    </select> *@
                                 </div>
 
-                                <input type="hidden" asp-for="UserId" value="@context.Session.GetInt32("UserId")" />
+                                <input type="hidden" asp-for="UserId" asp-route-id="2"  value="@context.Session.GetInt32("UserId")" />
 
                             <div class="form-group">
                                 <label>Sub-Category</label>
-                                <select id="subCategoryInput" class="form-control" onchange="handleSubCategoryChange()">
+                                    <select id="subInput" class="form-control" asp-for="ItemId" onchange="handleDemandSubCategoryChange()">
                                     <!-- Options here -->
                                     <option selected="">Select...</option>
                                     <option value="1">Related to Government Schemes</option>
@@ -53,57 +49,57 @@
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <label>Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter ..." disabled>
+                                        <input asp-for="Title" type="text" id="tId" class="form-control" placeholder="Enter ..." disabled>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Description</label>
-                                        <textarea class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
+                                        <textarea asp-for="Description" id="dpId" class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Select Schemes</label>
-                                    <select id="schemeInput" class="form-control" disabled>
+                                        <select asp-for="SchemeId" asp-route-id="3" id="schemeInput" class="form-control" disabled>
                                         <!-- Options here -->
                                         <option selected="">Select...</option>
-                                        <option value="Samagra ID">Samagra ID</option>
-                                        <option value="Aadhar Card">Aadhar Card</option>
-                                        <option value="Eligibility Certificate (Ration)">Eligibility Certificate (Ration)</option>
-                                        <option value="BPL Card">BPL Card</option>
-                                        <option value="Birth Certificate">Birth Certificate</option>
-                                        <option value="Death Certificate">Death Certificate</option>
-                                        <option value="Marriage Certificate">Marriage Certificate</option>
-                                        <option value="Non-Creamy Layer Certificate">Non-Creamy Layer Certificate</option>
-                                        <option value="Pradhan Mantri Awas Yojana">Pradhan Mantri Awas Yojana</option>
-                                        <option value="Building Permit">Building Permit</option>
-                                        <option value="Old Age Pension">Old Age Pension</option>
-                                        <option value="Widow Pension">Widow Pension</option>
-                                        <option value="Handicap Pension">Handicap Pension</option>
-                                        <option value="Widowhood Pension">Widowhood Pension</option>
-                                        <option value="Divyang Pension">Divyang Pension</option>
-                                        <option value="Orphan Girl Pension">Orphan Girl Pension</option>
-                                        <option value="Empowerment Card">Empowerment Card</option>
-                                        <option value="Building Construction Labor Card">Building Construction Labor Card</option>
-                                        <option value="Funeral Assistance">Funeral Assistance</option>
-                                        <option value="Grace Assistance">Grace Assistance</option>
-                                        <option value="Ladli Sister Scheme">Ladli Sister Scheme</option>
-                                        <option value="Matru Vandana Yojana">Matru Vandana Yojana</option>
-                                        <option value="Nutrition Food">Nutrition Food</option>
-                                        <option value="Path Vendor Registration">Path Vendor Registration</option>
-                                        <option value="Path Vendor Loan">Path Vendor Loan</option>
-                                        <option value="Self-Employment Loan">Self-Employment Loan</option>
-                                        <option value="Conversion Diversion">Conversion Diversion</option>
-                                        <option value="Patta (Land Ownership Document)">Patta (Land Ownership Document)</option>
-                                        <option value="Land Lease">Land Lease</option>
-                                        <option value="New Water Connection">New Water Connection</option>
-                                        <option value="Inter-caste Marriage Incentive Amount">Inter-caste Marriage Incentive Amount</option>
-                                        <option value="Chief Minister's Kanyadan">Chief Minister's Kanyadan</option>
+                                        <option value="1">Samagra ID</option>
+                                        <option value="2">Aadhar Card</option>
+                                        <option value="3">Eligibility Certificate (Ration)</option>
+                                        <option value="4">BPL Card</option>
+                                        <option value="5">Birth Certificate</option>
+                                        <option value="5">Death Certificate</option>
+                                        <option value="6">Marriage Certificate</option>
+                                        <option value="7">Non-Creamy Layer Certificate</option>
+                                        <option value="8">Pradhan Mantri Awas Yojana</option>
+                                        <option value="9">Building Permit</option>
+                                        <option value="10">Old Age Pension</option>
+                                        <option value="11">Widow Pension</option>
+                                        <option value="12">Handicap Pension</option>
+                                        <option value="13">Widowhood Pension</option>
+                                        <option value="14">Divyang Pension</option>
+                                        <option value="15">Orphan Girl Pension</option>
+                                        <option value="16">Empowerment Card</option>
+                                        <option value="17">Building Construction Labor Card</option>
+                                        <option value="18">Funeral Assistance</option>
+                                        <option value="19">Grace Assistance</option>
+                                        <option value="20">Ladli Sister Scheme</option>
+                                        <option value="21">Matru Vandana Yojana</option>
+                                        <option value="22">Nutrition Food</option>
+                                        <option value="23">Path Vendor Registration</option>
+                                        <option value="24">Path Vendor Loan</option>
+                                        <option value="25">Self-Employment Loan</option>
+                                        <option value="26">Conversion Diversion</option>
+                                        <option value="27">Patta (Land Ownership Document)</option>
+                                        <option value="28">Land Lease</option>
+                                        <option value="29">New Water Connection</option>
+                                        <option value="30">Inter-caste Marriage Incentive Amount</option>
+                                        <option value="31">Chief Minister's Kanyadan</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="text-center">
-                                <button class="btn btn-primary col-sm-12" type="button" formaction="/">Submit</button>
+                                    <button asp-action="Create" asp-controller="Demand" class="btn btn-primary col-sm-12" id="subId" type="button">Submit</button>
                             </div>
                         </form>
                     </div>

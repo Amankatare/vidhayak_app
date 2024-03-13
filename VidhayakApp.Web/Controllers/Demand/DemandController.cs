@@ -5,15 +5,15 @@ using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.ViewModels;
 
-namespace VidhayakApp.Web.Controllers.Complaint
+namespace VidhayakApp.Web.Controllers.Demand
 {
-    public class ComplaintController : Controller
+    public class DemandController : Controller
     {
         private readonly VidhayakAppContext _dbContext;
         private readonly IUserRepository _user;
         private readonly IGovtDepartmentRepository _govtd;
      
-        public ComplaintController(IUserRepository user, IGovtDepartmentRepository govtd, VidhayakAppContext dbContext)
+        public DemandController(IUserRepository user, IGovtDepartmentRepository govtd, VidhayakAppContext dbContext)
         {
             _user = user;
             _govtd = govtd;
@@ -28,18 +28,18 @@ namespace VidhayakApp.Web.Controllers.Complaint
 
         public IActionResult Create()
         {
-            var viewModel = new ComplaintViewModel();
+            var viewModel = new DemandViewModel();
             return RedirectToAction("Dashboard","User", viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ComplaintViewModel model)
+        public async Task<IActionResult> Create(DemandViewModel model)
         {
             
                 var user = await _user.GetByIdAsync(model.UserId);
 
                 // Map the view model to the entity
-                var complaint = new Item
+                var demand = new Item
                 {
                     Status = StatusType.Pending, // Use Status.Pending from enum
                     Title = model.Title,
@@ -52,12 +52,14 @@ namespace VidhayakApp.Web.Controllers.Complaint
                 };
 
                 // Save to the database
-                await _dbContext.Items.AddAsync(complaint);
+                await _dbContext.Items.AddAsync(demand);
                 await _dbContext.SaveChangesAsync();
 
                 // Redirect to a success page or another action
-                return RedirectToAction("Complaint", "User");
+                return RedirectToAction("Demand", "User");
             }
+
+        
            
         
     }

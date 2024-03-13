@@ -1,0 +1,18 @@
+﻿@model VidhayakApp.ViewModels.DemandViewModel
+
+@{
+    ViewData["Title"] = "Create Demand";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    TempData["Message"] = " Demand Created Successfully";
+}
+
+<form method="post">
+    <div>
+
+        <a asp-controller="Demand" asp-action="Create" aria-pressed="true"></a>
+        <div class="alert alert-success" role="alert">
+            @TempData["Message"]
+        </div>
+        <button asp-controller="Demand" asp-action="Create" class="btn btn-dark btn-lg active text-center" role="button" aria-pressed="true">Back To List</button>
+    </div>
+</form>       

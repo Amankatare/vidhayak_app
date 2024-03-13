@@ -7,8 +7,6 @@ namespace VidhayakApp.ViewModels
 {
     public class ComplaintViewModel
     {
-
-        public int Id { get; set; }
         public int ItemId { get; set; }
         [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }

@@ -11,7 +11,7 @@ using VidhayakApp.Infrastructure.Data;
 namespace VidhayakApp.Infastructure.Migrations
 {
     [DbContext(typeof(VidhayakAppContext))]
-    [Migration("20240313070445_init 1")]
+    [Migration("20240313092127_init 1")]
     partial class init1
     {
         /// <inheritdoc />
@@ -101,7 +101,7 @@ namespace VidhayakApp.Infastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Id");
 
-                    b.Property<int>("AppUserId")
+                    b.Property<int?>("AppUserId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -115,12 +115,10 @@ namespace VidhayakApp.Infastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
