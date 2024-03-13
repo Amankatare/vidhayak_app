@@ -6,7 +6,7 @@ using VidhayakApp.Core.Entities;
 namespace VidhayakApp.ViewModels
 {
     public class DemandViewModel
-    { 
+    {
         public int ItemId { get; set; }
         [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }

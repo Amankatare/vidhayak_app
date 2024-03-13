@@ -1,146 +1,142 @@
-﻿@using VidhayakApp.Web.ViewModels
-
+﻿@using VidhayakApp.Core.Entities
+@using VidhayakApp.Web.ViewModels
 @model FormViewModel
 
-<p>
-    <h1>Form</h1>
-</p>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
-    <form class="row g-3" method="post">
-        <div class="col-md-6">
-        <label asp-for="Title" class="form-label">Title</label>
-            <input asp-for="Title" class="form-control" id="Title">
+@{
+    ViewData["Title"] = "Complaint";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    // Access HttpContext
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+}
+
+
+<body>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-sm-10">
+                    <div class="card card-danger">
+                        <div class="card-header">
+                            Complaint Form
+                        </div>
+
+                        <div class="card-body">
+                            <form method="post">
+                                <input type="hidden" asp-for="UserId" value="@context.Session.GetInt32("UserId")" />
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select asp-for="Type"  id="categoryInput" class="form-control">
+                                        <option selected="" value="">Select...</option>
+                                        <option value="0">Demand</option>
+                                        <option value="1">Complaint</option>
+                                        <option value="2">Suggession</option>
+                                    </select>
+                                </div>
+
+                                <div id="complaintForm" style="display: none;">
+                                    <!-- Complaint form fields -->
+
+                                    <div class="form-group">
+                                        <label>SubCategory</label>
+                                        <select id="subCategoryInput" class="form-control" asp-for="ItemId" onchange="handleSubCategoryChange()">
+                                            <!-- Options here -->
+                                            <option selected="">Select...</option>
+                                            <option value="2">Related to Government Department</option>
+                                            <option value="3">Related to Private Organization</option>
+                                            <option value="4">Related to Personal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label>Title</label>
+                                            <input asp-for="Title" type="text" id="titleId" class="form-control" placeholder="Enter ..." disabled />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea asp-for="Description" id="descriptionId" class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Select Department</label>
+                                            <select asp-for="DepartmentId" id="departmentInput" class="form-control" disabled>
+                                                <!-- Options here -->
+                                                <option selected="">Select...</option>
+                                                <option value="1">Collectorate</option>
+                                                <option value="2">Nagar Tanagam</option>
+                                                <option value="3">Rajthav Division</option>
+                                                <option value="4">Panchayi Division</option>
+                                                <option value="5">Adhyay Division</option>
+                                                <option value="6">Mahila and Bal Vikas Division</option>
+                                                <option value="7">Samasjik Nyay Division</option>
+                                                <option value="8">Thavathy Division</option>
+                                                <option value="9">Lok Tanmayi Division PWD</option>
+                                                <option value="10">Lok Thavathy and Yantriki PHE</option>
+                                                <option value="11">Shiksha Division</option>
+                                                <option value="12">Bak</option>
+                                                <!-- Add other options as needed -->
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button asp-action="Create" asp-controller="Complaint" id="submitId" class="btn btn-primary col-sm-12" type="submit">Submit</button>
+                                    </div>
+                                </div>
+
+                                <div id="demandForm" style="display: none;">
+                                    <!-- Demand form fields -->
+
+                                    <div class="form-group">
+                                        <label>Sub-Category</label>
+                                        <select id="subInput" class="form-control" asp-for="ItemId" onchange="handleSubCategoryChange()">
+                                            <!-- Options here -->
+                                            <option selected="">Select...</option>
+                                            <option value="1">Related to Government Schemes</option>
+                                            <option value="3">Related to Private Organization</option>
+                                            <option value="4">Related to Personal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label>Title</label>
+                                            <input asp-for="Title" type="text" id="tId" class="form-control" placeholder="Enter ..." disabled>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea asp-for="Description" id="dpId" class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Select Schemes</label>
+                                            <select asp-for="SchemeId" asp-route-id="3" id="schemeInput" class="form-control" disabled>
+                                                <!-- Options here -->
+                                                <option selected="">Select...</option>
+                                                <!-- Add other options as needed -->
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button asp-action="Create" asp-controller="Demand" class="btn btn-primary col-sm-12" id="subId" type="button">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-        <label asp-for="Description" class="form-label">Description</label>
-        <input asp-for="Description" class="form-control" id="Description">
-        </div>
-        <br>
-        <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-2 pt-0">Options</legend>
-        <div class="col-sm-10">
-            <div class="form-check">
-                <input asp-for="Radio1Value" class="form-check-input" type="radio" name="option" id="op1" value="option1" checked>
-                <label asp-for="Radio1Value" class="form-check-label" for="gridRadios2">
-                    Suggession 
-                </label>
-            </div>
-            <div class="form-check">
-                <input asp-for="Radio1Value" class="form-check-input" type="radio" name="option" id="op2" value="option2">
-                <label asp-for="Radio1Value" class="form-check-label" for="gridRadios1">
-                    Complaint
-                </label>
-            </div>
-            <div class="form-check">
-                <input asp-for="Radio1Value" class="form-check-input" type="radio" name="option" id="op3" value="option3">
-                <label asp-for="Radio1Value" class="form-check-label" for="gridRadios2">
-                     Demand
-                </label>
-            </div>
-        </fieldset>
+    </section>
 
-    <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-2 pt-0">Options</legend>
-        <div class="col-sm-10">
-            <div class="form-check">
-                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="op4" value="option1" checked>
-                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios2">
-                    Government Scheme Related
-                </label>
-            </div>
-            <div class="form-check">
-                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="op5" value="option2">
-                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios1">
-                    Private Institution Related
-                </label>
-            </div>
-            <div class="form-check">
-                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="op6" value="option3">
-                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios2">
-                    Individual Related
-                </label>
-            </div>
-    </fieldset>
+    <script src="~/js/demand.js"></script>
+    <script src="~/js/department.js"></script>
 
-    <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-2 pt-0">Options</legend>
-        <div class="col-sm-10">
-            <div class="form-check">
-                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="op7" value="option1" checked>
-                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios2">
-                    Government Office Related
-                </label>
-            </div>
-            <div class="form-check">
-                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="op8" value="option2">
-                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios1">
-                    Private Institution Related
-                </label>
-            </div>
-            <div class="form-check">
-                <input asp-for="Radio2Value" class="form-check-input" type="radio" name="option2" id="op9" value="option3">
-                <label asp-for="Radio2Value" class="form-check-label" for="gridRadios2">
-                    Individual Related
-                </label>
-            </div>
-    </fieldset>
-
-        <div class="col-md-4">
-            <label for="inputState" class="form-label">Schemes</label>
-            <select id="inputState" class="form-select"> 
-                <option selected>Select...</option>
-                <option>Samagra ID</option>
-                <option>Aadhar Card</option>
-                <option>Eligibility Certificate (Ration)</option>
-                <option>BPL Card</option>
-                <option>Birth Certificate</option>
-                <option>Death Certificate</option>
-                <option>Marriage Certificate</option>
-                <option>Non-Creamy Layer Certificate</option>
-                <option>Pradhan Mantri Awas Yojana</option>
-                <option>Building Permit</option>
-                <option>Old Age Pension</option>
-                <option>Widow Pension</option>
-                <option>Handicap Pension</option>
-                <option>Widowhood Pension</option>
-                <option>Divyang Pension</option>
-                <option>Orphan Girl Pension</option>
-                <option>Empowerment Card</option>
-                <option>Building Construction Labor Card</option>
-                <option>Funeral Assistance</option>
-                <option>Grace Assistance</option>
-                <option>Ladli Sister Scheme</option>
-                <option>Matru Vandana Yojana</option>
-                <option>Nutrition Food</option>
-                <option>Path Vendor Registration</option>
-                <option>Path Vendor Loan</option>
-                <option>Self-Employment Loan</option>
-                <option>Conversion Diversion</option>
-                <option>Patta (Land Ownership Document)</option>
-                <option>Land Lease</option>
-                <option>New Water Connection</option>
-                <option>Inter-caste Marriage Incentive Amount</option>
-                <option>Chief Minister's Kanyadan</option>
-                </select>
-           </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-
-
-
- 
-
-  
-   
- 
-
- 
-
-
-
- 
-
-
-    
+</body>

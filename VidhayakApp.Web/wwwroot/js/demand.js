@@ -1,36 +1,19 @@
 ﻿
-
-
-
-//Disable and unable department field in complaint form 
-
-function handleDemandSubCategoryChange() {
-
-    var subCategoryInput = document.getElementById('subInput');
-    var SchemeInput = document.getElementById('schemeInput');
-    var descriptionInput = document.getElementById('dpId');
-    var titleInput = document.getElementById('tId');
-    var submitInput = document.getElementById('subId');
-
-    // Check if "Related to Personal" is selected
-    if (subCategoryInput.value === '4') {
-        // Disable the Department dropdown
-        SchemeInput.disabled = true;
-        descriptionInput.disabled = true;
-        titleInput.disabled = true;
-        submitInput.disabled = true;
-        // Reset its value
-        SchemeInput.value = '';
-        descriptionInput.value = '';
-        titleInput.value = '';
-        submitInput.value = '';
-    } else {
-        // Enable the Department dropdown
-        SchemeInput.disabled = false;
-        descriptionInput.disabled = false;
-        titleInput.disabled = false;
-        submitInput.disabled = false;
-    }
-
-}
+    document.getElementById("categoryInput").addEventListener("change", function() {
+        var selectedCategory = this.value;
+        // Use the selectedCategory value to determine the further actions in your JavaScript code
+        if (selectedCategory === "0") {
+            // Show the demand form
+            document.getElementById("demandForm").style.display = "block";
+            document.getElementById("complaintForm").style.display = "none";
+        } else if (selectedCategory === "1") {
+            // Show the complaint form
+            document.getElementById("complaintForm").style.display = "block";
+            document.getElementById("demandForm").style.display = "none";
+        } else {
+            // Hide both forms or do nothing
+            document.getElementById("demandForm").style.display = "none";
+            document.getElementById("complaintForm").style.display = "none";
+        }
+    });
 
