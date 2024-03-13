@@ -1,0 +1,18 @@
+﻿
+@model VidhayakApp.ViewModels.ComplaintViewModel
+
+@{
+    ViewData["Title"] = "Create Complaint";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<form method="post">
+    <div>
+
+        <a asp-controller="Complaint" asp-action="Create" aria-pressed="true"></a>
+        <div class="alert alert-success" role="alert">
+            Complaint Created Successfully
+        </div>
+        <button asp-controller="User" asp-action="Dashboard" class="btn btn-dark btn-lg active text-center" role="button" aria-pressed="true">Back To List</button>
+    </div>
+</form>       

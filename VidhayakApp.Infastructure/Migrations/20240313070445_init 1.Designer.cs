@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VidhayakApp.Infrastructure.Data;
 
@@ -10,9 +11,11 @@ using VidhayakApp.Infrastructure.Data;
 namespace VidhayakApp.Infastructure.Migrations
 {
     [DbContext(typeof(VidhayakAppContext))]
-    partial class VidhayakAppContextModelSnapshot : ModelSnapshot
+    [Migration("20240313070445_init 1")]
+    partial class init1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,7 +101,7 @@ namespace VidhayakApp.Infastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Id");
 
-                    b.Property<int?>("AppUserId")
+                    b.Property<int>("AppUserId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -112,10 +115,12 @@ namespace VidhayakApp.Infastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Note")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Title")
                         .IsRequired()

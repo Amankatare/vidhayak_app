@@ -26,7 +26,7 @@
                             <form method="post">
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select asp-for="Category" asp-items="Html.GetEnumSelectList<ItemType>()" id="categoryInput" class="form-control">
+                                    <select asp-for="Type" asp-items="Html.GetEnumSelectList<ItemType>()" id="categoryInput" class="form-control">
                                         <option selected="" value="">Select...</option>
                                     </select>
                                     @* <select id="categoryInput" class="form-control">
@@ -39,7 +39,7 @@
                                             
                                 <div class="form-group">
                                     <label>SubCategory</label>
-                                    <select id="subCategoryInput" class="form-control" asp-for="SubCategoryId"  onchange="handleSubCategoryChange()">
+                                    <select id="subCategoryInput" class="form-control" asp-for="ItemId"  onchange="handleSubCategoryChange()">
                                         <!-- Options here -->
                                         <option selected="">Select...</option>
                                         <option value="2">Related to Government Department</option>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infrastructure.Data;
@@ -8,70 +9,65 @@ namespace VidhayakApp.Web.Controllers.Complaint
 {
     public class ComplaintController : Controller
     {
+        private readonly VidhayakAppContext _dbContext;
         private readonly IUserRepository _user;
         private readonly IGovtDepartmentRepository _govtd;
-        //private readonly IUserRepository _user;
-        private readonly ISubCategoryRepository _sub;
-        public ComplaintController(IUserRepository user, IGovtDepartmentRepository govtd, ISubCategoryRepository sub)
+     
+        public ComplaintController(IUserRepository user, IGovtDepartmentRepository govtd, VidhayakAppContext dbContext)
         {
             _user = user;
             _govtd = govtd;
-            _sub = sub;
+           
+            _dbContext = dbContext;
         }
+    
         public IActionResult Index()
         {
             return View();
         }
 
-        private readonly VidhayakAppContext dbContext;
-
-        public ComplaintController(VidhayakAppContext dbContext)
-        {
-            this.dbContext = dbContext;
-        }
-
         public IActionResult Create()
         {
             var viewModel = new ComplaintViewModel();
-            return View(viewModel);
+            return RedirectToAction("Dashboard","User", viewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(ComplaintViewModel model)
+        public async Task<IActionResult> Create(ComplaintViewModel model)
         {
-
-            if (ModelState.IsValid)
-            {
-
-                var user = _user.GetByIdAsync(model.UserId);
-                var govtDepartment = _govtd.GetByIdAsync(model.DepartmentId);
+            
+                var user = await _user.GetByIdAsync(model.UserId);
 
                 // Map the view model to the entity
                 var complaint = new Item
                 {
-                    Status = "Pending",
+                    Status = StatusType.Pending, // Use Status.Pending from enum
                     Title = model.Title,
                     Description = model.Description,
                     UserId = model.UserId,
-                    SubCategoryId = model.SubCategoryId,
-                    Type = model.Category,
-                    DepartmentId = model.DepartmentId,
-                   
-                    
-                    // Assuming your Item model has a DepartmentID property
-                                                      // Map other properties as needed
+                    Type = model.Type,
+                    ItemId = model.ItemId,
+                    CreatedAt = DateTime.Now,
+                    User = user,
                 };
 
                 // Save to the database
-                dbContext.Items.Add(complaint);
-                dbContext.SaveChanges();
+                await _dbContext.Items.AddAsync(complaint);
+                await _dbContext.SaveChangesAsync();
 
                 // Redirect to a success page or another action
-                return RedirectToAction("Complaint","User");
+                return RedirectToAction("Complaint", "User");
             }
 
-            // If the model state is not valid, redisplay the form
-            return View(model);
-        }
+        
+           
+        
     }
 }
+
+
+
+
+
+
+

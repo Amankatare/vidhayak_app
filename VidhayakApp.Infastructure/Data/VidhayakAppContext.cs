@@ -15,7 +15,7 @@ namespace VidhayakApp.Infrastructure.Data
         public DbSet<Role> Roles { get; set; }
 
         public DbSet<Item> Items { get; set; }
-        public DbSet<SubCategory> SubCategoryies { get; set; }
+    
         public DbSet<Communication> Communications { get; set; }
         public DbSet<GovtDepartment> GovtDepartments { get; set; }
         public DbSet<GovtScheme> GovtSchemes{ get; set; }

@@ -42,6 +42,8 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<AuthMiddleware>();
 builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddScoped<IGovtDepartmentRepository,GovtDepartmentRepository> ();
+builder.Services.AddScoped<IGovtSchemeRepository, GovtSchemeRepository>();
 builder.Services.AddScoped<IUserDetailRepository,UserDetailRepository>();
 builder.Services.AddScoped<IRoleRepository,RoleRepository>();
 builder.Services.AddScoped<IUserService, UserService>();

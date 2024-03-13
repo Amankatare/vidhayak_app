@@ -5,7 +5,7 @@ using VidhayakApp.Core.Entities;
 
 namespace VidhayakApp.ViewModels
 {
-    public class ComplaintViewModel
+    public class DemandViewModel
     {
 
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace VidhayakApp.ViewModels
         public int UserId { get; set; }
         public string UserName { get; set; }
 
-        public int DepartmentId { get; set; }
+        public int SchemeId { get; set; }
     }
 }

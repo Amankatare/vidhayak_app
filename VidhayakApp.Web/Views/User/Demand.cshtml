@@ -1,6 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Demand";
+﻿@using VidhayakApp.Core.Entities
+@using VidhayakApp.ViewModels
+@model DemandViewModel
+
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Complaint";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
+    // Access HttpContext
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
 }
 
 <body>
@@ -17,34 +26,39 @@
                     <div class="card-body">
                         <form>
 
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select id="categoryInput" class="form-control">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select asp-for="Type" asp-items="Html.GetEnumSelectList<ItemType>()" id="categoryInput" class="form-control">
+                                        <option selected="" value="">Select...</option>
+                                    </select>
+                                    @* <select id="categoryInput" class="form-control">
                                     <!-- Options here -->
-                                    <option selected="" value="Demand">Demand</option>
-                                </select>
-                            </div>
+                                    <option selected="" value="Complaint">Complaint</option>
+                                    </select> *@
+                                </div>
+
+                                <input type="hidden" asp-for="UserId" value="@context.Session.GetInt32("UserId")" />
 
                             <div class="form-group">
                                 <label>Sub-Category</label>
                                 <select id="subCategoryInput" class="form-control" onchange="handleSubCategoryChange()">
                                     <!-- Options here -->
                                     <option selected="">Select...</option>
-                                    <option value="Related to Government Schemes">Related to Government Schemes</option>
-                                    <option value="Related to Private Organization">Related to Private Organization</option>
-                                    <option value="Related to Personal">Related to Personal</option>
+                                    <option value="1">Related to Government Schemes</option>
+                                    <option value="3">Related to Private Organization</option>
+                                    <option value="4">Related to Personal</option>
                                 </select>
                             </div>
 
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                        <input type="text" class="form-control" placeholder="Enter ..." disabled>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                        <textarea class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -53,7 +67,37 @@
                                         <!-- Options here -->
                                         <option selected="">Select...</option>
                                         <option value="Samagra ID">Samagra ID</option>
-                                        <!-- Add other scheme options as needed -->
+                                        <option value="Aadhar Card">Aadhar Card</option>
+                                        <option value="Eligibility Certificate (Ration)">Eligibility Certificate (Ration)</option>
+                                        <option value="BPL Card">BPL Card</option>
+                                        <option value="Birth Certificate">Birth Certificate</option>
+                                        <option value="Death Certificate">Death Certificate</option>
+                                        <option value="Marriage Certificate">Marriage Certificate</option>
+                                        <option value="Non-Creamy Layer Certificate">Non-Creamy Layer Certificate</option>
+                                        <option value="Pradhan Mantri Awas Yojana">Pradhan Mantri Awas Yojana</option>
+                                        <option value="Building Permit">Building Permit</option>
+                                        <option value="Old Age Pension">Old Age Pension</option>
+                                        <option value="Widow Pension">Widow Pension</option>
+                                        <option value="Handicap Pension">Handicap Pension</option>
+                                        <option value="Widowhood Pension">Widowhood Pension</option>
+                                        <option value="Divyang Pension">Divyang Pension</option>
+                                        <option value="Orphan Girl Pension">Orphan Girl Pension</option>
+                                        <option value="Empowerment Card">Empowerment Card</option>
+                                        <option value="Building Construction Labor Card">Building Construction Labor Card</option>
+                                        <option value="Funeral Assistance">Funeral Assistance</option>
+                                        <option value="Grace Assistance">Grace Assistance</option>
+                                        <option value="Ladli Sister Scheme">Ladli Sister Scheme</option>
+                                        <option value="Matru Vandana Yojana">Matru Vandana Yojana</option>
+                                        <option value="Nutrition Food">Nutrition Food</option>
+                                        <option value="Path Vendor Registration">Path Vendor Registration</option>
+                                        <option value="Path Vendor Loan">Path Vendor Loan</option>
+                                        <option value="Self-Employment Loan">Self-Employment Loan</option>
+                                        <option value="Conversion Diversion">Conversion Diversion</option>
+                                        <option value="Patta (Land Ownership Document)">Patta (Land Ownership Document)</option>
+                                        <option value="Land Lease">Land Lease</option>
+                                        <option value="New Water Connection">New Water Connection</option>
+                                        <option value="Inter-caste Marriage Incentive Amount">Inter-caste Marriage Incentive Amount</option>
+                                        <option value="Chief Minister's Kanyadan">Chief Minister's Kanyadan</option>
                                     </select>
                                 </div>
                             </div>
@@ -70,5 +114,5 @@
     </div>
 </section>
 
-<script src="~/js/department.js"></script>
+<script src="~/js/demand.js"></script>
 </body>

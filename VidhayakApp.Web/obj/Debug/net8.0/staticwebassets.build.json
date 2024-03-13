@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Etwnk4dr52GMudSTXv4j7oIq0MKU4LFJP20AJq/TFSc=",
+  "Hash": "HO0j8QQzFH1gcLaSGxPTJwb3ufJLQZJYVzicZR1SWf4=",
   "Source": "VidhayakApp.Web",
   "BasePath": "_content/VidhayakApp.Web",
   "Mode": "Default",
@@ -3074,6 +3074,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\img\\icons.png"
+    },
+    {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\Maamla Legal Hai (2024) Hindi Season 1 Complete EP01-08 Netflix - 1080P.mkv",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "dist/img/Maamla Legal Hai (2024) Hindi Season 1 Complete EP01-08 Netflix - 1080P.mkv",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\img\\Maamla Legal Hai (2024) Hindi Season 1 Complete EP01-08 Netflix - 1080P.mkv"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\photo1.png",
