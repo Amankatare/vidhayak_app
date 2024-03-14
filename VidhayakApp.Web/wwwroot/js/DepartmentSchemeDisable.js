@@ -10,7 +10,7 @@ function handleComplaintSubCategoryChange() {
 
     // Check if "Related to Personal" is selected
     if (subCategoryInput.value === "Personal") {
-        console.log("inside if of Complaint", subCategoryInput.value)
+
         // Disable the Department dropdown and other inputs
         departmentInput.disabled = true;
         descriptionInput.disabled = true;
@@ -22,7 +22,7 @@ function handleComplaintSubCategoryChange() {
         titleInput.value = '';
         submitInput.value = '';
     } else {
-        console.log("inside else of Complaint", subCategoryInput.value)
+
         // Enable the Department dropdown and other inputs
         departmentInput.disabled = false;
         descriptionInput.disabled = false;
@@ -40,7 +40,7 @@ function handleDemandSubCategoryChange() {
 
     // check if "related to personal" is selected
     if (subCategory_Input.value === "Personal") {
-        console.log("inside if of De-----mand", subCategory_Input.value, schemeid.value, dpinput.value, tinput.value, submitdemandinput.value)
+
         // disable the scheme dropdown and other inputs
         schemeid.disabled = true;
         dpinput.disabled = true;
@@ -52,7 +52,6 @@ function handleDemandSubCategoryChange() {
         tinput.value = '';
         submitdemandinput.value = '';
     } else {
-        console.log("inside else of De----mand", subCategory_Input.value, schemeid.value, dpinput.value, tinput.value, submitdemandinput.value)
         // enable the scheme dropdown and other inputs
         schemeid.disabled = false;
         dpinput.disabled = false;
