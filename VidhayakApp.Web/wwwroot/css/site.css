@@ -16,9 +16,15 @@ html {
   position: relative;
   min-height: 100%;
 }
-
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+.body_img_user_table {
+    min-height: 100vh;
+    background: url(/dist/img/html_table.jpg) center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .endlast {
