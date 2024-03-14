@@ -52,5 +52,5 @@ INSERT INTO Roles (RoleName) VALUES
 ('SuperAdmin'),
 ('Admin'),
 ('AppUser'),
-('User'),
+('User');
 

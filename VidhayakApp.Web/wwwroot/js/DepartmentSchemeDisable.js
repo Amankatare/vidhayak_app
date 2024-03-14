@@ -9,7 +9,7 @@ function handleComplaintSubCategoryChange() {
     var submitInput = document.getElementById('submitId');
 
     // Check if "Related to Personal" is selected
-    if (subCategoryInput.value === '4') {
+    if (subCategoryInput.value === "Personal") {
         console.log("inside if of Complaint", subCategoryInput.value)
         // Disable the Department dropdown and other inputs
         departmentInput.disabled = true;
@@ -39,7 +39,7 @@ function handleDemandSubCategoryChange() {
     var submitdemandinput = document.getElementById('submitDemandId');
 
     // check if "related to personal" is selected
-    if (subCategory_Input.value === '4') {
+    if (subCategory_Input.value === "Personal") {
         console.log("inside if of De-----mand", subCategory_Input.value, schemeid.value, dpinput.value, tinput.value, submitdemandinput.value)
         // disable the scheme dropdown and other inputs
         schemeid.disabled = true;

@@ -108,13 +108,13 @@ namespace VidhayakApp.Infastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("ItemId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Note")
                         .HasColumnType("longtext");
 
                     b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubCategoryTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -124,7 +124,7 @@ namespace VidhayakApp.Infastructure.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime(6)");
 
