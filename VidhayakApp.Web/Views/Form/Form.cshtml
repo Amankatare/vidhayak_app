@@ -31,9 +31,9 @@
                                     <label>Category</label>
                                     <select asp-for="Type" id="categoryInput" class="form-control">
                                         <option selected="" value="">Select...</option>
-                                        <option value="0">Demand</option>
-                                        <option value="1">Complaint</option>
-                                        <option value="2">Suggession</option>
+                                        <option value="@ItemType.Demand">Demand</option>
+                                        <option value="@ItemType.Complaint">Complaint</option>
+                                        <option value="@ItemType.Suggession">Suggession</option>
                                     </select>
                                 </div>
 
@@ -42,12 +42,12 @@
 
                                     <div class="form-group">
                                         <label>SubCategory</label>
-                                        <select id="subCategoryComplaintInput" class="form-control" asp-for="ItemId" onchange="handleComplaintSubCategoryChange()">
+                                        <select id="subCategoryComplaintInput" class="form-control" asp-for="SubCategoryTypeId" onchange="handleComplaintSubCategoryChange()">
                                             <!-- Options here -->
                                             <option selected="">Select...</option>
-                                            <option value="2">Related to Government Department</option>
-                                            <option value="3">Related to Private Organization</option>
-                                            <option value="4">Related to Personal</option>
+                                            <option value="@SubCategoryType.GovernmentDepartments">Related to Government Department</option>
+                                            <option value="@SubCategoryType.PrivateOrganization">Related to Private Organization</option>
+                                            <option value="@SubCategoryType.Personal">Related to Personal</option>
                                         </select>
                                     </div>
 
@@ -88,18 +88,19 @@
                                         <button asp-action="CreateComplaint" asp-controller="Form" id="submitId" class="btn btn-primary col-sm-12" type="submit">Submit</button>
                                     </div>
                                 </div>
+                                
 
                                 <div id="demandForm" style="display: none;">
                                     <!-- Demand form fields -->
 
                                     <div class="form-group">
                                         <label>Sub-Category</label>
-                                        <select id="subCategoryDemandInput" class="form-control" asp-for="ItemId" onchange="handleDemandSubCategoryChange()">
+                                        <select id="subCategoryDemandInput" class="form-control" asp-for="SubCategoryTypeId" onchange="handleDemandSubCategoryChange()">
                                             <!-- Options here -->
                                             <option selected="">Select...</option>
-                                            <option value="1">Related to Government Schemes</option>
-                                            <option value="3">Related to Private Organization</option>
-                                            <option value="4">Related to Personal</option>
+                                            <option value="@SubCategoryType.GovernmentSchemes">Related to Government Schemes</option>
+                                            <option value="@SubCategoryType.PrivateOrganization">Related to Private Organization</option>
+                                            <option value="@SubCategoryType.Personal">Related to Personal</option>
                                         </select>
                                     </div>
 

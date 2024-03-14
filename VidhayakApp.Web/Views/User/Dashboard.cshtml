@@ -1,5 +1,7 @@
-﻿ @using VidhayakApp.Web.ViewModels
-@model LoginViewModel
+﻿@using VidhayakApp.Core.Entities
+ @* @using VidhayakApp.Web.ViewModels
+@model LoginViewModel *@
+@model List<Item> 
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -20,43 +22,81 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>ID No.</th>
+                                    <th>Type </th>
+                                    <th>ItemId</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
                                     <th>Created On</th>
+                                    <th>Updated At</th>
                                     <th>Status</th>
+                                    <th>Note</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Samso Park</td>
-                                    <td>34424433</td>
-                                    <td>12 May 2017</td>
-                                    <td><label class="badge badge-danger">Pending</label></td>
-                                </tr>
-                                <tr>
-                                    <td>Marlo Sanki</td>
-                                    <td>53425532</td>
-                                    <td>15 May 2015</td>
-                                    <td><label class="badge badge-warning">In progress</label></td>
-                                </tr>
-                                <tr>
-                                    <td>John ryte</td>
-                                    <td>53275533</td>
-                                    <td>14 May 2017</td>
-                                    <td><label class="badge badge-info">Fixed</label></td>
-                                </tr>
-                                <tr>
-                                    <td>Peter mark</td>
-                                    <td>53275534</td>
-                                    <td>16 May 2017</td>
-                                    <td><label class="badge badge-success">Completed</label></td>
-                                </tr>
-                                <tr>
-                                    <td>Dave</td>
-                                    <td>53275535</td>
-                                    <td>20 May 2017</td>
-                                    <td><label class="badge badge-warning">In progress</label></td>
-                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @if (item.Type == ItemType.Demand)
+                                            {
+                                                <label class="">Demand</label>
+                                            }
+                                            else if (item.Type == ItemType.Complaint)
+                                            {
+                                                <label class="">Complaint</label>
+                                            }
+                                            else if (item.Type == ItemType.Suggession)
+                                            {
+                                                <label class="Suggession">Suggession</label>
+                                            }
+                                        </td>
+                                        <th>
+                                            @if (item.SubCategoryTypeId == SubCategoryType.GovernmentSchemes)
+                                            {
+                                                <label class="">GovernmentSchemes</label>
+                                            }
+                                            else if (item.SubCategoryTypeId == SubCategoryType.GovernmentDepartments)
+                                            {
+                                                <label class="">GovernmentDepartments</label>
+                                            }
+                                            else if (item.SubCategoryTypeId == SubCategoryType.PrivateOrganization)
+                                            {
+                                                <label class="">PrivateOrganization</label>
+                                            }
+                                            else if (item.SubCategoryTypeId == SubCategoryType.Personal)
+                                            {
+                                                <label class="">Personal</label>
+                                            }ItemId
+                                        </th>
+                                        <td>@item.Title</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.CreatedAt</td>
+                                        <td>
+                                            @if (item.Status == StatusType.Pending)
+                                            {
+                                                <label class="badge badge-info">Pending</label>
+                                            }
+                                            else if (item.Status == StatusType.InProgress)
+                                            {
+                                                <label class="badge badge-warning">In progress</label>
+                                            }
+                                            else if (item.Status == StatusType.Fixed)
+                                            {
+                                                <label class="badge badge-info">Fixed</label>
+                                            }
+                                            else if (item.Status == StatusType.Completed)
+                                            {
+                                                <label class="badge badge-success">Completed</label>
+                                            }
+                                            else if (item.Status == StatusType.Rejected)
+                                            {
+                                                <label class="badge badge-danger">Rejected</label>
+                                            }
+                                        </td>
+                                        <!-- Add more columns as needed -->
+                                        <td>@item.Note</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>

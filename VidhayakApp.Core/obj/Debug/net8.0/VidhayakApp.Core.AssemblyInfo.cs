@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VidhayakApp.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df05e57faa60852e7950cd589372671644442d9c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba8c7bda735c7c626768fe8b28babe9dc028660b")]
 [assembly: System.Reflection.AssemblyProductAttribute("VidhayakApp.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VidhayakApp.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -16,6 +16,11 @@ function handleComplaintSubCategoryChange() {
         descriptionInput.disabled = true;
         titleInput.disabled = true;
         submitInput.disabled = true;
+
+        departmentInput.value = '';
+        descriptionInput.value = '';
+        titleInput.value = '';
+        submitInput.value = '';
     } else {
         console.log("inside else of Complaint", subCategoryInput.value)
         // Enable the Department dropdown and other inputs
@@ -41,6 +46,11 @@ function handleDemandSubCategoryChange() {
         dpinput.disabled = true;
         tinput.disabled = true;
         submitdemandinput.disabled = true;
+
+        schemeid.value = '';
+        dpinput.value = '';
+        tinput.value = '';
+        submitdemandinput.value = '';
     } else {
         console.log("inside else of De----mand", subCategory_Input.value, schemeid.value, dpinput.value, tinput.value, submitdemandinput.value)
         // enable the scheme dropdown and other inputs

@@ -34,7 +34,7 @@ namespace VidhayakApp.Web.Controllers.Form
         [HttpPost]
         public async Task<IActionResult> CreateComplaint(FormViewModel model)
         {
-
+            Console.WriteLine("pressed Complaint");
             var user = await _user.GetByIdAsync(model.UserId);
 
             // Map the view model to the entity
@@ -45,7 +45,7 @@ namespace VidhayakApp.Web.Controllers.Form
                 Description = model.Description,
                 UserId = model.UserId,
                 Type = model.Type,
-                ItemId = model.ItemId,
+                SubCategoryTypeId = model.SubCategoryTypeId,
                 CreatedAt = DateTime.Now,
                 User = user,
             };
@@ -67,7 +67,7 @@ namespace VidhayakApp.Web.Controllers.Form
         [HttpPost]
         public async Task<IActionResult> CreateDemand(FormViewModel model)
         {
-
+            Console.WriteLine("pressed");
             var user = await _user.GetByIdAsync(model.UserId);
 
             // Map the view model to the entity
@@ -78,8 +78,9 @@ namespace VidhayakApp.Web.Controllers.Form
                 Description = model.Description,
                 UserId = model.UserId,
                 Type = model.Type,
-                ItemId = model.ItemId,
+                SubCategoryTypeId = model.SubCategoryTypeId,
                 CreatedAt = DateTime.Now,
+                UpdatedAt = null,
                 User = user,
             };
 

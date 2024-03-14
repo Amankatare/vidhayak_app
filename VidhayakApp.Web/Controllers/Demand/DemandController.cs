@@ -32,32 +32,32 @@ namespace VidhayakApp.Web.Controllers.Demand
             return RedirectToAction("Dashboard","User", viewModel);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(DemandViewModel model)
-        {
+        //[HttpPost]
+        //public async Task<IActionResult> Create(DemandViewModel model)
+        //{
             
-                var user = await _user.GetByIdAsync(model.UserId);
+        //        var user = await _user.GetByIdAsync(model.UserId);
 
-                // Map the view model to the entity
-                var demand = new Item
-                {
-                    Status = StatusType.Pending, // Use Status.Pending from enum
-                    Title = model.Title,
-                    Description = model.Description,
-                    UserId = model.UserId,
-                    Type = model.Type,
-                    ItemId = model.ItemId,
-                    CreatedAt = DateTime.Now,
-                    User = user,
-                };
+        //        // Map the view model to the entity
+        //        var demand = new Item
+        //        {
+        //            Status = StatusType.Pending, // Use Status.Pending from enum
+        //            Title = model.Title,
+        //            Description = model.Description,
+        //            UserId = model.UserId,
+        //            Type = model.Type,
+        //            SubCategoryTypeId = model,
+        //            CreatedAt = DateTime.Now,
+        //            User = user,
+        //        };
 
-                // Save to the database
-                await _dbContext.Items.AddAsync(demand);
-                await _dbContext.SaveChangesAsync();
+        //        // Save to the database
+        //        await _dbContext.Items.AddAsync(demand);
+        //        await _dbContext.SaveChangesAsync();
 
-                // Redirect to a success page or another action
-                return RedirectToAction("Demand", "User");
-            }
+        //        // Redirect to a success page or another action
+        //        return RedirectToAction("Demand", "User");
+        //    }
 
         
            

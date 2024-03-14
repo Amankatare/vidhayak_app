@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
+using VidhayakApp.Core.Interfaces;
+using VidhayakApp.Infrastructure.Data;
 
 namespace VidhayakApp.Web.Controllers
 {
@@ -10,32 +12,42 @@ namespace VidhayakApp.Web.Controllers
     
     public class UserController : Controller
     {
-        
-        public UserController() {
 
-             
+        private readonly IUserRepository _userRepository;
+        private readonly IItemRepository _itemRepository;
+        private readonly VidhayakAppContext _dbContext;
+
+        public UserController(IUserRepository userRepository, VidhayakAppContext dbContext)
+        {
+            _userRepository = userRepository;
+            _dbContext = dbContext;
         }
 
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
-            var ss = HttpContext.Session.GetString("UserName");
-            Console.WriteLine("#######################\n" + ss+ "\n#########################");
+            // Retrieve the user's details based on the user ID
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                // Handle if user ID is not found in the session
+                return RedirectToAction("Login", "Account");
+            }
 
-            //if (userName == null)
-            //{
-            //    return RedirectToAction("Login", "Account"); // Redirect to login page if user is not logged in
-            //}
+            var user = await _userRepository.GetByIdAsync(userId.Value);
 
             // Retrieve complaints, demands, and suggestions filled by the user from the database
-            //var userEntries = _dbContext.UserEntries.Where(entry => entry.UserName == userName).ToList();
 
+            var userEntries = _dbContext.Items
+                .Include(i => i.User)
+                .Where(i => i.UserId == userId)
+                .ToList();
+
+            //var userEntries = _itemRepository.GetByIdAsync(userId.Value);
+            Console.WriteLine(userEntries);
             // Pass the user entries to the view
-            //return View(userEntries);
-
-
-
-            return View();
+            return View(userEntries);
         }
+
         public IActionResult Profile()
         {
             return View();

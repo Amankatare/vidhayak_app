@@ -13,7 +13,7 @@ namespace VidhayakApp.Core.Entities
         [Key]
         [Column("Id")]
         public int Id { get; set; }
-        public int ItemId { get; set; }
+        public SubCategoryType SubCategoryTypeId { get; set; }
        
         public string Title { get; set; }
         public string Description { get; set; }
@@ -21,7 +21,7 @@ namespace VidhayakApp.Core.Entities
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime UpdatedAt{ get; set; }
+        public DateTime? UpdatedAt{ get; set; }
 
         public int? AppUserId { get; set; }
 
