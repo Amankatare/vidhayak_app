@@ -1,4 +1,4 @@
-﻿@using VidhayakApp.Core.Entities
+﻿﻿@using VidhayakApp.Core.Entities
 @using VidhayakApp.Web.ViewModels
 @model FormViewModel
 
@@ -42,7 +42,7 @@
 
                                     <div class="form-group">
                                         <label>SubCategory</label>
-                                        <select id="subCategoryInput" class="form-control" asp-for="ItemId" onchange="handleComplaintSubCategoryChange()">
+                                        <select id="subCategoryComplaintInput" class="form-control" asp-for="ItemId" onchange="handleComplaintSubCategoryChange()">
                                             <!-- Options here -->
                                             <option selected="">Select...</option>
                                             <option value="2">Related to Government Department</option>
@@ -94,7 +94,7 @@
 
                                     <div class="form-group">
                                         <label>Sub-Category</label>
-                                        <select id="SubInput" class="form-control" asp-for="ItemId" onchange="handleDemandSubCategoryChange()">
+                                        <select id="subCategoryDemandInput" class="form-control" asp-for="ItemId" onchange="handleDemandSubCategoryChange()">
                                             <!-- Options here -->
                                             <option selected="">Select...</option>
                                             <option value="1">Related to Government Schemes</option>
@@ -116,9 +116,9 @@
 
                                         <div class="form-group">
                                             <label>Select Schemes</label>
-                                            <select asp-for="SchemeId" asp-route-id="3" id="schemeInput" class="form-control" disabled>
+                                            <select asp-for="SchemeId" asp-route-id="3" id="SchemeInput" class="form-control" disabled>
                                                 <!-- Options here -->
-                                                <option selected="">Select...</option>
+                                         
                                                 <option selected="">Select...</option>
                                                 <option value="1">Samagra ID</option>
                                                 <option value="2">Aadhar Card</option>
@@ -158,7 +158,7 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button asp-action="CreateDemand" asp-controller="Form" class="btn btn-primary col-sm-12" id="subId" type="button" >Submit</button>
+                                        <button asp-action="CreateDemand" asp-controller="Form" class="btn btn-primary col-sm-12" id="submitDemandId" type="button">Submit</button>
                                     </div>
                                 </div>
                             </form>
@@ -171,5 +171,5 @@
 
     <script src="~/js/Demand.js"></script>
     <script src="~/js/DepartmentSchemeDisable.js"></script>
-    
+
 </body>
