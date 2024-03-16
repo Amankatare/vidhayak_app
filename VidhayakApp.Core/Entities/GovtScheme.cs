@@ -9,6 +9,6 @@ namespace VidhayakApp.Core.Entities
         [Column("SchemeId")]
         public int SchemeId { get; set; }
         public string SchemeName { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
     }
 }

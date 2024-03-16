@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "p2Ct5zdf6vcOk0QiELYZCJSonMFFNdxFp9jZ35HI3Q8=",
+  "Hash": "rME50/NvFpswfx5yhVmq9GcvMN6+sU8bVceME0KNKgc=",
   "Source": "VidhayakApp.Web",
   "BasePath": "_content/VidhayakApp.Web",
   "Mode": "Default",
@@ -6990,12 +6990,12 @@
       "OriginalItemSpec": "wwwroot\\index3.html"
     },
     {
-      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\Demand.js",
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\demand.js",
       "SourceId": "VidhayakApp.Web",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
       "BasePath": "_content/VidhayakApp.Web",
-      "RelativePath": "js/Demand.js",
+      "RelativePath": "js/demand.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -7006,7 +7006,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\Demand.js"
+      "OriginalItemSpec": "wwwroot\\js\\demand.js"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\DepartmentSchemeDisable.js",

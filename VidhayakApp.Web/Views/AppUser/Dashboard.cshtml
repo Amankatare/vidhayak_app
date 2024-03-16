@@ -1,4 +1,76 @@
-﻿@{
+﻿@using VidhayakApp.Core.Entities
+@model List<Item>
+
+@{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_AppUserLayout.cshtml";
 }
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convert | Export html Table to CSV & EXCEL File</title>
+    <link rel="stylesheet" type="text/css" href="~/css/UserDashboardTable.css">
+</head>
+
+<body class="body_img_user_table">
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h3>User Issues and Recommendation</h3>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                @*  <img src="~/dist/img/search.png" alt=""> *@
+            </div>
+            <div class="export__file">
+                <label for="export-file" class="export__file-btn" title="Export File"></label>
+                <input type="checkbox" id="export-file">
+                <div class="export__file-options">
+                    <label>Export As &nbsp; &#10140;</label>
+                    <label for="export-file" id="toPDF">PDF <img src="~/dist/img/pdf.png" alt=""></label>
+                    <label for="export-file" id="toJSON">JSON <img src="~/dist/img/json.png" alt=""></label>
+                    <label for="export-file" id="toCSV">CSV <img src="~/dist/img/csv.png" alt=""></label>
+                    <label for="export-file" id="toEXCEL">EXCEL <img src="~/dist/img/excel.png" alt=""></label>
+                </div>
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Mobile <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Address <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Type <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Sub Category <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Title <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Description <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Created On <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Updated At <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Status <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Note <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+               @*  <td>
+                    <a asp-controller="AppUser" asp-action="Edit" asp-route-id="@user.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
+                    <a asp-controller="AppUser" asp-action="Delete" asp-route-id="@user.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
+                    </td> *@
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="~/js/UserDashboardTable.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+

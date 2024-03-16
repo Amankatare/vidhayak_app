@@ -27,3 +27,6 @@ E:\vidhayak_app\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKern
 E:\vidhayak_app\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.genruntimeconfig.cache
 E:\vidhayak_app\VidhayakApp.SharedKernel\obj\Debug\net8.0\ref\VidhayakApp.SharedKernel.dll
 E:\vidhayak_app\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.csproj.AssemblyReference.cache
+E:\vidhayak_app\VidhayakApp.SharedKernel\bin\Debug\net8.0\VidhayakApp.Core.dll
+E:\vidhayak_app\VidhayakApp.SharedKernel\bin\Debug\net8.0\VidhayakApp.Core.pdb
+E:\vidhayak_app\VidhayakApp.SharedKernel\obj\Debug\net8.0\VidhayakApp.SharedKernel.csproj.CopyComplete
