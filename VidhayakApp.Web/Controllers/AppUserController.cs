@@ -5,6 +5,7 @@ using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.Web.ViewModels;
+using VidhayakApp.Web.ViewModels.AppUser;
 
 namespace VidhayakApp.Web.Controllers
 {
@@ -29,8 +30,38 @@ namespace VidhayakApp.Web.Controllers
         }
         public IActionResult Dashboard()
         {
-            return View();
+            var userDetailFormViewModels = _db.Users
+            .Join(_db.Items,
+                user => user.UserId,
+                item => item.UserId,
+                (user, item) => new { User = user, Item = item })
+                .Where(join => (join.Item.Type == ItemType.Complaint ||
+                            join.Item.Type == ItemType.Demand ||
+                            join.Item.Type == ItemType.Suggession) &&
+                            join.User.RoleId == 4 &&
+                            join.User.Ward == "garha")
+             .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+                 {
+                     UserId = join.User.UserId,
+                     UserName = join.User.UserName,
+                     Name = join.User.Name,
+                     Address = join.User.Address,
+                     MobileNumber = join.User.MobileNumber,
+                     Type = join.Item.Type,
+                     SubCategory = join.Item.SubCategoryTypeId,
+                     Title = join.Item.Title,
+                     Description = join.Item.Description,
+                     CreatedAt = join.Item.CreatedAt,
+                     UpdatedAt = join.Item.UpdatedAt,
+                     Status = join.Item.Status,
+                     Note = join.Item.Note
+                 })
+                 .ToList();
+
+            return View(userDetailFormViewModels);
+
         }
+
         public IActionResult Profile()
         {
             return View();

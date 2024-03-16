@@ -1,5 +1,5 @@
-﻿@using VidhayakApp.Core.Entities
-@model List<Item>
+﻿@using VidhayakApp.Web.ViewModels.AppUser
+@model IEnumerable<UserDetailAndFormDetailOnAppUserDashboardViewModel>
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -42,6 +42,7 @@
                 <thead>
                     <tr>
                         <th>Name <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>UserName <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Mobile <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Address <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Type <span class="icon-arrow">&UpArrow;</span></th>
@@ -56,10 +57,29 @@
                     </tr>
                 </thead>
                 <tbody>
-               @*  <td>
-                    <a asp-controller="AppUser" asp-action="Edit" asp-route-id="@user.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
-                    <a asp-controller="AppUser" asp-action="Delete" asp-route-id="@user.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
-                    </td> *@
+                    @foreach (var userDetail in Model)
+                    {
+                 
+                        <tr>
+                            <td>@userDetail.Name</td>
+                            <td>@userDetail.UserName</td>
+                            <td>@userDetail.MobileNumber</td>
+                            <td>@userDetail.Address</td>
+                            <td>@userDetail.Type</td>
+                            <td>@userDetail.SubCategory</td>
+                            <td>@userDetail.Title</td>
+                            <td>@userDetail.Description</td>
+                            <td>@userDetail.CreatedAt</td>
+                            <td>@userDetail.UpdatedAt</td>
+                            <td>@userDetail.Status</td>
+                            <td>@userDetail.Note</td>
+                            <td>
+                                <a asp-controller="AppUser" asp-action="Edit" asp-route-id="@userDetail.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
+                                <a asp-controller="AppUser" asp-action="Delete" asp-route-id="@userDetail.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
+                             </td>
+                        </tr>
+                    }
+              
                 </tbody>
             </table>
         </section>
