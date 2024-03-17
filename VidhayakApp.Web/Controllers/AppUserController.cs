@@ -62,17 +62,71 @@ namespace VidhayakApp.Web.Controllers
 
         }
 
-        public IActionResult Profile()
+       
+        public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard(int id)
         {
-            return View();
+            // Assuming 'id' represents the User ID
+            var viewModel = new UpdateOnUserIssuesByAppUser
+            {
+                UserId = id
+            };
+            return View(viewModel);
         }
 
-        public IActionResult Tickets()
+        [HttpPost]
+        public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard(int id, UpdateOnUserIssuesByAppUser model)
         {
-            return View();
+            //if (id != viewModel.UserId)
+            //{
+            //    return NotFound();
+            //}
+
+            if (ModelState.IsValid)
+            {
+                // Find items associated with the specified user ID
+                var itemsToUpdate = _db.Items
+                    .Where(item => item.UserId == id &&
+                                   (item.Type == ItemType.Complaint ||
+                                    item.Type == ItemType.Demand ||
+                                    item.Type == ItemType.Suggession))
+                    .ToList(); // Materialize the query to avoid multiple enumeration
+
+                // Update each item with the provided status, note, and updated at date
+                foreach (var item in itemsToUpdate)
+                {
+                    item.AppUserId = model.AppUserId;
+                    item.Status = model.Status;
+                    item.Note = model.Note;
+                    item.UpdatedAt = model.UpdatedAt ?? DateTime.Now;
+                }
+
+                // Save changes to the database
+                await _db.SaveChangesAsync();
+
+                return RedirectToAction("Dashboard", "AppUser"); // Redirect to dashboard or any other desired page
+            }
+            // If ModelState is not valid, return to the view with the model
+            return View(model);
         }
 
 
+            public IActionResult Profile()
+        {
+            return View();
+        }  
+
+           
+        
+        
+        
+        
+        
+        /// <summary>
+
+                    //below this the code is For user creation, updation and deletion and listing on AppUser Account
+
+            /// </summary>
+            /// <returns></returns>
 
         [HttpGet]
         public IActionResult ListUsers()
@@ -288,16 +342,6 @@ namespace VidhayakApp.Web.Controllers
 
             return View("ListUsers", "AppUser");
         }
-
-
-
-
-
-
-
-
-
-
 
     }
 }

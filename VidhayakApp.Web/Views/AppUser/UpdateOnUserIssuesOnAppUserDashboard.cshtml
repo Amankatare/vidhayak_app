@@ -1,0 +1,44 @@
+﻿@using VidhayakApp.Core.Entities
+@model VidhayakApp.Web.ViewModels.AppUser.UpdateOnUserIssuesByAppUser
+
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Update Status";
+    Layout = "~/Views/Shared/_AppUserLayout.cshtml";
+    // Access HttpContext
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    int? userId = context.Session.GetInt32("UserId");
+    if (userId.HasValue)
+    {
+        ViewData["AppUserId"] = userId.Value;
+    }
+}
+
+    <form method="post" asp-action="UpdateOnUserIssuesOnAppUserDashboard">
+        <div class="form-group">
+            <label asp-for="UserId" class="control-label"></label>
+            <input asp-for="UserId" class="form-control" readonly />
+        </div>
+        <div class="form-group">
+            <!-- Include AppUserId as a hidden input -->
+        <input asp-for="AppUserId" type="hidden" name="AppUserId" value="@context.Session.GetInt32("UserId")" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <select asp-for="Status" class="form-control">
+                <option value="@StatusType.Pending">Pending</option>
+                <option value="@StatusType.InProgress">In Progress</option>
+                <option value="@StatusType.Fixed">Fixed</option>
+                <option value="@StatusType.Completed">Completed</option>
+                <option value="@StatusType.Rejected">Rejected</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Note" class="control-label"></label>
+            <textarea asp-for="Note" class="form-control"></textarea>
+        </div>
+  
+        <button asp-action="UpdateOnUserIssuesOnAppUserDashboard" asp-controller="AppUser" type="submit" class="btn btn-primary">Save</button>
+    </form>

@@ -74,9 +74,8 @@
                             <td>@userDetail.Status</td>
                             <td>@userDetail.Note</td>
                             <td>
-                                <a asp-controller="AppUser" asp-action="Edit" asp-route-id="@userDetail.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
-                                <a asp-controller="AppUser" asp-action="Delete" asp-route-id="@userDetail.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
-                             </td>
+                                <a asp-controller="AppUser" asp-action="UpdateOnUserIssuesOnAppUserDashboard" asp-route-id="@userDetail.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
+                            </td>
                         </tr>
                     }
               

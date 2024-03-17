@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace VidhayakApp.Core.Entities
 {
@@ -20,7 +21,7 @@ namespace VidhayakApp.Core.Entities
         public StatusType Status { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+       
         public DateTime? UpdatedAt{ get; set; }
 
         public int? AppUserId { get; set; }
