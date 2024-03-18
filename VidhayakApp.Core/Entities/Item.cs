@@ -12,8 +12,8 @@ namespace VidhayakApp.Core.Entities
     public class Item
     {
         [Key]
-        [Column("Id")]
-        public int Id { get; set; }
+        [Column("ItemId")]
+        public int ItemId { get; set; }
         public SubCategoryType SubCategoryTypeId { get; set; }
        
         public string Title { get; set; }

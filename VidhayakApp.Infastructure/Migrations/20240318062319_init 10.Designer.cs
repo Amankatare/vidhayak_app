@@ -11,8 +11,8 @@ using VidhayakApp.Infrastructure.Data;
 namespace VidhayakApp.Infastructure.Migrations
 {
     [DbContext(typeof(VidhayakAppContext))]
-    [Migration("20240314105133_init 1")]
-    partial class init1
+    [Migration("20240318062319_init 10")]
+    partial class init10
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,9 +32,6 @@ namespace VidhayakApp.Infastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
 
@@ -42,14 +39,14 @@ namespace VidhayakApp.Infastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("CommunicationId");
 
                     b.HasIndex("ItemId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Communications");
                 });
@@ -66,7 +63,6 @@ namespace VidhayakApp.Infastructure.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("DepartmentId");
@@ -82,7 +78,6 @@ namespace VidhayakApp.Infastructure.Migrations
                         .HasColumnName("SchemeId");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("SchemeName")
@@ -96,10 +91,10 @@ namespace VidhayakApp.Infastructure.Migrations
 
             modelBuilder.Entity("VidhayakApp.Core.Entities.Item", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ItemId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("Id");
+                        .HasColumnName("ItemId");
 
                     b.Property<int?>("AppUserId")
                         .HasColumnType("int");
@@ -128,13 +123,12 @@ namespace VidhayakApp.Infastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ItemId");
 
                     b.HasIndex("UserId");
 
@@ -244,7 +238,7 @@ namespace VidhayakApp.Infastructure.Migrations
 
                     b.HasOne("VidhayakApp.Core.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

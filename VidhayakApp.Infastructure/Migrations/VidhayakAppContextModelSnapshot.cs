@@ -29,9 +29,6 @@ namespace VidhayakApp.Infastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
 
@@ -39,14 +36,14 @@ namespace VidhayakApp.Infastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("CommunicationId");
 
                     b.HasIndex("ItemId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Communications");
                 });
@@ -91,10 +88,10 @@ namespace VidhayakApp.Infastructure.Migrations
 
             modelBuilder.Entity("VidhayakApp.Core.Entities.Item", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ItemId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("Id");
+                        .HasColumnName("ItemId");
 
                     b.Property<int?>("AppUserId")
                         .HasColumnType("int");
@@ -128,7 +125,7 @@ namespace VidhayakApp.Infastructure.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ItemId");
 
                     b.HasIndex("UserId");
 
@@ -238,7 +235,7 @@ namespace VidhayakApp.Infastructure.Migrations
 
                     b.HasOne("VidhayakApp.Core.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

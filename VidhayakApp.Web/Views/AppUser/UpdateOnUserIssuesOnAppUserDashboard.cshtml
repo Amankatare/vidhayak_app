@@ -10,10 +10,7 @@
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
     int? userId = context.Session.GetInt32("UserId");
-    if (userId.HasValue)
-    {
-        ViewData["AppUserId"] = userId.Value;
-    }
+   
 }
 
     <form method="post" asp-action="UpdateOnUserIssuesOnAppUserDashboard">

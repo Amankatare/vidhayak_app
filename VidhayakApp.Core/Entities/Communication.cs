@@ -16,11 +16,14 @@ namespace VidhayakApp.Core.Entities
         public int CommunicationId { get; set; }
         public string Message { get; set; }
         public DateTime CreatedAt { get; set; }
-        
+
         //Foreign key
-        public int Id{ get; set; }
-        public Item Item { get; set; }  
-        public int UserID { get; set; }
+        [ForeignKey("ItemId")]
+        public int ItemId{ get; set; }
+        public Item Item { get; set; }
+
+        [ForeignKey("UserId")]
+        public int UserId { get; set; }
         public User User{ get; set; }
 
         
