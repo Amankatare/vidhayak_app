@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
+using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.SharedKernel.Utilities;
 using VidhayakApp.Web.ViewModels;
@@ -13,17 +14,19 @@ namespace VidhayakApp.Web.Controllers
     {
         private readonly VidhayakAppContext _db;
         private readonly IUserRepository _user;
+        private readonly IWardRepository _wardRepository;
         private readonly IUserService _userService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IRoleService _roleService;
 
-        public AdminController(VidhayakAppContext db, IUserRepository user, IUserService userService, IHttpContextAccessor httpContextAccessor, IRoleService roleService)
+        public AdminController(VidhayakAppContext db, IUserRepository user, IUserService userService, IHttpContextAccessor httpContextAccessor, IRoleService roleService, IWardRepository wardRepository)
         {
             _db = db;
             _user = user;
             _userService = userService;
             _httpContextAccessor = httpContextAccessor;
             _roleService = roleService;
+            _wardRepository = wardRepository;
         }
         public IActionResult Dashboard()
         {
@@ -76,17 +79,17 @@ namespace VidhayakApp.Web.Controllers
                 {
                     throw new ArgumentException(nameof(model.UserName), "UserName doesn't contain @");
                 }
-                else if (model.Ward == null)
-                {
-                    throw new ArgumentException(nameof(model.Ward), "Ward cannot contain numerical values");
-                }
+                
                 else
                 {
+                    var wardObject = await _wardRepository.GetByIdAsync(model.WardId);
+
                     var user = new User
                     {
                         Name = model.Name,
                         UserName = model.UserName,
-                        Ward = model.Ward,
+                        WardId = model.WardId,
+                        Ward = wardObject,
                         MobileNumber = model.MobileNumber,
                         Address = model.Address,
                         PasswordHash = "$2a$11$82IdIaryQRhzpZWv8lDeZOFUevkJpdPh2MBCwdioBzcH2qSYRv2Mi",

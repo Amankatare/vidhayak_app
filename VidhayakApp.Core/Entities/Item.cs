@@ -19,10 +19,11 @@ namespace VidhayakApp.Core.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public StatusType Status { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        
+        public DateTime CreatedAt { get; set; } = DateTime.Now;  
        
         public DateTime? UpdatedAt{ get; set; }
+        public string? ImagePath { get; set; }
+        public string? VideoPath { get; set; }
 
         public int? AppUserId { get; set; }
 

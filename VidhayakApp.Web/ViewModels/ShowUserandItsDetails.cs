@@ -7,9 +7,11 @@ namespace VidhayakApp.Web.ViewModels
             public IEnumerable<User> usersTable { get; set; }
             public IEnumerable<UserDetail> userDetailsTable { get; set; }
 
+            public IEnumerable<Ward> userWardTable { get; set; }
 
-        }
+
     }
+}
 
 
 

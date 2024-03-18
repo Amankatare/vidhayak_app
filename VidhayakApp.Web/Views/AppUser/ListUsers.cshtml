@@ -53,9 +53,9 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Ward</th>
                     <th>UserName</th>
                     <th>Address</th>
+                    <th>Ward</th>
                     <th>Phone</th>
                     <th>Education</th>
                     <th>AadharNumber</th>
@@ -69,13 +69,13 @@
                 @foreach (var user in Model.usersTable)
                 {
                     var userDetails = Model.userDetailsTable.FirstOrDefault(d => d.UserId == user.UserId);
+                    
 
                     <tr>
                         <td>@(user?.Name)</td>
-                        <td>@(user?.Ward ?? "N/A")</td>
                         <td>@(user?.UserName ?? "N/A")</td>
                         <td>@(user?.Address ?? "N/A")</td>
-                        <td>@(user?.Ward ?? "N/A")</td>
+                        <td>@(user?.WardId)</td>
                         <td>@(user?.MobileNumber ?? "N/A")</td>
                         <td>@(userDetails?.Education ?? "N/A")</td>
                         <td>@(userDetails?.AadharNumber ?? "N/A")</td>

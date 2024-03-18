@@ -7,5 +7,5 @@ public interface IUserDetailService
     Task UpdateAsync(UserDetail userDetail);
      Task<UserDetail> GetByUserIdAsync(int userId);
 
-
+    Task<UserDetail> GetUserDetailsByUserIdAsync(int userId);
 }

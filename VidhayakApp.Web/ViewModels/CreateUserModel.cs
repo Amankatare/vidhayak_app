@@ -13,7 +13,7 @@ namespace VidhayakApp.Web.ViewModels
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Ward is required")]
-        public string Ward { get; set; }
+        public int WardId { get; set; }
 
         [Required(ErrorMessage = "Mobile Number is required")]
         [Phone(ErrorMessage = "Invalid phone number")]

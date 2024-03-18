@@ -13,7 +13,8 @@ namespace VidhayakApp.Web.ViewModels
         public string UserName { get; set; }
         public DateTime Dob { get; set; }
         public string Address { get; set; }
-        public string Ward { get; set; }
+        public int WardId { get; set; }
+        public Ward Ward { get; set; }
         public string MobileNumber { get; set; }
 
         public string PasswordHash { get; set; }

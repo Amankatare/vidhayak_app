@@ -25,14 +25,16 @@ namespace VidhayakApp.Web.Controllers
         //private readonly RoleBasedAuthenticationMiddleware _middleware;
         private readonly IRoleRepository _roleRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IWardRepository _wardRepository;
 
-        public AccountController(IUserService userService, IConfiguration configuration, IRoleRepository roleRepository, IUserRepository userRepository)
+        public AccountController(IUserService userService, IConfiguration configuration, IRoleRepository roleRepository, IUserRepository userRepository,IWardRepository wardRepository)
         {
             _userService = userService;
             _configuration = configuration;
 
             _roleRepository = roleRepository;
             _userRepository = userRepository;
+            _wardRepository = wardRepository;
         }
 
         [HttpPost]
@@ -43,17 +45,18 @@ namespace VidhayakApp.Web.Controllers
                 // Map ViewModel to Domain Model and call Application layer to register user
                 // Return to login page or show an error
 
+                var wardObject = await _wardRepository.GetByIdAsync(model.WardId);
                 User user = new User
                 {
                     UserName = model.UserName,
                     PasswordHash = model.Password,
-
                     MobileNumber = model.MobileNumber,
                     Name = model.Name,
                     Dob = model.Dob,
                     Address = model.Address,
                     RoleId = 4,
-                    Ward = model.Ward
+                    WardId = model.WardId,
+                    Ward = wardObject
                 };
 
                 //we don't want this details from every user so

@@ -10,6 +10,7 @@ namespace VidhayakApp.Infrastructure.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Ward> Wards { get; set; }
         public DbSet<UserDetail> UserDetails {  get; set; }
 
         public DbSet<Role> Roles { get; set; }
@@ -38,6 +39,7 @@ namespace VidhayakApp.Infrastructure.Data
                 entity.Property(e => e.UserName).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.PasswordHash).IsRequired();
                 //entity.Property(e => e.Password).IsRequired();
+                entity.Ignore(e => e.Ward);
             });
             /*
                 modelBuilder.Entity<UserDetail>(entity =>

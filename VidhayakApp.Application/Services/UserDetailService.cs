@@ -27,6 +27,13 @@ public class UserDetailService : IUserDetailService
         await _userDetailRepository.UpdateAsync(userDetail);
    
     }
+    public async Task<UserDetail> GetUserDetailsByUserIdAsync(int id)
+    {
+        return await _db.UserDetails
+                 .Include(ud => ud.User) // Include User navigation property if needed
+                 .FirstOrDefaultAsync(ud => ud.UserId == id);
+
+    }
 
     // Add other methods as needed
 }

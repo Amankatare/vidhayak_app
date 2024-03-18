@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
+using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.Web.ViewModels;
 using VidhayakApp.Web.ViewModels.AppUser;
@@ -16,20 +17,26 @@ namespace VidhayakApp.Web.Controllers
         private readonly IUserRepository _user;
         private readonly IUserDetailRepository _userDetails;
         private readonly IUserService _userService;
-        private readonly IUserDetailService _userdetailService;
+        private readonly IUserDetailService _userDetailService;
+        private readonly IWardRepository _wardRepository;
 
 
-
-        public AppUserController(VidhayakAppContext db, IUserRepository user, IUserService userService, IUserDetailRepository userDetails, IUserDetailService userdetailService)
+        public AppUserController(VidhayakAppContext db, IUserRepository user, IUserService userService, IUserDetailRepository userDetails, IUserDetailService userdetailService, IWardRepository wardRepository)
         {
             _db = db;
             _user = user;
             _userService = userService;
-            _userDetails= userDetails;
-            _userdetailService= userdetailService;
+            _userDetails = userDetails;
+            _userDetailService = userdetailService;
+            _wardRepository = wardRepository;
         }
-        public IActionResult Dashboard()
-        {
+        //public IActionResult Dashboard(UserDetailAndFormDetailOnAppUserDashboardViewModel model)
+        //{ var viewmodel = new UserDetailAndFormDetailOnAppUserDashboardViewModel
+        //    return View();
+        //}
+        
+            public IActionResult Dashboard()
+            {
             var userDetailFormViewModels = _db.Users
             .Join(_db.Items,
                 user => user.UserId,
@@ -39,28 +46,28 @@ namespace VidhayakApp.Web.Controllers
                             join.Item.Type == ItemType.Demand ||
                             join.Item.Type == ItemType.Suggession) &&
                             join.User.RoleId == 4 &&
-                            join.User.Ward == "garha")
+                            join.User.WardId == 1)
              .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
-                 {
-                     UserId = join.User.UserId,
-                     UserName = join.User.UserName,
-                     Name = join.User.Name,
-                     Address = join.User.Address,
-                     MobileNumber = join.User.MobileNumber,
-                     Type = join.Item.Type,
-                     SubCategory = join.Item.SubCategoryTypeId,
-                     Title = join.Item.Title,
-                     Description = join.Item.Description,
-                     CreatedAt = join.Item.CreatedAt,
-                     UpdatedAt = join.Item.UpdatedAt,
-                     Status = join.Item.Status,
-                     Note = join.Item.Note
-                 })
+             {
+                 UserId = join.User.UserId,
+                 UserName = join.User.UserName,
+                 Name = join.User.Name,
+                 Address = join.User.Address,
+                 MobileNumber = join.User.MobileNumber,
+                 Type = join.Item.Type,
+                 SubCategory = join.Item.SubCategoryTypeId,
+                 Title = join.Item.Title,
+                 Description = join.Item.Description,
+                 CreatedAt = join.Item.CreatedAt,
+                 UpdatedAt = join.Item.UpdatedAt,
+                 Status = join.Item.Status,
+                 Note = join.Item.Note
+             })
                  .ToList();
 
             return View(userDetailFormViewModels);
-
-        }
+           
+            }
 
        
         public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard(int id)
@@ -132,12 +139,13 @@ namespace VidhayakApp.Web.Controllers
         public IActionResult ListUsers()
         {
             // Retrieve all users from the Users table
-         
+
             var viewModel = new ShowUserandItsDetails
             {
-                usersTable = _db.Users.Where(s => s.RoleId == 4).ToList().ToList(),
+                usersTable = _db.Users.Where(s => s.RoleId == 4).ToList(),
                 userDetailsTable = _db.UserDetails.ToList(),
-                // Retrieve data for additional tables if needed
+                userWardTable = _db.Wards.ToList() // Populate userWardTable
+                                                   // Retrieve data for additional tables if needed
             };
 
             return View(viewModel);
@@ -155,6 +163,7 @@ namespace VidhayakApp.Web.Controllers
         [Route("AppUser/CreateUser")]
         public async Task<ActionResult<User>> CreateUser(CreateNormalUserModel model)
         {
+
             if (ModelState.IsValid)
             {
                 if (model.Name == null)
@@ -166,17 +175,15 @@ namespace VidhayakApp.Web.Controllers
                 {
                     throw new ArgumentException(nameof(model.UserName), "UserName doesn't contain @");
                 }
-                else if (model.Ward == null)
-                {
-                    throw new ArgumentException(nameof(model.Ward), "Ward cannot contain numerical values");
-                }
                 else
                 {
+                    var wardObject = await _wardRepository.GetByIdAsync(model.WardId);
+
                     var user = new User
                     {
                         Name = model.Name,
                         UserName = model.UserName,
-                        Ward = model.Ward,
+                        Ward = wardObject,
                         MobileNumber = model.MobileNumber,
                         Address = model.Address,
                         PasswordHash = "$2a$11$82IdIaryQRhzpZWv8lDeZOFUevkJpdPh2MBCwdioBzcH2qSYRv2Mi",
@@ -210,34 +217,28 @@ namespace VidhayakApp.Web.Controllers
         }
 
 
+        [HttpGet]
         public async Task<ActionResult> Delete(int id)
         {
-            var userRecord = await _user.GetByIdAsync(id);
-
-            if (userRecord != null)
-            {
-                await DeleteAppUser(id);
-           
-            }
-            else
+            var userToDelete = await _user.GetByIdAsync(id);
+            if (userToDelete == null)
             {
                 TempData["ErrorMessage"] = "User not found.";
+                return RedirectToAction("ListUsers", "AppUser");
             }
-            return RedirectToAction("ListUsers");
+
+            return View(userToDelete);
         }
 
         [HttpPost]
-        public async Task<ActionResult> DeleteAppUser(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             var userToDelete = await _user.GetByIdAsync(id);
-            var userDetailToDelete = await _db.UserDetails.FindAsync(id);
+            var userDetailToDelete = await _userDetailService.GetUserDetailsByUserIdAsync(id);
 
             if (userToDelete != null && userDetailToDelete != null)
             {
-             
                 await _userDetails.DeleteAsync(userDetailToDelete);
-
-            
                 await _user.DeleteAsync(userToDelete);
                 TempData["Message"] = "User deleted successfully.";
             }
@@ -246,41 +247,45 @@ namespace VidhayakApp.Web.Controllers
                 TempData["ErrorMessage"] = "User not found.";
             }
 
-            return RedirectToAction("ListUsers");
-    }
+            return RedirectToAction("ListUsers", "AppUser");
+        }
+    
 
-        
 
-        public async Task<ActionResult> Edit(int id)
+
+
+    public async Task<ActionResult> Edit(int id)
         { 
-            var user = _db.Users.Find(id);
-            var userDetails = _db.UserDetails.FirstOrDefault(d => d.UserId == id);
+            var user = await _user.GetByIdAsync(id);
+
+            var userDetails = await _userDetailService.GetUserDetailsByUserIdAsync(id);
 
           
-            if (user == null || userDetails == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
+            var wardObject = await _wardRepository.GetByIdAsync(user.WardId);
             var viewModel = new UserWithDetailsViewModel
             {
                 UserName = user.UserName,
                 Name = user.Name,
-              
                 Dob = user.Dob,
                 Address = user.Address,
-                Ward = user.Ward,
+                WardId = user.WardId,
+                Ward = wardObject,
                 MobileNumber = user.MobileNumber,
                 PasswordHash = user.PasswordHash,
                 RoleId = 4,
 
                 // Update properties in userDetails entity
-                Education = userDetails.Education,
+                Education = userDetails.Education, // Remove extra dot
                 AadharNumber = userDetails.AadharNumber,
                 SamagraID = userDetails.SamagraID,
                 VoterID = userDetails.VoterID,
                 Caste = userDetails.Caste,
-         
+
             };
 
             return View(viewModel);
@@ -294,8 +299,8 @@ namespace VidhayakApp.Web.Controllers
             if (userToUpdate != null)
             {
                 // Get user details based on the user ID
-                var userDetailsToUpdate = await _userdetailService.GetByUserIdAsync(userToUpdate.UserId);
-
+                var userDetailsToUpdate = await _userDetailService.GetByUserIdAsync(userToUpdate.UserId);
+                var wardObject = await _wardRepository.GetByIdAsync(viewModel.WardId);
                 // If user details exist, proceed with the update
                 if (userDetailsToUpdate != null)
                 {
@@ -303,7 +308,8 @@ namespace VidhayakApp.Web.Controllers
                     userToUpdate.UserName = viewModel.UserName;
                     userToUpdate.Dob = viewModel.Dob;
                     userToUpdate.Address = viewModel.Address;
-                    userToUpdate.Ward = viewModel.Ward;
+                    userToUpdate.WardId = viewModel.WardId;
+                    userToUpdate.Ward = wardObject;
                     userToUpdate.MobileNumber = viewModel.MobileNumber;
                     userToUpdate.PasswordHash = "$2a$11$82IdIaryQRhzpZWv8lDeZOFUevkJpdPh2MBCwdioBzcH2qSYRv2Mi";
                     userToUpdate.RoleId = 4;

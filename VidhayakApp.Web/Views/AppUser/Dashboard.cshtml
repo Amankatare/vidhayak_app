@@ -61,18 +61,18 @@
                     {
                  
                         <tr>
-                            <td>@userDetail.Name</td>
-                            <td>@userDetail.UserName</td>
-                            <td>@userDetail.MobileNumber</td>
-                            <td>@userDetail.Address</td>
-                            <td>@userDetail.Type</td>
-                            <td>@userDetail.SubCategory</td>
-                            <td>@userDetail.Title</td>
-                            <td>@userDetail.Description</td>
-                            <td>@userDetail.CreatedAt</td>
-                            <td>@userDetail.UpdatedAt</td>
-                            <td>@userDetail.Status</td>
-                            <td>@userDetail.Note</td>
+                            <td>@(userDetail.Name ?? "")</td>
+                            <td>@(userDetail.UserName ?? "")</td>
+                            <td>@(userDetail.MobileNumber ?? "")</td>
+                            <td>@(userDetail.Address ?? "")</td>
+                            <td>@(userDetail.Type )</td>
+                            <td>@(userDetail.SubCategory)</td>
+                            <td>@(userDetail.Title ?? "")</td>
+                            <td>@(userDetail.Description ?? "")</td>
+                            <td>@(userDetail.CreatedAt)</td>
+                            @* <td>@(userDetail.UpdatedAt.HasValue ? userDetail.UpdatedAt.Value.ToString("MM/dd/yyyy") : "")</td>
+                             *@<td>@(userDetail.Status)</td>
+                            <td>@(userDetail.Note ?? "")</td>
                             <td>
                                 <a asp-controller="AppUser" asp-action="UpdateOnUserIssuesOnAppUserDashboard" asp-route-id="@userDetail.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
                             </td>
