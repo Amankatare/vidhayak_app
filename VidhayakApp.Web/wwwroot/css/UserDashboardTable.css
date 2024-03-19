@@ -17,11 +17,12 @@
 
 
 body {
-    min-height: 100vh;
-    background: url(/dist/img/html_table.jpg) center / cover;
-    display: flex;
+
+   /* min-height: 100vdh;*/
+    
+  /*  display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
 }
 
 main.table {

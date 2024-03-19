@@ -20,12 +20,15 @@ body {
     margin-bottom: 60px;
 }
 .body_img_user_table {
-    min-height: 100vh;
     background: url(/dist/img/html_table.jpg) center / cover;
-    display: flex;
+}
+   /* min-height: 100vh;
+*/    /*display: flex;
     justify-content: center;
     align-items: center;
-}
+       */
+    /*background: url(/dist/img/html_table.jpg) center / cover;*/
+/*}*/
 
 .endlast {
     justify-content: end;  !important;
