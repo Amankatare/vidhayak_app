@@ -20,6 +20,7 @@ namespace VidhayakApp.Web.ViewModels
 
         [Required(ErrorMessage = "Username is required")]
         public string UserName { get; set; }
+        public int VoterCount { get; set; }
 
 
         public string? Education { get; set; }

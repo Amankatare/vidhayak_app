@@ -23,7 +23,6 @@ namespace VidhayakApp.Core.Entities
        
         public DateTime? UpdatedAt{ get; set; }
         public string? ImagePath { get; set; }
-        public string? VideoPath { get; set; }
 
         public int? AppUserId { get; set; }
 

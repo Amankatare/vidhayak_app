@@ -69,7 +69,72 @@ namespace VidhayakApp.Web.Controllers
            
             }
 
-       
+        public IActionResult Complaint()
+        {
+            var userDetailFormViewModels = _db.Users
+            .Join(_db.Items,
+                user => user.UserId,
+                item => item.UserId,
+                (user, item) => new { User = user, Item = item })
+                .Where(join => (join.Item.Type == ItemType.Complaint) &&
+                            join.User.RoleId == 4 &&
+                            join.User.WardId == 1)
+             .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+             {
+                 UserId = join.User.UserId,
+                 UserName = join.User.UserName,
+                 Name = join.User.Name,
+                 Address = join.User.Address,
+                 MobileNumber = join.User.MobileNumber,
+                 Type = join.Item.Type,
+                 SubCategory = join.Item.SubCategoryTypeId,
+                 Title = join.Item.Title,
+                 Description = join.Item.Description,
+                 CreatedAt = join.Item.CreatedAt,
+                 UpdatedAt = join.Item.UpdatedAt,
+                 Status = join.Item.Status,
+                 Note = join.Item.Note
+             })
+                 .ToList();
+
+            return View(userDetailFormViewModels);
+
+        }
+        public IActionResult Demand()
+        {
+            var userDetailFormViewModels = _db.Users
+            .Join(_db.Items,
+                user => user.UserId,
+                item => item.UserId,
+                (user, item) => new { User = user, Item = item })
+                .Where(join => (
+                            join.Item.Type == ItemType.Demand) &&
+                            join.User.RoleId == 4 &&
+                            join.User.WardId == 1)
+             .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+             {
+                 UserId = join.User.UserId,
+                 UserName = join.User.UserName,
+                 Name = join.User.Name,
+                 Address = join.User.Address,
+                 MobileNumber = join.User.MobileNumber,
+                 Type = join.Item.Type,
+                 SubCategory = join.Item.SubCategoryTypeId,
+                 Title = join.Item.Title,
+                 Description = join.Item.Description,
+                 CreatedAt = join.Item.CreatedAt,
+                 UpdatedAt = join.Item.UpdatedAt,
+                 Status = join.Item.Status,
+                 Note = join.Item.Note
+             })
+                 .ToList();
+
+            return View(userDetailFormViewModels);
+
+        }
+
+
+
         public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard(int id)
         {
             // Assuming 'id' represents the User ID
@@ -197,6 +262,7 @@ namespace VidhayakApp.Web.Controllers
                         SamagraID = model.SamagraID,
                         VoterID = model.VoterID,
                         Caste = model.Caste,
+                        VoterCount = model.VoterCount,
                         UserId = user.UserId // Set the UserId here
                     };
 
@@ -250,10 +316,6 @@ namespace VidhayakApp.Web.Controllers
             return RedirectToAction("ListUsers", "AppUser");
         }
     
-
-
-
-
     public async Task<ActionResult> Edit(int id)
         { 
             var user = await _user.GetByIdAsync(id);
@@ -284,6 +346,7 @@ namespace VidhayakApp.Web.Controllers
                 AadharNumber = userDetails.AadharNumber,
                 SamagraID = userDetails.SamagraID,
                 VoterID = userDetails.VoterID,
+                VoterCount = userDetails.VoterCount,
                 Caste = userDetails.Caste,
 
             };
@@ -318,6 +381,7 @@ namespace VidhayakApp.Web.Controllers
                     userDetailsToUpdate.AadharNumber = viewModel.AadharNumber;
                     userDetailsToUpdate.SamagraID = viewModel.SamagraID;
                     userDetailsToUpdate.VoterID = viewModel.VoterID;
+                    userDetailsToUpdate.VoterCount = viewModel.VoterCount;
                     userDetailsToUpdate.Caste = viewModel.Caste;
 
                     // Perform updates

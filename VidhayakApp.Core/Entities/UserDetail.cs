@@ -16,8 +16,11 @@ namespace VidhayakApp.Core.Entities
         public string? VoterID { get; set; }
         public string? Caste { get; set; }
 
+        public int? VoterCount { get; set; }
+        
         // Foreign key
         public int UserId { get; set; }
         public User User { get; set; }
+
     }
 }

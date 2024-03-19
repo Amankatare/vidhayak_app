@@ -153,6 +153,11 @@
                                 </select>
                             </div>
 
+                <div class="col-md-6">
+                    <label asp-for="VoterCount" class="form-label">Total number of voters in the house</label>
+                                <input asp-for="VoterCount" class="form-control" id="VoterID" placeholder="Enter Total number of voters in the house...">
+                </div>
+
                 <div class="col-12 m-4">
                        <button asp-action="CreateUser" asp-controller="AppUser" class="btn btn-primary">Submit</button>
                 </div>

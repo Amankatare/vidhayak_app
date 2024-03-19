@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VidhayakApp.Infrastructure.Data;
 
@@ -10,9 +11,11 @@ using VidhayakApp.Infrastructure.Data;
 namespace VidhayakApp.Infastructure.Migrations
 {
     [DbContext(typeof(VidhayakAppContext))]
-    partial class VidhayakAppContextModelSnapshot : ModelSnapshot
+    [Migration("20240318152521_init 12")]
+    partial class init12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,6 +131,9 @@ namespace VidhayakApp.Infastructure.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("VideoPath")
+                        .HasColumnType("longtext");
+
                     b.HasKey("ItemId");
 
                     b.HasIndex("UserId");
@@ -215,9 +221,6 @@ namespace VidhayakApp.Infastructure.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("VoterCount")
                         .HasColumnType("int");
 
                     b.Property<string>("VoterID")

@@ -6,6 +6,10 @@
     Layout = "~/Views/Shared/_AppUserLayout.cshtml";
 }
   
+
 <form asp-action="DeleteConfirmed" asp-controller="AppUser" id="deleteForm" method="post">
     <input type="hidden" name="id" value="@Model.UserId" />
 </form>
+
+
+

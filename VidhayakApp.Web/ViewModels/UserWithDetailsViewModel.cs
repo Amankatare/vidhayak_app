@@ -27,6 +27,7 @@ namespace VidhayakApp.Web.ViewModels
         public string Education { get; set; }
         public string AadharNumber { get; set; }
         public string SamagraID { get; set; }
+        public int? VoterCount { get; set; }
         public string VoterID { get; set; }
         public string Caste { get; set; }
     }

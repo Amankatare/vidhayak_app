@@ -22,5 +22,7 @@ namespace VidhayakApp.Web.ViewModels
         public int UserId { get; set; }
         public int DepartmentId { get; set; }
         public int SchemeId { get; set; }
+
+        public IFormFile? ImageFile { get; set; }  // image path
     }
 }
