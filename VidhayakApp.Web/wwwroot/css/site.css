@@ -23,7 +23,7 @@ body {
     background-image: url("~/dist/img/backgroundImage.jpg");
 }
 .body_img_user_table {
-    background: url(/dist/img/html_table.jpg) center / cover;
+    background: url(~/dist/img/htmltable2.jpg) center / cover;
 }
    /* min-height: 100vh;
 */    /*display: flex;
@@ -945,4 +945,8 @@ body {
         font-weight: normal;
     }	
 
+}
+
+.sidebar-height{
+    height: 100%; !important;
 }

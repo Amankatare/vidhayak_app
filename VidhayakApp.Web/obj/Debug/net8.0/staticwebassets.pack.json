@@ -469,8 +469,16 @@
       "PackagePath": "staticwebassets\\css\\UserDashboardTable.css"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\main.css",
+      "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\util.css",
+      "PackagePath": "staticwebassets\\css\\util.css"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\css\\adminlte.css",
@@ -661,12 +669,20 @@
       "PackagePath": "staticwebassets\\dist\\img\\export.png"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\favicon.ico",
+      "PackagePath": "staticwebassets\\dist\\img\\favicon.ico"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\html_table.jpg",
       "PackagePath": "staticwebassets\\dist\\img\\html_table.jpg"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\icons.png",
       "PackagePath": "staticwebassets\\dist\\img\\icons.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\img-01.png",
+      "PackagePath": "staticwebassets\\dist\\img\\img-01.png"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\json.png",
@@ -1673,6 +1689,18 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\popper.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\popper.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\popper.min.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\tooltip.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\tooltip.js"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
@@ -1975,6 +2003,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\pages\\widgets.html",
       "PackagePath": "staticwebassets\\pages\\widgets.html"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\animate\\animate.css",
+      "PackagePath": "staticwebassets\\plugins\\animate\\animate.css"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\bootstrap-colorpicker\\css\\bootstrap-colorpicker.css",
@@ -3215,6 +3247,14 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\codemirror\\theme\\zenburn.css",
       "PackagePath": "staticwebassets\\plugins\\codemirror\\theme\\zenburn.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\css-hamburgers\\hamburgers.css",
+      "PackagePath": "staticwebassets\\plugins\\css-hamburgers\\hamburgers.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\css-hamburgers\\hamburgers.min.css",
+      "PackagePath": "staticwebassets\\plugins\\css-hamburgers\\hamburgers.min.css"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\datatables-autofill\\css\\autoFill.bootstrap4.css",
@@ -7065,6 +7105,10 @@
       "PackagePath": "staticwebassets\\plugins\\jquery-validation\\localization\\methods_pt.min.js"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\jquery\\jquery-3.2.1.min.js",
+      "PackagePath": "staticwebassets\\plugins\\jquery\\jquery-3.2.1.min.js"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\jquery\\jquery.js",
       "PackagePath": "staticwebassets\\plugins\\jquery\\jquery.js"
     },
@@ -8925,6 +8969,22 @@
       "PackagePath": "staticwebassets\\plugins\\select2\\js\\select2.min.js"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\select2\\select2.css",
+      "PackagePath": "staticwebassets\\plugins\\select2\\select2.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\select2\\select2.js",
+      "PackagePath": "staticwebassets\\plugins\\select2\\select2.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\select2\\select2.min.css",
+      "PackagePath": "staticwebassets\\plugins\\select2\\select2.min.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\select2\\select2.min.js",
+      "PackagePath": "staticwebassets\\plugins\\select2\\select2.min.js"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\sparklines\\sparkline.js",
       "PackagePath": "staticwebassets\\plugins\\sparklines\\sparkline.js"
     },
@@ -9875,6 +9935,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\tempusdominus-bootstrap-4\\js\\tempusdominus-bootstrap-4.min.js",
       "PackagePath": "staticwebassets\\plugins\\tempusdominus-bootstrap-4\\js\\tempusdominus-bootstrap-4.min.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\tilt\\tilt.jquery.min.js",
+      "PackagePath": "staticwebassets\\plugins\\tilt\\tilt.jquery.min.js"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\plugins\\toastr\\toastr.css",

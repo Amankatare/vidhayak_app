@@ -39,31 +39,22 @@
                     </div>
                     <div class="form-row">
                         <input asp-for="Password" class="form-control" id="Password" placeholder="Password">
-                        @* <span class="select-btn">
-                        <i class="zmdi zmdi-chevron-down"></i>
-                        </span> *@
+                        
+                        </div>
                         <div class="form-row">
                              <input asp-for="ConfirmPassword" class="form-control" id="ConfirmPassword" placeholder="Retype password">
-                         @* <span class="select-btn">
-                            <i class="zmdi zmdi-chevron-down"></i>
-                            </span> *@
+                       
+                        </div>
                             <div class="form-row">
                                 <input asp-for=" Dob" asp-controller="Account" class="form-control" id=" Dob" aria-describedby="DobHelp">
-                                @* <span class="select-btn">
-                                <i class="zmdi zmdi-chevron-down"></i>
-                                </span> *@
                             </div>
                             <div class="form-row">
                                 <input asp-for="MobileNumber" class="form-control" id="MobileNumber" aria-describedby="MobHelp" placeholder="Enter Mobile...">
-                                @* <span class="select-btn">
-                                <i class="zmdi zmdi-chevron-down"></i>
-                                </span> *@
+                                
                             </div>
                             <div class="form-row">
                                 <input asp-for="Address" asp-controller="Account" class="form-control" id="Address " aria-describedby="AddressHelp" placeholder="Enter Address...">
-                                @* <span class="select-btn">
-                                <i class="zmdi zmdi-chevron-down"></i>
-                                </span> *@
+                               
                             </div>
                             <div class="form-row">
                                 <select asp-for="WardId" id="Ward" name="WardId">
@@ -153,16 +144,9 @@
                                     <i class="zmdi zmdi-chevron-down"></i>
                                 </span>
                             </div>
-                        </div>
-                    </div>
-				
-					
-					<div class="form-group">
-						
-						
-					</div>
+                    
 				</div>
-				 <div class="form-right">
+                <div class="form-right new-alignment">
                     @*	<h2>Additional Details</h2>
 					@* <div class="form-row">
                         <input asp-for="Address" class="form-control" id="Address" placeholder="1234 Main St">
@@ -194,13 +178,17 @@
 					<div class="form-row-last">
                         <input asp-action="Register" asp-controller="Account" type="submit" class="register" value="Register" id="registerpagebuttonid">
 
-                       @*  <input type="submit" name="register" class="register" value="Register Badge"> *@
 					</div>
+
+                    <div class="form-row-last">
+                        <a asp-action="Login" asp-controller="Account" class="my-btn" id="loginpagebuttonid">Login</a>
+                    </div>
 				</div>
+               
 			</form>
 		</div>
 	</div>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 </html>
 
 

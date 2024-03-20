@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Mvc;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infrastructure.Data;
@@ -43,15 +44,22 @@ namespace VidhayakApp.Web.Controllers.Form
 
             if (model.ImageFile != null && model.ImageFile.Length > 0)
             {
-
+                 
                 //Generate unique Filename for image
 
                 string uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
 
+                // Specify the path of the folder you want to check/create
+                string folderPath = "~/wwwroot/uploads/complaints";
 
-                // Combine the unique filename with the path to the image folder
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
 
-                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", uniqueFileName);
+                    // Combine the unique filename with the path to the image folder
+
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads","complaints", uniqueFileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {

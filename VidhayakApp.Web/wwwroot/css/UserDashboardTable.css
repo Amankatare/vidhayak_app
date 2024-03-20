@@ -300,3 +300,7 @@ thead th.active, tbody td.active {
         width: 2rem;
         height: auto;
     }
+
+. body_img_user_table {
+    background: url(~/dist/img/htmltable2.jpg) center / cover;
+}
