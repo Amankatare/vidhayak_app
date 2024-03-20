@@ -36,6 +36,14 @@ namespace VidhayakApp.Web.ViewModels
         public string ConfirmPassword { get; set; }
 
         // Optional Fields
-     
+
+        public int VoterCount { get; set; }
+
+        public string? Education { get; set; }
+        public string? AadharNumber { get; set; }
+        public string? SamagraID { get; set; }
+        public string? VoterID { get; set; }
+        public string? Caste { get; set; }
+
     }
 }

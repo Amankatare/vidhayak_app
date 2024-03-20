@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\Register.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\build\config\postcss.config.js" />
     <None Include="wwwroot\build\config\rollup.config.js" />
     <None Include="wwwroot\build\js\AdminLTE.js" />

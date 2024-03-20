@@ -25,9 +25,11 @@ namespace VidhayakApp.Web.Controllers
         //private readonly RoleBasedAuthenticationMiddleware _middleware;
         private readonly IRoleRepository _roleRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IUserDetailRepository _userDetailRepository;
+        private readonly IUserDetailService _userDetailService;
         private readonly IWardRepository _wardRepository;
 
-        public AccountController(IUserService userService, IConfiguration configuration, IRoleRepository roleRepository, IUserRepository userRepository,IWardRepository wardRepository)
+        public AccountController(IUserService userService, IConfiguration configuration, IRoleRepository roleRepository, IUserRepository userRepository,IWardRepository wardRepository, IUserDetailRepository userDetailRepository, IUserDetailService userDetailService)
         {
             _userService = userService;
             _configuration = configuration;
@@ -35,6 +37,8 @@ namespace VidhayakApp.Web.Controllers
             _roleRepository = roleRepository;
             _userRepository = userRepository;
             _wardRepository = wardRepository;
+            _userDetailService = userDetailService;
+            _userDetailRepository = userDetailRepository;
         }
 
         [HttpPost]
@@ -56,24 +60,14 @@ namespace VidhayakApp.Web.Controllers
                     Address = model.Address,
                     RoleId = 4,
                     WardId = model.WardId,
-                    Ward = wardObject
+                    Ward = wardObject,
                 };
 
-                //we don't want this details from every user so
-                //we can check if user filled this detail or not 
-                //like Admin and AppUser might  not fill all these details
-                /*
-                                if (!string.IsNullOrEmpty(model.Education)) user.Education = model.Education;
-                                if (!string.IsNullOrEmpty(model.AadharNumber)) user.AadharNumber = model.AadharNumber;
-                                if (!string.IsNullOrEmpty(model.Caste)) user.Caste = model.Caste;
-                                if (!string.IsNullOrEmpty(model.SamagraID)) user.SamagraID = model.SamagraID;
-                                if (!string.IsNullOrEmpty(model.VoterID)) user.VoterID = model.VoterID;
-                */
                 var registerUser = await _userService.RegisterUserAsync(user);
-
+                
                 // if user is successfullly registered then redirected to account 
 
-                if (registerUser) return RedirectToAction("Successfull", "Account");
+                if (registerUser != false) return RedirectToAction("Successfull", "Account");
 
                 else return RedirectToAction("Unsuccessfull", "Account");
 
@@ -104,17 +98,21 @@ namespace VidhayakApp.Web.Controllers
 
                     var user = await _userRepository.GetByUsernameAsync(AuthenticUser.UserName);
 
-                    ViewData["UserId"] = user.UserId;
-                    ViewData["UserName"] = user.UserName;
-                    ViewData["UserRoleName"] = user.Role.RoleName;
+                   
 
                     HttpContext.Session.SetInt32("UserId", user.UserId);
                     HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("Name", user.Name);
                     HttpContext.Session.SetInt32("RoleId", user.RoleId);
                     HttpContext.Session.SetString("RoleName", user.Role.RoleName);
-                    
-                    ViewData["RoleId"] = user.RoleId;
+
+                Console.WriteLine(HttpContext.Session.GetInt32("UserId")) ;
+                Console.WriteLine(HttpContext.Session.GetString("UserName"));
+                Console.WriteLine(HttpContext.Session.GetString("Name"));
+                Console.WriteLine(HttpContext.Session.GetInt32("RoleId"));
+                Console.WriteLine(HttpContext.Session.GetString("RoleName"));
+
+                ViewData["RoleId"] = user.RoleId;
                     var role = user.Role.RoleName;
 
                     var ss = HttpContext.Session.GetString("UserName");

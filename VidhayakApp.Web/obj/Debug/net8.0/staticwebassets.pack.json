@@ -461,6 +461,10 @@
       "PackagePath": "staticwebassets\\build\\scss\\plugins\\_toastr.scss"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\Register.css",
+      "PackagePath": "staticwebassets\\css\\Register.css"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\UserDashboardTable.css",
       "PackagePath": "staticwebassets\\css\\UserDashboardTable.css"
     },
@@ -603,6 +607,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\avatar5.png",
       "PackagePath": "staticwebassets\\dist\\img\\avatar5.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\backgroundImage.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\backgroundImage.jpg"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\boxed-bg.jpg",
@@ -1467,6 +1475,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\DepartmentSchemeDisable.js",
       "PackagePath": "staticwebassets\\js\\DepartmentSchemeDisable.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\Register.js",
+      "PackagePath": "staticwebassets\\js\\Register.js"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\UserDashboardTable.js",

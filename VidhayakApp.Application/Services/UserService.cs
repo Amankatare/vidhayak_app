@@ -40,6 +40,7 @@ namespace VidhayakApp.Application.Services
                 user.PasswordHash = hashPassword;
 
                 await _userRepository.AddAsync(user);
+              
                 return true;
             }
             return false;

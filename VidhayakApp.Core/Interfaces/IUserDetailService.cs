@@ -8,4 +8,5 @@ public interface IUserDetailService
      Task<UserDetail> GetByUserIdAsync(int userId);
 
     Task<UserDetail> GetUserDetailsByUserIdAsync(int userId);
+    
 }

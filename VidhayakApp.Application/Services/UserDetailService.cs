@@ -35,5 +35,13 @@ public class UserDetailService : IUserDetailService
 
     }
 
+    //public async Task<bool> RegisterUserDetails(UserDetail userDetail)
+    //{
+    //    await _userDetailRepository.AddAsync(userDetail);
+    //    await _userDetailRepository.SaveChangesAsync(); // Save changes to the database
+    //    return true;
+    //}
+
+
     // Add other methods as needed
 }

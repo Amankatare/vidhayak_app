@@ -19,37 +19,37 @@ namespace VidhayakApp.SharedKernel.Utilities
 
     //    public async void OnAuthorization(AuthorizationFilterContext context)
     //    {
-        //    var httpContext = _httpContextAccessor.HttpContext;
+    //        var httpContext = _httpContextAccessor.HttpContext;
 
-        //    if (httpContext != null && httpContext.Session != null)
-        //    {
-        //        var userRole = httpContext.Session.GetString("RoleId");
+    //        if (httpContext != null && httpContext.Session != null)
+    //        {
+    //            var userRole = httpContext.Session.GetString("RoleId");
 
-        //        if (string.IsNullOrEmpty(userRole))
-        //        {
-        //            // Role information not found in session, handle accordingly
-        //            context.Result = new UnauthorizedResult();
-        //            return;
-        //        }
+    //            if (string.IsNullOrEmpty(userRole))
+    //            {
+    //                // Role information not found in session, handle accordingly
+    //                context.Result = new UnauthorizedResult();
+    //                return;
+    //            }
 
-        //        // Get the user roles from the database
-        //        var userRoles = await _roleService.GetRolesForUser(userRole);
+    //            // Get the user roles from the database
+    //            var userRoles = await _roleService.GetRolesForUser(userRole);
 
-        //        // Check if the user has the required role
-        //        if (!string.IsNullOrEmpty(Roles) && !userRoles.Contains(Roles))
-        //        {
-        //            context.Result = new ForbidResult();
-        //            return;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        // Session not available, handle accordingly
-        //        context.Result = new UnauthorizedResult();
-        //        return;
-        //    }
-       // }
+    //            // Check if the user has the required role
+    //            if (!string.IsNullOrEmpty(Roles) && !userRoles.Contains(Roles))
+    //            {
+    //                context.Result = new ForbidResult();
+    //                return;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            // Session not available, handle accordingly
+    //            context.Result = new UnauthorizedResult();
+    //            return;
+    //        }
+    //    }
 
-        
-   // }
+
+    //}
 }
