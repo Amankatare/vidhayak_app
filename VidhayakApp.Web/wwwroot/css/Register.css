@@ -1,6 +1,10 @@
 ﻿body {
     margin: 0;
+    
+    
 }
+
+
 
 .page-content {
     width: 100%;
@@ -59,6 +63,7 @@
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
             width: 100%;
+            
         }
 
             .form-v10-content .form-detail .form-left h2 {
@@ -67,8 +72,8 @@
 
         .form-v10-content .form-detail .form-right {
             width: 100%;
-            background: #4835d4;
-            border-top-right-radius: 10px;
+           /* background: url("/dist/img/abstract.jpg");
+*/            border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
         }
 
@@ -464,3 +469,34 @@
     justify-content: center;
     align-items: center;
 }
+
+.new_line {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    align-items: stretch;
+    background-image: url('/dist/img/abstract.jpg');
+    !important;
+    /*background-size:cover;*/
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-position: cover;
+    transform: rotate("90deg");
+    position:absolute;
+}
+
+.new-blur {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    align-items: stretch;
+    background-image: url('/dist/img/abstract.jpg');
+    !important;
+    /*background-size:cover;*/
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-position: cover;
+    transform: rotate("90deg");
+    position: absolute;
+}
+

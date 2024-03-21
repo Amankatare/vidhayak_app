@@ -469,12 +469,20 @@
       "PackagePath": "staticwebassets\\css\\UserDashboardTable.css"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\homeIndex.css",
+      "PackagePath": "staticwebassets\\css\\homeIndex.css"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\main.css",
       "PackagePath": "staticwebassets\\css\\main.css"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\try.css",
+      "PackagePath": "staticwebassets\\css\\try.css"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\util.css",
@@ -597,6 +605,26 @@
       "PackagePath": "staticwebassets\\dist\\img\\AdminLTELogo.png"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\OIG3 (1).jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\OIG3 (1).jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\OIG3 (2).jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\OIG3 (2).jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\OIG3.V0BW.R9jw9ho.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\OIG3.V0BW.R9jw9ho.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\OIG3.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\OIG3.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\abstract.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\abstract.jpg"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\avatar.png",
       "PackagePath": "staticwebassets\\dist\\img\\avatar.png"
     },
@@ -619,6 +647,14 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\backgroundImage.jpg",
       "PackagePath": "staticwebassets\\dist\\img\\backgroundImage.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\banner1.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\banner1.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\banner2.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\banner2.jpg"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\boxed-bg.jpg",
@@ -675,6 +711,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\html_table.jpg",
       "PackagePath": "staticwebassets\\dist\\img\\html_table.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\htmltable2.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\htmltable2.jpg"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\icons.png",

@@ -20,10 +20,13 @@
     <link rel="stylesheet" href="~/css/Register.css"/>
 </head>
 <body class="form-v10">
-	<div class="page-content">
+    
+        <div class="page-content new-blur">
 		<div class="form-v10-content">
 			<form class="form-detail" action="#" method="post" id="myform">
+                <div class="new_line">
 				<div class="form-left">
+
 					<h2>General Infomation</h2>
 					<div class="form-row">
                         <input asp-for="Name" asp-controller="Account" class="form-control" id="Name" aria-describedby="NameHelp" placeholder="Full name">
@@ -146,48 +149,27 @@
                             </div>
                     
 				</div>
+               
+                
                 <div class="form-right new-alignment">
-                    @*	<h2>Additional Details</h2>
-					@* <div class="form-row">
-                        <input asp-for="Address" class="form-control" id="Address" placeholder="1234 Main St">
-                    </div> 
-					<div class="form-row">
-                        <input asp-for="Education" class="form-control" id="Education" placeholder="Enter Education...">
-                    </div>
-                    <div class="form-row">
-                        <input asp-for="AadharNumber" class="form-control" id="AadharNumber" placeholder="Enter AadharNumber...">
-                    </div>
-                    <div class="form-row">
-                        <input asp-for="SamagraID" class="form-control" id="SamagraID" placeholder="Enter SamagraID...">
-                    </div>  *@
-                   @*  <div class="form-row">
-                        <input asp-for="VoterID" class="form-control" id="VoterID" placeholder="Enter VoterID...">
-                    </div> *@
-                    @* <div class="form-row">
-                        <input asp-for="Caste" class="form-control" id="Caste" placeholder="Enter Caste...">
-                    </div>
-                    <div class="form-row">
-                        <input asp-for="VoterID" class="form-control" id="VoterID" placeholder="Enter VoterID...">
-                    </div>
-                    <div class="form-row">
-                        <input asp-for="VoterCount" class="form-control" id="VoterCount" placeholder="Enter Total number of voters in the house...">
-                    </div>
-					<div class="form-group">				
-					</div> *@
+                   <div class="img_for_btn_background">
 		
 					<div class="form-row-last">
-                        <input asp-action="Register" asp-controller="Account" type="submit" class="register" value="Register" id="registerpagebuttonid">
+                            <input asp-action="Register" asp-controller="Account" type="submit" class="register" value="Register" id="registerpagebuttonid" style="background-color:wheat">
 
 					</div>
 
                     <div class="form-row-last">
-                        <a asp-action="Login" asp-controller="Account" class="my-btn" id="loginpagebuttonid">Login</a>
+                            <a asp-action="Login" asp-controller="Account" class="my-btn" id="loginpagebuttonid" style="background-color:wheat">Login</a>
+                    </div>
                     </div>
 				</div>
-               
+                    </div>
 			</form>
 		</div>
-	</div>
+    </div>
+	
+   
 </body>
 </html>
 
