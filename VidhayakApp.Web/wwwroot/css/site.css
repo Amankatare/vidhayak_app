@@ -231,6 +231,7 @@ body {
     width: calc(100% - 230px);
     left: 230px;
     transition: all 0.3s ease;
+  
 }
 
 .sidebar.close ~ .content {
@@ -949,4 +950,10 @@ body {
 
 .sidebar-height{
     height: 100%; !important;
+}
+
+.row2 {
+    flex-direction: row;
+    align-items: flex-end;
+}.
 }

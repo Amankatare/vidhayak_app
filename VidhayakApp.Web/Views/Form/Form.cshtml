@@ -10,12 +10,18 @@
     // Access HttpContext
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
+    var loggedInId=context.Session.GetInt32("UserId");
 }
+@if (loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+    return; // Add return to stop further execution
 
+}else{
 
 <body>
 
-    <section class="content">
+    <section class="">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-sm-10">
@@ -26,7 +32,8 @@
 
                         <div class="card-body">
                             <form method="post" enctype="multipart/form-data" >
-                                <input type="hidden" asp-for="UserId" value="@context.Session.GetInt32("UserId")" />
+                               
+                                <input type="hidden" asp-for="UserId" value="lockedInId" />
                                 <div class="form-group">
                                     <label>Category</label>
                                     <select asp-for="Type" id="categoryInput" class="form-control">
@@ -175,8 +182,8 @@
             </div>
         </div>
     </section>
-
     <script src="~/js/Demand.js"></script>
     <script src="~/js/DepartmentSchemeDisable.js"></script>
 
 </body>
+    }

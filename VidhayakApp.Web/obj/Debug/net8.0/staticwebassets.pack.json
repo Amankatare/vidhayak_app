@@ -461,12 +461,20 @@
       "PackagePath": "staticwebassets\\build\\scss\\plugins\\_toastr.scss"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\Login.css",
+      "PackagePath": "staticwebassets\\css\\Login.css"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\Register.css",
       "PackagePath": "staticwebassets\\css\\Register.css"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\UserDashboardTable.css",
       "PackagePath": "staticwebassets\\css\\UserDashboardTable.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\UserLayout.css",
+      "PackagePath": "staticwebassets\\css\\UserLayout.css"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\homeIndex.css",
@@ -1539,6 +1547,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\UserDashboardTable.js",
       "PackagePath": "staticwebassets\\js\\UserDashboardTable.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\UserLayout.js",
+      "PackagePath": "staticwebassets\\js\\UserLayout.js"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\demand.js",

@@ -1,10 +1,19 @@
 ﻿@using VidhayakApp.Core.Entities
 @model List<Item> 
 
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
 }
+
+@if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
 
 <!DOCTYPE html>
 <html lang="en">
@@ -128,7 +137,7 @@
 
 </html>
 
-
+}
 
 
 
