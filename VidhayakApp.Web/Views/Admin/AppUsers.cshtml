@@ -1,10 +1,22 @@
 ﻿@model List<VidhayakApp.Core.Entities.User>
+
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 @{
     ViewData["Title"] = "Users";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+
+}
+@if (loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
 }
 
 @TempData["Message"]
+
 
 <head>
     <meta charset="utf-8">

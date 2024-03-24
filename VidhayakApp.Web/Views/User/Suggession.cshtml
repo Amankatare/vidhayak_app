@@ -1,8 +1,19 @@
-﻿@{
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+
+@{
     ViewData["Title"] = "Sugession";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+
 }
 
+@if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
 
 <div class="col-md-6">
 
@@ -86,3 +97,5 @@
     </div>
 
 </div>
+
+}

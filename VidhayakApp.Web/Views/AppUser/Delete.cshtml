@@ -1,15 +1,24 @@
 ﻿@using VidhayakApp.Core.Entities
 @model User
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_AppUserLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+
 }
   
+@if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
 
 <form asp-action="DeleteConfirmed" asp-controller="AppUser" id="deleteForm" method="post">
     <input type="hidden" name="id" value="@Model.UserId" />
 </form>
 
-
+}
 

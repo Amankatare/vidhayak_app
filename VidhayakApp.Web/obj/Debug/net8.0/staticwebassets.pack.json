@@ -633,6 +633,10 @@
       "PackagePath": "staticwebassets\\dist\\img\\abstract.jpg"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\abstract2.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\abstract2.jpg"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\avatar.png",
       "PackagePath": "staticwebassets\\dist\\img\\avatar.png"
     },
@@ -663,6 +667,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\banner2.jpg",
       "PackagePath": "staticwebassets\\dist\\img\\banner2.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\blurabstract1.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\blurabstract1.jpg"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\boxed-bg.jpg",
@@ -715,6 +723,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\favicon.ico",
       "PackagePath": "staticwebassets\\dist\\img\\favicon.ico"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\flipabstract.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\flipabstract.jpg"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\html_table.jpg",

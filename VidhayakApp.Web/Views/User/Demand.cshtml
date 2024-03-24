@@ -10,7 +10,13 @@
     // Access HttpContext
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
 }
+
+@if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
 
 <body>
 <section class="content">
@@ -112,3 +118,4 @@
 
 @* <script src="~/js/demand.js"></script> *@
 </body>
+}

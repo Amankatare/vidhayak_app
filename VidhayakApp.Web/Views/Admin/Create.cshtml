@@ -1,10 +1,20 @@
 ﻿@using VidhayakApp.Web.ViewModels
 @model CreateUserModel
 
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 @{
     ViewData["Title"] = "Create AppUser";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+
 }
+@if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
 
     @TempData["Message"]
 
@@ -140,3 +150,4 @@
         </div>
     </div>
 </section>
+}

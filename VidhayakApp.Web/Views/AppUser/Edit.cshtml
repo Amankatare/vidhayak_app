@@ -1,11 +1,21 @@
 ﻿@using VidhayakApp.Web.ViewModels
 @model UserWithDetailsViewModel
 
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 @{
     ViewData["Title"] = "Update User";
     Layout = "~/Views/Shared/_AppUserLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+
 }
 
+@if (loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
     @TempData["Message"]
 
     
@@ -159,3 +169,4 @@
         </div>
     </div>
 </section>
+}

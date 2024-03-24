@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/Sny115t38aj+aa3VTjqMYrULScS2F+WRtmkIkig1ZE=",
+  "Hash": "WI+uDI2L0vy0snpLI+aKlQBj0uhmcDVgPr/3TiwCyHE=",
   "Source": "VidhayakApp.Web",
   "BasePath": "_content/VidhayakApp.Web",
   "Mode": "Default",
@@ -2943,6 +2943,25 @@
       "OriginalItemSpec": "wwwroot\\dist\\img\\abstract.jpg"
     },
     {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\abstract2.jpg",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "dist/img/abstract2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\img\\abstract2.jpg"
+    },
+    {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\AdminLTELogo.png",
       "SourceId": "VidhayakApp.Web",
       "SourceType": "Discovered",
@@ -3112,6 +3131,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\img\\banner2.jpg"
+    },
+    {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\blurabstract1.jpg",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "dist/img/blurabstract1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\img\\blurabstract1.jpg"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\boxed-bg.jpg",
@@ -3359,6 +3397,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\img\\favicon.ico"
+    },
+    {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\flipabstract.jpg",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "dist/img/flipabstract.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\img\\flipabstract.jpg"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\html_table.jpg",

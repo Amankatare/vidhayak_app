@@ -1,10 +1,20 @@
 ﻿@model VidhayakApp.Web.ViewModels.LoginViewModel
 
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+
 }
+
+@if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
 
 <head>
     <link rel="stylesheet" href="~/css/site.css">
@@ -76,3 +86,4 @@
     </div>
 
 </main>
+}

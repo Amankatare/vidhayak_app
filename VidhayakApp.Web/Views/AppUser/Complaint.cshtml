@@ -1,11 +1,20 @@
 ﻿@using VidhayakApp.Web.ViewModels.AppUser
 @model IEnumerable<UserDetailAndFormDetailOnAppUserDashboardViewModel>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Complaint";
     Layout = "~/Views/Shared/_AppUserLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+
 }
 
+@if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +98,7 @@
 
 </html>
 
-
+}
 
 
 
