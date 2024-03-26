@@ -37,6 +37,8 @@ namespace VidhayakApp.Web.Controllers
         
             public IActionResult Dashboard()
             {
+
+            var loggedInUser = HttpContext.Session.GetInt32("WardId");
             var userDetailFormViewModels = _db.Users
             .Join(_db.Items,
                 user => user.UserId,
@@ -46,7 +48,7 @@ namespace VidhayakApp.Web.Controllers
                             join.Item.Type == ItemType.Demand ||
                             join.Item.Type == ItemType.Suggession) &&
                             join.User.RoleId == 4 &&
-                            join.User.WardId == 1)
+                            join.User.WardId == loggedInUser)
              .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
              {
                  UserId = join.User.UserId,
@@ -71,6 +73,9 @@ namespace VidhayakApp.Web.Controllers
 
         public IActionResult Complaint()
         {
+            var loggedInUser = HttpContext.Session.GetInt32("WardId");
+            Console.WriteLine(loggedInUser+"-------------------------");
+
             var userDetailFormViewModels = _db.Users
             .Join(_db.Items,
                 user => user.UserId,
@@ -78,7 +83,7 @@ namespace VidhayakApp.Web.Controllers
                 (user, item) => new { User = user, Item = item })
                 .Where(join => (join.Item.Type == ItemType.Complaint) &&
                             join.User.RoleId == 4 &&
-                            join.User.WardId == 1)
+                            join.User.WardId == loggedInUser)
              .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
              {
                  UserId = join.User.UserId,
@@ -102,6 +107,9 @@ namespace VidhayakApp.Web.Controllers
         }
         public IActionResult Demand()
         {
+            var loggedInUser = HttpContext.Session.GetInt32("WardId");
+            Console.WriteLine(loggedInUser + "-------------------------");
+
             var userDetailFormViewModels = _db.Users
             .Join(_db.Items,
                 user => user.UserId,
@@ -110,7 +118,7 @@ namespace VidhayakApp.Web.Controllers
                 .Where(join => (
                             join.Item.Type == ItemType.Demand) &&
                             join.User.RoleId == 4 &&
-                            join.User.WardId == 1)
+                            join.User.WardId == loggedInUser)
              .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
              {
                  UserId = join.User.UserId,

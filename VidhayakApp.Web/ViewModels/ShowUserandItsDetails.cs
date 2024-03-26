@@ -9,6 +9,10 @@ namespace VidhayakApp.Web.ViewModels
 
             public IEnumerable<Ward> userWardTable { get; set; }
 
+            public User usersTableforView { get; set; }
+            public UserDetail userDetailsTableforView { get; set; }
+
+            public Ward userWardTableforView { get; set; }
 
     }
 }

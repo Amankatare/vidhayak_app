@@ -8,9 +8,10 @@
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
     var loggedInId = context.Session.GetInt32("UserId");
+    var tokenValue = context.Session.GetString("JwtToken");
 }
 
-@if(loggedInId == null)
+@if(loggedInId == null || tokenValue == null)
 {
     context.Response.Redirect("/Account/Login");
 }else{

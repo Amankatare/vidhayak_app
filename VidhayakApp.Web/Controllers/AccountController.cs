@@ -98,19 +98,20 @@ namespace VidhayakApp.Web.Controllers
 
                     var user = await _userRepository.GetByUsernameAsync(AuthenticUser.UserName);
 
-                   
+                
 
-                    HttpContext.Session.SetInt32("UserId", user.UserId);
+                HttpContext.Session.SetInt32("UserId", user.UserId);
                     HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("Name", user.Name);
                     HttpContext.Session.SetInt32("RoleId", user.RoleId);
                     HttpContext.Session.SetString("RoleName", user.Role.RoleName);
-
+                    HttpContext.Session.SetInt32("WardId", user.WardId);
                 Console.WriteLine(HttpContext.Session.GetInt32("UserId")) ;
                 Console.WriteLine(HttpContext.Session.GetString("UserName"));
                 Console.WriteLine(HttpContext.Session.GetString("Name"));
                 Console.WriteLine(HttpContext.Session.GetInt32("RoleId"));
                 Console.WriteLine(HttpContext.Session.GetString("RoleName"));
+                Console.WriteLine(HttpContext.Session.GetInt32("WardId"));
 
                 ViewData["RoleId"] = user.RoleId;
                     var role = user.Role.RoleName;
@@ -142,12 +143,11 @@ namespace VidhayakApp.Web.Controllers
                             HttpOnly = true,
                             SameSite = SameSiteMode.Strict,
                             Secure = true,  // Set to true if using HTTPS
-                            Expires = DateTime.UtcNow.AddHours(1)
+                            Expires = DateTime.UtcNow.AddMinutes(30)
                         };
 
                         // Assuming 'Response' is an instance of HttpResponse in your ASP.NET Core controller
                         Response.Cookies.Append("JwtToken", token, cookieOptions);
-                        //HttpContext.Session.SetString("JwtToken", token);
 
 
                         var isValidToken = IsValidToken(token);
@@ -155,6 +155,7 @@ namespace VidhayakApp.Web.Controllers
                         if (isValidToken)
                         {
                             Console.WriteLine("---------------" + isValidToken + "-------------------");
+                             HttpContext.Session.SetString("JwtToken", token);
 
                         }
 
@@ -236,6 +237,7 @@ namespace VidhayakApp.Web.Controllers
         {
             if (HttpContext.Session.GetString("UserName") != null)
             {
+                HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                 HttpContext.Session.Remove("UserName");
                 return RedirectToAction("Login");
             }

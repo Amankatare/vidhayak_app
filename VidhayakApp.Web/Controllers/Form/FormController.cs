@@ -50,16 +50,24 @@ namespace VidhayakApp.Web.Controllers.Form
                 string uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
 
                 // Specify the path of the folder you want to check/create
-                string folderPath = "~/wwwroot/uploads/complaints";
+                string uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+                string complaintsFolderPath = Path.Combine(uploadsFolderPath, "complaints");
 
-                if (!Directory.Exists(folderPath))
+                // Check if the 'uploads' directory exists, if not, create it
+                if (!Directory.Exists(uploadsFolderPath))
                 {
-                    Directory.CreateDirectory(folderPath);
+                    Directory.CreateDirectory(uploadsFolderPath);
                 }
 
-                    // Combine the unique filename with the path to the image folder
+                // Check if the 'complaints' directory exists, if not, create it inside 'uploads'
+                if (!Directory.Exists(complaintsFolderPath))
+                {
+                    Directory.CreateDirectory(complaintsFolderPath);
+                }
 
-                    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads","complaints", uniqueFileName);
+                // Combine the unique filename with the path to the image folder
+
+                string filePath = Path.Combine(complaintsFolderPath, uniqueFileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
@@ -88,7 +96,7 @@ namespace VidhayakApp.Web.Controllers.Form
                 //    }
                 //}
 
-
+                var userObjectId= HttpContext.Session.GetInt32("UserId");
                 var user = await _user.GetByIdAsync(model.UserId);
 
                 // Map the view model to the entity
@@ -97,11 +105,11 @@ namespace VidhayakApp.Web.Controllers.Form
                     Status = StatusType.Pending, // Use Status.Pending from enum
                     Title = model.Title,
                     Description = model.Description,
-                    UserId = model.UserId,
+                    UserId = (int)userObjectId,
                     Type = model.Type,
                     SubCategoryTypeId = model.SubCategoryTypeId,
                     CreatedAt = DateTime.Now,
-                    ImagePath = "/uploads/" + uniqueFileName, // Assign the image path
+                    ImagePath = "/uploads/complaints/" + uniqueFileName, // Assign the image path
                     User = user,
                 };
 
