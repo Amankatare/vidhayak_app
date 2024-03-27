@@ -1,0 +1,246 @@
+﻿@model VidhayakApp.Web.ViewModels.ProfileViewModel
+
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Profile";
+    var context = HttpContextAccessor.HttpContext;
+    try{
+        var roleId = context.Session.GetInt32("RoleId");
+        if (roleId == 4)
+        {
+            Layout = "~/Views/Shared/_UserLayout.cshtml";
+        }
+        else if (roleId == 3)
+        {
+            Layout = "~/Views/Shared/_AppUserLayout.cshtml";
+        }
+        else if (roleId == 2)
+        {
+            Layout = "~/Views/Shared/_AdminLayout.cshtml";
+        }
+        else if (roleId == 1)
+        {
+            Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+    }catch(Exception ex)
+    {
+        Console.WriteLine(ex);
+        context.Response.Redirect("/Account/Login");
+    }
+   
+
+    
+}
+<link rel="stylesheet" href="~/css/Profile.css" />
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Name</label><div>@Model.Name</div></div>
+                    <div class="col-md-6"><label class="labels">UserName</label><div>@Model.UserName</div></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><div>@Model.MobileNumber</div></div>
+                    <div class="col-md-12"><label class="labels">Address</label><div>@Model.Address</div></div>
+                    <div class="col-md-12"><label class="labels">Ward</label></div>&nbsp;&nbsp;@Model.Ward
+                    <div class="col-md-12"><label class="labels">Role</label></div>&nbsp;&nbsp;@Model.RoleName
+                </div>
+            </div>
+                </div>
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Details</span><span class="border px-3 p-1 add-experience" data-toggle="modal" data-target="#detailsModal"><i class="fa fa-plus"></i>&nbsp; Details</span></div><br>
+                <div class="col-md-12"><label class="labels">Education</label><div>@Model.Education</div></div>
+                <div class="col-md-12"><label class="labels">AadharNumber</label><div>@Model.AadharNumber</div></div>
+                <div class="col-md-12"><label class="labels">VoterID</label><div>@Model.VoterID</div></div>
+                <div class="col-md-12"><label class="labels">VoterCount</label><div>@Model.VoterCount</div></div>
+                <div class="col-md-12"><label class="labels">Caste</label><div>@Model.Caste</div></div>
+                <div class="col-md-12"><label class="labels">SamagraID</label><div>@Model.SamagraID</div></div>
+            </div>
+        </div>
+
+           @*  </div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+            </div> *@
+                
+            
+                </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Details Modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- Add your form or content here -->
+                <!-- Example form -->
+                <form method="post" action="@Url.Action("UpdateProfile", "Profile")">
+                   
+                        <!-- Editable fields -->
+                        <div class="form-group">
+                        <label asp-for="MobileNumber">MobileNumber</label>
+                            <input asp-for="MobileNumber" type="text" class="form-control" id="educationInput" placeholder="Enter education">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Dob">Date of Birth</label>
+                            <input asp-for="Dob"  class="form-control" id="educationInput" placeholder="Enter Date Of birth">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="WardId">Select Ward:</label>
+                            <select asp-for="WardId" name="WardId" id="Ward">
+                                <option value="">Select a Ward</option>
+                                <option value="1">Garha Ward - Ward No.1 </option>
+                                <option value="2">Verendrapur ward- Ward No.2 </option>
+                                <option value="3">Tripuri Ward -ward No.03 </option>
+                                <option value="4">Shankar shah nagar ward- Ward No.o4 </option>
+                                <option value="5">Sardar Ballabh Bhai Patel Ward - Ward No.05 </option>
+                                <option value="6">Indira Gandhi Ward- Ward No.06 </option>
+                                <option value="7">Veersawarkar Ward - Ward No.07 </option>
+                                <option value="8">Gwarighat Ghat- Ward No.08 </option>
+                                <option value="9">Dada Baburaw Paranjpe Ward - Ward No.09 </option>
+                                <option value="10">Gupteshwar Ward - Ward No.10 </option>
+                                <option value="11">Giriraj Kapoor- Ward No.11 </option>
+                                <option value="12">Dr. George Disilwa Ward - Ward No.12 </option>
+                                <option value="13">P. Banarasi Das Bhano Ward - Ward No.13 </option>
+                                <option value="14">Narsingh Ward- Ward No.14 </option>
+                                <option value="15">Madan Mahal Ward - Ward No.15 </option>
+                                <option value="16">Maharana Pratap Ward) - Ward No.16 </option>
+                                <option value="17"> Ranidurgawati Ward- Ward No.17 </option>
+                                <option value="18">Shaheed Gulab Singh Ward- Ward No.18 </option>
+                                <option value="19">Kamla Nehru Nagar Ward - Ward No.19 </option>
+                                <option value="20">Kasturba Gandhi Ward - Ward No.20 </option>
+                                <option value="21">Swami Vivekanand Ward- Ward No.21 </option>
+                                <option value="22">Jawahar Ganj Ward- Ward No.22 </option>
+                                <option value="23">P. Lokmanya Bal Gangadhar Tilak Ward - Ward No.23 </option>
+                                <option value="24">Hanumantal Ward- Ward No.24 </option>
+                                <option value="25">Mahatma Gandhi Ward - Ward No.25 </option>
+                                <option value="26">Govind Ballabh Pant Ward - Ward No.34 </option>
+                                <option value="27">Cherital Ward- Ward No.35 </option>
+                                <option value="28">Jayprakash Narayan Ward- Ward No.36 </option>
+                                <option value="29">Dr. Rammanohar Lohiya Ward- Ward No.37 </option>
+                                <option value="30">P. Deendayal Upadhayaya Ward - Ward No.38 </option>
+                                <option value="31">Rajeev Gandhi Ward- Ward No.31 </option>
+                                <option value="32">Subhadra Kumari Chouhan Ward - Ward No.32 </option>
+                                <option value="33">Swami Dayanand Saraswati Ward- Ward No.33 </option>
+                                <option value="34">P. Bhavani Prashad Tiwari Ward- Ward No.34 </option>
+                                <option value="35">Maharaja Agrasen Ward - Ward No.35 </option>
+                                <option value="36">Mo. Abdul Kalam Azaad Ward - Ward No.36 </option>
+                                <option value="37">Dr. Rajendra Prashad Ward- Ward No.37 </option>
+                                <option value="38">P. Motilal Nehru Ward- Ward No.38 </option>
+                                <option value="39">Chitranjan Das Ward - Ward No.39 </option>
+                                <option value="40">Dr. Zakeer Husen Ward- Ward No.40 </option>
+                                <option value="41">Sanjay Gandhi Ward - Ward No.41 </option>
+                                <option value="42">Subhas Chandra Bosh Ward - Ward No.42 </option>
+                                <option value="43">Dr. Shyam Prashad Mukharji Ward - Ward No.43 </option>
+                                <option value="44">Acharya Vinova Bhave Ward - Ward No.44 </option>
+                                <option value="45">Sheetla Mai Ward - Ward No.45 </option>
+                                <option value="46">P. Dwarka Prashad Mishra Ward - Ward No.46 </option>
+                                <option value="47">Seth Govind Das Ward - Ward No.47 </option>
+                                <option value="48">Siddh Baba Ward - Ward No.48 </option>
+                                <option value="49">Lal Bahadur Shastari Ward- Ward No.49 </option>
+                                <option value="50">Thakkar Gram Ward - Ward No.50 </option>
+                                <option value="51">Ravindra Nath Tegor Ward- Ward No.51 </option>
+                                <option value="52">P. Madan Mohan Malviya Ward - Ward No.52 </option>
+                                <option value="53">Maharshi Arvind Ward - Ward No.53 </option>
+                                <option value="54">P. Jawahar Lal Nehru Ward - Ward No.54 </option>
+                                <option value="55">Khair Mai Ward - Ward No.55 </option>
+                                <option value="56">Shaheed Abdul Ameed Ward - Ward No.56 </option>
+                                <option value="57">Maharshi Mahesh Yogi Ward- Ward No.57 </option>
+                                <option value="58">Sarva Palli Dr. Radha Krishnan Ward - Ward No.58 </option>
+                                <option value="59">Ashfaak Ullah Khan Ward - Ward No.59 </option>
+                                <option value="60">Jabalpur (M Corp.) - Ward No.3 </option>
+                                <option value="61">Diwan Adhaar Singh Ward-ward no. 61 </option>
+                                <option value="62">Ambedkar Ward-ward no. 62 </option>
+                                <option value="63">Shaheed Bhagat Singh Ward-ward no. 63 </option>
+                                <option value="64">Maharshi Sudarshan Ward - ward no. 64 </option>
+                                <option value="65">Subhash Chandra Benaji Ward- ward no. 65 </option>
+                                <option value="66">Rani Laxmi Bai Ward-ward no.66 </option>
+                                <option value="67">Rani Awanti Bai Ward-ward no. 67 </option>
+                                <option value="68">Gokalpur Ward- ward no. 68 </option>
+                                <option value="69">Chandra Shekhar Azaad Ward-ward no.69 </option>
+                                <option value="70">Lala Lajpat Rai Ward-ward no. 70 </option>
+                                <option value="71">Naya Ward- ward no. 71 </option>
+                                <option value="72">Naya Ward-ward no 72 </option>
+                                <option value="73">Naya Ward - ward no. 73 </option>
+                                <option value="74">Naya Ward- ward no. 74 </option>
+                                <option value="75">Naya Ward-ward no 75 </option>
+                                <option value="76">Naya Ward-ward no 76 </option>
+                                <option value="77">Naya Ward-ward no 77 </option>
+                                <option value="78">Naya Ward-ward no 78 </option>
+                                <option value="79">Naya Ward-ward no 79 </option>
+
+                        </select>
+                        </div>
+                        <div class="form-group">
+                        <label asp-for="Education">Education</label>
+                        <input asp-for ="Education" type="text" class="form-control" id="educationInput" placeholder="Enter education">
+                        </div>
+                        <div class="form-group">
+                        <label asp-for="AadharNumber">Aadhar Number</label>
+                        <input asp-for="AadharNumber" type="text" class="form-control" id="aadharInput" placeholder="Enter Aadhar number">
+                        </div>
+                        <div class="form-group">
+                        <label asp-for="VoterID">Voter ID</label>
+                        <input asp-for="VoterID" type="text" class="form-control" id="voterIdInput" placeholder="Enter Voter ID">
+                        </div>
+                        <div class="form-group">
+                        <label asp-for="VoterCount">Voter Count</label>
+                            <input asp-for="VoterCount" type="number" class="form-control" id="voterCountInput" placeholder="Enter Voter count">
+                        </div>
+                        <div class="form-group">
+                        <label asp-for="Caste">Caste</label>
+                        <input asp-for="Caste" type="text" class="form-control" id="casteInput" placeholder="Enter Caste">
+                        </div>
+                        <div class="form-group">
+                        <label asp-for="SamagraID">Samagra ID</label>
+                        <input asp-for="SamagraID" type="text" class="form-control" id="samagraIdInput" placeholder="Enter Samagra ID">
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button asp-action="UpdateProfile" asp-controller="Profile" type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,7 +10,7 @@ body {
 }
 
 .login-img {
-    border: 2px solid red;
+    
     width: 100%;
     height: 100%;
     background: url("/dist/img/blurabstract1.jpg") no-repeat;
@@ -27,6 +27,7 @@ body {
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(9px);
     /* color: #fff;*/
+    box-shadow: 8px 6px 100px lightgray;
     border-radius: 12px;
     padding: 30px 40px;
     background: url(/dist/img/abstract.jpg) no-repeat;
