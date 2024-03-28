@@ -255,7 +255,7 @@
             </div>
             <div class="modal-body">
                 <!-- Include your form here -->
-                <form method="post" id="changePasswordForm" asp-action="ChangePassword" asp-controller="Account" >
+                <form method="post" id="changePasswordForm" action="@Url.Action("ChangePassword", "Account")">
                     <div class="form-group">
                         <label asp-for="ChangePasswordViewModel.OldPassword">Old Password</label>
                         <input asp-for="ChangePasswordViewModel.OldPassword" id="oldPassword" type="password" class="form-control" required>
@@ -271,7 +271,7 @@
                         <input asp-for="ChangePasswordViewModel.ConfirmPassword" id="confirmPassword" type="password" class="form-control" required>
                         <span asp-validation-for="ChangePasswordViewModel.ConfirmPassword" class="text-danger"></span>
                     </div>
-                    <button asp-action ="ChangePassword" asp-controller="Account" type="submit" class="btn btn-primary">Change Password</button>
+                    <button asp-action="ChangePassword" asp-controller="Account" type="submit" class="btn btn-primary">Change Password</button>
                 </form>
             </div>
             <!-- No need for modal footer, as the form already has a submit button -->

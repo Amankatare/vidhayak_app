@@ -127,8 +127,6 @@ namespace VidhayakApp.Web.Controllers
 
                     var principal = new ClaimsPrincipal(identity);
 
-                    
-
                     var logins = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                     var token = GenerateJwtToken(user, roles);
@@ -209,11 +207,7 @@ namespace VidhayakApp.Web.Controllers
         public async Task<IActionResult> ChangePassword(ProfileAndChangePasswordViewModel viewModel)
         {
             // Ensure that the ModelState is valid for the ChangePasswordViewModel
-            if (!ModelState.IsValid)
-            {
-                // If ModelState is not valid, return the view with the same viewModel
-                return View(viewModel);
-            }
+            
 
             var loggedInUser = HttpContext.Session.GetString("UserName");
             if (loggedInUser == null)
@@ -229,11 +223,9 @@ namespace VidhayakApp.Web.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            // Hash the old password entered by the user using the same hashing algorithm and parameters
-            var oldPasswordHash = _userService.HashPassword(viewModel.ChangePasswordViewModel.OldPassword);
-
+            var decryptedPassword = BCrypt.Net.BCrypt.EnhancedVerify(viewModel.ChangePasswordViewModel.OldPassword, user.PasswordHash);
             // Compare the hashed old password with the hashed password stored in the database
-            if (user.PasswordHash != oldPasswordHash)
+            if (!decryptedPassword)
             {
                 ModelState.AddModelError("ChangePassword.OldPassword", "The old password is incorrect.");
                 return View(viewModel);
