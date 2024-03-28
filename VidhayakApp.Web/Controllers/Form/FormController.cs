@@ -13,12 +13,16 @@ namespace VidhayakApp.Web.Controllers.Form
    
         private readonly VidhayakAppContext _dbContext;
         private readonly IUserRepository _user;
+        private readonly IGovtDepartmentRepository _govtDepartment;
+        private readonly IGovtSchemeRepository _govtScheme;
         
 
-        public FormController(IUserRepository user, VidhayakAppContext dbContext)
+        public FormController(IUserRepository user, VidhayakAppContext dbContext, IGovtDepartmentRepository govtDepartment, IGovtSchemeRepository govtScheme)
         {
             _user = user;
             _dbContext = dbContext;
+            _govtDepartment = govtDepartment;
+            _govtScheme = govtScheme;
         }
 
         public IActionResult Form()
@@ -97,8 +101,8 @@ namespace VidhayakApp.Web.Controllers.Form
                 //}
 
                 var userObjectId= HttpContext.Session.GetInt32("UserId");
-                var user = await _user.GetByIdAsync(model.UserId);
-
+                var user = await _user.GetByIdAsync(userObjectId.Value);
+                var department = await _govtDepartment.GetByIdAsync(model.DepartmentId);
                 // Map the view model to the entity
                 var complaint = new Item
                 {
@@ -108,9 +112,11 @@ namespace VidhayakApp.Web.Controllers.Form
                     UserId = (int)userObjectId,
                     Type = model.Type,
                     SubCategoryTypeId = model.SubCategoryTypeId,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = DateTime.Now.Date,
                     ImagePath = "/uploads/complaints/" + uniqueFileName, // Assign the image path
                     User = user,
+                    DepartmentId = model.DepartmentId,
+                    Department = department
                 };
 
                 // Save to the database
@@ -131,19 +137,22 @@ namespace VidhayakApp.Web.Controllers.Form
         public async Task<IActionResult> CreateDemand(FormViewModel model)
         {
             Console.WriteLine("pressed");
-            var user = await _user.GetByIdAsync(model.UserId);
-
+            var loggedInUserId = HttpContext.Session.GetInt32("UserId");
+            var user = await _user.GetByIdAsync(loggedInUserId.Value);
+            var scheme = await _govtScheme.GetByIdAsync(model.SchemeId);
             // Map the view model to the entity
             var demand = new Item
             {
                 Status = StatusType.Pending, // Use Status.Pending from enum
                 Title = model.Title,
                 Description = model.Description,
-                UserId = model.UserId,
                 Type = model.Type,
                 SubCategoryTypeId = model.SubCategoryTypeId,
-                CreatedAt = DateTime.Now,
+                CreatedAt = DateTime.Now.Date,
                 UpdatedAt = null,
+                SchemeId = model.SchemeId,
+                Scheme = scheme,
+                UserId = model.UserId,
                 User = user,
             };
 

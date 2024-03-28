@@ -19,5 +19,9 @@ namespace VidhayakApp.Web.ViewModels.AppUser
         public DateTime? UpdatedAt { get; set; }
         public StatusType Status { get; set; }
         public string Note { get; set; }
+
+        public string SchemeName { get; set; }
+        public string DepartmentName { get; set; }
+
     }
 }

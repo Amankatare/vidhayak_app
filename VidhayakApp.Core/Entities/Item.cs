@@ -19,7 +19,7 @@ namespace VidhayakApp.Core.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public StatusType Status { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;  
+        public DateTime CreatedAt { get; set; } = DateTime.Now.Date;  
        
         public DateTime? UpdatedAt{ get; set; }
         public string? ImagePath { get; set; }
@@ -32,10 +32,18 @@ namespace VidhayakApp.Core.Entities
         public ItemType Type { get; set; }
 
         //ForeignKey
+        [ForeignKey("UserId")]
         public int UserId { get; set; }
         public User User{ get; set; }
 
-       
+        [ForeignKey("DepartmentId")]
+        public int? DepartmentId { get; set; }
+        public GovtDepartment Department { get; set; }
+
+        [ForeignKey("SchemeId")]
+        public int? SchemeId { get; set; }
+
+        public GovtScheme Scheme { get; set; }
     }
 
 }

@@ -10057,6 +10057,10 @@
       "PackagePath": "staticwebassets\\uploads\\4222a737-0d72-467e-aa1b-710f1af8fc6e_aadhar.jpg"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\8382e713-9650-474f-9c56-ec19b61e65bb_images (1).jpg",
+      "PackagePath": "staticwebassets\\uploads\\complaints\\8382e713-9650-474f-9c56-ec19b61e65bb_images (1).jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VidhayakApp.Web.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

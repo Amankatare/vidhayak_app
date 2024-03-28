@@ -94,72 +94,82 @@ namespace VidhayakApp.Web.Controllers
         public IActionResult Complaint()
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
-            Console.WriteLine(loggedInUser+"-------------------------");
+            Console.WriteLine(loggedInUser + "-------------------------");
 
             var userDetailFormViewModels = _db.Users
-            .Join(_db.Items,
-                user => user.UserId,
-                item => item.UserId,
-                (user, item) => new { User = user, Item = item })
-                .Where(join => (join.Item.Type == ItemType.Complaint) &&
-                            join.User.RoleId == 4 &&
-                            join.User.WardId == loggedInUser)
-             .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
-             {
-                 UserId = join.User.UserId,
-                 UserName = join.User.UserName,
-                 Name = join.User.Name,
-                 Address = join.User.Address,
-                 MobileNumber = join.User.MobileNumber,
-                 Type = join.Item.Type,
-                 SubCategory = join.Item.SubCategoryTypeId,
-                 Title = join.Item.Title,
-                 Description = join.Item.Description,
-                 CreatedAt = join.Item.CreatedAt,
-                 UpdatedAt = join.Item.UpdatedAt,
-                 Status = join.Item.Status,
-                 Note = join.Item.Note
-             })
-                 .ToList();
+                .Join(_db.Items,
+                    user => user.UserId,
+                    item => item.UserId,
+                    (user, item) => new { User = user, Item = item })
+                .Where(join => join.Item.Type == ItemType.Complaint &&
+                               join.User.RoleId == 4 &&
+                               join.User.WardId == loggedInUser)
+                .Join(_db.GovtDepartments, // Join with the Departments table
+                    join => join.Item.DepartmentId, // Join condition: Item.DepartmentId equals Department.DepartmentId
+                    department => department.DepartmentId,
+                    (join, department) => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+                    {
+                        UserId = join.User.UserId,
+                        UserName = join.User.UserName,
+                        Name = join.User.Name,
+                        Address = join.User.Address,
+                        MobileNumber = join.User.MobileNumber,
+                        Type = join.Item.Type,
+                        SubCategory = join.Item.SubCategoryTypeId,
+                        Title = join.Item.Title,
+                        Description = join.Item.Description,
+                        CreatedAt = join.Item.CreatedAt,
+                        UpdatedAt = join.Item.UpdatedAt,
+                        Status = join.Item.Status,
+                        Note = join.Item.Note,
+                        // Include the DepartmentName from the joined Department entity
+                        DepartmentName = department.DepartmentName
+                    })
+                .ToList();
 
             return View(userDetailFormViewModels);
-
         }
+
+
         public IActionResult Demand()
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
             Console.WriteLine(loggedInUser + "-------------------------");
 
             var userDetailFormViewModels = _db.Users
-            .Join(_db.Items,
-                user => user.UserId,
-                item => item.UserId,
-                (user, item) => new { User = user, Item = item })
-                .Where(join => (
-                            join.Item.Type == ItemType.Demand) &&
-                            join.User.RoleId == 4 &&
-                            join.User.WardId == loggedInUser)
-             .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
-             {
-                 UserId = join.User.UserId,
-                 UserName = join.User.UserName,
-                 Name = join.User.Name,
-                 Address = join.User.Address,
-                 MobileNumber = join.User.MobileNumber,
-                 Type = join.Item.Type,
-                 SubCategory = join.Item.SubCategoryTypeId,
-                 Title = join.Item.Title,
-                 Description = join.Item.Description,
-                 CreatedAt = join.Item.CreatedAt,
-                 UpdatedAt = join.Item.UpdatedAt,
-                 Status = join.Item.Status,
-                 Note = join.Item.Note
-             })
-                 .ToList();
+                .Join(_db.Items,
+                    user => user.UserId,
+                    item => item.UserId,
+                    (user, item) => new { User = user, Item = item })
+                .Where(join => join.Item.Type == ItemType.Demand &&
+                               join.User.RoleId == 4 &&
+                               join.User.WardId == loggedInUser)
+                .Join(_db.GovtSchemes,  // Join with the Schemes table
+                    join => join.Item.SchemeId,  // Join condition: Item.SchemeId equals Scheme.SchemeId
+                    scheme => scheme.SchemeId,
+                    (join, scheme) => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+                    {
+                        UserId = join.User.UserId,
+                        UserName = join.User.UserName,
+                        Name = join.User.Name,
+                        Address = join.User.Address,
+                        MobileNumber = join.User.MobileNumber,
+                        Type = join.Item.Type,
+                        SubCategory = join.Item.SubCategoryTypeId,
+                        Title = join.Item.Title,
+                        Description = join.Item.Description,
+                        CreatedAt = join.Item.CreatedAt,
+                        UpdatedAt = join.Item.UpdatedAt,
+                        Status = join.Item.Status,
+                        Note = join.Item.Note,
+                        // Include the SchemeName from the joined Scheme entity
+                        SchemeName = scheme.SchemeName
+                    })
+                .ToList();
 
             return View(userDetailFormViewModels);
-
         }
+
 
 
 
@@ -197,7 +207,7 @@ namespace VidhayakApp.Web.Controllers
                     item.AppUserId = model.AppUserId;
                     item.Status = model.Status;
                     item.Note = model.Note;
-                    item.UpdatedAt = model.UpdatedAt ?? DateTime.Now;
+                    item.UpdatedAt = model.UpdatedAt ?? DateTime.Now.Date;
                 }
 
                 // Save changes to the database
