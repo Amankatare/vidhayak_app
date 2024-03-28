@@ -18,128 +18,77 @@
 
 @TempData["Message"]
 
+
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VidhayakApp | Dashboard</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="~/plugins/jqvmap/jqvmap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
-    @* <script nonce="ec04942b-44a4-4369-a2b5-e05962364918">try { (function (w, d) { !function (ct, cu, cv, cw) { ct[cv] = ct[cv] || {}; ct[cv].executed = []; ct.zaraz = { deferred: [], listeners: [] }; ct.zaraz.q = []; ct.zaraz._f = function (cx) { return async function () { var cy = Array.prototype.slice.call(arguments); ct.zaraz.q.push({ m: cx, a: cy }) } }; for (const cz of ["track", "set", "debug"]) ct.zaraz[cz] = ct.zaraz._f(cz); ct.zaraz.init = () => { var cA = cu.getElementsByTagName(cw)[0], cB = cu.createElement(cw), cC = cu.getElementsByTagName("title")[0]; cC && (ct[cv].t = cu.getElementsByTagName("title")[0].text); ct[cv].x = Math.random(); ct[cv].w = ct.screen.width; ct[cv].h = ct.screen.height; ct[cv].j = ct.innerHeight; ct[cv].e = ct.innerWidth; ct[cv].l = ct.location.href; ct[cv].r = cu.referrer; ct[cv].k = ct.screen.colorDepth; ct[cv].n = cu.characterSet; ct[cv].o = (new Date).getTimezoneOffset(); if (ct.dataLayer) for (const cG of Object.entries(Object.entries(dataLayer).reduce(((cH, cI) => ({ ...cH[1], ...cI[1] })), {}))) zaraz.set(cG[0], cG[1], { scope: "page" }); ct[cv].q = []; for (; ct.zaraz.q.length;) { const cJ = ct.zaraz.q.shift(); ct[cv].q.push(cJ) } cB.defer = !0; for (const cK of [localStorage, sessionStorage]) Object.keys(cK || {}).filter((cM => cM.startsWith("_zaraz_"))).forEach((cL => { try { ct[cv]["z_" + cL.slice(7)] = JSON.parse(cK.getItem(cL)) } catch { ct[cv]["z_" + cL.slice(7)] = cK.getItem(cL) } })); cB.referrerPolicy = "origin"; cB.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(ct[cv]))); cA.parentNode.insertBefore(cB, cA) };["complete", "interactive"].includes(cu.readyState) ? zaraz.init() : ct.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
- *@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convert | Export html Table to CSV & EXCEL File</title>
+    <link rel="stylesheet" type="text/css" href="~/css/UserDashboardTable.css">
 </head>
 
-<div class="container">
-    <div class="table-wrapper">
-        <div class="table-title">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h2>Manage <b>Users</b></h2>
-                </div>
-
-                
+<body class="body_img_user_table">
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h3>User @ViewData["Title"]</h3>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                @*  <img src="~/dist/img/search.png" alt=""> *@
             </div>
-        </div>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>UserName</th>
-                    <th>Address</th>
-                    <th>Ward</th>
-                    <th>Phone</th>
-                    <th>Education</th>
-                    <th>AadharNumber</th>
-                    <th>SamagraID</th>
-                    <th>VoterID</th>
-                    <th>Caste</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in Model.usersTable)
-                {
-                    var userDetails = Model.userDetailsTable.FirstOrDefault(d => d.UserId == user.UserId);
-                    
-
+            
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
                     <tr>
-                        <td>@(user?.Name)</td>
-                        <td>@(user?.UserName ?? "N/A")</td>
-                        <td>@(user?.Address ?? "N/A")</td>
-                        <td>@(user?.WardId)</td>
-                        <td>@(user?.MobileNumber ?? "N/A")</td>
-                        <td>@(userDetails?.Education ?? "N/A")</td>
-                        <td>@(userDetails?.AadharNumber ?? "N/A")</td>
-                        <td>@(userDetails?.SamagraID ?? "N/A")</td>
-                        <td>@(userDetails?.VoterID ?? "N/A")</td>
-                        <td>@(userDetails?.Caste ?? "N/A")</td>
-                        <td>
-                            <a asp-controller="AppUser" asp-action="Edit" asp-route-id="@user.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
-                            <a asp-controller="AppUser" asp-action="Delete" asp-route-id="@user.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
-                        </td>
+                        <th>Name<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>UserName<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Address<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Ward<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Phone<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Education<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>AadharNumber<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>SamagraID<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>VoterID<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Caste<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.usersTable)
+                    {
+                        var userDetails = Model.userDetailsTable.FirstOrDefault(d => d.UserId == user.UserId);
 
-    }
 
-    <!-- jQuery -->
-    <script src="~/plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="~/plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="~/plugins/sparklines/sparkline.js"></script>
-    <!-- JQVMap -->
-    <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="~/plugins/moment/moment.min.js"></script>
-    <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Summernote -->
-    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="~/dist/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="~/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="~/dist/js/pages/dashboard.js"></script>
-    <script src="~/js/site.js"></script>
+                        <tr>
+                            <td>@(user?.Name)</td>
+                            <td>@(user?.UserName ?? "N/A")</td>
+                            <td>@(user?.Address ?? "N/A")</td>
+                            <td>@(user?.WardId)</td>
+                            <td>@(user?.MobileNumber ?? "N/A")</td>
+                            <td>@(userDetails?.Education ?? "N/A")</td>
+                            <td>@(userDetails?.AadharNumber ?? "N/A")</td>
+                            <td>@(userDetails?.SamagraID ?? "N/A")</td>
+                            <td>@(userDetails?.VoterID ?? "N/A")</td>
+                            <td>@(userDetails?.Caste ?? "N/A")</td>
+                            <td>
+                                <a asp-controller="AppUser" asp-action="Edit" asp-route-id="@user.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
+                                <a asp-controller="AppUser" asp-action="Delete" asp-route-id="@user.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
 
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="~/js/UserDashboardTable.js"></script>
+
+</body>
+
+</html>
     
