@@ -1,4 +1,4 @@
-﻿@model VidhayakApp.Web.ViewModels.ProfileViewModel
+﻿@model VidhayakApp.Web.ViewModels.ProfileAndChangePasswordViewModel
 
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
@@ -41,6 +41,10 @@
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+            <div>
+                <!-- Button to trigger the modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
+            </div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -48,26 +52,26 @@
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><div>@Model.Name</div></div>
-                    <div class="col-md-6"><label class="labels">UserName</label><div>@Model.UserName</div></div>
+                    <div class="col-md-6"><label class="labels">Name</label><div>@Model.ProfileViewModel.Name</div></div>
+                    <div class="col-md-6"><label class="labels">UserName</label><div>@Model.ProfileViewModel.UserName</div></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><div>@Model.MobileNumber</div></div>
-                    <div class="col-md-12"><label class="labels">Address</label><div>@Model.Address</div></div>
-                    <div class="col-md-12"><label class="labels">Ward</label></div>&nbsp;&nbsp;@Model.Ward
-                    <div class="col-md-12"><label class="labels">Role</label></div>&nbsp;&nbsp;@Model.RoleName
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><div>@Model.ProfileViewModel.MobileNumber</div></div>
+                    <div class="col-md-12"><label class="labels">Address</label><div>@Model.ProfileViewModel.Address</div></div>
+                    <div class="col-md-12"><label class="labels">Ward</label></div>&nbsp;&nbsp;@Model.ProfileViewModel.Ward
+                    <div class="col-md-12"><label class="labels">Role</label></div>&nbsp;&nbsp;@Model.ProfileViewModel.RoleName
                 </div>
             </div>
                 </div>
         <div class="col-md-4">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center experience"><span>Edit Details</span><span class="border px-3 p-1 add-experience" data-toggle="modal" data-target="#detailsModal"><i class="fa fa-plus"></i>&nbsp; Details</span></div><br>
-                <div class="col-md-12"><label class="labels">Education</label><div>@Model.Education</div></div>
-                <div class="col-md-12"><label class="labels">AadharNumber</label><div>@Model.AadharNumber</div></div>
-                <div class="col-md-12"><label class="labels">VoterID</label><div>@Model.VoterID</div></div>
-                <div class="col-md-12"><label class="labels">VoterCount</label><div>@Model.VoterCount</div></div>
-                <div class="col-md-12"><label class="labels">Caste</label><div>@Model.Caste</div></div>
-                <div class="col-md-12"><label class="labels">SamagraID</label><div>@Model.SamagraID</div></div>
+                <div class="col-md-12"><label class="labels">Education</label><div>@Model.ProfileViewModel.Education</div></div>
+                <div class="col-md-12"><label class="labels">AadharNumber</label><div>@Model.ProfileViewModel.AadharNumber</div></div>
+                <div class="col-md-12"><label class="labels">VoterID</label><div>@Model.ProfileViewModel.VoterID</div></div>
+                <div class="col-md-12"><label class="labels">VoterCount</label><div>@Model.ProfileViewModel.VoterCount</div></div>
+                <div class="col-md-12"><label class="labels">Caste</label><div>@Model.ProfileViewModel.Caste</div></div>
+                <div class="col-md-12"><label class="labels">SamagraID</label><div>@Model.ProfileViewModel.SamagraID</div></div>
             </div>
         </div>
 
@@ -100,16 +104,16 @@
                    
                         <!-- Editable fields -->
                         <div class="form-group">
-                        <label asp-for="MobileNumber">MobileNumber</label>
-                            <input asp-for="MobileNumber" type="text" class="form-control" id="educationInput" placeholder="Enter education">
+                        <label asp-for="ProfileViewModel.MobileNumber">MobileNumber</label>
+                        <input asp-for="ProfileViewModel.MobileNumber" type="text" class="form-control" id="educationInput" placeholder="Enter education">
                         </div>
                         <div class="form-group">
-                            <label asp-for="Dob">Date of Birth</label>
-                            <input asp-for="Dob"  class="form-control" id="educationInput" placeholder="Enter Date Of birth">
+                        <label asp-for="ProfileViewModel.Dob">Date of Birth</label>
+                        <input asp-for="ProfileViewModel.Dob" class="form-control" id="educationInput" placeholder="Enter Date Of birth">
                         </div>
                         <div class="form-group">
-                            <label asp-for="WardId">Select Ward:</label>
-                            <select asp-for="WardId" name="WardId" id="Ward">
+                        <label asp-for="ProfileViewModel.WardId">Select Ward:</label>
+                        <select asp-for="ProfileViewModel.WardId" name="WardId" id="Ward">
                                 <option value="">Select a Ward</option>
                                 <option value="1">Garha Ward - Ward No.1 </option>
                                 <option value="2">Verendrapur ward- Ward No.2 </option>
@@ -194,28 +198,28 @@
                         </select>
                         </div>
                         <div class="form-group">
-                        <label asp-for="Education">Education</label>
-                        <input asp-for ="Education" type="text" class="form-control" id="educationInput" placeholder="Enter education">
+                        <label asp-for="ProfileViewModel.Education">Education</label>
+                        <input asp-for="ProfileViewModel.Education" type="text" class="form-control" id="educationInput" placeholder="Enter education">
                         </div>
                         <div class="form-group">
-                        <label asp-for="AadharNumber">Aadhar Number</label>
-                        <input asp-for="AadharNumber" type="text" class="form-control" id="aadharInput" placeholder="Enter Aadhar number">
+                        <label asp-for="ProfileViewModel.AadharNumber">Aadhar Number</label>
+                        <input asp-for="ProfileViewModel.AadharNumber" type="text" class="form-control" id="aadharInput" placeholder="Enter Aadhar number">
                         </div>
                         <div class="form-group">
-                        <label asp-for="VoterID">Voter ID</label>
-                        <input asp-for="VoterID" type="text" class="form-control" id="voterIdInput" placeholder="Enter Voter ID">
+                        <label asp-for="ProfileViewModel.VoterID">Voter ID</label>
+                        <input asp-for="ProfileViewModel.VoterID" type="text" class="form-control" id="voterIdInput" placeholder="Enter Voter ID">
                         </div>
                         <div class="form-group">
-                        <label asp-for="VoterCount">Voter Count</label>
-                            <input asp-for="VoterCount" type="number" class="form-control" id="voterCountInput" placeholder="Enter Voter count">
+                        <label asp-for="ProfileViewModel.VoterCount">Voter Count</label>
+                        <input asp-for="ProfileViewModel.VoterCount" type="number" class="form-control" id="voterCountInput" placeholder="Enter Voter count">
                         </div>
                         <div class="form-group">
-                        <label asp-for="Caste">Caste</label>
-                        <input asp-for="Caste" type="text" class="form-control" id="casteInput" placeholder="Enter Caste">
+                        <label asp-for="ProfileViewModel.Caste">Caste</label>
+                        <input asp-for="ProfileViewModel.Caste" type="text" class="form-control" id="casteInput" placeholder="Enter Caste">
                         </div>
                         <div class="form-group">
-                        <label asp-for="SamagraID">Samagra ID</label>
-                        <input asp-for="SamagraID" type="text" class="form-control" id="samagraIdInput" placeholder="Enter Samagra ID">
+                        <label asp-for="ProfileViewModel.SamagraID">Samagra ID</label>
+                        <input asp-for="ProfileViewModel.SamagraID" type="text" class="form-control" id="samagraIdInput" placeholder="Enter Samagra ID">
                         </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -238,6 +242,42 @@
 
 
 
+
+<!-- Modal -->
+<div id="changePasswordModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Include your form here -->
+                <form method="post" id="changePasswordForm" asp-action="ChangePassword" asp-controller="Account" >
+                    <div class="form-group">
+                        <label asp-for="ChangePasswordViewModel.OldPassword">Old Password</label>
+                        <input asp-for="ChangePasswordViewModel.OldPassword" id="oldPassword" type="password" class="form-control" required>
+                        <span asp-validation-for="ChangePasswordViewModel.OldPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ChangePasswordViewModel.NewPassword">New Password</label>
+                        <input asp-for="ChangePasswordViewModel.NewPassword" id="newPassword" type="password" class="form-control" required>
+                        <span asp-validation-for="ChangePasswordViewModel.NewPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ChangePasswordViewModel.ConfirmPassword">Confirm New Password</label>
+                        <input asp-for="ChangePasswordViewModel.ConfirmPassword" id="confirmPassword" type="password" class="form-control" required>
+                        <span asp-validation-for="ChangePasswordViewModel.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <button asp-action ="ChangePassword" asp-controller="Account" type="submit" class="btn btn-primary">Change Password</button>
+                </form>
+            </div>
+            <!-- No need for modal footer, as the form already has a submit button -->
+        </div>
+    </div>
+</div>
 
 
 

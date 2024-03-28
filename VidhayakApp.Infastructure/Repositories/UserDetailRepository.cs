@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
@@ -7,8 +8,17 @@ using VidhayakApp.Infrastructure.Data;
 
 public class UserDetailRepository : Repository<UserDetail>, IUserDetailRepository
 {
-    public UserDetailRepository(VidhayakAppContext context) : base(context) { }
-    
+    private readonly VidhayakAppContext _context;
+    public UserDetailRepository(VidhayakAppContext context) : base(context) 
+    { 
+        _context = context;
+    }
 
- 
+    public async Task<UserDetail?> GetUserDetailsByUserIdAsync(int id)
+    {
+        return await _context.UserDetails
+             .Include(ud => ud.User) // Include User navigation property if needed
+             .FirstOrDefaultAsync(ud => ud.UserId == id);
+    }
+
 }

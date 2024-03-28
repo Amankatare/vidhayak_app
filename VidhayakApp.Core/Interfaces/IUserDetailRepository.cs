@@ -7,6 +7,6 @@ namespace VidhayakApp.Core.Interfaces
 {
     public interface IUserDetailRepository : IRepository<UserDetail>
     {
-
+        public Task<UserDetail?> GetUserDetailsByUserIdAsync(int id);
     }
 }

@@ -8,5 +8,7 @@ namespace VidhayakApp.Core.Interfaces
         Task<bool> RegisterUserAsync(User user);
         // Task<User> GetUserByEmailAsync(string email);
         Task<User> AuthenticateAsync(string username, string password);
+
+        public string HashPassword(string password);
     }
 }

@@ -46,7 +46,7 @@ namespace VidhayakApp.Application.Services
             return false;
         }
 
-        private string HashPassword(string password)
+        public string HashPassword(string password)
         {
            var hashedPass = BCrypt.Net.BCrypt.EnhancedHashPassword(password);
            return hashedPass;

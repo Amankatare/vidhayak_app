@@ -205,14 +205,51 @@ namespace VidhayakApp.Web.Controllers
 
         }
 
-        public IActionResult DashBoard()
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ProfileAndChangePasswordViewModel viewModel)
         {
-            return View();
+            // Ensure that the ModelState is valid for the ChangePasswordViewModel
+            if (!ModelState.IsValid)
+            {
+                // If ModelState is not valid, return the view with the same viewModel
+                return View(viewModel);
+            }
+
+            var loggedInUser = HttpContext.Session.GetString("UserName");
+            if (loggedInUser == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Retrieve the user from the database
+            var user = await _userRepository.GetByUsernameAsync(loggedInUser);
+            if (user == null)
+            {
+                // Handle the scenario if the user is not found
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Hash the old password entered by the user using the same hashing algorithm and parameters
+            var oldPasswordHash = _userService.HashPassword(viewModel.ChangePasswordViewModel.OldPassword);
+
+            // Compare the hashed old password with the hashed password stored in the database
+            if (user.PasswordHash != oldPasswordHash)
+            {
+                ModelState.AddModelError("ChangePassword.OldPassword", "The old password is incorrect.");
+                return View(viewModel);
+            }
+
+            // Hash the new password before updating it in the database
+            var newPasswordHash = _userService.HashPassword(viewModel.ChangePasswordViewModel.NewPassword);
+
+            // Update the password in the database
+            user.PasswordHash = newPasswordHash;
+            await _userRepository.UpdateAsync(user);
+
+            // Redirect to the profile view or any other appropriate page
+            return RedirectToAction("ViewProfile", "Profile");
         }
-        public IActionResult Register()
-        {
-            return View();
-        }
+
 
 
         public IActionResult Login()

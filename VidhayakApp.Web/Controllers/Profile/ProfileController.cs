@@ -39,7 +39,7 @@ namespace VidhayakApp.Web.Controllers.Profile
             }
 
             // Fetch user detail data
-            var userDetails = await _userDetailRepository.GetByIdAsync(user.UserId);
+            var userDetails = await _userDetailRepository.GetUserDetailsByUserIdAsync(user.UserId);
 
             // Fetch ward data
             var ward = await _wardRepository.GetByIdAsync(user.WardId);
@@ -68,57 +68,18 @@ namespace VidhayakApp.Web.Controllers.Profile
                 WardName = ward?.WardName // Ensure ward is not null
             };
 
-            return View(profileViewModel);
+            // Create a new instance of ProfileAndChangePasswordViewModel and assign the ProfileViewModel to it
+            var viewModel = new ProfileAndChangePasswordViewModel
+            {
+                ProfileViewModel = profileViewModel,
+                //ChangePasswordViewModel = new ChangePasswordViewModel() // Initialize ChangePasswordViewModel
+            };
+
+            return View(viewModel);
         }
 
-        //public async Task<IActionResult> UpdateProfile()
-        //{
-        //    var loggedInUser = HttpContext.Session.GetString("UserName");
-        //    if (loggedInUser == null)
-        //    {
-        //        return RedirectToAction("Login", "Account");
-        //    }
-
-        //    // Fetch user data
-        //    var user = await _userRepository.GetByUsernameAsync(loggedInUser);
-        //    if (user == null)
-        //    {
-        //        return RedirectToAction("Login", "Account");
-        //    }
-
-        //    // Fetch user detail data
-        //    var userDetails = await _userDetailRepository.GetByIdAsync(user.UserId);
-
-        //    // Fetch ward data
-        //    var ward = await _wardRepository.GetByIdAsync(user.WardId);
-        //    var role = await _roleRepository.GetByIdAsync(user.RoleId);
-        //    // Map data to view model
-        //    var profileViewModel = new ProfileViewModel
-        //    {
-        //        UserId = user.UserId,
-
-
-        //        Dob = user.Dob,
-        //        Address = user.Address,
-        //        Ward = ward?.WardName, // Ensure ward is not null
-        //        MobileNumber = user.MobileNumber,
-        //        // Ensure userDetails is not null
-        //        Education = userDetails?.Education,
-        //        AadharNumber = userDetails?.AadharNumber,
-        //        SamagraID = userDetails?.SamagraID,
-        //        VoterID = userDetails?.VoterID,
-        //        Caste = userDetails?.Caste,
-        //        VoterCount = userDetails?.VoterCount,
-        //        WardId = user.WardId,
-        //        // Ensure ward is not null
-        //    };
-
-        //    return View(profileViewModel);
-        //}
-
         [HttpPost]
-        [HttpPost]
-        public async Task<IActionResult> UpdateProfile(ProfileViewModel model)
+        public async Task<IActionResult> UpdateProfile(ProfileAndChangePasswordViewModel viewModel)
         {
             var loggedInUser = HttpContext.Session.GetString("UserName");
             if (loggedInUser == null)
@@ -134,22 +95,22 @@ namespace VidhayakApp.Web.Controllers.Profile
             }
 
             // Fetch user detail data for the given user ID
-            var userDetails = await _userDetailRepository.GetByIdAsync(user.UserId);
+            var userDetails = await _userDetailRepository.GetUserDetailsByUserIdAsync(user.UserId);
 
             // If user details don't exist, create a new one
             if (userDetails == null)
             {
-                userDetails = new UserDetail();
-                userDetails.UserId = user.UserId; // Assign the correct user ID
+
+            userDetails.Education = viewModel.ProfileViewModel.Education;
+            userDetails.AadharNumber = viewModel.ProfileViewModel.AadharNumber;
+            userDetails.SamagraID = viewModel.ProfileViewModel.SamagraID;
+            userDetails.VoterID = viewModel.ProfileViewModel.VoterID;
+            userDetails.Caste = viewModel.ProfileViewModel.Caste;
+            userDetails.VoterCount = viewModel.ProfileViewModel.VoterCount;
+             
             }
 
             // Update user detail data with model values
-            userDetails.Education = model.Education;
-            userDetails.AadharNumber = model.AadharNumber;
-            userDetails.SamagraID = model.SamagraID;
-            userDetails.VoterID = model.VoterID;
-            userDetails.Caste = model.Caste;
-            userDetails.VoterCount = model.VoterCount;
 
             // Save changes to the user detail entity
             await _userDetailRepository.UpdateAsync(userDetails);
@@ -157,7 +118,6 @@ namespace VidhayakApp.Web.Controllers.Profile
             // Redirect to the updated profile view
             return RedirectToAction("ViewProfile");
         }
-
 
     }
 }
