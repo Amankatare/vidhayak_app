@@ -8,6 +8,6 @@ namespace VidhayakApp.Core.Entities
 {
     public enum ItemType
     {
-        Demand,Complaint,Suggession
+        Demand,Complaint, Suggestion
     }
 }

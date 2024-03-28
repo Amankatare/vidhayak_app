@@ -1,8 +1,8 @@
 ﻿
 
 
- @using VidhayakApp.Web.ViewModels.AppUser
-@model IEnumerable<UserDetailAndFormDetailOnAppUserDashboardViewModel>
+ @using VidhayakApp.Web.ViewModels
+@model DashboardViewModel
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
@@ -52,7 +52,7 @@
 
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>@Model.PendingComplaintsCount</h3>
                             <p>Pending Complaints</p>
                         </div>
                         <div class="icon">
@@ -65,7 +65,7 @@
 
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>@Model.PendingDemandsCount</h3>
                             <p>Pending Demands</p>
                         </div>
                         <div class="icon">
@@ -78,7 +78,7 @@
 
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>@Model.PendingSuggestionsCount</h3>
                         <p>Pending Suggessions</p>
                     </div>
                     <div class="icon">
@@ -92,7 +92,7 @@
 
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>@Model.TotalComplaintsCount<sup style="font-size: 20px"></sup></h3>
                         <p>Complaints</p>
                     </div>
                     <div class="icon">
@@ -106,7 +106,7 @@
 
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <h3>@Model.TotalDemandsCount<sup style="font-size: 20px"></sup></h3>
                             <p>Demands</p>
                         </div>
                         <div class="icon">
@@ -120,7 +120,7 @@
 
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <h3>@Model.TotalSuggestionsCount<sup style="font-size: 20px"></sup></h3>
                             <p>Suggessions</p>
                         </div>
                         <div class="icon">
@@ -134,7 +134,7 @@
 
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>@Model.UsersTotalCount</h3>
                         <p>User Registrations</p>
                     </div>
                     <div class="icon">
@@ -148,7 +148,7 @@
 
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>@Model.UsersInWardCount</h3>
                         <p>No. of Users In My Ward</p>
                     </div>
                     <div class="icon">

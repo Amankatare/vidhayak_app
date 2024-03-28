@@ -34,42 +34,62 @@ namespace VidhayakApp.Web.Controllers
         //{ var viewmodel = new UserDetailAndFormDetailOnAppUserDashboardViewModel
         //    return View();
         //}
-        
-            public IActionResult Dashboard()
-            {
 
+        public IActionResult Dashboard()
+        {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
-            var userDetailFormViewModels = _db.Users
-            .Join(_db.Items,
-                user => user.UserId,
-                item => item.UserId,
-                (user, item) => new { User = user, Item = item })
-                .Where(join => (join.Item.Type == ItemType.Complaint ||
-                            join.Item.Type == ItemType.Demand ||
-                            join.Item.Type == ItemType.Suggession) &&
-                            join.User.RoleId == 4 &&
-                            join.User.WardId == loggedInUser)
-             .Select(join => new UserDetailAndFormDetailOnAppUserDashboardViewModel
-             {
-                 UserId = join.User.UserId,
-                 UserName = join.User.UserName,
-                 Name = join.User.Name,
-                 Address = join.User.Address,
-                 MobileNumber = join.User.MobileNumber,
-                 Type = join.Item.Type,
-                 SubCategory = join.Item.SubCategoryTypeId,
-                 Title = join.Item.Title,
-                 Description = join.Item.Description,
-                 CreatedAt = join.Item.CreatedAt,
-                 UpdatedAt = join.Item.UpdatedAt,
-                 Status = join.Item.Status,
-                 Note = join.Item.Note
-             })
-                 .ToList();
 
-            return View(userDetailFormViewModels);
-           
-            }
+            // Fetch counts of pending complaints, demands, and suggestions
+            var pendingComplaintsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Complaint &&
+                item.Status == StatusType.Pending &&
+                item.User.WardId == loggedInUser);
+
+            var pendingDemandsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Demand &&
+                item.Status == StatusType.Pending &&
+                item.User.WardId == loggedInUser);
+
+            var pendingSuggestionsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Suggestion &&
+                item.Status == StatusType.Pending &&
+                item.User.WardId == loggedInUser);
+
+            // Fetch counts of total complaints, demands, and suggestions
+            var totalComplaintsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Complaint &&
+                item.User.WardId == loggedInUser);
+
+            var totalDemandsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Demand &&
+                item.User.WardId == loggedInUser);
+
+            var totalSuggestionsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Suggestion &&
+                item.User.WardId == loggedInUser);
+
+            // Fetch count of users in the same ward
+            var usersInWardCount = _db.Users.Count(user =>
+                user.WardId == loggedInUser);
+
+            var usersTotalCount = _db.Users.Count();
+
+            // Pass the counts to the view model
+            var viewModel = new DashboardViewModel
+            {
+                PendingComplaintsCount = pendingComplaintsCount,
+                PendingDemandsCount = pendingDemandsCount,
+                PendingSuggestionsCount = pendingSuggestionsCount,
+                TotalComplaintsCount = totalComplaintsCount,
+                TotalDemandsCount = totalDemandsCount,
+                TotalSuggestionsCount = totalSuggestionsCount,
+                UsersInWardCount = usersInWardCount,
+                UsersTotalCount= usersTotalCount,
+            };
+
+            return View(viewModel);
+        }
+
 
         public IActionResult Complaint()
         {
@@ -168,7 +188,7 @@ namespace VidhayakApp.Web.Controllers
                     .Where(item => item.UserId == id &&
                                    (item.Type == ItemType.Complaint ||
                                     item.Type == ItemType.Demand ||
-                                    item.Type == ItemType.Suggession))
+                                    item.Type == ItemType.Suggestion))
                     .ToList(); // Materialize the query to avoid multiple enumeration
 
                 // Update each item with the provided status, note, and updated at date
