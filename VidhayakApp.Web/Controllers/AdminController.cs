@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infastructure.Repositories;
@@ -47,10 +48,23 @@ namespace VidhayakApp.Web.Controllers
         [HttpGet]
         public IActionResult AppUsers()
         {
-            // Retrieve all users from the Users table
-            var allUsers = _db.Users.Where(s=>s.RoleId==3).ToList();
+            var users = _db.Users.Where(u => u.RoleId == 3).ToList();
 
-            return View(allUsers);
+            // Retrieve all user details
+            var userDetails = _db.UserDetails.ToList();
+
+            // Retrieve all wards
+            var wards = _db.Wards.ToList();
+
+            // Create an instance of the ShowUserandItsDetails view model
+            var viewModel = new ShowUserandItsDetails
+            {
+                usersTable = users,
+                userDetailsTable = userDetails,
+                userWardTable = wards
+            };
+
+            return View(viewModel);
         }
 
 

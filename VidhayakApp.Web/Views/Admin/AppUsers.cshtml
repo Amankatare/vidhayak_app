@@ -1,16 +1,17 @@
-﻿@model List<VidhayakApp.Core.Entities.User>
+﻿@model VidhayakApp.Web.ViewModels.ShowUserandItsDetails
 
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
-    ViewData["Title"] = "Users";
+    ViewData["Title"] = "AppUsers Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
     var loggedInId = context.Session.GetInt32("UserId");
 
 }
-@if (loggedInId == null)
+
+@if(loggedInId == null)
 {
     context.Response.Redirect("/Account/Login");
 }
@@ -18,6 +19,120 @@
 @TempData["Message"]
 
 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convert | Export html Table to CSV & EXCEL File</title>
+    <link rel="stylesheet" type="text/css" href="~/css/UserDashboardTable.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+<body class="body_img_user_table">
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h3>User @ViewData["Title"]</h3>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                @*  <img src="~/dist/img/search.png" alt=""> *@
+            </div>
+            
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>UserName<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Address<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Ward<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Phone<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Education<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>AadharNumber<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>SamagraID<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>VoterID<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Caste<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.usersTable)
+                    {
+                        var userDetails = Model.userDetailsTable.FirstOrDefault(d => d.UserId == user.UserId);
+                        var userWard = Model.userWardTable.FirstOrDefault(d => d.WardId == user.WardId);
+
+                        <tr>
+                            <td>@(user?.Name)</td>
+                            <td>@(user?.UserName ?? "N/A")</td>
+                            <td>@(user?.Address ?? "N/A")</td>
+                            <td>@(userWard?.WardName)</td>
+                            <td>@(user?.MobileNumber ?? "N/A")</td>
+                            <td>@(userDetails?.Education ?? "N/A")</td>
+                            <td>@(userDetails?.AadharNumber ?? "N/A")</td>
+                            <td>@(userDetails?.SamagraID ?? "N/A")</td>
+                            <td>@(userDetails?.VoterID ?? "N/A")</td>
+                            <td>@(userDetails?.Caste ?? "N/A")</td>
+                            <td>
+                                <a asp-controller="Admin" asp-action="Edit" asp-route-id="@user.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
+                                <a asp-controller="Admin" asp-action="DeleteAppUser" asp-route-id="@user.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="~/js/UserDashboardTable.js"></script>
+
+</body>
+
+</html>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,10 +159,10 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
-    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css"> *@
     @* <script nonce="ec04942b-44a4-4369-a2b5-e05962364918">try { (function (w, d) { !function (ct, cu, cv, cw) { ct[cv] = ct[cv] || {}; ct[cv].executed = []; ct.zaraz = { deferred: [], listeners: [] }; ct.zaraz.q = []; ct.zaraz._f = function (cx) { return async function () { var cy = Array.prototype.slice.call(arguments); ct.zaraz.q.push({ m: cx, a: cy }) } }; for (const cz of ["track", "set", "debug"]) ct.zaraz[cz] = ct.zaraz._f(cz); ct.zaraz.init = () => { var cA = cu.getElementsByTagName(cw)[0], cB = cu.createElement(cw), cC = cu.getElementsByTagName("title")[0]; cC && (ct[cv].t = cu.getElementsByTagName("title")[0].text); ct[cv].x = Math.random(); ct[cv].w = ct.screen.width; ct[cv].h = ct.screen.height; ct[cv].j = ct.innerHeight; ct[cv].e = ct.innerWidth; ct[cv].l = ct.location.href; ct[cv].r = cu.referrer; ct[cv].k = ct.screen.colorDepth; ct[cv].n = cu.characterSet; ct[cv].o = (new Date).getTimezoneOffset(); if (ct.dataLayer) for (const cG of Object.entries(Object.entries(dataLayer).reduce(((cH, cI) => ({ ...cH[1], ...cI[1] })), {}))) zaraz.set(cG[0], cG[1], { scope: "page" }); ct[cv].q = []; for (; ct.zaraz.q.length;) { const cJ = ct.zaraz.q.shift(); ct[cv].q.push(cJ) } cB.defer = !0; for (const cK of [localStorage, sessionStorage]) Object.keys(cK || {}).filter((cM => cM.startsWith("_zaraz_"))).forEach((cL => { try { ct[cv]["z_" + cL.slice(7)] = JSON.parse(cK.getItem(cL)) } catch { ct[cv]["z_" + cL.slice(7)] = cK.getItem(cL) } })); cB.referrerPolicy = "origin"; cB.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(ct[cv]))); cA.parentNode.insertBefore(cB, cA) };["complete", "interactive"].includes(cu.readyState) ? zaraz.init() : ct.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
  *@
-</head>
+@* </head>
 
 <div class="container">
     <div class="table-wrapper">
@@ -58,7 +173,7 @@
                 </div>
                 <div class="col-sm-6">
                      @* < a  asp-controller="Admin" asp-action="Create"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New AppUser</span></a> 
-                     <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a> *@
+                     <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a> 
                 </div>
             </div>
         </div>
@@ -131,3 +246,4 @@
     <script src="~/dist/js/pages/dashboard.js"></script>
     <script src="~/js/site.js"></script>
 
+ *@
