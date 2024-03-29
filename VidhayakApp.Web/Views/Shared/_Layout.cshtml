@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="~/Argon/favicons/img-apple-icon.png">
     <link rel="icon" type="image/png" href="favicons/~/Argon/favicons/img-favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <title>
         Vidhayak App
     </title>
@@ -137,6 +139,11 @@
                         </div> *@
                     </div>
                     <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-flex align-items-center form-check form-switch ps-0 ms-auto my-auto">
+                            <i class="fa-solid fa-moon fa-lg" style="color: #FFD43B; margin-top: 5px;"></i>&nbsp;
+                            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+                        </li>
+                        &nbsp;  &nbsp;  &nbsp;  &nbsp;
                         <li class="nav-item d-flex align-items-center">
                             <a asp-action="Login" asp-controller="Account" class="nav-link text-white font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>

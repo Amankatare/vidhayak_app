@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="~/Argon/favicons/img-apple-icon.png">
     <link rel="icon" type="image/png" href="favicons/~/Argon/favicons/img-favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <title>
         Vidhayak App
     </title>
@@ -39,22 +41,12 @@
     <meta property="og:site_name" content="Creative Tim">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
-
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     @*  <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
-
-    <link href="~/Argon/css/css-nucleo-icons.css" rel="stylesheet">
-    <link href="~/Argon/css/css-nucleo-svg.css" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
@@ -68,9 +60,10 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
-    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css"> *@
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">  *@
 
-
+    <link href="~/Argon/css/css-nucleo-icons.css" rel="stylesheet">
+    <link href="~/Argon/css/css-nucleo-svg.css" rel="stylesheet">
 
     <script src="~/Argon/js/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="~/Argon/css/css-nucleo-svg.css" rel="stylesheet">
@@ -157,7 +150,7 @@
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="dashboard.html" target="_blank">
-                <img src="images/img-logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+                <img src="~/Argon/images/img-logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold">VidhayakApp</span>
             </a>
         </div>
@@ -282,6 +275,11 @@
                         </div> *@
                     </div>
                     <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-flex align-items-center form-check form-switch ps-0 ms-auto my-auto">
+                            <i class="fa-solid fa-moon fa-lg" style="color: #FFD43B; margin-top: 5px;"></i>&nbsp;
+                            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+                        </li>
+                        &nbsp;  &nbsp;  &nbsp;  &nbsp;
                         <li class="nav-item d-flex align-items-center">
                             <a asp-action="Logout" asp-controller="Account" class="nav-link text-white font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
