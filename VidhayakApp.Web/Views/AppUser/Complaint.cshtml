@@ -25,6 +25,8 @@
     <title>Convert | Export html Table to CSV & EXCEL File</title>
     <link rel="stylesheet" type="text/css" href="~/css/UserDashboardTable.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        
 </head>
 
 <body class="body_img_user_table">
@@ -86,7 +88,7 @@
                             <td>@(userDetail.Status)</td>
                             <td>@(userDetail.Note ?? "")</td>
                             <td>
-                                <a asp-controller="AppUser" asp-action="UpdateOnUserIssuesOnAppUserDashboard" asp-route-id="@userDetail.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
+                                    <a asp-controller="AppUser" asp-action="UpdateOnUserIssuesOnAppUserDashboard" asp-route-id="@userDetail.UserId" class="edit"><center><i class="fa-sharp fa-solid fa-wrench"></i></center></a>
                             </td>
                         </tr>
                     }

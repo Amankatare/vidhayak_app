@@ -5,6 +5,162 @@
       "PackagePath": "staticwebassets\\VidhayakApp.Web.bundle.scp.css"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\css\\css-argon-dashboard.min.css",
+      "PackagePath": "staticwebassets\\Argon\\css\\css-argon-dashboard.min.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\css\\css-nucleo-icons.css",
+      "PackagePath": "staticwebassets\\Argon\\css\\css-nucleo-icons.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\css\\css-nucleo-svg.css",
+      "PackagePath": "staticwebassets\\Argon\\css\\css-nucleo-svg.css"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\favicons\\img-apple-icon.png",
+      "PackagePath": "staticwebassets\\Argon\\favicons\\img-apple-icon.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\favicons\\img-favicon.png",
+      "PackagePath": "staticwebassets\\Argon\\favicons\\img-favicon.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\fonts\\fonts-nucleo-icons.eot",
+      "PackagePath": "staticwebassets\\Argon\\fonts\\fonts-nucleo-icons.eot"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\fonts\\fonts-nucleo-icons.svg",
+      "PackagePath": "staticwebassets\\Argon\\fonts\\fonts-nucleo-icons.svg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\fonts\\fonts-nucleo-icons.ttf",
+      "PackagePath": "staticwebassets\\Argon\\fonts\\fonts-nucleo-icons.ttf"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\fonts\\fonts-nucleo-icons.woff",
+      "PackagePath": "staticwebassets\\Argon\\fonts\\fonts-nucleo-icons.woff"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\fonts\\fonts-nucleo-icons.woff2",
+      "PackagePath": "staticwebassets\\Argon\\fonts\\fonts-nucleo-icons.woff2"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\U-A1U7AfwIMAD7mS3pCbuWJAAAAAElFTkSuQmCC",
+      "PackagePath": "staticwebassets\\Argon\\images"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\flags-BR.png",
+      "PackagePath": "staticwebassets\\Argon\\images\\flags-BR.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\flags-DE.png",
+      "PackagePath": "staticwebassets\\Argon\\images\\flags-DE.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\flags-GB.png",
+      "PackagePath": "staticwebassets\\Argon\\images\\flags-GB.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\flags-US.png",
+      "PackagePath": "staticwebassets\\Argon\\images\\flags-US.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\illustrations-icon-documentation.svg",
+      "PackagePath": "staticwebassets\\Argon\\images\\illustrations-icon-documentation.svg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\img-bg-profile.jpg",
+      "PackagePath": "staticwebassets\\Argon\\images\\img-bg-profile.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\img-logo-ct-dark.png",
+      "PackagePath": "staticwebassets\\Argon\\images\\img-logo-ct-dark.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\img-team-1.jpg",
+      "PackagePath": "staticwebassets\\Argon\\images\\img-team-1.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\img-team-2.jpg",
+      "PackagePath": "staticwebassets\\Argon\\images\\img-team-2.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\img-team-3.jpg",
+      "PackagePath": "staticwebassets\\Argon\\images\\img-team-3.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\img-team-4.jpg",
+      "PackagePath": "staticwebassets\\Argon\\images\\img-team-4.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\small-logos-icon-sun-cloud.png",
+      "PackagePath": "staticwebassets\\Argon\\images\\small-logos-icon-sun-cloud.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\small-logos-logo-invision.svg",
+      "PackagePath": "staticwebassets\\Argon\\images\\small-logos-logo-invision.svg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\small-logos-logo-jira.svg",
+      "PackagePath": "staticwebassets\\Argon\\images\\small-logos-logo-jira.svg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\small-logos-logo-slack.svg",
+      "PackagePath": "staticwebassets\\Argon\\images\\small-logos-logo-slack.svg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\small-logos-logo-spotify.svg",
+      "PackagePath": "staticwebassets\\Argon\\images\\small-logos-logo-spotify.svg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\small-logos-logo-webdev.svg",
+      "PackagePath": "staticwebassets\\Argon\\images\\small-logos-logo-webdev.svg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\small-logos-logo-xd.svg",
+      "PackagePath": "staticwebassets\\Argon\\images\\small-logos-logo-xd.svg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\images\\uQiA214gno7K+guhaiKg9gC62+M8eR7XsBsYJ4ilam60Fb7r7uAj8wFyuwM1oIOWgfmDy6RXEEQzJMPe23DXrVS7rtyD3Df8z-FPgAEAzWU5Ku59ZAUAAAAASUVORK5CYII=",
+      "PackagePath": "staticwebassets\\Argon\\images"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\js\\42d5adcbca.js",
+      "PackagePath": "staticwebassets\\Argon\\js\\42d5adcbca.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\js\\buttons.github.io-buttons.js",
+      "PackagePath": "staticwebassets\\Argon\\js\\buttons.github.io-buttons.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\js\\cloudflare-static-email-decode.min.js",
+      "PackagePath": "staticwebassets\\Argon\\js\\cloudflare-static-email-decode.min.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\js\\core-bootstrap.min.js",
+      "PackagePath": "staticwebassets\\Argon\\js\\core-bootstrap.min.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\js\\core-popper.min.js",
+      "PackagePath": "staticwebassets\\Argon\\js\\core-popper.min.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\js\\js-argon-dashboard.min.js",
+      "PackagePath": "staticwebassets\\Argon\\js\\js-argon-dashboard.min.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\js\\plugins-chartjs.min.js",
+      "PackagePath": "staticwebassets\\Argon\\js\\plugins-chartjs.min.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\js\\plugins-perfect-scrollbar.min.js",
+      "PackagePath": "staticwebassets\\Argon\\js\\plugins-perfect-scrollbar.min.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\js\\plugins-smooth-scrollbar.min.js",
+      "PackagePath": "staticwebassets\\Argon\\js\\plugins-smooth-scrollbar.min.js"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\build\\config\\.eslintrc.json",
       "PackagePath": "staticwebassets\\build\\config\\.eslintrc.json"
     },

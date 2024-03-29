@@ -262,6 +262,11 @@ namespace VidhayakApp.Web.Controllers
             return View();
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Logout()
         {
             if (HttpContext.Session.GetString("UserName") != null)
