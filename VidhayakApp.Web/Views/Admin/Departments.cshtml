@@ -1,0 +1,82 @@
+﻿@using VidhayakApp.Web.ViewModels
+@model DepartmentViewModel
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+
+}
+
+@if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
+    
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convert | Export html Table to CSV & EXCEL File</title>
+    <link rel="stylesheet" type="text/css" href="~/css/UserDashboardTable.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<link rel="stylesheet" href="~/css/site.css" />
+<body class="body_img_user_table">
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h3>User @ViewData["Title"]</h3>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                @*  <img src="~/dist/img/search.png" alt=""> *@
+            </div>
+
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Department Names<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Complaints<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Suggestions<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Demands<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Other<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Pending<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>In Progress<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Rejected<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Completed<span class="icon-arrow">&UpArrow;</span></th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach (var department in Model.Departments)
+                        {
+                            <tr>
+                                <td>@department.DepartmentName</td>
+                                <td>@department.ComplaintsCount</td>
+                                <td>@department.SuggestionsCount</td>
+                                <td>@department.DemandsCount</td>
+                                <td>@department.OtherCount</td>
+                                <td>@department.PendingCount</td>
+                                <td>@department.InProgressCount</td>
+                                <td>@department.RejectedCount</td>
+                                <td>@department.CompletedCount</td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="~/js/UserDashboardTable.js"></script>
+
+</body>
+
+</html>
+}

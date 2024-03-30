@@ -48,6 +48,7 @@ builder.Services.AddScoped<IGovtSchemeRepository, GovtSchemeRepository>();
 builder.Services.AddScoped<IWardRepository, WardRepository>();
 builder.Services.AddScoped<ICommunicationRepository, CommunicationRepository>();
 builder.Services.AddScoped<IUserDetailRepository,UserDetailRepository>();
+builder.Services.AddScoped<IItemRepository,ItemRepository>();
 builder.Services.AddScoped<IRoleRepository,RoleRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRoleService, RoleService>();

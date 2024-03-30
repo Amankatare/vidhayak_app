@@ -1,0 +1,97 @@
+﻿@model VidhayakApp.Web.ViewModels.ShowUserandItsDetails
+
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+
+}
+
+@if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}
+
+@TempData["Message"]
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convert | Export html Table to CSV & EXCEL File</title>
+    <link rel="stylesheet" type="text/css" href="~/css/UserDashboardTable.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+<body class="body_img_user_table">
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h3>User @ViewData["Title"]</h3>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                @*  <img src="~/dist/img/search.png" alt=""> *@
+            </div>
+            
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>UserName<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Address<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Ward<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Phone<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Education<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>AadharNumber<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>SamagraID<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>VoterID<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Caste<span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.usersTable)
+                    {
+                        var userDetails = Model.userDetailsTable.FirstOrDefault(d => d.UserId == user.UserId);
+
+
+                        <tr>
+                            <td>@(user?.Name)</td>
+                            <td>@(user?.UserName ?? "N/A")</td>
+                            <td>@(user?.Address ?? "N/A")</td>
+                            <td>@(user?.WardId)</td>
+                            <td>@(user?.MobileNumber ?? "N/A")</td>
+                            <td>@(userDetails?.Education ?? "N/A")</td>
+                            <td>@(userDetails?.AadharNumber ?? "N/A")</td>
+                            <td>@(userDetails?.SamagraID ?? "N/A")</td>
+                            <td>@(userDetails?.VoterID ?? "N/A")</td>
+                            <td>@(userDetails?.Caste ?? "N/A")</td>
+                            <td>
+                                <a asp-controller="AppUser" asp-action="Edit" asp-route-id="@user.UserId" class="edit"><i class="fa-solid fa-user-pen"></i></a>
+                                <a asp-controller="AppUser" asp-action="Delete" asp-route-id="@user.UserId" class="delete"><i class="fa-sharp fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="~/js/UserDashboardTable.js"></script>
+
+</body>
+
+</html>
+    

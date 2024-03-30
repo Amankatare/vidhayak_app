@@ -16,11 +16,12 @@ namespace VidhayakApp.Web.Controllers
         private readonly VidhayakAppContext _db;
         private readonly IUserRepository _user;
         private readonly IWardRepository _wardRepository;
+        private readonly IItemRepository _itemRepository;
         private readonly IUserService _userService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IRoleService _roleService;
 
-        public AdminController(VidhayakAppContext db, IUserRepository user, IUserService userService, IHttpContextAccessor httpContextAccessor, IRoleService roleService, IWardRepository wardRepository)
+        public AdminController(VidhayakAppContext db, IUserRepository user, IUserService userService, IHttpContextAccessor httpContextAccessor, IRoleService roleService, IWardRepository wardRepository, IItemRepository itemRepository)
         {
             _db = db;
             _user = user;
@@ -28,11 +29,99 @@ namespace VidhayakApp.Web.Controllers
             _httpContextAccessor = httpContextAccessor;
             _roleService = roleService;
             _wardRepository = wardRepository;
+            _itemRepository = itemRepository;
         }
         public IActionResult Dashboard()
         {
+            var loggedInUser = HttpContext.Session.GetInt32("WardId");
+
+            // Fetch counts of pending complaints, demands, and suggestions
+            var pendingComplaintsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Complaint &&
+                item.Status == StatusType.Pending &&
+                item.User.WardId == loggedInUser);
+
+            var pendingDemandsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Demand &&
+                item.Status == StatusType.Pending &&
+                item.User.WardId == loggedInUser);
+
+            var pendingSuggestionsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Suggestion &&
+                item.Status == StatusType.Pending &&
+                item.User.WardId == loggedInUser);
+
+            // Fetch counts of total complaints, demands, and suggestions
+            var totalComplaintsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Complaint &&
+                item.User.WardId == loggedInUser);
+
+            var totalDemandsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Demand &&
+                item.User.WardId == loggedInUser);
+
+            var totalSuggestionsCount = _db.Items.Count(item =>
+                item.Type == ItemType.Suggestion &&
+                item.User.WardId == loggedInUser);
+
+            // Fetch count of users in the same ward
+            var usersInWardCount = _db.Users.Count(user =>
+                user.WardId == loggedInUser);
+
+            var usersTotalCount = _db.Users.Count();
+
+            // Pass the counts to the view model
+            var viewModel = new DashboardViewModel
+            {
+                PendingComplaintsCount = pendingComplaintsCount,
+                PendingDemandsCount = pendingDemandsCount,
+                PendingSuggestionsCount = pendingSuggestionsCount,
+                TotalComplaintsCount = totalComplaintsCount,
+                TotalDemandsCount = totalDemandsCount,
+                TotalSuggestionsCount = totalSuggestionsCount,
+                UsersInWardCount = usersInWardCount,
+                UsersTotalCount = usersTotalCount,
+            };
+
+            return View(viewModel);
+        }
+
+        public IActionResult Departments()
+        {
+            var viewModel = new DepartmentViewModel();
+
+            viewModel.Departments = _db.GovtDepartments
+                .Select(department => new DepartmentViewModel
+                {
+                    DepartmentName = department.DepartmentName,
+                    ComplaintsCount = _db.Items.Count(item =>
+                        item.DepartmentId == department.DepartmentId && item.Type == ItemType.Complaint),
+                    SuggestionsCount = _db.Items.Count(item =>
+                        item.DepartmentId == department.DepartmentId && item.Type == ItemType.Suggestion),
+                    DemandsCount = _db.Items.Count(item =>
+                        item.DepartmentId == department.DepartmentId && item.Type == ItemType.Demand),
+                    OtherCount = _db.Items.Count(item =>
+                        item.DepartmentId == department.DepartmentId && item.Type != ItemType.Complaint
+                        && item.Type != ItemType.Suggestion && item.Type != ItemType.Demand),
+                    PendingCount = _db.Items.Count(item =>
+                        item.DepartmentId == department.DepartmentId && item.Status == StatusType.Pending),
+                    InProgressCount = _db.Items.Count(item =>
+                        item.DepartmentId == department.DepartmentId && item.Status == StatusType.InProgress),
+                    RejectedCount = _db.Items.Count(item =>
+                        item.DepartmentId == department.DepartmentId && item.Status == StatusType.Rejected),
+                    CompletedCount = _db.Items.Count(item =>
+                        item.DepartmentId == department.DepartmentId && item.Status == StatusType.Completed)
+                })
+                .ToList();
+
+            return View(viewModel);
+        }
+
+        public IActionResult Schemes()
+        {
             return View();
         }
+
         public IActionResult Profile()
         {
             return View();
@@ -73,7 +162,21 @@ namespace VidhayakApp.Web.Controllers
             return View();
         }
 
-        
+       
+        public IActionResult ListUsers()
+        {
+            // Retrieve all users from the Users table
+
+            var viewModel = new ShowUserandItsDetails
+            {
+                usersTable = _db.Users.Where(s => s.RoleId == 4).ToList(),
+                userDetailsTable = _db.UserDetails.ToList(),
+                userWardTable = _db.Wards.ToList() // Populate userWardTable
+                                                   // Retrieve data for additional tables if needed
+            };
+
+            return View(viewModel);
+        }
 
 
         [HttpPost]

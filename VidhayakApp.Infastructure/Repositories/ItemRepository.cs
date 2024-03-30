@@ -9,7 +9,7 @@ using VidhayakApp.Infrastructure.Data;
 
 namespace VidhayakApp.Infastructure.Repositories
 {
-    internal class ItemRepository: Repository<Item>,IItemRepository
+    public class ItemRepository: Repository<Item>,IItemRepository
     {
         public ItemRepository(VidhayakAppContext context) : base(context) { }
         
