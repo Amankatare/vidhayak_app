@@ -4,7 +4,9 @@ namespace VidhayakApp.Web.ViewModels.AppUser
 {
     public class UpdateOnUserIssuesByAppUser
     {
+
         public int UserId { get; set; }
+        public string UserName { get; set; }
         public int AppUserId { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public StatusType Status { get; set; }

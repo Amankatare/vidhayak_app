@@ -175,10 +175,13 @@ namespace VidhayakApp.Web.Controllers
 
         public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard(int id)
         {
+            var problemObject = await _user.GetByIdAsync(id);
             // Assuming 'id' represents the User ID
             var viewModel = new UpdateOnUserIssuesByAppUser
             {
-                UserId = id
+                UserId = id,
+                UserName = problemObject.UserName,
+               
             };
             return View(viewModel);
         }
@@ -193,6 +196,9 @@ namespace VidhayakApp.Web.Controllers
 
             if (ModelState.IsValid)
             {
+
+                var problemObject = await _user.GetByIdAsync(id);
+                model.UserName = problemObject.UserName;
                 // Find items associated with the specified user ID
                 var itemsToUpdate = _db.Items
                     .Where(item => item.UserId == id &&

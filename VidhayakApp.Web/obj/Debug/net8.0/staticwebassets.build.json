@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YGwgRoXYqjgeBjEImTGUAkLNPHhO5OHNctodphd1BVk=",
+  "Hash": "wNLhCa4srNQh6RWERaQENWLa10l/Xc96Abn2d3SnHho=",
   "Source": "VidhayakApp.Web",
   "BasePath": "_content/VidhayakApp.Web",
   "Mode": "Default",
@@ -16,44 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\obj\\Debug\\net8.0\\scopedcss\\bundle\\VidhayakApp.Web.styles.css",
-      "SourceId": "VidhayakApp.Web",
-      "SourceType": "Computed",
-      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/VidhayakApp.Web",
-      "RelativePath": "VidhayakApp.Web.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "E:\\vidhayak_app\\VidhayakApp.Web\\obj\\Debug\\net8.0\\scopedcss\\bundle\\VidhayakApp.Web.styles.css"
-    },
-    {
-      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\VidhayakApp.Web.bundle.scp.css",
-      "SourceId": "VidhayakApp.Web",
-      "SourceType": "Computed",
-      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/VidhayakApp.Web",
-      "RelativePath": "VidhayakApp.Web.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "E:\\vidhayak_app\\VidhayakApp.Web\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\VidhayakApp.Web.bundle.scp.css"
-    },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\css\\css-argon-dashboard.min.css",
       "SourceId": "VidhayakApp.Web",
@@ -4898,6 +4860,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\js\\pages\\dashboard3.js"
+    },
+    {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\video\\Banner.webm",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "dist/video/Banner.webm",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\video\\Banner.webm"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\docs\\_config.yml",

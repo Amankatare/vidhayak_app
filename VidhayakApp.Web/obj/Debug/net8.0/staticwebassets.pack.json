@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\VidhayakApp.Web.bundle.scp.css",
-      "PackagePath": "staticwebassets\\VidhayakApp.Web.bundle.scp.css"
-    },
-    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\Argon\\css\\css-argon-dashboard.min.css",
       "PackagePath": "staticwebassets\\Argon\\css\\css-argon-dashboard.min.css"
     },
@@ -1023,6 +1019,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\js\\pages\\dashboard3.js",
       "PackagePath": "staticwebassets\\dist\\js\\pages\\dashboard3.js"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\video\\Banner.webm",
+      "PackagePath": "staticwebassets\\dist\\video\\Banner.webm"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\docs\\404.html",

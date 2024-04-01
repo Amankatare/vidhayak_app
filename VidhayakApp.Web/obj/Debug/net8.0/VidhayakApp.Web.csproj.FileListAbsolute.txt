@@ -259,9 +259,7 @@ E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\staticwebassets\msbuild.build.V
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.VidhayakApp.Web.props
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.VidhayakApp.Web.props
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\staticwebassets.pack.json
-E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\scopedcss\bundle\VidhayakApp.Web.styles.css
-E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\scopedcss\projectbundle\VidhayakApp.Web.bundle.scp.css
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\VidhayakApp.Web.csproj.CopyComplete
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\VidhayakApp.Web.dll
 E:\vidhayak_app\VidhayakApp.Web\obj\Debug\net8.0\refint\VidhayakApp.Web.dll
