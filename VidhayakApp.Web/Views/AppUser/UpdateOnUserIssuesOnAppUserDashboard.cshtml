@@ -15,9 +15,9 @@
 
 <form method="post" asp-action="UpdateOnUserIssuesOnAppUserDashboard">
     <div class="form-group">
-        <label asp-for="UserName" class="control-label"></label>
-        @* <input asp-for="UserName" class="form-control" readonly value="@Model.UserName" />
-    *@ </div>
+    @*     <label asp-for="UserName" class="control-label"></label>
+         <input asp-for="UserName" class="form-control" readonly value="@Model.UserName" /> *@
+     </div>
     <div class="form-group">
         <!-- Include ItemId as a hidden input -->
         <input asp-for="ItemId" type="hidden" name="ItemId" value="@Model.ItemId" />

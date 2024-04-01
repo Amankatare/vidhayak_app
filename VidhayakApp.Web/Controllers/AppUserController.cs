@@ -179,15 +179,17 @@ namespace VidhayakApp.Web.Controllers
 
         public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard( int itemId)
         {
-            //var userObject = await _db.Items.FindAsync(itemId);
+
 
             //var user = await _db.Users.FindAsync(userObject.UserId);
             var viewModel = new UpdateOnUserIssuesByAppUser
             {
-               ItemId = itemId,
+                ItemId = itemId,
             };
 
+     
 
+   
 
             //var userData = await _db.Items
             // .Where(items => items.ItemId == itemId)
