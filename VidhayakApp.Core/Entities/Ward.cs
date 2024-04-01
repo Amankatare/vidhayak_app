@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace VidhayakApp.Core.Entities
 {
     public class Ward
