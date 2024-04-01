@@ -10213,8 +10213,28 @@
       "PackagePath": "staticwebassets\\uploads\\4222a737-0d72-467e-aa1b-710f1af8fc6e_aadhar.jpg"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\1a95fb16-f8cc-44e4-9ba1-db7f3ed89cc0_Screenshot 2022-02-07 133619.png",
+      "PackagePath": "staticwebassets\\uploads\\complaints\\1a95fb16-f8cc-44e4-9ba1-db7f3ed89cc0_Screenshot 2022-02-07 133619.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\47c2cfb6-bc0c-46ad-b2a9-dffb9b6350fc_12.jpg",
+      "PackagePath": "staticwebassets\\uploads\\complaints\\47c2cfb6-bc0c-46ad-b2a9-dffb9b6350fc_12.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\61a7b09b-96f6-48e1-be53-67a5f729acb4_rose.png",
+      "PackagePath": "staticwebassets\\uploads\\complaints\\61a7b09b-96f6-48e1-be53-67a5f729acb4_rose.png"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\8382e713-9650-474f-9c56-ec19b61e65bb_images (1).jpg",
       "PackagePath": "staticwebassets\\uploads\\complaints\\8382e713-9650-474f-9c56-ec19b61e65bb_images (1).jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\89c71013-2126-48ae-88b3-6484b68fadb4_techytrip changes.jpg",
+      "PackagePath": "staticwebassets\\uploads\\complaints\\89c71013-2126-48ae-88b3-6484b68fadb4_techytrip changes.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\ed2c801a-4957-4a03-81bc-6147f3d4566a_techytrip changes.jpg",
+      "PackagePath": "staticwebassets\\uploads\\complaints\\ed2c801a-4957-4a03-81bc-6147f3d4566a_techytrip changes.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VidhayakApp.Web.Microsoft.AspNetCore.StaticWebAssets.props",

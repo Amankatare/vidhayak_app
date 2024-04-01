@@ -13,6 +13,7 @@ namespace VidhayakApp.Web.ViewModels.AppUser
         public string MobileNumber { get; set; }
         public ItemType Type { get; set; }
         public SubCategoryType SubCategory { get; set; }
+        public int ItemId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,5 @@ namespace VidhayakApp.Infastructure.Repositories
     public class ItemRepository: Repository<Item>,IItemRepository
     {
         public ItemRepository(VidhayakAppContext context) : base(context) { }
-        
     }
 }

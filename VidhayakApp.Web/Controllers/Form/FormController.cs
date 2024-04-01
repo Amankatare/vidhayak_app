@@ -113,7 +113,7 @@ namespace VidhayakApp.Web.Controllers.Form
                     Type = model.Type,
                     SubCategoryTypeId = model.SubCategoryTypeId,
                     CreatedAt = DateTime.Now.Date,
-                    ImagePath = "/uploads/complaints/" + uniqueFileName, // Assign the image path
+                    ImagePath = string.IsNullOrEmpty(uniqueFileName) ? "" : "/uploads/complaints/" + uniqueFileName,
                     User = user,
                     DepartmentId = model.DepartmentId,
                     Department = department
@@ -122,6 +122,8 @@ namespace VidhayakApp.Web.Controllers.Form
                 // Save to the database
                 await _dbContext.Items.AddAsync(complaint);
                 await _dbContext.SaveChangesAsync();
+                HttpContext.Session.SetInt32("CreatedItemId", complaint.ItemId);
+                Console.WriteLine("CreatedItemId: " + complaint.ItemId);
             }
             // Redirect to a success page or another action
             return RedirectToAction("Dashboard", "User");
@@ -159,6 +161,8 @@ namespace VidhayakApp.Web.Controllers.Form
             // Save to the database
             await _dbContext.Items.AddAsync(demand);
             await _dbContext.SaveChangesAsync();
+            HttpContext.Session.SetInt32("CreatedItemId", demand.ItemId);
+            Console.WriteLine("CreatedItemId: " + demand.ItemId);
 
             // Redirect to a success page or another action
             return RedirectToAction("Dashboard", "User");

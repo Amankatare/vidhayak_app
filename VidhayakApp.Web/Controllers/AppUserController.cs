@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Cuemon.Text;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VidhayakApp.Core.Entities;
@@ -19,9 +20,10 @@ namespace VidhayakApp.Web.Controllers
         private readonly IUserService _userService;
         private readonly IUserDetailService _userDetailService;
         private readonly IWardRepository _wardRepository;
+        private readonly IItemRepository _itemRepository;
 
 
-        public AppUserController(VidhayakAppContext db, IUserRepository user, IUserService userService, IUserDetailRepository userDetails, IUserDetailService userdetailService, IWardRepository wardRepository)
+        public AppUserController(VidhayakAppContext db, IUserRepository user, IUserService userService, IUserDetailRepository userDetails, IUserDetailService userdetailService, IWardRepository wardRepository, IItemRepository _itemRepository)
         {
             _db = db;
             _user = user;
@@ -29,6 +31,7 @@ namespace VidhayakApp.Web.Controllers
             _userDetails = userDetails;
             _userDetailService = userdetailService;
             _wardRepository = wardRepository;
+            _itemRepository = _itemRepository;
         }
         //public IActionResult Dashboard(UserDetailAndFormDetailOnAppUserDashboardViewModel model)
         //{ var viewmodel = new UserDetailAndFormDetailOnAppUserDashboardViewModel
@@ -114,6 +117,7 @@ namespace VidhayakApp.Web.Controllers
                         Name = join.User.Name,
                         Address = join.User.Address,
                         MobileNumber = join.User.MobileNumber,
+                        ItemId = join.Item.ItemId,
                         Type = join.Item.Type,
                         SubCategory = join.Item.SubCategoryTypeId,
                         Title = join.Item.Title,
@@ -173,60 +177,90 @@ namespace VidhayakApp.Web.Controllers
 
 
 
-        public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard(int id)
+        public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard( int itemId)
         {
-            var problemObject = await _user.GetByIdAsync(id);
-            // Assuming 'id' represents the User ID
+            //var userObject = await _db.Items.FindAsync(itemId);
+
+            //var user = await _db.Users.FindAsync(userObject.UserId);
             var viewModel = new UpdateOnUserIssuesByAppUser
             {
-                UserId = id,
-                UserName = problemObject.UserName,
-               
+               ItemId = itemId,
             };
+
+
+
+            //var userData = await _db.Items
+            // .Where(items => items.ItemId == itemId)
+            // .Join(_db.Users,
+            //     items => items.UserId,
+            //     user => user.UserId,
+            //     (items, user) => new
+            //     {
+            //         UserId = user.UserId,
+            //         UserName = user.UserName,
+            //         // Add other user properties you want to retrieve
+            //     })
+            // .FirstOrDefaultAsync();
+            ////// Set the ItemId in the view model
+            ////viewModel.ItemId = itemId;
+
             return View(viewModel);
         }
 
+       
         [HttpPost]
         public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard(int id, UpdateOnUserIssuesByAppUser model)
         {
-            //if (id != viewModel.UserId)
-            //{
-            //    return NotFound();
-            //}
 
-            if (ModelState.IsValid)
-            {
+            // Find the ItemId associated with the specified user ID using a join
+            var itemObject = await _db.Items.FindAsync(id);
+            Console.WriteLine(itemObject + "---------------------------------------------");
+            itemObject.AppUserId = model.AppUserId;
+            itemObject.Status = model.Status;
+            itemObject.UpdatedAt = model.UpdatedAt ?? DateTime.Now.Date;
+            itemObject.Note = model.Note;
+            await _db.SaveChangesAsync();
+            
+            return RedirectToAction("Dashboard", "AppUser");
 
-                var problemObject = await _user.GetByIdAsync(id);
-                model.UserName = problemObject.UserName;
-                // Find items associated with the specified user ID
-                var itemsToUpdate = _db.Items
-                    .Where(item => item.UserId == id &&
-                                   (item.Type == ItemType.Complaint ||
-                                    item.Type == ItemType.Demand ||
-                                    item.Type == ItemType.Suggestion))
-                    .ToList(); // Materialize the query to avoid multiple enumeration
+            //Console.WriteLine(itemObject.Result);
 
-                // Update each item with the provided status, note, and updated at date
-                foreach (var item in itemsToUpdate)
-                {
-                    item.AppUserId = model.AppUserId;
-                    item.Status = model.Status;
-                    item.Note = model.Note;
-                    item.UpdatedAt = model.UpdatedAt ?? DateTime.Now.Date;
-                }
 
-                // Save changes to the database
-                await _db.SaveChangesAsync();
 
-                return RedirectToAction("Dashboard", "AppUser"); // Redirect to dashboard or any other desired page
-            }
-            // If ModelState is not valid, return to the view with the model
-            return View(model);
+            //foreach (var item in itemObject)
+            //            {
+            //                item.AppUserId = model.AppUserId;
+            //                item.Status = model.Status;
+            //                item.Note = model.Note;
+            //                item.UpdatedAt = model.UpdatedAt ?? DateTime.Now;
+            //            }
+
+            //            // Save changes to the database
+            //            await _db.SaveChangesAsync();
+
+            //             // Redirect to dashboard or any other desired page
+            //        }
+            //        else
+            //        {
+            //            ModelState.AddModelError(string.Empty, "No items found for the specified user ID and ItemId.");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        ModelState.AddModelError(string.Empty, "No items found for the specified user.");
+            //    }
+
+
+            // If ModelState is not valid or if the item is not found, return to the view with the model
+           // return View(model);
         }
 
 
-            public IActionResult Profile()
+
+
+
+
+        public IActionResult Profile()
         {
             return View();
         }  
