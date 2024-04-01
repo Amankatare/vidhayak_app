@@ -3,7 +3,7 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
-    ViewData["Title"] = "Users";
+    ViewData["Title"] = "List of Users";
     Layout = "~/Views/Shared/_AppUserLayout.cshtml";
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
@@ -37,7 +37,7 @@
 <body class="body_img_user_table">
     <main class="table" id="customers_table">
         <section class="table__header">
-            <h3>User @ViewData["Title"]</h3>
+            <h3> @ViewData["Title"]</h3>
             <div class="input-group">
                 <input type="search" placeholder="Search Data...">
                 @*  <img src="~/dist/img/search.png" alt=""> *@

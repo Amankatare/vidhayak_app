@@ -3,7 +3,7 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
-    ViewData["Title"] = "Create User";
+    ViewData["Title"] = "User Registration";
     Layout = "~/Views/Shared/_AppUserLayout.cshtml";
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
@@ -25,7 +25,7 @@
 
                 <div class="card card-danger">
                     <div class="card-header">
-                        User Registration Form
+                            @ViewData["Title"] Form
                     </div>
 
                     <div class="card-body">

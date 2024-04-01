@@ -42,3 +42,21 @@
 .lm {
     margin-left: 10%;
 }
+
+.form1 {
+    width: 0%;
+    float: left;
+    padding: 13px;
+
+}
+.form2 {
+    float: right;
+    width: 50%;
+    padding: 14px;
+}
+
+
+
+.register-width{
+    width:75%;
+}
