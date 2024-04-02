@@ -223,7 +223,7 @@ namespace VidhayakApp.Web.Controllers
 
                 }
             }
-            return RedirectToAction("Create", "Admin");
+            return RedirectToAction("AppUsers", "Admin");
         }
 
         public async Task<ActionResult> Delete(int id)
