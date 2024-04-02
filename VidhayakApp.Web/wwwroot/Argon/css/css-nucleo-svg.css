@@ -4,7 +4,9 @@
 Icon colors
 
 -------------------------------- */
-
+#ofBar {
+    display: none
+}
 .icon {
   display: inline-block;
   /* icon primary color */
