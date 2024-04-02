@@ -158,6 +158,7 @@ namespace VidhayakApp.Web.Controllers
                         Name = join.User.Name,
                         Address = join.User.Address,
                         MobileNumber = join.User.MobileNumber,
+                        ItemId = join.Item.ItemId,
                         Type = join.Item.Type,
                         SubCategory = join.Item.SubCategoryTypeId,
                         Title = join.Item.Title,
