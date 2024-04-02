@@ -107,6 +107,7 @@ namespace VidhayakApp.Web.Controllers
                 .Where(join => join.Item.Type == ItemType.Complaint &&
                                join.User.RoleId == 4 &&
                                join.User.WardId == loggedInUser)
+                 .OrderByDescending(join => join.Item.CreatedAt)
                 .Join(_db.GovtDepartments, // Join with the Departments table
                     join => join.Item.DepartmentId, // Join condition: Item.DepartmentId equals Department.DepartmentId
                     department => department.DepartmentId,
@@ -148,6 +149,7 @@ namespace VidhayakApp.Web.Controllers
                 .Where(join => join.Item.Type == ItemType.Demand &&
                                join.User.RoleId == 4 &&
                                join.User.WardId == loggedInUser)
+                 .OrderByDescending(join => join.Item.CreatedAt)
                 .Join(_db.GovtSchemes,  // Join with the Schemes table
                     join => join.Item.SchemeId,  // Join condition: Item.SchemeId equals Scheme.SchemeId
                     scheme => scheme.SchemeId,

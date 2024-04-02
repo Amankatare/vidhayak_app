@@ -84,13 +84,11 @@ const json_btn = document.querySelector('#toJSON');
 const toJSON = function (table) {
     let table_data = [],
         t_head = [],
-
         t_headings = table.querySelectorAll('th'),
         t_rows = table.querySelectorAll('tbody tr');
 
     for (let t_heading of t_headings) {
         let actual_head = t_heading.textContent.trim().split(' ');
-
         t_head.push(actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase());
     }
 
@@ -105,11 +103,12 @@ const toJSON = function (table) {
             }
             row_object[t_head[cell_index]] = t_cell.textContent.trim();
         })
-        table_data.push(row_object);
+        table_data.unshift(row_object); // prepend the row to the beginning of the array
     })
 
     return JSON.stringify(table_data, null, 4);
 }
+
 
 json_btn.onclick = () => {
     const json = toJSON(customers_table);
