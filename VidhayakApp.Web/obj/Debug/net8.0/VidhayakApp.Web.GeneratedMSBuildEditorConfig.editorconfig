@@ -90,6 +90,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxEZW1hbmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/DepartmentsCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxEZXBhcnRtZW50c0NhcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

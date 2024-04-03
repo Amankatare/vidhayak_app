@@ -55,7 +55,7 @@ namespace VidhayakApp.Web.Controllers
 
             var pendingSuggestionsCount = _db.Items.Count(item =>
                 item.Type == ItemType.Suggestion &&
-                item.Status == StatusType.Pending &&
+                item.Status == StatusType.Open &&
                 item.User.WardId == loggedInUser);
 
             // Fetch counts of total complaints, demands, and suggestions
@@ -92,7 +92,36 @@ namespace VidhayakApp.Web.Controllers
 
             return View(viewModel);
         }
+        public IActionResult DepartmentsCard()
+        {
+            var viewModel = new DepartmentViewModel();
 
+            viewModel.Departments = _db.GovtDepartments
+                .Select(department => new DepartmentViewModel
+                {
+                    DepartmentName = department.DepartmentName,
+                    ComplaintsCount = _db.Items.Count(item =>
+                        item.DepartmentId == department.DepartmentId && item.Type == ItemType.Complaint),
+                    //PendingCount = _db.Items.Count(item =>
+                    //    item.DepartmentId == department.DepartmentId && item.Type == ItemType.Complaint && item.Status == StatusType.Pending)
+                    //SuggestionsCount = _db.Items.Count(item =>
+                    //    item.DepartmentId == department.DepartmentId && item.Type == ItemType.Suggestion),
+                    //DemandsCount = _db.Items.Count(item =>
+                    //    item.DepartmentId == department.DepartmentId && item.Type == ItemType.Demand),
+                    //OtherCount = _db.Items.Count(item =>
+                    //    item.DepartmentId == department.DepartmentId && item.Type != ItemType.Complaint
+                    //    && item.Type != ItemType.Suggestion && item.Type != ItemType.Demand),
+                    //InProgressCount = _db.Items.Count(item =>
+                    //    item.DepartmentId == department.DepartmentId && item.Status == StatusType.InProgress),
+                    //RejectedCount = _db.Items.Count(item =>
+                    //    item.DepartmentId == department.DepartmentId && item.Status == StatusType.Rejected),
+                    //CompletedCount = _db.Items.Count(item =>
+                    //    item.DepartmentId == department.DepartmentId && item.Status == StatusType.Completed)
+                })
+                .ToList();
+
+            return View(viewModel);
+        }
 
         public IActionResult Complaint()
         {

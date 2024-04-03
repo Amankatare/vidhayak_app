@@ -39,7 +39,7 @@ namespace VidhayakApp.Web.Controllers
 
             var userEntries = _dbContext.Items
                 .Include(i => i.User)
-                .Where(i => i.UserId == userId)
+                .Where(i => i.UserId == userId).OrderByDescending(i => i.CreatedAt)
                 .ToList();
 
             //var userEntries = _itemRepository.GetByIdAsync(userId.Value);

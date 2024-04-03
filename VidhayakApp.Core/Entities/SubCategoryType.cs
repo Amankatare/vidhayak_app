@@ -11,6 +11,7 @@ namespace VidhayakApp.Core.Entities
         GovernmentSchemes,
         GovernmentDepartments,
         PrivateOrganization,
-        Personal
+        Personal,
+        Null
     }
 }

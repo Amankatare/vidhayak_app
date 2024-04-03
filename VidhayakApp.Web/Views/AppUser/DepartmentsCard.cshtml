@@ -1,0 +1,24 @@
+﻿@model VidhayakApp.Web.ViewModels.DepartmentViewModel
+
+@{
+    ViewData["Title"] = "Departments";
+    Layout = "~/Views/Shared/_AppUserLayout.cshtml"; // Set the layout as needed
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var department in Model.Departments)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@department.DepartmentName</h5>
+                        <p class="card-text">Total Complaints: @department.ComplaintsCount</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

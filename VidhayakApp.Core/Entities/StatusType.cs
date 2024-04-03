@@ -8,6 +8,6 @@ namespace VidhayakApp.Core.Entities
 {
     public enum StatusType
     {
-        Pending,InProgress,Fixed,Completed,Rejected
+        Pending,InProgress,Fixed,Completed,Rejected,Null,Open,Closed
     }
 }

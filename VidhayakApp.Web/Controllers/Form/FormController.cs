@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
-using VidhayakApp.Infrastructure.Data;
+using VidhayakApp.Infrastructure.Data; 
 using VidhayakApp.Web.ViewModels;
 
 namespace VidhayakApp.Web.Controllers.Form
@@ -188,6 +188,45 @@ namespace VidhayakApp.Web.Controllers.Form
             await _dbContext.SaveChangesAsync();
             HttpContext.Session.SetInt32("CreatedItemId", demand.ItemId);
             Console.WriteLine("CreatedItemId: " + demand.ItemId);
+
+            // Redirect to a success page or another action
+            return RedirectToAction("Dashboard", "User");
+        }
+
+        public IActionResult CreateSuggestion()
+        {
+            var viewModel = new FormViewModel();
+            return RedirectToAction("Dashboard", "User", viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateSuggestion(FormViewModel model)
+        {
+            Console.WriteLine("pressed");
+            var loggedInUserId = HttpContext.Session.GetInt32("UserId");
+            var user = await _user.GetByIdAsync(loggedInUserId.Value);
+            //var scheme = await _govtScheme.GetByIdAsync(model.SchemeId);
+            // Map the view model to the entity
+            var suggestion = new Item
+            {
+                Status = StatusType.Open, // Use Status.Null from enum
+                Title = string.IsNullOrEmpty(model.Title) ? "" : model.Title,
+                Type = model.Type,
+                Description = model.Description,
+                SubCategoryTypeId = SubCategoryType.Null,
+                CreatedAt = DateTime.Now.Date,
+                //UpdatedAt = null,
+                //SchemeId = model.SchemeId,
+                //Scheme = scheme,
+                UserId = loggedInUserId.Value,
+                User = user,
+            };
+
+            // Save to the database
+            await _dbContext.Items.AddAsync(suggestion);
+            await _dbContext.SaveChangesAsync();
+            HttpContext.Session.SetInt32("CreatedItemId", suggestion.ItemId);
+            Console.WriteLine("CreatedItemId: " + suggestion.ItemId);
 
             // Redirect to a success page or another action
             return RedirectToAction("Dashboard", "User");
