@@ -1124,35 +1124,6 @@
           }
         }
       },
-      "PagedList/1.17.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/PagedList.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net40/PagedList.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "PagedList.Mvc/4.5.0": {
-        "type": "package",
-        "dependencies": {
-          "PagedList": "1.17.0"
-        },
-        "compile": {
-          "lib/net40/PagedList.Mvc.dll": {
-            "related": ".XML"
-          }
-        },
-        "runtime": {
-          "lib/net40/PagedList.Mvc.dll": {
-            "related": ".XML"
-          }
-        }
-      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -1707,6 +1678,42 @@
             "assetType": "runtime",
             "rid": "win"
           }
+        }
+      },
+      "X.PagedList/9.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/X.PagedList.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/X.PagedList.dll": {}
+        }
+      },
+      "X.PagedList.Mvc.Core/9.1.2": {
+        "type": "package",
+        "dependencies": {
+          "X.PagedList": "9.1.2"
+        },
+        "compile": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "X.PagedList.Web.Common/8.0.7": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encodings.Web": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/X.PagedList.Web.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/X.PagedList.Web.Common.dll": {}
         }
       },
       "ZstdSharp.Port/0.7.1": {
@@ -3418,33 +3425,6 @@
         "mysql.entityframeworkcore.nuspec"
       ]
     },
-    "PagedList/1.17.0": {
-      "sha512": "Ou6F3WKXh49hOo0TxWM+SkIGuKllYPuPPvnSYOlQ1sTrtuEyuDUhYbSJd5Sdb06i/sWUJZTjiUecEs3Ht/Hx3g==",
-      "type": "package",
-      "path": "pagedlist/1.17.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/PagedList.dll",
-        "lib/net40/PagedList.xml",
-        "pagedlist.1.17.0.nupkg.sha512",
-        "pagedlist.nuspec"
-      ]
-    },
-    "PagedList.Mvc/4.5.0": {
-      "sha512": "D0M4qW2g4a9cwG8ozIKUnJheCrm5GpFTceqUl63AXWaAVnTgk+TysZYUOGMsBRuzid8aF+/E8b0bXM6+90jiEw==",
-      "type": "package",
-      "path": "pagedlist.mvc/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Content/Content/PagedList.css",
-        "lib/net40/PagedList.Mvc.XML",
-        "lib/net40/PagedList.Mvc.dll",
-        "pagedlist.mvc.4.5.0.nupkg.sha512",
-        "pagedlist.mvc.nuspec"
-      ]
-    },
     "System.Buffers/4.5.1": {
       "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
       "type": "package",
@@ -4714,6 +4694,50 @@
         "version.txt"
       ]
     },
+    "X.PagedList/9.1.2": {
+      "sha512": "qePK/lt+Y8PeQM9E/DkWY/AIyxDVEMX0XFCU5CfLP1+Y9SUThFyaY8/QgldOg9uOJLvse1i3oAQDJOrhb3usdw==",
+      "type": "package",
+      "path": "x.pagedlist/9.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net6.0/X.PagedList.dll",
+        "lib/net8.0/X.PagedList.dll",
+        "lib/netstandard2.0/X.PagedList.dll",
+        "lib/netstandard2.1/X.PagedList.dll",
+        "x.pagedlist.9.1.2.nupkg.sha512",
+        "x.pagedlist.nuspec"
+      ]
+    },
+    "X.PagedList.Mvc.Core/9.1.2": {
+      "sha512": "+g8fJgXXVhl17BzVv8bGAkWooul23REeGNIJ4jUlA1Iqbw8Yq0OFMx/mGvjjEhIBNwDrjdhJKXGt7N7jejZWcQ==",
+      "type": "package",
+      "path": "x.pagedlist.mvc.core/9.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net6.0/X.PagedList.Mvc.Core.dll",
+        "lib/net8.0/X.PagedList.Mvc.Core.dll",
+        "x.pagedlist.mvc.core.9.1.2.nupkg.sha512",
+        "x.pagedlist.mvc.core.nuspec"
+      ]
+    },
+    "X.PagedList.Web.Common/8.0.7": {
+      "sha512": "h03M+ZeaucubfLPlaKoFB/rxBxV17pddp3FVjwKO0QM47frt+QIIABHs2KB3Eay9Xc/sDPGvKkYsm0ZdUpF/lg==",
+      "type": "package",
+      "path": "x.pagedlist.web.common/8.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/X.PagedList.Web.Common.dll",
+        "x.pagedlist.web.common.8.0.7.nupkg.sha512",
+        "x.pagedlist.web.common.nuspec"
+      ]
+    },
     "ZstdSharp.Port/0.7.1": {
       "sha512": "Idgg+mJEyAujqDPzA3APy9dNoyw0YQcNA65GgYjktDRtJ+nvx/hv+J+m6Eax3JJMGEYGy04oc5YNP6ZvQ3Y1vQ==",
       "type": "package",
@@ -4762,12 +4786,13 @@
       "Microsoft.Extensions.Configuration >= 8.0.0",
       "Microsoft.Extensions.Localization >= 8.0.2",
       "MySql.Data >= 8.3.0",
-      "PagedList >= 1.17.0",
-      "PagedList.Mvc >= 4.5.0",
       "VidhayakApp.Application >= 1.0.0",
       "VidhayakApp.Core >= 1.0.0",
       "VidhayakApp.Infastructure >= 1.0.0",
-      "VidhayakApp.SharedKernel >= 1.0.0"
+      "VidhayakApp.SharedKernel >= 1.0.0",
+      "X.PagedList >= 9.1.2",
+      "X.PagedList.Mvc.Core >= 9.1.2",
+      "X.PagedList.Web.Common >= 8.0.7"
     ]
   },
   "packageFolders": {
@@ -4854,13 +4879,17 @@
             "target": "Package",
             "version": "[8.3.0, )"
           },
-          "PagedList": {
+          "X.PagedList": {
             "target": "Package",
-            "version": "[1.17.0, )"
+            "version": "[9.1.2, )"
           },
-          "PagedList.Mvc": {
+          "X.PagedList.Mvc.Core": {
             "target": "Package",
-            "version": "[4.5.0, )"
+            "version": "[9.1.2, )"
+          },
+          "X.PagedList.Web.Common": {
+            "target": "Package",
+            "version": "[8.0.7, )"
           }
         },
         "imports": [
@@ -4885,27 +4914,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'PagedList 1.17.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "libraryId": "PagedList",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'PagedList.Mvc 4.5.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "libraryId": "PagedList.Mvc",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

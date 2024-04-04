@@ -1,6 +1,6 @@
 ﻿@using VidhayakApp.Web.ViewModels.AppUser
-@using PagedList.Mvc;
-@using PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
 @model IPagedList<UserDetailAndFormDetailOnAppUserDashboardViewModel>
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
@@ -53,6 +53,8 @@
         </section>
         <section class="table__body">
             <table>
+                    
+                  
                 <thead>
                     <tr>
           @*                   <th>Id <span class="icon-arrow">&UpArrow;</span></th> *@
@@ -99,7 +101,21 @@
                     }
               
                 </tbody>
-                @* @Html.PagedListPager(Model, page => Url.Action("ListUsers", new { page = page }), "Pager") *@
+                    <div>
+                        @Html.PagedListPager(Model, page => Url.Action("Complaint", new { pageId = page }), new PagedListRenderOptions { DisplayLinkToFirstPage = PagedListDisplayMode.Always, DisplayLinkToLastPage = PagedListDisplayMode.Always, DisplayPageCountAndCurrentLocation = true })
+                   @*
+                       the parameter name inside the method should always be the same as here
+                       
+                       if name changes id won't pass 
+
+                       if pageQ was written instead of pageId parameter name which is inside complaint method parameter body 
+                       then id value will not get passed inside parameter body 
+
+                   *@
+                    
+                    </div>
+                    
+            
             </table>
         </section>
     </main>

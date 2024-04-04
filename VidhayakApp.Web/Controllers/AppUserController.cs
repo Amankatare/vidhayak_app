@@ -1,14 +1,12 @@
-﻿using Cuemon.Text;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PagedList;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
-using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
 using VidhayakApp.Web.ViewModels;
 using VidhayakApp.Web.ViewModels.AppUser;
+using X.PagedList;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace VidhayakApp.Web.Controllers
 {
@@ -171,7 +169,7 @@ namespace VidhayakApp.Web.Controllers
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
             Console.WriteLine(loggedInUser + "-------------------------");
 
-            var userDetailFormViewModels = _db.Users
+            var query = _db.Users
                 .Join(_db.Items,
                     user => user.UserId,
                     item => item.UserId,
@@ -201,10 +199,15 @@ namespace VidhayakApp.Web.Controllers
                         Note = join.Item.Note,
                         // Include the DepartmentName from the joined Department entity
                         DepartmentName = department.DepartmentName
-                    })
-                .ToList().ToPagedList(pageId??1,10);
+                    });
 
-            return View(userDetailFormViewModels);
+                     //var pagedData = await query.ToPagedListAsync(pageNumber, pageSize);
+                        var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
+                        var pageSize = 4; // Number of items per page
+                        var pagedData = query.ToPagedList(pageNumber, pageSize);
+              //  .ToList().ToPagedListAsync(pageId ?? 1,3);
+
+            return View(pagedData);
         }
 
 

@@ -43,12 +43,13 @@
           "Microsoft.Extensions.Configuration": "8.0.0",
           "Microsoft.Extensions.Localization": "8.0.2",
           "MySql.Data": "8.3.0",
-          "PagedList": "1.17.0",
-          "PagedList.Mvc": "4.5.0",
           "VidhayakApp.Application": "1.0.0",
           "VidhayakApp.Core": "1.0.0",
           "VidhayakApp.Infastructure": "1.0.0",
           "VidhayakApp.SharedKernel": "1.0.0",
+          "X.PagedList": "9.1.2",
+          "X.PagedList.Mvc.Core": "9.1.2",
+          "X.PagedList.Web.Common": "8.0.7",
           "Microsoft.AspNetCore.Antiforgery": "8.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "8.0.0.0",
           "Microsoft.AspNetCore.Authentication.BearerToken": "8.0.0.0",
@@ -1213,31 +1214,6 @@
           "lib/net8.0/MySql.EntityFrameworkCore.dll": {}
         }
       },
-      "PagedList/1.17.0": {
-        "runtime": {
-          "lib/net40/PagedList.dll": {
-            "assemblyVersion": "1.17.0.0",
-            "fileVersion": "1.17.0.0"
-          }
-        },
-        "compile": {
-          "lib/net40/PagedList.dll": {}
-        }
-      },
-      "PagedList.Mvc/4.5.0": {
-        "dependencies": {
-          "PagedList": "1.17.0"
-        },
-        "runtime": {
-          "lib/net40/PagedList.Mvc.dll": {
-            "assemblyVersion": "4.5.0.0",
-            "fileVersion": "4.5.0.0"
-          }
-        },
-        "compile": {
-          "lib/net40/PagedList.Mvc.dll": {}
-        }
-      },
       "System.Buffers/4.5.1": {},
       "System.CodeDom/4.4.0": {
         "runtime": {
@@ -1498,6 +1474,45 @@
         },
         "compile": {
           "ref/netcoreapp3.0/System.Windows.Extensions.dll": {}
+        }
+      },
+      "X.PagedList/9.1.2": {
+        "runtime": {
+          "lib/net8.0/X.PagedList.dll": {
+            "assemblyVersion": "9.1.2.0",
+            "fileVersion": "9.1.2.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/X.PagedList.dll": {}
+        }
+      },
+      "X.PagedList.Mvc.Core/9.1.2": {
+        "dependencies": {
+          "X.PagedList": "9.1.2"
+        },
+        "runtime": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {
+            "assemblyVersion": "9.1.2.0",
+            "fileVersion": "9.1.2.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {}
+        }
+      },
+      "X.PagedList.Web.Common/8.0.7": {
+        "dependencies": {
+          "System.Text.Encodings.Web": "8.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/X.PagedList.Web.Common.dll": {
+            "assemblyVersion": "8.0.7.0",
+            "fileVersion": "8.0.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/X.PagedList.Web.Common.dll": {}
         }
       },
       "ZstdSharp.Port/0.7.1": {
@@ -3754,20 +3769,6 @@
       "path": "mysql.entityframeworkcore/8.0.0",
       "hashPath": "mysql.entityframeworkcore.8.0.0.nupkg.sha512"
     },
-    "PagedList/1.17.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Ou6F3WKXh49hOo0TxWM+SkIGuKllYPuPPvnSYOlQ1sTrtuEyuDUhYbSJd5Sdb06i/sWUJZTjiUecEs3Ht/Hx3g==",
-      "path": "pagedlist/1.17.0",
-      "hashPath": "pagedlist.1.17.0.nupkg.sha512"
-    },
-    "PagedList.Mvc/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-D0M4qW2g4a9cwG8ozIKUnJheCrm5GpFTceqUl63AXWaAVnTgk+TysZYUOGMsBRuzid8aF+/E8b0bXM6+90jiEw==",
-      "path": "pagedlist.mvc/4.5.0",
-      "hashPath": "pagedlist.mvc.4.5.0.nupkg.sha512"
-    },
     "System.Buffers/4.5.1": {
       "type": "package",
       "serviceable": true,
@@ -3998,6 +3999,27 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "X.PagedList/9.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qePK/lt+Y8PeQM9E/DkWY/AIyxDVEMX0XFCU5CfLP1+Y9SUThFyaY8/QgldOg9uOJLvse1i3oAQDJOrhb3usdw==",
+      "path": "x.pagedlist/9.1.2",
+      "hashPath": "x.pagedlist.9.1.2.nupkg.sha512"
+    },
+    "X.PagedList.Mvc.Core/9.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+g8fJgXXVhl17BzVv8bGAkWooul23REeGNIJ4jUlA1Iqbw8Yq0OFMx/mGvjjEhIBNwDrjdhJKXGt7N7jejZWcQ==",
+      "path": "x.pagedlist.mvc.core/9.1.2",
+      "hashPath": "x.pagedlist.mvc.core.9.1.2.nupkg.sha512"
+    },
+    "X.PagedList.Web.Common/8.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h03M+ZeaucubfLPlaKoFB/rxBxV17pddp3FVjwKO0QM47frt+QIIABHs2KB3Eay9Xc/sDPGvKkYsm0ZdUpF/lg==",
+      "path": "x.pagedlist.web.common/8.0.7",
+      "hashPath": "x.pagedlist.web.common.8.0.7.nupkg.sha512"
     },
     "ZstdSharp.Port/0.7.1": {
       "type": "package",
