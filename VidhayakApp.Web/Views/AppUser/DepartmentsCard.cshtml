@@ -17,6 +17,9 @@
                         <h5 class="card-title">@department.DepartmentName</h5>
                         <p class="card-text">Total Complaints: @department.ComplaintsCount</p>
                     </div>
+                    <center>
+                    <a asp-action="ComplaintDepartmentWise" asp-controller="AppUser" asp-route-id="@department.DepartmentId" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                    </center>
                 </div>
             </div>
         }

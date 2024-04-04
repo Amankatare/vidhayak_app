@@ -209,7 +209,7 @@ namespace VidhayakApp.Web.Controllers.Form
             // Map the view model to the entity
             var suggestion = new Item
             {
-                Status = StatusType.Open, // Use Status.Null from enum
+                Status = StatusType.Pending, // Use Status.Null from enum
                 Title = string.IsNullOrEmpty(model.Title) ? "" : model.Title,
                 Type = model.Type,
                 Description = model.Description,

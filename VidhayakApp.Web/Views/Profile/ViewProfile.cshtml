@@ -5,7 +5,8 @@
 @{
     ViewData["Title"] = "Profile";
     var context = HttpContextAccessor.HttpContext;
-    try{
+    try
+    {
         var roleId = context.Session.GetInt32("RoleId");
         if (roleId == 4)
         {
@@ -27,14 +28,13 @@
         {
             Layout = "~/Views/Shared/_Layout.cshtml";
         }
-    }catch(Exception ex)
+    }
+    catch (Exception ex)
     {
         Console.WriteLine(ex);
         context.Response.Redirect("/Account/Login");
     }
-   
 
-    
 }
 <link rel="stylesheet" href="~/css/Profile.css" />
 

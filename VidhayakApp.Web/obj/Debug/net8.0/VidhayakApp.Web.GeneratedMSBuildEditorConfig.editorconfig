@@ -74,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxDb21wbGFpbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/ComplaintDepartmentwise.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxDb21wbGFpbnREZXBhcnRtZW50d2lzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -104,6 +108,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/Suggestion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxTdWdnZXN0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/AppUser/UpdateOnUserIssuesOnAppUserDashboard.cshtml]

@@ -1,0 +1,123 @@
+﻿@using VidhayakApp.Core.Entities
+@using VidhayakApp.Web.ViewModels.AppUser
+@model SuggestionDetailsAndStatusUpdate
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Suggestion";
+    Layout = "~/Views/Shared/_AppUserLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    var loggedInId = context.Session.GetInt32("UserId");
+}
+
+@if (loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}
+else
+{
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Suggestion</title>
+        <link rel="stylesheet" type="text/css" href="~/css/UserDashboardTable.css">
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+
+    <body class="body_img_user_table">
+        <main class="table" id="customers_table">
+            <section class="table__header">
+                <h3>@ViewData["Title"]</h3>
+                <div class="input-group">
+                    <input type="search" placeholder="Search Data...">
+                </div>
+            </section>
+            <section class="table__body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ItemId <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Name <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>UserName <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Mobile <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Address <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Description <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Created On <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Status <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var userDetail in Model.UserDetailAndFormDetailOnAppUserDashboardViewModel)
+                        {
+                            <tr>
+                                
+                                <td>@(userDetail.ItemId )</td>
+                                <td>@(userDetail.Name ?? "")</td>
+                                <td>@(userDetail.UserName ?? "")</td>
+                                <td>@(userDetail.MobileNumber ?? "")</td>
+                                <td>@(userDetail.Address ?? "")</td>
+                                <td>@(userDetail.Description ?? "")</td>
+                                <td>@(userDetail.CreatedAt)</td>
+                                <td>@(userDetail.Status)</td>
+                                <td>
+                                    <a href="#" class="edit" data-bs-toggle="modal" onclick="setItemID('@userDetail.ItemId')"  data-bs-target="#statusUpdateModal"><i class="fas fa-wrench"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </body>
+
+    </html>
+
+    <!-- Modal -->
+    <div class="modal" id="statusUpdateModal" tabindex="-1" aria-labelledby="statusUpdateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="statusUpdateModalLabel">Update Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="statusUpdateForm" method="post" action="@Url.Action("UpdateOnUserSuggestionOnAppUserDashboard", "AppUser")">
+                        <input id="inputItemId" asp-for="ItemId" hidden value="" />
+                        <div class="form-group">
+                            <label asp-for="Status" class="control-label">New Status:</label>
+                            <select asp-for="Status" class="form-control" id="newStatus" name="Status">
+                                <option value="@(StatusType.Open)">Open</option>
+                                <option value="@(StatusType.Closed)">Closed</option>
+
+                            </select>
+                        </div>
+                        <div class="mt-2">
+                            <center>
+                                <button asp-action="UpdateOnUserSuggestionOnAppUserDashboard" asp-controller="AppUser" type="submit"  class="btn btn-primary">Update</button>
+                            </center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+}
+
+<script>
+
+    function setItemID(itemId) {
+        document.getElementById("inputItemId").value = itemId;
+        console.log(itemId);
+
+        console.log(document.getElementById("inputItemId").value);
+    }
+
+</script>

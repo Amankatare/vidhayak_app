@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PagedList;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
 using VidhayakApp.Infastructure.Repositories;
@@ -98,7 +99,7 @@ namespace VidhayakApp.Web.Controllers
 
             viewModel.Departments = _db.GovtDepartments
                 .Select(department => new DepartmentViewModel
-                {
+                {   DepartmentId = department.DepartmentId,
                     DepartmentName = department.DepartmentName,
                     ComplaintsCount = _db.Items.Count(item =>
                         item.DepartmentId == department.DepartmentId && item.Type == ItemType.Complaint),
@@ -123,7 +124,49 @@ namespace VidhayakApp.Web.Controllers
             return View(viewModel);
         }
 
-        public IActionResult Complaint()
+        public IActionResult ComplaintDepartmentWise(int departmentId)
+        {
+            var loggedInUser = HttpContext.Session.GetInt32("WardId");
+            Console.WriteLine(loggedInUser + "-------------------------");
+
+            var userDetailFormViewModels = _db.Users
+                .Join(_db.Items,
+                    user => user.UserId,
+                    item => item.UserId,
+                    (user, item) => new { User = user, Item = item })
+                .Where(join => join.Item.Type == ItemType.Complaint && join.Item.DepartmentId == departmentId &&
+                               join.User.RoleId == 4 &&
+                               join.User.WardId == loggedInUser)
+                 .OrderByDescending(join => join.Item.CreatedAt)
+                .Join(_db.GovtDepartments, // Join with the Departments table
+                    join => join.Item.DepartmentId, // Join condition: Item.DepartmentId equals Department.DepartmentId
+                    department => department.DepartmentId,
+                    (join, department) => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+                    {
+                        UserId = join.User.UserId,
+                        UserName = join.User.UserName,
+                        Name = join.User.Name,
+                        Address = join.User.Address,
+                        MobileNumber = join.User.MobileNumber,
+                        ItemId = join.Item.ItemId,
+                        Type = join.Item.Type,
+                        SubCategory = join.Item.SubCategoryTypeId,
+                        Title = join.Item.Title,
+                        Description = join.Item.Description,
+                        CreatedAt = join.Item.CreatedAt,
+                        UpdatedAt = join.Item.UpdatedAt,
+                        Status = join.Item.Status,
+                        Note = join.Item.Note,
+                        // Include the DepartmentName from the joined Department entity
+                        DepartmentName = department.DepartmentName
+                    })
+                .ToList();
+
+            return View(userDetailFormViewModels);
+        }
+    
+
+        public IActionResult Complaint(int? pageId)
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
             Console.WriteLine(loggedInUser + "-------------------------");
@@ -159,7 +202,7 @@ namespace VidhayakApp.Web.Controllers
                         // Include the DepartmentName from the joined Department entity
                         DepartmentName = department.DepartmentName
                     })
-                .ToList();
+                .ToList().ToPagedList(pageId??1,10);
 
             return View(userDetailFormViewModels);
         }
@@ -206,11 +249,79 @@ namespace VidhayakApp.Web.Controllers
             return View(userDetailFormViewModels);
         }
 
-
-
-
-        public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard( int itemId)
+        public IActionResult Suggestion()
         {
+            var loggedInUser = HttpContext.Session.GetInt32("WardId");
+            Console.WriteLine(loggedInUser + "-------------------------");
+
+            // Fetch suggestion data from the database or any other source
+            var suggestions = _db.Items
+                .Where(item =>
+                    item.Type == ItemType.Suggestion &&
+                    item.User.RoleId == 4 &&
+                    item.User.WardId == loggedInUser)
+                .OrderByDescending(item => item.CreatedAt)
+                .Select(item => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+                {
+                    UserName = item.User.UserName,
+                    Name = item.User.Name,
+                    Address = item.User.Address,
+                    MobileNumber = item.User.MobileNumber,
+                    ItemId = item.ItemId,
+                    Type = item.Type,
+                    SubCategory = item.SubCategoryTypeId,
+                    Title = item.Title,
+                    Description = item.Description,
+                    CreatedAt = item.CreatedAt,
+                    UpdatedAt = item.UpdatedAt,
+                    Status = item.Status
+                })
+                .ToList();
+
+            // Create the view model and pass the suggestions data to it
+            var viewModel = new SuggestionDetailsAndStatusUpdate
+            {
+                UserDetailAndFormDetailOnAppUserDashboardViewModel = suggestions
+            };
+
+           
+
+            // Render the view with the view model
+            return View(viewModel);
+        }
+
+
+        public async Task<ActionResult> UpdateOnUserSuggestionOnAppUserDashboard(int itemId)
+        {
+
+            //var user = await _db.Users.FindAsync(userObject.UserId);
+            var viewModel = new UpdateOnUserIssuesByAppUser
+            {
+                ItemId = itemId,
+            };
+
+            return View(viewModel);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> UpdateOnUserSuggestionOnAppUserDashboard(SuggestionDetailsAndStatusUpdate model)
+        {
+         
+            // Find the ItemId associated with the specified user ID using a join
+            var itemObject = await _db.Items.FindAsync(model.ItemId);
+            Console.WriteLine(itemObject + "---------------------------------------------");
+            itemObject.AppUserId = model.AppUserId;
+            itemObject.Status = model.Status;
+            itemObject.UpdatedAt = model.UpdatedAt ?? DateTime.Now.Date;
+     
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction("Dashboard", "AppUser");
+        }
+
+            public async Task<ActionResult> UpdateOnUserIssuesOnAppUserDashboard( int itemId)
+            {
 
 
             //var user = await _db.Users.FindAsync(userObject.UserId);
@@ -219,24 +330,6 @@ namespace VidhayakApp.Web.Controllers
                 ItemId = itemId,
             };
 
-     
-
-   
-
-            //var userData = await _db.Items
-            // .Where(items => items.ItemId == itemId)
-            // .Join(_db.Users,
-            //     items => items.UserId,
-            //     user => user.UserId,
-            //     (items, user) => new
-            //     {
-            //         UserId = user.UserId,
-            //         UserName = user.UserName,
-            //         // Add other user properties you want to retrieve
-            //     })
-            // .FirstOrDefaultAsync();
-            ////// Set the ItemId in the view model
-            ////viewModel.ItemId = itemId;
 
             return View(viewModel);
         }

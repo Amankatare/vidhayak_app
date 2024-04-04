@@ -1,0 +1,32 @@
+﻿@using VidhayakApp.Web.ViewModels.AppUser
+@model IEnumerable<UserDetailAndFormDetailOnAppUserDashboardViewModel>
+@* @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+ *@
+@{
+    ViewData["Title"] = "Demands";
+    Layout = "~/Views/Shared/_AppUserLayout.cshtml";
+    // var context = HttpContextAccessor.HttpContext;
+    // // Use httpContext as needed
+    // var loggedInId = context.Session.GetInt32("UserId");
+
+}
+
+@* @if(loggedInId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}else{
+ *@
+@foreach (var item in Model)
+ {
+
+    <div class="card border-info mt-3 mb-3 ms-5 me-5 col-md-3">
+        <div class="card-header" hidden>@item.DepartmentId</div>
+        <div class="card-header text-bg-dark">@item.Name</div>
+        <div class="card-body">
+            <h5 class="card-title text-bg-light">@item.Title</h5>
+            <p class="card-text text-bg-light">@item.Description</p>
+            <h5 class="card-text text-bg-light">@item.CreatedAt</h5>
+        </div>
+    </div>
+ }
+ @* } *@

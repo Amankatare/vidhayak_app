@@ -375,6 +375,14 @@
             "MySql.Data": {
               "target": "Package",
               "version": "[8.3.0, )"
+            },
+            "PagedList": {
+              "target": "Package",
+              "version": "[1.17.0, )"
+            },
+            "PagedList.Mvc": {
+              "target": "Package",
+              "version": "[4.5.0, )"
             }
           },
           "imports": [

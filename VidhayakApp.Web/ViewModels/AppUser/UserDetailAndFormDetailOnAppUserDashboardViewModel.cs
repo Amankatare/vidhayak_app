@@ -4,7 +4,7 @@ namespace VidhayakApp.Web.ViewModels.AppUser
 {
     public class UserDetailAndFormDetailOnAppUserDashboardViewModel
     {
-     
+
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string Name { get; set; }
@@ -24,5 +24,8 @@ namespace VidhayakApp.Web.ViewModels.AppUser
         public string SchemeName { get; set; }
         public string DepartmentName { get; set; }
 
-    }
+        public int SchemeId { get; set; }
+        public int DepartmentId { get; set; }
+
+    } 
 }

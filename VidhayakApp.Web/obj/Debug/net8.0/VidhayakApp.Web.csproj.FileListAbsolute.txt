@@ -597,3 +597,5 @@ E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.Security.Cryptography.dl
 E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Cuemon.Threading.dll
 E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\VidhayakApp.SharedKernel.dll
 E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\VidhayakApp.SharedKernel.pdb
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\PagedList.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\PagedList.Mvc.dll
