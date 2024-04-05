@@ -1,5 +1,7 @@
 ﻿@using VidhayakApp.Core.Entities
 @using VidhayakApp.Web.ViewModels.AppUser
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
 @model SuggestionDetailsAndStatusUpdate
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
@@ -41,7 +43,7 @@ else
                 <table>
                     <thead>
                         <tr>
-                            <th>ItemId <span class="icon-arrow">&UpArrow;</span></th>
+                           
                             <th>Name <span class="icon-arrow">&UpArrow;</span></th>
                             <th>UserName <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Mobile <span class="icon-arrow">&UpArrow;</span></th>
@@ -57,7 +59,7 @@ else
                         {
                             <tr>
                                 
-                                <td>@(userDetail.ItemId )</td>
+                               
                                 <td>@(userDetail.Name ?? "")</td>
                                 <td>@(userDetail.UserName ?? "")</td>
                                 <td>@(userDetail.MobileNumber ?? "")</td>
@@ -72,6 +74,26 @@ else
                         }
                     </tbody>
                 </table>
+                    <div>
+                        @Html.PagedListPager(Model.UserDetailAndFormDetailOnAppUserDashboardViewModel, page => Url.Action("Suggestion", new { pageId = page }), new PagedListRenderOptions
+                       {
+                           // DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                           // DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                           // DisplayPageCountAndCurrentLocation = true,
+                           LiElementClasses = new string[] { "page-item" },
+                           PageClasses = new string[] { "page-link" },
+                       })
+                        @*
+                        the parameter name inside the method should always be the same as here
+
+                        if name changes id won't pass
+
+                        if pageQ was written instead of pageId parameter name which is inside complaint method parameter body
+                        then id value will not get passed inside parameter body
+
+                        *@
+
+                    </div>
             </section>
         </main>
     </body>

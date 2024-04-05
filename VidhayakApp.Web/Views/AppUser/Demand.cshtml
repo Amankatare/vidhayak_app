@@ -1,5 +1,7 @@
 ﻿@using VidhayakApp.Web.ViewModels.AppUser
-@model IEnumerable<UserDetailAndFormDetailOnAppUserDashboardViewModel>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IPagedList<UserDetailAndFormDetailOnAppUserDashboardViewModel>
 
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
@@ -58,7 +60,7 @@
                         <th>UserName <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Mobile <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Address <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Type <span class="icon-arrow">&UpArrow;</span></th>
+                      
                         <th>Sub Category <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Scheme Name <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Title <span class="icon-arrow">&UpArrow;</span></th>
@@ -80,7 +82,7 @@
                             <td>@(userDetail.UserName ?? "")</td>
                             <td>@(userDetail.MobileNumber ?? "")</td>
                             <td>@(userDetail.Address ?? "")</td>
-                            <td>@(userDetail.Type )</td>
+                      
                             <td>@(userDetail.SubCategory)</td>
                             <td>@(userDetail.SchemeName ?? "")</td>
                             <td>@(userDetail.Title ?? "")</td>
@@ -97,6 +99,26 @@
               
                 </tbody>
             </table>
+                    <div>
+                        @Html.PagedListPager(Model, page => Url.Action("Demand", new { pageId = page }), new PagedListRenderOptions
+                       {
+                           // DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                           // DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                           // DisplayPageCountAndCurrentLocation = true,
+                           LiElementClasses = new string[] { "page-item" },
+                           PageClasses = new string[] { "page-link" },
+                       })
+                        @*
+                    the parameter name inside the method should always be the same as here
+
+                    if name changes id won't pass
+
+                    if pageQ was written instead of pageId parameter name which is inside complaint method parameter body
+                    then id value will not get passed inside parameter body
+
+                    *@
+
+                    </div>
         </section>
     </main>
     <script src="~/js/UserDashboardTable.js"></script>

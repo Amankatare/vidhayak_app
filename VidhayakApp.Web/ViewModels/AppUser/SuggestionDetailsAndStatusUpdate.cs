@@ -1,10 +1,11 @@
 ﻿using VidhayakApp.Core.Entities;
+using X.PagedList;
 
 namespace VidhayakApp.Web.ViewModels.AppUser
 {
     public class SuggestionDetailsAndStatusUpdate
     {
-        public IEnumerable<UserDetailAndFormDetailOnAppUserDashboardViewModel> UserDetailAndFormDetailOnAppUserDashboardViewModel { get; set; }
+        public IPagedList<UserDetailAndFormDetailOnAppUserDashboardViewModel> UserDetailAndFormDetailOnAppUserDashboardViewModel { get; set; }
 
 
         public int? AppUserId { get; set; }

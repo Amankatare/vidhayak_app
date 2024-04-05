@@ -203,7 +203,7 @@ namespace VidhayakApp.Web.Controllers
 
                      //var pagedData = await query.ToPagedListAsync(pageNumber, pageSize);
                         var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
-                        var pageSize = 4; // Number of items per page
+                        var pageSize = 2; // Number of items per page
                         var pagedData = query.ToPagedList(pageNumber, pageSize);
               //  .ToList().ToPagedListAsync(pageId ?? 1,3);
 
@@ -211,7 +211,7 @@ namespace VidhayakApp.Web.Controllers
         }
 
 
-        public IActionResult Demand()
+        public IActionResult Demand(int? pageId)
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
             Console.WriteLine(loggedInUser + "-------------------------");
@@ -246,13 +246,16 @@ namespace VidhayakApp.Web.Controllers
                         Note = join.Item.Note,
                         // Include the SchemeName from the joined Scheme entity
                         SchemeName = scheme.SchemeName
-                    })
-                .ToList();
+                    });
+                         var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
+                         var pageSize = 2; // Number of items per page
+                         var pagedData = userDetailFormViewModels.ToPagedList(pageNumber, pageSize);
+               // .ToList();
 
-            return View(userDetailFormViewModels);
+            return View(pagedData);
         }
 
-        public IActionResult Suggestion()
+        public IActionResult Suggestion(int? pageId)
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
             Console.WriteLine(loggedInUser + "-------------------------");
@@ -278,16 +281,17 @@ namespace VidhayakApp.Web.Controllers
                     CreatedAt = item.CreatedAt,
                     UpdatedAt = item.UpdatedAt,
                     Status = item.Status
-                })
-                .ToList();
+                });
+                    var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
+                    var pageSize = 2; // Number of items per page
+            IPagedList<UserDetailAndFormDetailOnAppUserDashboardViewModel> pagedData = suggestions.ToPagedList(pageNumber, pageSize);
+               // .ToList();
 
             // Create the view model and pass the suggestions data to it
             var viewModel = new SuggestionDetailsAndStatusUpdate
             {
-                UserDetailAndFormDetailOnAppUserDashboardViewModel = suggestions
+                UserDetailAndFormDetailOnAppUserDashboardViewModel = pagedData
             };
-
-           
 
             // Render the view with the view model
             return View(viewModel);
@@ -409,7 +413,7 @@ namespace VidhayakApp.Web.Controllers
             /// <returns></returns>
 
         [HttpGet]
-        public IActionResult ListUsers()
+        public IActionResult ListUsers(int? pageId)
         {
             // Retrieve all users from the Users table
 
@@ -420,6 +424,7 @@ namespace VidhayakApp.Web.Controllers
                 userWardTable = _db.Wards.ToList() // Populate userWardTable
                                                    // Retrieve data for additional tables if needed
             };
+
 
             return View(viewModel);
         }
