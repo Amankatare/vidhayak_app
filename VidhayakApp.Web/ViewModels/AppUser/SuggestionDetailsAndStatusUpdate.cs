@@ -13,5 +13,10 @@ namespace VidhayakApp.Web.ViewModels.AppUser
         public StatusType Status { get; set; }
         public DateTime? UpdatedAt { get; set; } = DateTime.Now.Date;
 
+        public StatusType? statusType { get; set; }
+
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+
     }
 }

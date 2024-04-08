@@ -9,6 +9,7 @@
     // Use httpContext as needed
     var loggedInId = context.Session.GetInt32("UserId");
     var tokenValue = context.Session.GetString("JwtToken");
+    string dateToday = DateTime.Now.ToString("dd-mm-yyyy");
 }
 
 @if(loggedInId == null || tokenValue == null)
@@ -37,6 +38,24 @@
             </div>
           
         </section>
+            <form method="get">
+                <section>
+                    <section class="form-group" style="margin-top:10px; margin-right:0px">
+                        <input asp-for="FromDate" class="filter" id="fromDate" type="date" name="fromDate" placeholder="@dateToday" value="@ViewData["FromDate"]">
+                        <input asp-for="ToDate" class="filter" id="toDate" type="date" name="toDate" placeholder="@dateToday" value="@ViewData["ToDate"]">
+                        <select asp-for="statusType" name="statusType" id="statusInput" class="filter">
+                            <!-- Options here -->
+                            <option value="">Select...</option>
+                            <option value="@StatusType.Pending">Pending</option>
+                            <option value="@StatusType.InProgress">InProgress</option>
+                            <option value="@StatusType.Completed">Completed</option>
+                            <option value="@StatusType.Closed">Closed</option>
+                            <option value="@StatusType.Rejected">Rejected</option>
+                        </select>
+                        <button asp-controller="AppUser" asp-action="Dashboard" type="submit" id="filtersearchbtn" class="btn btn-primary">Search</button>
+                    </section>
+                </section>
+            </form>
         <section class="table__body">
             <table>
                 <thead>

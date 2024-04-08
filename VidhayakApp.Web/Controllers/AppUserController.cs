@@ -164,7 +164,7 @@ namespace VidhayakApp.Web.Controllers
         }
     
 
-        public IActionResult Complaint(int? pageId)
+        public IActionResult Complaint(int? pageId,FilterViewModel filter)
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
             Console.WriteLine(loggedInUser + "-------------------------");
@@ -201,22 +201,42 @@ namespace VidhayakApp.Web.Controllers
                         DepartmentName = department.DepartmentName
                     });
 
-                     //var pagedData = await query.ToPagedListAsync(pageNumber, pageSize);
-                        var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
-                        var pageSize = 2; // Number of items per page
-                        var pagedData = query.ToPagedList(pageNumber, pageSize);
-              //  .ToList().ToPagedListAsync(pageId ?? 1,3);
 
-            return View(pagedData);
+
+
+            if (filter.statusType != null)
+            {
+                // Apply status filter if provided
+                query = query.Where(item => item.Status == filter.statusType);
+
+            }
+
+            if (filter.FromDate != null && filter.ToDate != null)
+            {
+                // Apply status filter if provided
+                query = query.Where(item => item.CreatedAt >= filter.FromDate && item.CreatedAt <= filter.ToDate);
+
+            }
+
+            
+
+            //var pagedData = await query.ToPagedListAsync(pageNumber, pageSize);
+            var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
+                        var pageSize = 10; // Number of items per page
+                        var pagedData = query.ToPagedList(pageNumber, pageSize);
+            //  .ToList().ToPagedListAsync(pageId ?? 1,3);
+            filter.userDetailAndFormDetailOnAppUserDashboardViewModel = pagedData;
+
+            return View(filter);
         }
 
 
-        public IActionResult Demand(int? pageId)
+        public IActionResult Demand(int? pageId, FilterViewModel filter)
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
             Console.WriteLine(loggedInUser + "-------------------------");
 
-            var userDetailFormViewModels = _db.Users
+            var query = _db.Users
                 .Join(_db.Items,
                     user => user.UserId,
                     item => item.UserId,
@@ -247,15 +267,30 @@ namespace VidhayakApp.Web.Controllers
                         // Include the SchemeName from the joined Scheme entity
                         SchemeName = scheme.SchemeName
                     });
+
+            if (filter.statusType != null)
+            {
+                // Apply status filter if provided
+                query = query.Where(item => item.Status == filter.statusType);
+
+            }
+
+            if (filter.FromDate != null && filter.ToDate != null)
+            {
+                // Apply status filter if provided
+                query = query.Where(item => item.CreatedAt >= filter.FromDate && item.CreatedAt <= filter.ToDate);
+
+            }
                          var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
                          var pageSize = 2; // Number of items per page
-                         var pagedData = userDetailFormViewModels.ToPagedList(pageNumber, pageSize);
-               // .ToList();
+                         var pagedData = query.ToPagedList(pageNumber, pageSize);
+            filter.userDetailAndFormDetailOnAppUserDashboardViewModel = pagedData;
+            // .ToList();
 
-            return View(pagedData);
+            return View(filter);
         }
 
-        public IActionResult Suggestion(int? pageId)
+        public IActionResult Suggestion(int? pageId, SuggestionDetailsAndStatusUpdate model)
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
             Console.WriteLine(loggedInUser + "-------------------------");
@@ -282,7 +317,21 @@ namespace VidhayakApp.Web.Controllers
                     UpdatedAt = item.UpdatedAt,
                     Status = item.Status
                 });
-                    var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
+
+            if (model.statusType != null)
+            {
+                // Apply status filter if provided
+                suggestions = suggestions.Where(item => item.Status == model.statusType);
+
+            }
+
+            if (model.FromDate != null && model.ToDate != null)
+            {
+                // Apply status filter if provided
+                suggestions = suggestions.Where(item => item.CreatedAt >= model.FromDate && item.CreatedAt <= model.ToDate);
+
+            }
+            var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
                     var pageSize = 2; // Number of items per page
             IPagedList<UserDetailAndFormDetailOnAppUserDashboardViewModel> pagedData = suggestions.ToPagedList(pageNumber, pageSize);
                // .ToList();
@@ -413,7 +462,7 @@ namespace VidhayakApp.Web.Controllers
             /// <returns></returns>
 
         [HttpGet]
-        public IActionResult ListUsers(int? pageId)
+        public IActionResult ListUsers()
         {
             // Retrieve all users from the Users table
 
@@ -425,6 +474,7 @@ namespace VidhayakApp.Web.Controllers
                                                    // Retrieve data for additional tables if needed
             };
 
+           
 
             return View(viewModel);
         }

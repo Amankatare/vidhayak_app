@@ -15,6 +15,39 @@
 }
 
 
+#toDate {
+    margin-right: 20px;
+    border-radius: 13px;
+    padding: 10px;
+    border: 2px solid silver;
+    background-color: aliceblue;
+    margin-right: 20px;
+}
+
+#fromDate {
+    margin-right: 20px;
+    border-radius: 13px;
+    padding: 10px;
+    border: 2px solid silver;
+    background-color: aliceblue;
+    margin-right: 20px;
+}
+#statusInput {
+    margin-right: 20px;
+    border-radius: 13px;
+    padding: 10px;
+    border: 2px solid silver;
+    background-color: aliceblue;
+    margin-right: 20px;
+}
+#filtersearchbtn {
+    margin-right: 13px;
+    border-radius: 13px;
+    padding: 9px 33px;
+    border: 2px solid silver;
+    background-color: #4499e3;
+    margin-top: 20px;
+}
 
 body {
 
@@ -27,7 +60,7 @@ body {
 
 main.table {
     width: 82vw;
-    height: 90vh;
+    height: 100%;
     background-color: white;
     backdrop-filter: blur(7px);
     box-shadow: 0 .4rem .8rem #0005;
@@ -304,3 +337,4 @@ thead th.active, tbody td.active {
 . body_img_user_table {
     background: url(~/dist/img/htmltable2.jpg) center / cover;
 }
+

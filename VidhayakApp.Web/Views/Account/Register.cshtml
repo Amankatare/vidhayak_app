@@ -258,12 +258,12 @@
                                     <i class='bx bxs-user'></i>
                                 </div>
                                     <div class="mb-3 col-md-6">
-                                    <input asp-for="Password" type="text" class="form-control" id="Password" placeholder="Password">
+                                    <input asp-for="Password" type="password" class="form-control" id="Password" placeholder="Password">
                                     <span class="text-danger">@Html.ValidationMessageFor(m => m.Password)</span>
                                     <i class='bx bxs-user'></i>
                                 </div>
                                     <div class="mb-3 col-md-6">
-                                    <input asp-for="ConfirmPassword" type="text" class="form-control" id="ConfirmPassword" placeholder="Retype password">
+                                    <input asp-for="ConfirmPassword" type="password" class="form-control" id="ConfirmPassword" placeholder="Retype password">
                                     <span class="text-danger">@Html.ValidationMessageFor(m => m.ConfirmPassword)</span>
                                     <i class='bx bxs-lock-alt'></i>
                                 </div>
@@ -275,7 +275,7 @@
                                     <i class='bx bxs-user'></i>
                                 </div>
                                     <div class="mb-3 col-md-6">
-                                    <input asp-for="MobileNumber" class="form-control" id="MobileNumber" aria-describedby="MobHelp" placeholder="Enter Mobile...">
+                                    <input asp-for="MobileNumber" type="number" class="form-control" id="MobileNumber" aria-describedby="MobHelp" placeholder="Enter Mobile...">
                                     <span class="text-danger">@Html.ValidationMessageFor(m => m.MobileNumber)</span>
                                     <i class='bx bxs-user'></i>
                                 </div>
