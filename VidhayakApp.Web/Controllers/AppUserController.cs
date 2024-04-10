@@ -162,179 +162,251 @@ namespace VidhayakApp.Web.Controllers
 
             return View(userDetailFormViewModels);
         }
-    
 
-        public IActionResult Complaint(int? pageId,FilterViewModel filter)
+
+        public IActionResult Complaint(int? pageId, FilterViewModel filter)
         {
-            var loggedInUser = HttpContext.Session.GetInt32("WardId");
-            Console.WriteLine(loggedInUser + "-------------------------");
+            var loggedInUserRoleId = HttpContext.Session.GetInt32("RoleId");
+            var loggedInUserWardId = HttpContext.Session.GetInt32("WardId");
+            Console.WriteLine(loggedInUserRoleId + "-------------------------");
 
-            var query = _db.Users
-                .Join(_db.Items,
-                    user => user.UserId,
-                    item => item.UserId,
-                    (user, item) => new { User = user, Item = item })
-                .Where(join => join.Item.Type == ItemType.Complaint &&
-                               join.User.RoleId == 4 &&
-                               join.User.WardId == loggedInUser)
-                 .OrderByDescending(join => join.Item.CreatedAt)
-                .Join(_db.GovtDepartments, // Join with the Departments table
-                    join => join.Item.DepartmentId, // Join condition: Item.DepartmentId equals Department.DepartmentId
-                    department => department.DepartmentId,
-                    (join, department) => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+            IQueryable<UserDetailAndFormDetailOnAppUserDashboardViewModel> query;
+
+            if (loggedInUserRoleId == 2)
+            {
+                // If RoleId is 2, show all items
+                query = _db.Items
+                    .Where(item => item.Type == ItemType.Complaint)
+                    .OrderByDescending(item => item.CreatedAt)
+                    .Select(item => new UserDetailAndFormDetailOnAppUserDashboardViewModel
                     {
-                        UserId = join.User.UserId,
-                        UserName = join.User.UserName,
-                        Name = join.User.Name,
-                        Address = join.User.Address,
-                        MobileNumber = join.User.MobileNumber,
-                        ItemId = join.Item.ItemId,
-                        Type = join.Item.Type,
-                        SubCategory = join.Item.SubCategoryTypeId,
-                        Title = join.Item.Title,
-                        Description = join.Item.Description,
-                        CreatedAt = join.Item.CreatedAt,
-                        UpdatedAt = join.Item.UpdatedAt,
-                        Status = join.Item.Status,
-                        Note = join.Item.Note,
-                        // Include the DepartmentName from the joined Department entity
-                        DepartmentName = department.DepartmentName
+                        UserId = item.UserId,
+                        UserName = item.User.UserName,
+                        Name = item.User.Name,
+                        Address = item.User.Address,
+                        MobileNumber = item.User.MobileNumber,
+                        ItemId = item.ItemId,
+                        Type = item.Type,
+                        SubCategory = item.SubCategoryTypeId,
+                        Title = item.Title,
+                        Description = item.Description,
+                        CreatedAt = item.CreatedAt,
+                        UpdatedAt = item.UpdatedAt,
+                        Status = item.Status,
+                        Note = item.Note,
+                        DepartmentName = item.Department.DepartmentName
                     });
-
-
-
+            }
+            else
+            {
+                // If RoleId is not 2, filter by WardId
+                query = _db.Users
+                    .Where(user => user.RoleId == 4 && user.WardId == loggedInUserWardId)
+                    .Join(_db.Items,
+                        user => user.UserId,
+                        item => item.UserId,
+                        (user, item) => new { User = user, Item = item })
+                    .Where(join => join.Item.Type == ItemType.Complaint)
+                    .OrderByDescending(join => join.Item.CreatedAt)
+                    .Join(_db.GovtDepartments,
+                        join => join.Item.DepartmentId,
+                        department => department.DepartmentId,
+                        (join, department) => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+                        {
+                            UserId = join.User.UserId,
+                            UserName = join.User.UserName,
+                            Name = join.User.Name,
+                            Address = join.User.Address,
+                            MobileNumber = join.User.MobileNumber,
+                            ItemId = join.Item.ItemId,
+                            Type = join.Item.Type,
+                            SubCategory = join.Item.SubCategoryTypeId,
+                            Title = join.Item.Title,
+                            Description = join.Item.Description,
+                            CreatedAt = join.Item.CreatedAt,
+                            UpdatedAt = join.Item.UpdatedAt,
+                            Status = join.Item.Status,
+                            Note = join.Item.Note,
+                            DepartmentName = department.DepartmentName
+                        });
+            }
 
             if (filter.statusType != null)
             {
                 // Apply status filter if provided
                 query = query.Where(item => item.Status == filter.statusType);
-
             }
 
             if (filter.FromDate != null && filter.ToDate != null)
             {
-                // Apply status filter if provided
+                // Apply date filter if provided
                 query = query.Where(item => item.CreatedAt >= filter.FromDate && item.CreatedAt <= filter.ToDate);
-
             }
 
-            
-
-            //var pagedData = await query.ToPagedListAsync(pageNumber, pageSize);
-            var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
-                        var pageSize = 10; // Number of items per page
-                        var pagedData = query.ToPagedList(pageNumber, pageSize);
-            //  .ToList().ToPagedListAsync(pageId ?? 1,3);
+            var pageNumber = pageId ?? 1;
+            var pageSize = 10;
+            var pagedData = query.ToPagedList(pageNumber, pageSize);
             filter.userDetailAndFormDetailOnAppUserDashboardViewModel = pagedData;
 
             return View(filter);
         }
 
 
+
         public IActionResult Demand(int? pageId, FilterViewModel filter)
         {
-            var loggedInUser = HttpContext.Session.GetInt32("WardId");
-            Console.WriteLine(loggedInUser + "-------------------------");
+            var loggedInUserRoleId = HttpContext.Session.GetInt32("RoleId");
+            var loggedInUserWardId = HttpContext.Session.GetInt32("WardId");
+            Console.WriteLine(loggedInUserWardId + "-------------------------");
 
-            var query = _db.Users
-                .Join(_db.Items,
-                    user => user.UserId,
-                    item => item.UserId,
-                    (user, item) => new { User = user, Item = item })
-                .Where(join => join.Item.Type == ItemType.Demand &&
-                               join.User.RoleId == 4 &&
-                               join.User.WardId == loggedInUser)
-                 .OrderByDescending(join => join.Item.CreatedAt)
-                .Join(_db.GovtSchemes,  // Join with the Schemes table
-                    join => join.Item.SchemeId,  // Join condition: Item.SchemeId equals Scheme.SchemeId
-                    scheme => scheme.SchemeId,
-                    (join, scheme) => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+            IQueryable<UserDetailAndFormDetailOnAppUserDashboardViewModel> query;
+
+            if (loggedInUserRoleId == 2)
+            {
+                // If RoleId is 2, show all items
+                query = _db.Items
+                    .Where(item => item.Type == ItemType.Demand)
+                    .OrderByDescending(item => item.CreatedAt)
+                    .Select(item => new UserDetailAndFormDetailOnAppUserDashboardViewModel
                     {
-                        UserId = join.User.UserId,
-                        UserName = join.User.UserName,
-                        Name = join.User.Name,
-                        Address = join.User.Address,
-                        MobileNumber = join.User.MobileNumber,
-                        ItemId = join.Item.ItemId,
-                        Type = join.Item.Type,
-                        SubCategory = join.Item.SubCategoryTypeId,
-                        Title = join.Item.Title,
-                        Description = join.Item.Description,
-                        CreatedAt = join.Item.CreatedAt,
-                        UpdatedAt = join.Item.UpdatedAt,
-                        Status = join.Item.Status,
-                        Note = join.Item.Note,
-                        // Include the SchemeName from the joined Scheme entity
-                        SchemeName = scheme.SchemeName
+                        UserId = item.UserId,
+                        UserName = item.User.UserName,
+                        Name = item.User.Name,
+                        Address = item.User.Address,
+                        MobileNumber = item.User.MobileNumber,
+                        ItemId = item.ItemId,
+                        Type = item.Type,
+                        SubCategory = item.SubCategoryTypeId,
+                        Title = item.Title,
+                        Description = item.Description,
+                        CreatedAt = item.CreatedAt,
+                        UpdatedAt = item.UpdatedAt,
+                        Status = item.Status,
+                        SchemeName = item.Scheme.SchemeName
                     });
+            }
+            else
+            {
+                // If RoleId is not 2, filter by WardId
+                query = _db.Users
+                    .Where(user => user.RoleId == 4 && user.WardId == loggedInUserWardId)
+                    .Join(_db.Items,
+                        user => user.UserId,
+                        item => item.UserId,
+                        (user, item) => new { User = user, Item = item })
+                    .Where(join => join.Item.Type == ItemType.Demand)
+                    .OrderByDescending(join => join.Item.CreatedAt)
+                    .Join(_db.GovtSchemes,
+                        join => join.Item.SchemeId,
+                        scheme => scheme.SchemeId,
+                        (join, scheme) => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+                        {
+                            UserId = join.User.UserId,
+                            UserName = join.User.UserName,
+                            Name = join.User.Name,
+                            Address = join.User.Address,
+                            MobileNumber = join.User.MobileNumber,
+                            ItemId = join.Item.ItemId,
+                            Type = join.Item.Type,
+                            SubCategory = join.Item.SubCategoryTypeId,
+                            Title = join.Item.Title,
+                            Description = join.Item.Description,
+                            CreatedAt = join.Item.CreatedAt,
+                            UpdatedAt = join.Item.UpdatedAt,
+                            Status = join.Item.Status,
+                            SchemeName = scheme.SchemeName
+                        });
+            }
 
             if (filter.statusType != null)
             {
                 // Apply status filter if provided
                 query = query.Where(item => item.Status == filter.statusType);
-
             }
 
             if (filter.FromDate != null && filter.ToDate != null)
             {
-                // Apply status filter if provided
+                // Apply date filter if provided
                 query = query.Where(item => item.CreatedAt >= filter.FromDate && item.CreatedAt <= filter.ToDate);
-
             }
-                         var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
-                         var pageSize = 2; // Number of items per page
-                         var pagedData = query.ToPagedList(pageNumber, pageSize);
+
+            var pageNumber = pageId ?? 1;
+            var pageSize = 10;
+            var pagedData = query.ToPagedList(pageNumber, pageSize);
             filter.userDetailAndFormDetailOnAppUserDashboardViewModel = pagedData;
-            // .ToList();
 
             return View(filter);
         }
 
         public IActionResult Suggestion(int? pageId, SuggestionDetailsAndStatusUpdate model)
         {
-            var loggedInUser = HttpContext.Session.GetInt32("WardId");
-            Console.WriteLine(loggedInUser + "-------------------------");
+            var loggedInUserRoleId = HttpContext.Session.GetInt32("RoleId");
+            var loggedInUserWardId = HttpContext.Session.GetInt32("WardId");
+            Console.WriteLine(loggedInUserWardId + "-------------------------");
 
             // Fetch suggestion data from the database or any other source
-            var suggestions = _db.Items
-                .Where(item =>
-                    item.Type == ItemType.Suggestion &&
-                    item.User.RoleId == 4 &&
-                    item.User.WardId == loggedInUser)
-                .OrderByDescending(item => item.CreatedAt)
-                .Select(item => new UserDetailAndFormDetailOnAppUserDashboardViewModel
-                {
-                    UserName = item.User.UserName,
-                    Name = item.User.Name,
-                    Address = item.User.Address,
-                    MobileNumber = item.User.MobileNumber,
-                    ItemId = item.ItemId,
-                    Type = item.Type,
-                    SubCategory = item.SubCategoryTypeId,
-                    Title = item.Title,
-                    Description = item.Description,
-                    CreatedAt = item.CreatedAt,
-                    UpdatedAt = item.UpdatedAt,
-                    Status = item.Status
-                });
+            IQueryable<UserDetailAndFormDetailOnAppUserDashboardViewModel> suggestions;
+
+            if (loggedInUserRoleId == 2)
+            {
+                // If RoleId is 2, show all items
+                suggestions = _db.Items
+                    .Where(item => item.Type == ItemType.Suggestion)
+                    .OrderByDescending(item => item.CreatedAt)
+                    .Select(item => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+                    {
+                        UserName = item.User.UserName,
+                        Name = item.User.Name,
+                        Address = item.User.Address,
+                        MobileNumber = item.User.MobileNumber,
+                        ItemId = item.ItemId,
+                        Type = item.Type,
+                        SubCategory = item.SubCategoryTypeId,
+                        Title = item.Title,
+                        Description = item.Description,
+                        CreatedAt = item.CreatedAt,
+                        UpdatedAt = item.UpdatedAt,
+                        Status = item.Status
+                    });
+            }
+            else
+            {
+                // If RoleId is not 2, filter by WardId
+                suggestions = _db.Items
+                    .Where(item => item.Type == ItemType.Suggestion && item.User.RoleId == 4 && item.User.WardId == loggedInUserWardId)
+                    .OrderByDescending(item => item.CreatedAt)
+                    .Select(item => new UserDetailAndFormDetailOnAppUserDashboardViewModel
+                    {
+                        UserName = item.User.UserName,
+                        Name = item.User.Name,
+                        Address = item.User.Address,
+                        MobileNumber = item.User.MobileNumber,
+                        ItemId = item.ItemId,
+                        Type = item.Type,
+                        SubCategory = item.SubCategoryTypeId,
+                        Title = item.Title,
+                        Description = item.Description,
+                        CreatedAt = item.CreatedAt,
+                        UpdatedAt = item.UpdatedAt,
+                        Status = item.Status
+                    });
+            }
 
             if (model.statusType != null)
             {
                 // Apply status filter if provided
                 suggestions = suggestions.Where(item => item.Status == model.statusType);
-
             }
 
             if (model.FromDate != null && model.ToDate != null)
             {
-                // Apply status filter if provided
+                // Apply date filter if provided
                 suggestions = suggestions.Where(item => item.CreatedAt >= model.FromDate && item.CreatedAt <= model.ToDate);
-
             }
-            var pageNumber = pageId ?? 1; // Default to page 1 if no page is specified
-                    var pageSize = 2; // Number of items per page
-            IPagedList<UserDetailAndFormDetailOnAppUserDashboardViewModel> pagedData = suggestions.ToPagedList(pageNumber, pageSize);
-               // .ToList();
+
+            var pageNumber = pageId ?? 1;
+            var pageSize = 10;
+            var pagedData = suggestions.ToPagedList(pageNumber, pageSize);
 
             // Create the view model and pass the suggestions data to it
             var viewModel = new SuggestionDetailsAndStatusUpdate
@@ -345,6 +417,7 @@ namespace VidhayakApp.Web.Controllers
             // Render the view with the view model
             return View(viewModel);
         }
+
 
 
         public async Task<ActionResult> UpdateOnUserSuggestionOnAppUserDashboard(int itemId)

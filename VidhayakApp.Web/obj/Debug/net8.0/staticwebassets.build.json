@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b5HgnQiHXc5FPxJuwCzFd5OUciiPoNhGt3Q97PI6PlA=",
+  "Hash": "UKwuNtC0jITg6PilMmAB+JOkWXEq1VDInjP3SMklJcQ=",
   "Source": "VidhayakApp.Web",
   "BasePath": "_content/VidhayakApp.Web",
   "Mode": "Default",
@@ -8185,25 +8185,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\DepartmentSchemeDisable.js"
-    },
-    {
-      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\filterData.js",
-      "SourceId": "VidhayakApp.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
-      "BasePath": "_content/VidhayakApp.Web",
-      "RelativePath": "js/filterData.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\filterData.js"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\js\\Register.js",
