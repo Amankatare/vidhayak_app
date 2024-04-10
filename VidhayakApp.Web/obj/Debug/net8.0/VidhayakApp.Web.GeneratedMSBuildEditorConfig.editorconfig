@@ -174,12 +174,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/vidhayak_app/VidhayakApp.Web/Views/User/Complaint.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDb21wbGFpbnQuY3NodG1s
+[E:/vidhayak_app/VidhayakApp.Web/Views/User/Complaints.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDb21wbGFpbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/User/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/vidhayak_app/VidhayakApp.Web/Views/User/Dashboard1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEYXNoYm9hcmQxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/User/Demand.cshtml]
@@ -194,8 +198,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/vidhayak_app/VidhayakApp.Web/Views/User/Suggession.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTdWdnZXNzaW9uLmNzaHRtbA==
+[E:/vidhayak_app/VidhayakApp.Web/Views/User/Suggestion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTdWdnZXN0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/vidhayak_app/VidhayakApp.Web/Views/_ViewImports.cshtml]

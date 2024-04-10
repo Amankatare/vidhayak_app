@@ -1,4 +1,6 @@
-﻿@using VidhayakApp.Core.Entities
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+
+@using VidhayakApp.Core.Entities
 @model List<Item> 
 
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
@@ -20,132 +22,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Convert | Export html Table to CSV & EXCEL File</title>
-    <link rel="stylesheet" type="text/css" href="~/css/UserDashboardTable.css">
-</head>
+    <head>
+       <link rel="stylesheet" href="~/css/UserDashboard.css" />
+    </head>
+<body>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,900" rel="stylesheet">
 
-<body class="body_img_user_table">
-    <main class="table" id="customers_table">
-        <section class="table__header">
-            <h3>User Issues and Recommendation</h3>
-            <div class="input-group">
-                <input type="search" placeholder="Search Data...">
-               @*  <img src="~/dist/img/search.png" alt=""> *@
-            </div>
-          
-        </section>
-           @*  <form method="get">
-                <section>
-                    <section class="form-group" style="margin-top:10px; margin-right:0px">
-                        <input asp-for="FromDate" class="filter" id="fromDate" type="date" name="fromDate" placeholder="@dateToday" value="@ViewData["FromDate"]">
-                        <input asp-for="ToDate" class="filter" id="toDate" type="date" name="toDate" placeholder="@dateToday" value="@ViewData["ToDate"]">
-                        <select asp-for="statusType" name="statusType" id="statusInput" class="filter">
-                            <!-- Options here -->
-                            <option value="">Select...</option>
-                            <option value="@StatusType.Pending">Pending</option>
-                            <option value="@StatusType.InProgress">InProgress</option>
-                            <option value="@StatusType.Completed">Completed</option>
-                            <option value="@StatusType.Closed">Closed</option>
-                            <option value="@StatusType.Rejected">Rejected</option>
-                        </select>
-                        <button asp-controller="AppUser" asp-action="Dashboard" type="submit" id="filtersearchbtn" class="btn btn-primary">Search</button>
-                    </section>
-                </section>
-            </form>
-      *@   <section class="table__body">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Type <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Sub Category <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Title <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Description <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Created On <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Updated At <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Status <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Note <span class="icon-arrow">&UpArrow;</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @if (item.Type == ItemType.Demand)
-                                {
-                                    <label class="">Demand</label>
-                                }
-                                else if (item.Type == ItemType.Complaint)
-                                {
-                                    <label class="">Complaint</label>
-                                }
-                                else if (item.Type == ItemType.Suggestion)
-                                {
-                                    <label class="Suggestion">Suggestion</label>
-                                }
-                            </td>
-                            <td>
-                                @if (item.SubCategoryTypeId == SubCategoryType.GovernmentSchemes)
-                                {
-                                    <label class="">GovernmentSchemes</label>
-                                }
-                                else if (item.SubCategoryTypeId == SubCategoryType.GovernmentDepartments)
-                                {
-                                    <label class="">GovernmentDepartments</label>
-                                }
-                                else if (item.SubCategoryTypeId == SubCategoryType.PrivateOrganization)
-                                {
-                                    <label class="">PrivateOrganization</label>
-                                }
-                                else if (item.SubCategoryTypeId == SubCategoryType.Personal)
-                                {
-                                    <label class="">Personal</label>
-                                }
-                            </td>
-                            <td>@item.Title</td>
-                            <td>@item.Description</td>
-                            <td>@item.CreatedAt</td>
-                            <td>@item.UpdatedAt</td>
-                            <td>
-                                @if (item.Status == StatusType.Pending)
-                                {
-                                    <p class="status pending">Pending</p>
-                                }
-                                else if (item.Status == StatusType.InProgress)
-                                {
-                                    <p class="status shipped">InProgress</p>
-                                }
-                                else if (item.Status == StatusType.Open)
-                                {
-                                    <p class="status shipped">Open</p>
-                                }
-                                else if (item.Status == StatusType.Closed)
-                                {
-                                    <p class="status delivered">Closed</p>
-                                }
-                                else if (item.Status == StatusType.Completed)
-                                {
-                                    <p class="status delivered">Completed</p>
-                                }
-                                else if (item.Status == StatusType.Rejected)
-                                {
-                                    <p class="status cancelled">Rejected</p>
-                                    @* <label class="status cancelled">Rejected</label> *@
-                                }
-                            </td>
-                            <!-- Add more columns as needed -->
-                            <td>@item.Note</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </section>
-    </main>
-    <script src="~/js/UserDashboardTable.js"></script>
+    <div class="container">
+            <div class="row card-margin">
+        <div class="col-md-4">
+          <div class="card card-1">
+            <h3>Demand</h3>
+                        <p>Count of submited applications: @ViewData["DemandCount"] </p>
+                        <a asp-action="Demand" asp-controller="User">See More</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-2">
+            <h3>Complaint</h3>
+                        <p>Count of submited applications: @ViewData["ComplaintCount"]</p>
+                        <a asp-action="Complaints" asp-controller="User"> See More</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-3">
+            <h3>Suggestion</h3>
+                        <p>Count of submited applications: @ViewData["SuggestionCount"]  </p>
+            <a asp-action="Suggestion" asp-controller="User">See More</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
 </body>
 

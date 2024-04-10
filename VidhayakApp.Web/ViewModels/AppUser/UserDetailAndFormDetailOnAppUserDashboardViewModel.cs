@@ -11,6 +11,7 @@ namespace VidhayakApp.Web.ViewModels.AppUser
         public Ward Ward { get; set; }
         public string Address { get; set; }
         public string MobileNumber { get; set; }
+        public string? ImagePath { get; set; }
         public ItemType Type { get; set; }
         public SubCategoryType SubCategory { get; set; }
         public int ItemId { get; set; }

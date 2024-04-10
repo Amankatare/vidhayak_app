@@ -1,5 +1,10 @@
-﻿@using VidhayakApp.Core.Entities
+﻿
+@using VidhayakApp.Core.Entities
+@using VidhayakApp.ViewModels
+@using VidhayakApp.Web.ViewModels
 @model List<Item>
+@using X.PagedList.Mvc.Core
+@using X.PagedList
 
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @{
@@ -13,7 +18,7 @@
 }
 
 @if (loggedInId == null || tokenValue == null)
-{
+{ 
     context.Response.Redirect("/Account/Login");
 }
 else
@@ -62,7 +67,7 @@ else
                 <table>
                     <thead>
                         <tr>
-                            <th>Type <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Type <span class="icon-arrow">&UpArrow;</span></th> 
                             <th>Sub Category <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Title <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Description <span class="icon-arrow">&UpArrow;</span></th>
@@ -89,7 +94,7 @@ else
                                     {
                                         <label class="Suggestion">Suggestion</label>
                                     }
-                                </td>
+                                </td> 
                                 <td>
                                     @if (item.SubCategoryTypeId == SubCategoryType.GovernmentSchemes)
                                     {

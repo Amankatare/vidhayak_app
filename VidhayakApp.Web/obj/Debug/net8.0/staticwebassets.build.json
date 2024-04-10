@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UKwuNtC0jITg6PilMmAB+JOkWXEq1VDInjP3SMklJcQ=",
+  "Hash": "v1LTE3PkVgtkyHrYFPGXA0Ik4HuI4VSwdygIk904ot4=",
   "Source": "VidhayakApp.Web",
   "BasePath": "_content/VidhayakApp.Web",
   "Mode": "Default",
@@ -3074,6 +3074,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\try.css"
+    },
+    {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\UserDashboard.css",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "css/UserDashboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\UserDashboard.css"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\UserDashboardTable.css",
@@ -48562,6 +48581,25 @@
       "OriginalItemSpec": "wwwroot\\uploads\\complaints\\1a95fb16-f8cc-44e4-9ba1-db7f3ed89cc0_Screenshot 2022-02-07 133619.png"
     },
     {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\36c33d3c-3eca-4487-8a07-9a9eb271fefd_Sewage.jpg",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "uploads/complaints/36c33d3c-3eca-4487-8a07-9a9eb271fefd_Sewage.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\complaints\\36c33d3c-3eca-4487-8a07-9a9eb271fefd_Sewage.jpg"
+    },
+    {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\47c2cfb6-bc0c-46ad-b2a9-dffb9b6350fc_12.jpg",
       "SourceId": "VidhayakApp.Web",
       "SourceType": "Discovered",
@@ -48636,6 +48674,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\complaints\\89c71013-2126-48ae-88b3-6484b68fadb4_techytrip changes.jpg"
+    },
+    {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\8bc18271-5dd2-4e0b-842a-a05648812f77_images.jpg",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "uploads/complaints/8bc18271-5dd2-4e0b-842a-a05648812f77_images.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\complaints\\8bc18271-5dd2-4e0b-842a-a05648812f77_images.jpg"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\ed2c801a-4957-4a03-81bc-6147f3d4566a_techytrip changes.jpg",

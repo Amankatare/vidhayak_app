@@ -127,28 +127,58 @@ namespace VidhayakApp.Web.Controllers.Form
             {
                 var userObjectId = HttpContext.Session.GetInt32("UserId");
                 var user = await _user.GetByIdAsync(userObjectId.Value);
-                var department = await _govtDepartment.GetByIdAsync(model.DepartmentId);
-                // Map the view model to the entity
-                var complaint = new Item
-                {
-                    Status = StatusType.Pending, // Use Status.Pending from enum
-                    Title = model.Title,
-                    Description = model.Description,
-                    UserId = (int)userObjectId,
-                    Type = model.Type,
-                    SubCategoryTypeId = model.SubCategoryTypeId,
-                    CreatedAt = DateTime.Now.Date,
-                    ImagePath = "" ,
-                    User = user,
-                    DepartmentId = model.DepartmentId,
-                    Department = department
-                };
 
-                // Save to the database
-                await _dbContext.Items.AddAsync(complaint);
-                await _dbContext.SaveChangesAsync();
-                HttpContext.Session.SetInt32("CreatedItemId", complaint.ItemId);
-                Console.WriteLine("CreatedItemId: " + complaint.ItemId);
+                if (model.SubCategoryTypeId == SubCategoryType.PrivateOrganization)
+                {
+
+
+                    // Map the view model to the entity
+                    var complaints = new Item
+                    {
+                        Status = StatusType.Pending, // Use Status.Pending from enum
+                        Title = model.Title,
+                        Description = model.Description,
+                        UserId = (int)userObjectId,
+                        Type = model.Type,
+                        SubCategoryTypeId = model.SubCategoryTypeId,
+                        CreatedAt = DateTime.Now.Date,
+                        ImagePath = "",
+                        User = user,
+
+                        Department = null
+                    };
+
+                    // Save to the database
+                    await _dbContext.Items.AddAsync(complaints);
+                    await _dbContext.SaveChangesAsync();
+                    HttpContext.Session.SetInt32("CreatedItemId", complaints.ItemId);
+                    Console.WriteLine("CreatedItemId: " + complaints.ItemId);
+                }
+                else
+                {
+                    var department = await _govtDepartment.GetByIdAsync(model.DepartmentId);
+                    // Map the view model to the entity
+                    var complaint = new Item
+                    {
+                        Status = StatusType.Pending, // Use Status.Pending from enum
+                        Title = model.Title,
+                        Description = model.Description,
+                        UserId = (int)userObjectId,
+                        Type = model.Type,
+                        SubCategoryTypeId = model.SubCategoryTypeId,
+                        CreatedAt = DateTime.Now.Date,
+                        ImagePath = "",
+                        User = user,
+                        DepartmentId = model.DepartmentId,
+                        Department = department
+                    };
+
+                    // Save to the database
+                    await _dbContext.Items.AddAsync(complaint);
+                    await _dbContext.SaveChangesAsync();
+                    HttpContext.Session.SetInt32("CreatedItemId", complaint.ItemId);
+                    Console.WriteLine("CreatedItemId: " + complaint.ItemId);
+                }
             }
                 // Redirect to a success page or another action
                 return RedirectToAction("Dashboard", "User");
@@ -166,6 +196,7 @@ namespace VidhayakApp.Web.Controllers.Form
             Console.WriteLine("pressed");
             var loggedInUserId = HttpContext.Session.GetInt32("UserId");
             var user = await _user.GetByIdAsync(loggedInUserId.Value);
+
             var scheme = await _govtScheme.GetByIdAsync(model.SchemeId);
             // Map the view model to the entity
             var demand = new Item

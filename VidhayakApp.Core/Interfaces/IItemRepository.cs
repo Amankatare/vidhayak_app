@@ -9,5 +9,9 @@ namespace VidhayakApp.Core.Interfaces
 {
     public interface IItemRepository:IRepository<Item>
     {
+        //public Task<List<Item>> GetItemDetailsByUserIdAsync(int id);
+
+        //public  Task<List<Item>> GetItemsByUserIdAsync(int userId);
+        
     }
 }

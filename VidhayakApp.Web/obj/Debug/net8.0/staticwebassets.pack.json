@@ -625,6 +625,10 @@
       "PackagePath": "staticwebassets\\css\\Register.css"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\UserDashboard.css",
+      "PackagePath": "staticwebassets\\css\\UserDashboard.css"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\UserDashboardTable.css",
       "PackagePath": "staticwebassets\\css\\UserDashboardTable.css"
     },
@@ -10221,6 +10225,10 @@
       "PackagePath": "staticwebassets\\uploads\\complaints\\1a95fb16-f8cc-44e4-9ba1-db7f3ed89cc0_Screenshot 2022-02-07 133619.png"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\36c33d3c-3eca-4487-8a07-9a9eb271fefd_Sewage.jpg",
+      "PackagePath": "staticwebassets\\uploads\\complaints\\36c33d3c-3eca-4487-8a07-9a9eb271fefd_Sewage.jpg"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\47c2cfb6-bc0c-46ad-b2a9-dffb9b6350fc_12.jpg",
       "PackagePath": "staticwebassets\\uploads\\complaints\\47c2cfb6-bc0c-46ad-b2a9-dffb9b6350fc_12.jpg"
     },
@@ -10235,6 +10243,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\89c71013-2126-48ae-88b3-6484b68fadb4_techytrip changes.jpg",
       "PackagePath": "staticwebassets\\uploads\\complaints\\89c71013-2126-48ae-88b3-6484b68fadb4_techytrip changes.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\8bc18271-5dd2-4e0b-842a-a05648812f77_images.jpg",
+      "PackagePath": "staticwebassets\\uploads\\complaints\\8bc18271-5dd2-4e0b-842a-a05648812f77_images.jpg"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\uploads\\complaints\\ed2c801a-4957-4a03-81bc-6147f3d4566a_techytrip changes.jpg",
