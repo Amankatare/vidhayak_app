@@ -62,21 +62,21 @@ else
                 <table>
                     <thead>
                         <tr>
-                            <th>Type <span class="icon-arrow">&UpArrow;</span></th>
+                           @*  <th>Type <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Sub Category <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Title <span class="icon-arrow">&UpArrow;</span></th>
-                            <th>Description <span class="icon-arrow">&UpArrow;</span></th>
+                            *@ <th>Description <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Created On <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Updated At <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Status <span class="icon-arrow">&UpArrow;</span></th>
-                            <th>Note <span class="icon-arrow">&UpArrow;</span></th>
+                          @*   <th>Note <span class="icon-arrow">&UpArrow;</span></th> *@
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
+                               @*  <td>
                                     @if (item.Type == ItemType.Demand)
                                     {
                                         <label class="">Demand</label>
@@ -109,7 +109,7 @@ else
                                     }
                                 </td>
                                 <td>@item.Title</td>
-                                <td>@item.Description</td>
+                                *@ <td>@item.Description</td>
                                 <td>@item.CreatedAt</td>
                                 <td>@item.UpdatedAt</td>
                                 <td>
@@ -117,30 +117,19 @@ else
                                     {
                                         <p class="status pending">Pending</p>
                                     }
-                                    else if (item.Status == StatusType.InProgress)
-                                    {
-                                        <p class="status shipped">InProgress</p>
-                                    }
                                     else if (item.Status == StatusType.Open)
                                     {
                                         <p class="status shipped">Open</p>
                                     }
+                                    
                                     else if (item.Status == StatusType.Closed)
                                     {
                                         <p class="status delivered">Closed</p>
                                     }
-                                    else if (item.Status == StatusType.Completed)
-                                    {
-                                        <p class="status delivered">Completed</p>
-                                    }
-                                    else if (item.Status == StatusType.Rejected)
-                                    {
-                                        <p class="status cancelled">Rejected</p>
-                                        @* <label class="status cancelled">Rejected</label> *@
-                                    }
+                                  
                                 </td>
                                 <!-- Add more columns as needed -->
-                                <td>@item.Note</td>
+                                @* <td>@item.Note</td> *@
                             </tr>
                         }
                     </tbody>

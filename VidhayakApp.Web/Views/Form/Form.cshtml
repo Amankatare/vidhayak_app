@@ -52,9 +52,9 @@
                                         <select id="subCategoryComplaintInput" class="form-control" asp-for="SubCategoryTypeId" onchange="handleComplaintSubCategoryChange()">
                                             <!-- Options here -->
                                             <option selected="">Select...</option>
-                                            <option value="@SubCategoryType.GovernmentDepartments">Related to Government Department</option>
-                                            <option value="@SubCategoryType.PrivateOrganization">Related to Private Organization</option>
-                                            <option value="@SubCategoryType.Personal">Related to Personal</option>
+                                            <option value="@(SubCategoryType.GovernmentDepartments)">Related to Government Department</option>
+                                            <option value="@(SubCategoryType.PrivateOrganization)">Related to Private Organization</option>
+                                            <option value="@(SubCategoryType.Personal)">Related to Personal</option>
                                         </select>
                                     </div>
 
@@ -111,9 +111,9 @@
                                         <select id="subCategoryDemandInput" class="form-control" asp-for="SubCategoryTypeId" onchange="handleDemandSubCategoryChange()">
                                             <!-- Options here -->
                                             <option selected="">Select...</option>
-                                            <option value="@SubCategoryType.GovernmentSchemes">Related to Government Schemes</option>
-                                            <option value="@SubCategoryType.PrivateOrganization">Related to Private Organization</option>
-                                            <option value="@SubCategoryType.Personal">Related to Personal</option>
+                                            <option value="@(SubCategoryType.GovernmentSchemes)">Related to Government Schemes</option>
+                                            <option value="@(SubCategoryType.PrivateOrganization)">Related to Private Organization</option>
+                                            <option value="@(SubCategoryType.Personal)">Related to Personal</option>
                                         </select>
                                     </div>
 

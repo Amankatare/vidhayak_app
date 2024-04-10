@@ -196,30 +196,55 @@ namespace VidhayakApp.Web.Controllers.Form
             Console.WriteLine("pressed");
             var loggedInUserId = HttpContext.Session.GetInt32("UserId");
             var user = await _user.GetByIdAsync(loggedInUserId.Value);
-
-            var scheme = await _govtScheme.GetByIdAsync(model.SchemeId);
-            // Map the view model to the entity
-            var demand = new Item
+            if (model.SubCategoryTypeId == SubCategoryType.PrivateOrganization)
             {
-                Status = StatusType.Pending, // Use Status.Pending from enum
-                Title = model.Title,
-                Description = model.Description,
-                Type = model.Type,
-                SubCategoryTypeId = model.SubCategoryTypeId,
-                CreatedAt = DateTime.Now.Date,
-                UpdatedAt = null,
-                SchemeId = model.SchemeId,
-                Scheme = scheme,
-                UserId = model.UserId,
-                User = user,
-            };
 
-            // Save to the database
-            await _dbContext.Items.AddAsync(demand);
-            await _dbContext.SaveChangesAsync();
-            HttpContext.Session.SetInt32("CreatedItemId", demand.ItemId);
-            Console.WriteLine("CreatedItemId: " + demand.ItemId);
+                // Map the view model to the entity
+                var demands = new Item
+                {
+                    Status = StatusType.Pending, // Use Status.Pending from enum
+                    Title = model.Title,
+                    Description = model.Description,
+                    Type = model.Type,
+                    SubCategoryTypeId = model.SubCategoryTypeId,
+                    CreatedAt = DateTime.Now.Date,
+                    UpdatedAt = null,
+                    Scheme = null,
+                    UserId = model.UserId,
+                    User = user,
+                };
 
+                // Save to the database
+                await _dbContext.Items.AddAsync(demands);
+                await _dbContext.SaveChangesAsync();
+                HttpContext.Session.SetInt32("CreatedItemId", demands.ItemId);
+                Console.WriteLine("CreatedItemId: " + demands.ItemId);
+            }
+            else
+            {
+                var scheme = await _govtScheme.GetByIdAsync(model.SchemeId);
+                // Map the view model to the entity
+                var demand = new Item
+                {
+                    Status = StatusType.Pending, // Use Status.Pending from enum
+                    Title = model.Title,
+                    Description = model.Description,
+                    Type = model.Type,
+                    SubCategoryTypeId = model.SubCategoryTypeId,
+                    CreatedAt = DateTime.Now.Date,
+                    UpdatedAt = null,
+                    SchemeId = model.SchemeId,
+                    Scheme = scheme,
+                    UserId = model.UserId,
+                    User = user,
+                };
+
+                // Save to the database
+                await _dbContext.Items.AddAsync(demand);
+                await _dbContext.SaveChangesAsync();
+                HttpContext.Session.SetInt32("CreatedItemId", demand.ItemId);
+                Console.WriteLine("CreatedItemId: " + demand.ItemId);
+            }
             // Redirect to a success page or another action
             return RedirectToAction("Dashboard", "User");
         }
