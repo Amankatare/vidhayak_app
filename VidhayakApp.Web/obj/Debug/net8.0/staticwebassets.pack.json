@@ -793,6 +793,14 @@
       "PackagePath": "staticwebassets\\dist\\img\\OIG3.jpg"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\OIP.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\OIP.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\Round-Fail-Stamp-PNG-Clipart-Background.png",
+      "PackagePath": "staticwebassets\\dist\\img\\Round-Fail-Stamp-PNG-Clipart-Background.png"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\abstract.jpg",
       "PackagePath": "staticwebassets\\dist\\img\\abstract.jpg"
     },
@@ -907,6 +915,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\img-01.png",
       "PackagePath": "staticwebassets\\dist\\img\\img-01.png"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\istockphoto-1471870225-2048x2048_result.png",
+      "PackagePath": "staticwebassets\\dist\\img\\istockphoto-1471870225-2048x2048_result.png"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\json.png",

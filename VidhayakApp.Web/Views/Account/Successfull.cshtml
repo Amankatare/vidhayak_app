@@ -3,8 +3,148 @@
     
     @{
          ViewData["Title"] = "Successfull";
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
     }
 
-<div class="alert alert-success" role="alert">
+@* <div class="alert alert-success" role="alert">
         Registration Successfull
 </div>
+ *@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Success/Failed</title>
+    <style>
+        .back-img {
+            font-family: Arial, sans-serif;
+            /* background-color: #f4f4f4; */
+            background-image: url("/dist/img/istockphoto-1471870225-2048x2048_result.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        .success, .failed {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 8%;
+            padding: 23px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* margin-bottom: 20px; */
+        }
+
+            .success .icon {
+                /* background-color: #007bff; */
+                /* border-radius: 50%; */
+                /* color: white; */
+                /* background-image: url("OIP.jpg");
+            background-size: ; */
+                /* font-size: 24px;
+            margin-bottom: 10px;
+            padding: 10px; */
+                background-image: url("/dist/img/OIP.jpg");
+                background-image: url(OIP.jpg);
+                font-size: 24px;
+                margin-bottom: 10px;
+                padding: 33px 46px;
+                background-size: 90%;
+                background-repeat: no-repeat;
+                width: 25px;
+                margin-bottom: 30px;
+            }
+
+            .failed .icon {
+                background-image: url("/dist/img/Round-Fail-Stamp-PNG-Clipart-Background.png");
+                font-size: 24px;
+                margin-bottom: 10px;
+                padding: 33px 46px;
+                background-size: 90%;
+                background-repeat: no-repeat;
+                width: 25px;
+                margin-bottom: 30px;
+            }
+
+                .success .icon:before, .failed .icon:before {
+                    /* content: "✓"; */
+                    background-image: url("/dist/img/OIP.jpg");
+                }
+
+                .failed .icon:before {
+                    /* content: "✖"; */
+                    background-image: url("/dist/img/Round-Fail-Stamp-PNG-Clipart-Background.png");
+                    /* background-image: url("E:\vidhayak_app\VidhayakApp.Web\wwwroot\dist\img\Round-Fail-Stamp-PNG-Clipart-Background.png"); */
+                }
+
+            .success .message, .failed .message {
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            .success .button, .failed .button {
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin-top: 10px;
+            }
+
+            .failed .button {
+                background-color: #ffc107;
+            }
+
+        .d-flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="back-img  d-flex-center">
+
+    <div class="container">
+
+         <div class="success">
+          <div class="icon">✓</div>
+          <div class="message">
+            Thank you! You have successfully registered on our website. You can now proceed.
+          </div>
+          <div>
+          <button asp-action="Login" asp-controller="Account" class="submit">Continue</button>
+        </div>
+        </div> 
+        @* <div class="failed">
+            <div class="icon">✖</div>
+            <div class="message">
+                Oops! It seems like there's a hiccup in your registration process.
+            </div>
+            <div>
+                <button class="button">Try again</button>
+            </div>
+        </div>*@
+    </div> 
+    </div>
+
+</body>
+</html>
