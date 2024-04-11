@@ -62,7 +62,7 @@ else
                 <table>
                     <thead>
                         <tr>
-                            <th>Type <span class="icon-arrow">&UpArrow;</span></th>
+                      @*       <th>Type <span class="icon-arrow">&UpArrow;</span></th> *@
                             <th>Sub Category <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Title <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Description <span class="icon-arrow">&UpArrow;</span></th>
@@ -76,7 +76,7 @@ else
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
+                               @*  <td>
                                     @if (item.Type == ItemType.Demand)
                                     {
                                         <label class="">Demand</label>
@@ -89,7 +89,7 @@ else
                                     {
                                         <label class="Suggestion">Suggestion</label>
                                     }
-                                </td>
+                                </td> *@
                                 <td>
                                     @if (item.SubCategoryTypeId == SubCategoryType.GovernmentSchemes)
                                     {

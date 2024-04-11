@@ -262,142 +262,45 @@
         </footer>
        
     </main>
-    
-    <script src="~/Argon/js/core-popper.min.js"></script>
-    <script src="~/Argon/js/core-bootstrap.min.js"></script>
-    <script src="~/Argon/js/plugins-perfect-scrollbar.min.js"></script>
-    <script src="~/Argon/js/plugins-smooth-scrollbar.min.js"></script>
-    <script src="~/Argon/js/plugins-chartjs.min.js"></script>
-    <script>
-        var ctx1 = document.getElementById("chart-line").getContext("2d");
-
-        var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-
-        gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
-        gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
-        gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
-        new Chart(ctx1, {
-            type: "line",
-            data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: "Mobile apps",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    pointRadius: 0,
-                    borderColor: "#5e72e4",
-                    backgroundColor: gradientStroke1,
-                    borderWidth: 3,
-                    fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                    maxBarThickness: 6
-
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            padding: 10,
-                            color: '#fbfbfb',
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            color: '#ccc',
-                            padding: 20,
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                },
-            },
-        });
-    </script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-
-    <script async defer src="~/Argon/js/buttons.github.io-buttons.js"></script>
-
-    <script src="~/Argon/js/js-argon-dashboard.min.js"></script>
-    <!-- jQuery -->
-    <script src="~/plugins/jquery/jquery.min.js"></script>
-       <!-- jQuery UI 1.11.4 -->
- @*    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script> *@
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    @*  <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
+    <script src="~/plugins/moment/moment.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="~/plugins/chart.js/Chart.min.js"></script>
+    <!-- Chart.js -->
+    <script src="~/Argon/js/plugins-chartjs.min.js"></script>
     <!-- Sparkline -->
     <script src="~/plugins/sparklines/sparkline.js"></script>
     <!-- JQVMap -->
-    <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <script src="~/Argon/js/core-popper.min.js"></script>
+    <!-- jQuery -->
+    @* <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script> *@
+    <!-- jQuery UI tooltip conflict resolution -->
+    <!-- AdminLTE App -->
+    <!-- Perfect Scrollbar -->
+    <!-- OverlayScrollbars -->
+    @*   <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> *@
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- jQuery Knob Chart -->
     <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
-  *@   <!-- daterangepicker -->
-    <script src="~/plugins/moment/moment.min.js"></script>
+    <!-- Moment.js -->
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- Daterangepicker -->
+    <script src="~/Argon/js/core-bootstrap.min.js"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- GitHub Buttons -->
+    <script async defer src="~/Argon/js/buttons.github.io-buttons.js"></script>
+    <!-- Argon Dashboard -->
+    <!-- Smooth Scrollbar -->
+    <script src="~/Argon/js/plugins-smooth-scrollbar.min.js"></script>
+
+    <script src="~/Argon/js/plugins-perfect-scrollbar.min.js"></script>
+    <script src="~/Argon/js/js-argon-dashboard.min.js"></script>
+    <script src="~/dist/js/adminlte.js"></script>
     <!-- Summernote -->
     <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="~/dist/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="~/dist/js/pages/dashboard.js"></script>
 </body>
 
 </html>

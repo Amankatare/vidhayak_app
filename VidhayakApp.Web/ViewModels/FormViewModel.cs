@@ -6,6 +6,7 @@ namespace VidhayakApp.Web.ViewModels
     public class FormViewModel
     {
         public SubCategoryType SubCategoryTypeId { get; set; }
+        public SubCategoryType SubCategoryTypeIdForDemand { get; set; }
         [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }
 

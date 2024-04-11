@@ -196,7 +196,8 @@ namespace VidhayakApp.Web.Controllers.Form
             Console.WriteLine("pressed");
             var loggedInUserId = HttpContext.Session.GetInt32("UserId");
             var user = await _user.GetByIdAsync(loggedInUserId.Value);
-            if (model.SubCategoryTypeId == SubCategoryType.PrivateOrganization)
+          
+            if (model.SubCategoryTypeIdForDemand == SubCategoryType.PrivateOrganization)
             {
 
                 // Map the view model to the entity
@@ -206,7 +207,7 @@ namespace VidhayakApp.Web.Controllers.Form
                     Title = model.Title,
                     Description = model.Description,
                     Type = model.Type,
-                    SubCategoryTypeId = model.SubCategoryTypeId,
+                    SubCategoryTypeId = model.SubCategoryTypeIdForDemand,
                     CreatedAt = DateTime.Now.Date,
                     UpdatedAt = null,
                     Scheme = null,
@@ -230,7 +231,7 @@ namespace VidhayakApp.Web.Controllers.Form
                     Title = model.Title,
                     Description = model.Description,
                     Type = model.Type,
-                    SubCategoryTypeId = model.SubCategoryTypeId,
+                    SubCategoryTypeId = model.SubCategoryTypeIdForDemand,
                     CreatedAt = DateTime.Now.Date,
                     UpdatedAt = null,
                     SchemeId = model.SchemeId,
