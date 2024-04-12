@@ -84,7 +84,7 @@ namespace VidhayakApp.Web.Controllers
 
 
 
-        public async Task<IActionResult> Complaints(int? pageId)
+        public async Task<IActionResult> Complaints(int? pageId, UserFilter filter)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
@@ -96,18 +96,39 @@ namespace VidhayakApp.Web.Controllers
             var user = await _userRepository.GetByIdAsync(userId.Value);
 
             // Retrieve complaints, demands, and suggestions filled by the user from the database
-
             var userEntries = _db.Items
                 .Include(i => i.User)
-                .Where(i => i.UserId == userId).Where(i => i.Type == ItemType.Complaint).OrderByDescending(i => i.CreatedAt)
-                .ToList();
+                .Where(i => i.UserId == userId && i.Type == ItemType.Complaint);
 
-            //var userEntries = _itemRepository.GetByIdAsync(userId.Value);
-            Console.WriteLine(userEntries);
-            // Pass the user entries to the view
-            return View(userEntries);
+            // Apply filtering based on the provided filter parameters
+            if (filter?.FromDate != default && filter?.ToDate != default)
+            {
+                userEntries = userEntries.Where(s => s.CreatedAt >= filter.FromDate && s.CreatedAt <= filter.ToDate);
+            }
+
+            if (filter?.statusType != null)
+            {
+                userEntries = userEntries.Where(s => s.Status == filter.statusType);
+            }
+
+            // Order the entries by CreatedAt
+            userEntries = userEntries.OrderByDescending(i => i.CreatedAt);
+
+            // Pagination
+            var pageNumber = pageId ?? 1;
+            var pageSize = 10;
+            var pagedData = userEntries.ToPagedList(pageNumber, pageSize);
+
+            // Assign paged data directly to the Items property of the UserFilter
+            filter.Items = pagedData;
+
+            // Pass the filter object to the view
+            return View(filter);
         }
-        
+
+
+
+
         //public async Task<IActionResult> Complaints(int? pageId)
         //{
         //    var loggedInUserId = HttpContext.Session.GetInt32("UserId");
@@ -130,45 +151,45 @@ namespace VidhayakApp.Web.Controllers
         //    return View(complaintItems);
         //}
 
-            
-
-            // Create ViewModel and populate user details
-            
-
-            //    var complaintsQuery = _db.Items
-            //.Where(item => item.UserId == loggedInUserId && item.Type == ItemType.Complaint)
-            //.Select(item => new ComplaintViewModel
-            //{
-            //    ItemId = item.ItemId,
-            //    Title = item.Title,
-            //    Description = item.Description,
-            //    Status = item.Status,
-            //    CreatedAt = item.CreatedAt,
-            //    UpdatedAt = item.UpdatedAt,
-            //    AppUserId = item.UserId,
-            //    Note = item.Note,
-            //    Type = item.Type,
-            //    UserId = item.UserId,
-            //    DepartmentId = item.Department.DepartmentId,
-            //    DepartmentName = item.Department.DepartmentName // Assuming DepartmentName is a property of Department entity
-            //});
-
-            //    // Configure pagination parameters
-            //   int pageNumber = pageId ?? 1;
-            //int pageSize = 10; // Number of items per page
-
-            //// Create paged list
-            //var pagedComplaints = complaintsQuery.ToPagedList(pageNumber, pageSize);
-
-            //// Assign paged list to the ViewModel
-            //viewModel.Complaints = pagedComplaints;
-
-            // Pass ViewModel to the view
-            //return View(complaintsQuery);
-    
 
 
-         public async Task<IActionResult> Demand()
+        // Create ViewModel and populate user details
+
+
+        //    var complaintsQuery = _db.Items
+        //.Where(item => item.UserId == loggedInUserId && item.Type == ItemType.Complaint)
+        //.Select(item => new ComplaintViewModel
+        //{
+        //    ItemId = item.ItemId,
+        //    Title = item.Title,
+        //    Description = item.Description,
+        //    Status = item.Status,
+        //    CreatedAt = item.CreatedAt,
+        //    UpdatedAt = item.UpdatedAt,
+        //    AppUserId = item.UserId,
+        //    Note = item.Note,
+        //    Type = item.Type,
+        //    UserId = item.UserId,
+        //    DepartmentId = item.Department.DepartmentId,
+        //    DepartmentName = item.Department.DepartmentName // Assuming DepartmentName is a property of Department entity
+        //});
+
+        //    // Configure pagination parameters
+        //   int pageNumber = pageId ?? 1;
+        //int pageSize = 10; // Number of items per page
+
+        //// Create paged list
+        //var pagedComplaints = complaintsQuery.ToPagedList(pageNumber, pageSize);
+
+        //// Assign paged list to the ViewModel
+        //viewModel.Complaints = pagedComplaints;
+
+        // Pass ViewModel to the view
+        //return View(complaintsQuery);
+
+
+
+        public async Task<IActionResult> Demand()
         {
             var userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)

@@ -2,7 +2,7 @@
 @using VidhayakApp.Core.Entities
 @using VidhayakApp.ViewModels
 @using VidhayakApp.Web.ViewModels
-@model List<Item>
+@model UserFilter
 @using X.PagedList.Mvc.Core
 @using X.PagedList
 
@@ -45,29 +45,29 @@ else
                 </div>
 
             </section>
-            @*  <form method="get">
-        <section>
-        <section class="form-group" style="margin-top:10px; margin-right:0px">
-        <input asp-for="FromDate" class="filter" id="fromDate" type="date" name="fromDate" placeholder="@dateToday" value="@ViewData["FromDate"]">
-        <input asp-for="ToDate" class="filter" id="toDate" type="date" name="toDate" placeholder="@dateToday" value="@ViewData["ToDate"]">
-        <select asp-for="statusType" name="statusType" id="statusInput" class="filter">
-        <!-- Options here -->
-        <option value="">Select...</option>
-        <option value="@StatusType.Pending">Pending</option>
-        <option value="@StatusType.InProgress">InProgress</option>
-        <option value="@StatusType.Completed">Completed</option>
-        <option value="@StatusType.Closed">Closed</option>
-        <option value="@StatusType.Rejected">Rejected</option>
-        </select>
-        <button asp-controller="AppUser" asp-action="Dashboard" type="submit" id="filtersearchbtn" class="btn btn-primary">Search</button>
-        </section>
-        </section>
+             <form method="get">
+                <section>
+                    <section class="form-group" style="margin-top:10px; margin-right:0px">
+                        <input asp-for="FromDate" class="filter" id="fromDate" type="date" name="fromDate" placeholder="@dateToday" value="@ViewData["FromDate"]">
+                        <input asp-for="ToDate" class="filter" id="toDate" type="date" name="toDate" placeholder="@dateToday" value="@ViewData["ToDate"]">
+                        <select asp-for="statusType" name="statusType" id="statusInput" class="filter">
+                        <!-- Options here -->
+                            <option value="" selected>Select...</option>
+                            <option value="@StatusType.Pending">Pending</option>
+                            <option value="@StatusType.InProgress">InProgress</option>
+                            <option value="@StatusType.Completed">Completed</option>
+                            <option value="@StatusType.Closed">Closed</option>
+                            <option value="@StatusType.Rejected">Rejected</option>
+                        </select>
+                        <button asp-controller="User" asp-action="Complaints" type="submit" id="filtersearchbtn" class="btn btn-primary">Search</button>
+                    </section>
+                </section>
         </form>
-        *@   <section class="table__body">
+           <section class="table__body">
                 <table>
                     <thead>
                         <tr>
-                            <th>Type <span class="icon-arrow">&UpArrow;</span></th> 
+                           @*  <th>Type <span class="icon-arrow">&UpArrow;</span></th>  *@
                             <th>Sub Category <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Title <span class="icon-arrow">&UpArrow;</span></th>
                             <th>Description <span class="icon-arrow">&UpArrow;</span></th>
@@ -78,11 +78,12 @@ else
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Items)
                         {
-                            <tr>
-                                <td>
-                                    @if (item.Type == ItemType.Demand)
+                            
+                                <tr>
+                                    @* <td>
+                                    @if (item..Type == ItemType.Demand)
                                     {
                                         <label class="">Demand</label>
                                     }
@@ -94,62 +95,83 @@ else
                                     {
                                         <label class="Suggestion">Suggestion</label>
                                     }
-                                </td> 
-                                <td>
-                                    @if (item.SubCategoryTypeId == SubCategoryType.GovernmentSchemes)
-                                    {
-                                        <label class="">GovernmentSchemes</label>
-                                    }
-                                    else if (item.SubCategoryTypeId == SubCategoryType.GovernmentDepartments)
-                                    {
-                                        <label class="">GovernmentDepartments</label>
-                                    }
-                                    else if (item.SubCategoryTypeId == SubCategoryType.PrivateOrganization)
-                                    {
-                                        <label class="">PrivateOrganization</label>
-                                    }
-                                    else if (item.SubCategoryTypeId == SubCategoryType.Personal)
-                                    {
-                                        <label class="">Personal</label>
-                                    }
-                                </td>
-                                <td>@item.Title</td>
-                                <td>@item.Description</td>
-                                <td>@item.CreatedAt</td>
-                                <td>@item.UpdatedAt</td>
-                                <td>
-                                    @if (item.Status == StatusType.Pending)
-                                    {
-                                        <p class="status pending">Pending</p>
-                                    }
-                                    else if (item.Status == StatusType.InProgress)
-                                    {
-                                        <p class="status shipped">InProgress</p>
-                                    }
-                                    else if (item.Status == StatusType.Open)
-                                    {
-                                        <p class="status shipped">Open</p>
-                                    }
-                                    else if (item.Status == StatusType.Closed)
-                                    {
-                                        <p class="status delivered">Closed</p>
-                                    }
-                                    else if (item.Status == StatusType.Completed)
-                                    {
-                                        <p class="status delivered">Completed</p>
-                                    }
-                                    else if (item.Status == StatusType.Rejected)
-                                    {
-                                        <p class="status cancelled">Rejected</p>
-                                        @* <label class="status cancelled">Rejected</label> *@
-                                    }
-                                </td>
-                                <!-- Add more columns as needed -->
-                                <td>@item.Note</td>
-                            </tr>
+                                </td>  *@
+                                    <td>
+                                        @if (item.SubCategoryTypeId == SubCategoryType.GovernmentSchemes)
+                                        {
+                                            <label class="">GovernmentSchemes</label>
+                                        }
+                                        else if (item.SubCategoryTypeId == SubCategoryType.GovernmentDepartments)
+                                        {
+                                            <label class="">GovernmentDepartments</label>
+                                        }
+                                        else if (item.SubCategoryTypeId == SubCategoryType.PrivateOrganization)
+                                        {
+                                            <label class="">PrivateOrganization</label>
+                                        }
+                                        else if (item.SubCategoryTypeId == SubCategoryType.Personal)
+                                        {
+                                            <label class="">Personal</label>
+                                        }
+                                    </td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.CreatedAt</td>
+                                    <td>@item.UpdatedAt</td>
+                                    <td>
+                                        @if (item.Status == StatusType.Pending)
+                                        {
+                                            <p class="status pending">Pending</p>
+                                        }
+                                        else if (item.Status == StatusType.InProgress)
+                                        {
+                                            <p class="status shipped">InProgress</p>
+                                        }
+                                        else if (item.Status == StatusType.Open)
+                                        {
+                                            <p class="status shipped">Open</p>
+                                        }
+                                        else if (item.Status == StatusType.Closed)
+                                        {
+                                            <p class="status delivered">Closed</p>
+                                        }
+                                        else if (item.Status == StatusType.Completed)
+                                        {
+                                            <p class="status delivered">Completed</p>
+                                        }
+                                        else if (item.Status == StatusType.Rejected)
+                                        {
+                                            <p class="status cancelled">Rejected</p>
+                                            @* <label class="status cancelled">Rejected</label> *@
+                                        }
+                                    </td>
+                                    <!-- Add more columns as needed -->
+                                    <td>@item.Note</td>
+                                </tr>
+                            
                         }
                     </tbody>
                 </table>
+                <div>
+                    @Html.PagedListPager(Model.Items, page => Url.Action("Complaints", new { pageId = page }), new PagedListRenderOptions
+           {
+               // DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+               // DisplayLinkToLastPage = PagedListDisplayMode.Always,
+               // DisplayPageCountAndCurrentLocation = true,
+               LiElementClasses = new string[] { "page-item" },
+               PageClasses = new string[] { "page-link" },
+           })
+                    @*
+                the parameter name inside the method should always be the same as here
+
+                if name changes id won't pass
+
+                if pageQ was written instead of pageId parameter name which is inside complaint method parameter body
+                then id value will not get passed inside parameter body
+
+                *@
+
+                </div>
             </section>
         </main>
         <script src="~/js/UserDashboardTable.js"></script>
