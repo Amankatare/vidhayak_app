@@ -613,6 +613,10 @@
       "PackagePath": "staticwebassets\\build\\scss\\plugins\\_toastr.scss"
     },
     {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\404NotFoundError.css",
+      "PackagePath": "staticwebassets\\css\\404NotFoundError.css"
+    },
+    {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\Login.css",
       "PackagePath": "staticwebassets\\css\\Login.css"
     },
@@ -839,6 +843,10 @@
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\banner2.jpg",
       "PackagePath": "staticwebassets\\dist\\img\\banner2.jpg"
+    },
+    {
+      "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\bg.gif",
+      "PackagePath": "staticwebassets\\dist\\img\\bg.gif"
     },
     {
       "Id": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\blurabstract1.jpg",

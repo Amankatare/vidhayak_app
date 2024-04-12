@@ -1,5 +1,8 @@
 ﻿@using VidhayakApp.Core.Entities
-@model List<Item>
+@using X.PagedList.Mvc.Core
+@using X.PagedList
+@using VidhayakApp.Web.ViewModels
+@model UserFilter
 
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @{
@@ -40,25 +43,31 @@ else
                 </div>
 
             </section>
-            @*  <form method="get">
-        <section>
-        <section class="form-group" style="margin-top:10px; margin-right:0px">
-        <input asp-for="FromDate" class="filter" id="fromDate" type="date" name="fromDate" placeholder="@dateToday" value="@ViewData["FromDate"]">
-        <input asp-for="ToDate" class="filter" id="toDate" type="date" name="toDate" placeholder="@dateToday" value="@ViewData["ToDate"]">
-        <select asp-for="statusType" name="statusType" id="statusInput" class="filter">
-        <!-- Options here -->
-        <option value="">Select...</option>
-        <option value="@StatusType.Pending">Pending</option>
-        <option value="@StatusType.InProgress">InProgress</option>
-        <option value="@StatusType.Completed">Completed</option>
-        <option value="@StatusType.Closed">Closed</option>
-        <option value="@StatusType.Rejected">Rejected</option>
-        </select>
-        <button asp-controller="AppUser" asp-action="Dashboard" type="submit" id="filtersearchbtn" class="btn btn-primary">Search</button>
-        </section>
-        </section>
-        </form>
-        *@   <section class="table__body">
+            <form method="get">
+                <section>
+                    <section class="form-group" style="margin-top:10px; margin-right:0px">
+                        <input asp-for="FromDate" class="filter" id="fromDate" type="date" name="fromDate" placeholder="@dateToday" value="@ViewData["FromDate"]">
+                        <input asp-for="ToDate" class="filter" id="toDate" type="date" name="toDate" placeholder="@dateToday" value="@ViewData["ToDate"]">
+                        <select asp-for="statusType" name="statusType" id="statusInput" class="filter">
+                            <!-- Options here -->
+                            <option value="" selected>Select...</option>
+                            <option value="@StatusType.Pending">Pending</option>
+                            <option value="@StatusType.InProgress">InProgress</option>
+                            <option value="@StatusType.Completed">Completed</option>
+                            <option value="@StatusType.Closed">Closed</option>
+                            <option value="@StatusType.Rejected">Rejected</option>
+                        </select>
+                        <button asp-controller="User" asp-action="Demand" type="submit" id="filtersearchbtn" class="btn btn-primary">Search</button>
+                    </section>
+                </section>
+            </form>
+            @if (Model.Items == null || !Model.Items.Any())
+            {
+                <p>No data found.</p>
+            }
+            else
+            {
+           <section class="table__body">
                 <table>
                     <thead>
                         <tr>
@@ -73,7 +82,7 @@ else
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Items)
                         {
                             <tr>
                                @*  <td>
@@ -145,7 +154,28 @@ else
                         }
                     </tbody>
                 </table>
+                <div>
+                    @Html.PagedListPager(Model.Items, page => Url.Action("Demand", new { pageId = page }), new PagedListRenderOptions
+           {
+               // DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+               // DisplayLinkToLastPage = PagedListDisplayMode.Always,
+               // DisplayPageCountAndCurrentLocation = true,
+               LiElementClasses = new string[] { "page-item" },
+               PageClasses = new string[] { "page-link" },
+           })
+                    @*
+                the parameter name inside the method should always be the same as here
+
+                if name changes id won't pass
+
+                if pageQ was written instead of pageId parameter name which is inside complaint method parameter body
+                then id value will not get passed inside parameter body
+
+                *@
+
+                </div>
             </section>
+            }
         </main>
         <script src="~/js/UserDashboardTable.js"></script>
 

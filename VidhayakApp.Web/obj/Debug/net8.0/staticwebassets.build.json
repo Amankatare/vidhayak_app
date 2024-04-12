@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hCSw3iperb2+qPqLfsxduyv7aa+A5IH24HgPnvb4EjA=",
+  "Hash": "o3NK3VHpZLffXPracStqpfsHlXxMWWOrsoaRLNa+b0E=",
   "Source": "VidhayakApp.Web",
   "BasePath": "_content/VidhayakApp.Web",
   "Mode": "Default",
@@ -2924,6 +2924,25 @@
       "OriginalItemSpec": "wwwroot\\build\\scss\\plugins\\_toastr.scss"
     },
     {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\404NotFoundError.css",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "css/404NotFoundError.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\404NotFoundError.css"
+    },
+    {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\css\\filter.css",
       "SourceId": "VidhayakApp.Web",
       "SourceType": "Discovered",
@@ -3891,6 +3910,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\img\\banner2.jpg"
+    },
+    {
+      "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\bg.gif",
+      "SourceId": "VidhayakApp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\",
+      "BasePath": "_content/VidhayakApp.Web",
+      "RelativePath": "dist/img/bg.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\img\\bg.gif"
     },
     {
       "Identity": "E:\\vidhayak_app\\VidhayakApp.Web\\wwwroot\\dist\\img\\blurabstract1.jpg",

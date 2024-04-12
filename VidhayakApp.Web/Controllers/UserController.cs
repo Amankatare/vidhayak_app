@@ -126,6 +126,89 @@ namespace VidhayakApp.Web.Controllers
             return View(filter);
         }
 
+        public async Task<IActionResult> Demand(int? pageId, UserFilter filter)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                // Handle if user ID is not found in the session
+                return RedirectToAction("Login", "Account");
+            }
+
+            var user = await _userRepository.GetByIdAsync(userId.Value);
+
+            // Retrieve complaints, demands, and suggestions filled by the user from the database
+            var userEntries = _db.Items
+                .Include(i => i.User)
+                .Where(i => i.UserId == userId && i.Type == ItemType.Demand);
+
+            // Apply filtering based on the provided filter parameters
+            if (filter?.FromDate != default && filter?.ToDate != default)
+            {
+                userEntries = userEntries.Where(s => s.CreatedAt >= filter.FromDate && s.CreatedAt <= filter.ToDate);
+            }
+
+            if (filter?.statusType != null)
+            {
+                userEntries = userEntries.Where(s => s.Status == filter.statusType);
+            }
+
+            // Order the entries by CreatedAt
+            userEntries = userEntries.OrderByDescending(i => i.CreatedAt);
+
+            // Pagination
+            var pageNumber = pageId ?? 1;
+            var pageSize = 10;
+            var pagedData = userEntries.ToPagedList(pageNumber, pageSize);
+
+            // Assign paged data directly to the Items property of the UserFilter
+            filter.Items = pagedData;
+
+            // Pass the filter object to the view
+            return View(filter);
+        }
+
+        public async Task<IActionResult> Suggestion(int? pageId, UserFilter filter)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                // Handle if user ID is not found in the session
+                return RedirectToAction("Login", "Account");
+            }
+
+            var user = await _userRepository.GetByIdAsync(userId.Value);
+
+            // Retrieve complaints, demands, and suggestions filled by the user from the database
+            var userEntries = _db.Items
+                .Include(i => i.User)
+                .Where(i => i.UserId == userId && i.Type == ItemType.Suggestion);
+
+            // Apply filtering based on the provided filter parameters
+            if (filter?.FromDate != default && filter?.ToDate != default)
+            {
+                userEntries = userEntries.Where(s => s.CreatedAt >= filter.FromDate && s.CreatedAt <= filter.ToDate);
+            }
+
+            if (filter?.statusType != null)
+            {
+                userEntries = userEntries.Where(s => s.Status == filter.statusType);
+            }
+
+            // Order the entries by CreatedAt
+            userEntries = userEntries.OrderByDescending(i => i.CreatedAt);
+
+            // Pagination
+            var pageNumber = pageId ?? 1;
+            var pageSize = 10;
+            var pagedData = userEntries.ToPagedList(pageNumber, pageSize);
+
+            // Assign paged data directly to the Items property of the UserFilter
+            filter.Items = pagedData;
+
+            // Pass the filter object to the view
+            return View(filter);
+        }
 
 
 
@@ -189,59 +272,59 @@ namespace VidhayakApp.Web.Controllers
 
 
 
-        public async Task<IActionResult> Demand()
-        {
-            var userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
-            {
-                // Handle if user ID is not found in the session
-                return RedirectToAction("Login", "Account");
-            }
+        //public async Task<IActionResult> Demand()
+        //{
+        //    var userId = HttpContext.Session.GetInt32("UserId");
+        //    if (userId == null)
+        //    {
+        //        // Handle if user ID is not found in the session
+        //        return RedirectToAction("Login", "Account");
+        //    }
 
-            var user = await _userRepository.GetByIdAsync(userId.Value);
+        //    var user = await _userRepository.GetByIdAsync(userId.Value);
 
-            // Retrieve complaints, demands, and suggestions filled by the user from the database
+        //    // Retrieve complaints, demands, and suggestions filled by the user from the database
 
-            var userEntries = _db.Items
-                .Include(i => i.User)
-                .Where(i => i.UserId == userId).Where(i => i.Type == ItemType.Demand).OrderByDescending(i => i.CreatedAt)
-                .ToList();
+        //    var userEntries = _db.Items
+        //        .Include(i => i.User)
+        //        .Where(i => i.UserId == userId).Where(i => i.Type == ItemType.Demand).OrderByDescending(i => i.CreatedAt)
+        //        .ToList();
 
-            //var userEntries = _itemRepository.GetByIdAsync(userId.Value);
-            Console.WriteLine(userEntries);
-            // Pass the user entries to the view
-            return View(userEntries);
+        //    //var userEntries = _itemRepository.GetByIdAsync(userId.Value);
+        //    Console.WriteLine(userEntries);
+        //    // Pass the user entries to the view
+        //    return View(userEntries);
 
-        }
+        //}
 
-        public async Task<IActionResult> Suggestion()
-        {
-            var userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
-            {
-                // Handle if user ID is not found in the session
-                return RedirectToAction("Login", "Account");
-            }
+        //public async Task<IActionResult> Suggestion()
+        //{
+        //    var userId = HttpContext.Session.GetInt32("UserId");
+        //    if (userId == null)
+        //    {
+        //        // Handle if user ID is not found in the session
+        //        return RedirectToAction("Login", "Account");
+        //    }
 
-            var user = await _userRepository.GetByIdAsync(userId.Value);
+        //    var user = await _userRepository.GetByIdAsync(userId.Value);
 
-            // Retrieve complaints, demands, and suggestions filled by the user from the database
+        //    // Retrieve complaints, demands, and suggestions filled by the user from the database
 
-            var userEntries = _db.Items
-                .Include(i => i.User)
-                .Where(i => i.UserId == userId).Where(i => i.Type == ItemType.Suggestion).OrderByDescending(i => i.CreatedAt)
-                .ToList();
+        //    var userEntries = _db.Items
+        //        .Include(i => i.User)
+        //        .Where(i => i.UserId == userId).Where(i => i.Type == ItemType.Suggestion).OrderByDescending(i => i.CreatedAt)
+        //        .ToList();
 
-            //var userEntries = _itemRepository.GetByIdAsync(userId.Value);
-            Console.WriteLine(userEntries);
-            // Pass the user entries to the view
-            return View(userEntries);
+        //    //var userEntries = _itemRepository.GetByIdAsync(userId.Value);
+        //    Console.WriteLine(userEntries);
+        //    // Pass the user entries to the view
+        //    return View(userEntries);
 
-        }
-        public IActionResult Feedback()
-        {
-            return View();
-        }
+        //}
+        //public IActionResult Feedback()
+        //{
+        //    return View();
+        //}
 
     }
 }

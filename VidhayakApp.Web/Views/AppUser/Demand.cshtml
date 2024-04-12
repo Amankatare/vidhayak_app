@@ -82,6 +82,12 @@
                     </section>
                 </section>
             </form>
+            @if (Model.userDetailAndFormDetailOnAppUserDashboardViewModel == null || !Model.userDetailAndFormDetailOnAppUserDashboardViewModel.Any())
+            {
+                <p>No data found.</p>
+            }
+            else
+            {
         <section class="table__body">
             <table>
                 <thead>
@@ -151,6 +157,7 @@
 
                     </div>
         </section>
+        }
     </main>
     <script src="~/js/UserDashboardTable.js"></script>
 

@@ -63,6 +63,12 @@ else
                     </section>
                 </section>
         </form>
+            @if (Model.Items == null || !Model.Items.Any())
+            {
+                <p>No data found.</p>
+            }
+            else
+            {
            <section class="table__body">
                 <table>
                     <thead>
@@ -173,6 +179,7 @@ else
 
                 </div>
             </section>
+            }
         </main>
         <script src="~/js/UserDashboardTable.js"></script>
 

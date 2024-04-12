@@ -198,8 +198,8 @@ namespace VidhayakApp.Web.Controllers
                 }
 
 
-            
-            return RedirectToAction("Index", "Home");
+            ViewData["ValidateMessage"] = "User Not Found";
+            return RedirectToAction("Login", "Account");
 
         }
 

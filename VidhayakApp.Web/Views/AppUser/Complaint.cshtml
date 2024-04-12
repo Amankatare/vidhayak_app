@@ -85,7 +85,12 @@
         </section>
     </section>
 </form>
-
+        @if (Model.userDetailAndFormDetailOnAppUserDashboardViewModel == null || !Model.userDetailAndFormDetailOnAppUserDashboardViewModel.Any())
+        {
+            <p>No data found.</p>
+        }
+        else
+        {
         <section class="table__body" id="complaintsTable">
             <table>
                     
@@ -160,6 +165,7 @@
                     
                     </div>
         </section>
+        }
     </main>
     <!-- Reference the external JavaScript file -->
     <script src="~/js/filterData.js"></script>
