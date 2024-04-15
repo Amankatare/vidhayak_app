@@ -11,11 +11,12 @@
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
     var loggedInId = context.Session.GetInt32("UserId");
+    var loggedInRoleId = context.Session.GetInt32("RoleId");
     var tokenValue = context.Session.GetString("JwtToken");
     string dateToday = DateTime.Now.ToString("dd-mm-yyyy");
 }
 
-@if (loggedInId == null || tokenValue == null)
+@if (loggedInId == null || tokenValue == null || loggedInRoleId == null || loggedInRoleId != 4)
 {
     context.Response.Redirect("/Account/Login");
 }

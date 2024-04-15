@@ -5,19 +5,22 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
-    ViewData["Title"] = "Form";
+    ViewData["Title"] = "Demand/Complaint/Suggestion";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
     // Access HttpContext
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
     var loggedInId=context.Session.GetInt32("UserId");
+    var loggedInRoleId=context.Session.GetInt32("RoleId");
 }
-@if (loggedInId == null)
+@if (loggedInId == null || loggedInRoleId == null)
 {
     context.Response.Redirect("/Account/Login");
     return; // Add return to stop further execution
 
-}else{
+}
+else if(loggedInRoleId == 4)
+{
 
 <body>
 
@@ -27,7 +30,7 @@
                 <div class="col-sm-10">
                     <div class="card card-danger">
                         <div class="card-header">
-                                <h5 id="formTitle">@(ViewData["FormName"] ?? ViewData["Title"])</h5> 
+                                <h5 id="formTitle">@(ViewData["FormName"])</h5> 
                         </div>
 
                         <div class="card-body">
@@ -203,7 +206,7 @@
                 var categoryInput = document.getElementById("categoryInput");
             
                 if (categoryInput.options[categoryInput.selectedIndex].text == "Select...")
-                    document.getElementById("formTitle").innerText = "Form";
+                    document.getElementById("formTitle").innerText = "Demand / Complaint / Suggestion";
                     else
 
                 document.getElementById("formTitle").innerText = categoryInput.options[categoryInput.selectedIndex].text;
