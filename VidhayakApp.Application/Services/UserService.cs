@@ -45,6 +45,29 @@ namespace VidhayakApp.Application.Services
             }
             return false;
         }
+        
+        public async Task<User> RegisterUserAndGetUserAsync(User user)
+        {
+            // Implement registration logic, including password hashing
+            // Check if user already exists, etc.
+
+            var existingUser =await _userRepository.GetByUsernameAsync(user.UserName);
+
+            // if User is already present 
+            if (existingUser == null)
+            {
+               
+
+                string hashPassword = HashPassword(user.PasswordHash);
+
+                user.PasswordHash = hashPassword;
+
+               var userObject= await _userRepository.AddAsync(user);
+              
+                return userObject;
+            }
+            return null;
+        }
 
         public string HashPassword(string password)
         {

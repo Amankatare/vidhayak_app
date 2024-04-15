@@ -600,3 +600,4 @@ E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\VidhayakApp.SharedKernel.pdb
 E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\X.PagedList.dll
 E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
 E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\X.PagedList.Web.Common.dll
+E:\vidhayak_app\VidhayakApp.Web\bin\Debug\net8.0\Web.config

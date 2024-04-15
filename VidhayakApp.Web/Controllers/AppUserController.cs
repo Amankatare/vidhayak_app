@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
@@ -11,6 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace VidhayakApp.Web.Controllers
 {
     //[Authorize(Policy = "RequireAppUserRole")]
+    [Authorize]
     public class AppUserController : Controller
     {
         private readonly VidhayakAppContext _db;
@@ -36,7 +38,7 @@ namespace VidhayakApp.Web.Controllers
         //{ var viewmodel = new UserDetailAndFormDetailOnAppUserDashboardViewModel
         //    return View();
         //}
-
+        [Authorize]
         public IActionResult Dashboard()
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
@@ -91,6 +93,7 @@ namespace VidhayakApp.Web.Controllers
 
             return View(viewModel);
         }
+        
         public IActionResult DepartmentsCard()
         {
             var viewModel = new DepartmentViewModel();

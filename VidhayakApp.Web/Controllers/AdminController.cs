@@ -10,7 +10,7 @@ using VidhayakApp.Web.ViewModels;
 
 namespace VidhayakApp.Web.Controllers
 {
-    
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly VidhayakAppContext _db;

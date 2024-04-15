@@ -11,15 +11,18 @@ namespace VidhayakApp.Web.Controllers.Profile
     {
         private readonly IUserRepository _userRepository;
         private readonly IUserDetailRepository _userDetailRepository;
+        private readonly IUserDetailService _userDetailService;
+
         private readonly IWardRepository _wardRepository;
         private readonly IRoleRepository _roleRepository;
 
-        public ProfileController(IUserRepository userRepository, IUserDetailRepository userDetailRepository, IWardRepository wardRepository, IRoleRepository roleRepository)
+        public ProfileController(IUserRepository userRepository, IUserDetailRepository userDetailRepository, IWardRepository wardRepository, IRoleRepository roleRepository, IUserDetailService userDetailService)
         {
             _userRepository = userRepository;
             _userDetailRepository = userDetailRepository;
             _wardRepository = wardRepository;
             _roleRepository = roleRepository;
+            _userDetailService = userDetailService;
         }
 
         public async Task<IActionResult> ViewProfile()
@@ -95,10 +98,10 @@ namespace VidhayakApp.Web.Controllers.Profile
             }
 
             // Fetch user detail data for the given user ID
-            var userDetails = await _userDetailRepository.GetUserDetailsByUserIdAsync(user.UserId);
+            var userDetails = await _userDetailService.GetUserDetailsByUserIdAsync(user.UserId);
 
             // If user details don't exist, create a new one
-            if (userDetails == null)
+            if (userDetails != null)
             {
 
             userDetails.Education = viewModel.ProfileViewModel.Education;

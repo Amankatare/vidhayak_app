@@ -63,11 +63,23 @@ namespace VidhayakApp.Web.Controllers
                     Ward = wardObject,
                 };
 
-                var registerUser = await _userService.RegisterUserAsync(user);
-                
+                var registerUser = await _userService.RegisterUserAndGetUserAsync(user);
+
+                if (registerUser !=null)
+                {
+                    
+                UserDetail userDetails = new UserDetail
+                {
+                    UserId = registerUser.UserId,
+                   
+                   
+                };
+
+                    await _userDetailRepository.AddAsync(userDetails);
+                }
                 // if user is successfullly registered then redirected to account 
 
-                if (registerUser != false) return RedirectToAction("Successfull", "Account");
+                if (registerUser != null )return RedirectToAction("Successfull", "Account");
 
                 else return RedirectToAction("Unsuccessfull", "Account");
 
@@ -77,7 +89,7 @@ namespace VidhayakApp.Web.Controllers
                 return View(model);
             }
         }
-      
+
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
@@ -85,10 +97,8 @@ namespace VidhayakApp.Web.Controllers
         public async Task<IActionResult> Login(LoginViewModel model)
         {
 
-            //if (ModelState.IsValid)
-            //{
-            //    return View(model);
-            //}
+            if (ModelState.IsValid)
+            {
                 // Authenticate and redirect or show an error
                 var AuthenticUser = await _userService.AuthenticateAsync(model.UserName, model.Password);
                 IEnumerable<Role> roles = await _roleRepository.ListAllAsync();
@@ -98,109 +108,135 @@ namespace VidhayakApp.Web.Controllers
 
                     var user = await _userRepository.GetByUsernameAsync(AuthenticUser.UserName);
 
-                
 
-                HttpContext.Session.SetInt32("UserId", user.UserId);
+
+                    HttpContext.Session.SetInt32("UserId", user.UserId);
                     HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("Name", user.Name);
                     HttpContext.Session.SetInt32("RoleId", user.RoleId);
                     HttpContext.Session.SetString("RoleName", user.Role.RoleName);
                     HttpContext.Session.SetInt32("WardId", user.WardId);
-                Console.WriteLine(HttpContext.Session.GetInt32("UserId")) ;
-                Console.WriteLine(HttpContext.Session.GetString("UserName"));
-                Console.WriteLine(HttpContext.Session.GetString("Name"));
-                Console.WriteLine(HttpContext.Session.GetInt32("RoleId"));
-                Console.WriteLine(HttpContext.Session.GetString("RoleName"));
-                Console.WriteLine(HttpContext.Session.GetInt32("WardId"));
+                    Console.WriteLine(HttpContext.Session.GetInt32("UserId"));
+                    Console.WriteLine(HttpContext.Session.GetString("UserName"));
+                    Console.WriteLine(HttpContext.Session.GetString("Name"));
+                    Console.WriteLine(HttpContext.Session.GetInt32("RoleId"));
+                    Console.WriteLine(HttpContext.Session.GetString("RoleName"));
+                    Console.WriteLine(HttpContext.Session.GetInt32("WardId"));
 
-                ViewData["RoleId"] = user.RoleId;
+                    ViewData["RoleId"] = user.RoleId;
                     var role = user.Role.RoleName;
 
                     var ss = HttpContext.Session.GetString("UserName");
-                    Console.WriteLine("--------------------ss"+ss+"-------------------");
+                    Console.WriteLine("--------------------ss" + ss + "-------------------");
 
-                    var identity = new ClaimsIdentity(new[]
+                    if (model.UserName == user.UserName) // Replace with actual validation
                     {
-                        new Claim(ClaimTypes.Role, role),
-                         
-                    });
-
-                    var principal = new ClaimsPrincipal(identity);
-
-                    var logins = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                    var token = GenerateJwtToken(user, roles);
-                 
-                    Console.WriteLine(token);
-
-                    if (token != null)
-                    {
-
-                        var cookieOptions = new CookieOptions
+                        var claims = new List<Claim>
                         {
-                            HttpOnly = true,
-                            SameSite = SameSiteMode.Strict,
-                            Secure = true,  // Set to true if using HTTPS
-                            Expires = DateTime.UtcNow.AddMinutes(30)
+                            new Claim(ClaimTypes.Name, model.UserName),
+                            new Claim(ClaimTypes.Role,user.Role.RoleName ),
+                           
+                            // Add more claims if needed
                         };
 
-                        // Assuming 'Response' is an instance of HttpResponse in your ASP.NET Core controller
-                        Response.Cookies.Append("JwtToken", token, cookieOptions);
 
+                        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                        var isValidToken = IsValidToken(token);
-
-                        if (isValidToken)
+                        var authProperties = new AuthenticationProperties
                         {
-                            Console.WriteLine("---------------" + isValidToken + "-------------------");
-                             HttpContext.Session.SetString("JwtToken", token);
+                            IsPersistent = true,  // Whether the authentication session is persisted across browser sessions
+                            ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30),  // Expiration time for the authentication session
+                            AllowRefresh = true  // Whether the authentication session can be refreshed
+                        };
+                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+
+
+                        //var identity = new ClaimsIdentity(new[]
+                        //{
+                        //    new Claim(ClaimTypes.Role, role),
+
+                        //});
+
+                        //var principal = new ClaimsPrincipal(identity);
+
+                        //var logins = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                        var token = GenerateJwtToken(user, roles);
+
+                        Console.WriteLine(token);
+
+                        if (token != null)
+                        {
+
+                            var cookieOptions = new CookieOptions
+                            {
+                                HttpOnly = true,
+                                SameSite = SameSiteMode.Strict,
+                                Secure = true,  // Set to true if using HTTPS
+                                Expires = DateTime.UtcNow.AddMinutes(30)
+                            };
+
+                            // Assuming 'Response' is an instance of HttpResponse in your ASP.NET Core controller
+                            Response.Cookies.Append("JwtToken", token, cookieOptions);
+
+
+                            var isValidToken = IsValidToken(token);
+
+                            if (isValidToken)
+                            {
+                                Console.WriteLine("---------------" + isValidToken + "-------------------");
+                                HttpContext.Session.SetString("JwtToken", token);
+
+                            }
 
                         }
 
+                        if (user.RoleId == 1)
+                        {
+
+                            return RedirectToAction("Dashboard", "SuperAdmin");
+
+                        }
+                        else if (user.RoleId == 2)
+                        {
+
+                            return RedirectToAction("Dashboard", "Admin");
+
+                        }
+
+                        else if (user.RoleId == 3)
+                        {
+
+                            return RedirectToAction("Dashboard", "AppUser");
+
+                        }
+
+                        else if (user.RoleId == 4)
+                        {
+
+                            return RedirectToAction("Dashboard", "User");
+
+                        }
+
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, "token failed");
+                        }
+
                     }
-
-                    if (user.RoleId == 1)
-                    {
-
-                        return RedirectToAction("Dashboard", "SuperAdmin");
-
-                    }
-                    else if (user.RoleId == 2)
-                    {
-
-                        return RedirectToAction("Dashboard", "Admin");
-
-                    }
-
-                    else if (user.RoleId == 3)
-                    {
-
-                        return RedirectToAction("Dashboard", "AppUser");
-
-                    }
-
-                    else if (user.RoleId == 4)
-                    {
-
-                        return RedirectToAction("Dashboard", "User");
-
-                    }
-
                     else
                     {
                         ModelState.AddModelError(string.Empty, "token failed");
                     }
 
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "token failed");
+                    return View(model);
                 }
 
 
-            ViewData["ValidateMessage"] = "User Not Found";
-            return RedirectToAction("Login", "Account");
-
+            }
+                ViewData["ValidateMessage"] = "User Not Found";
+                return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
@@ -267,11 +303,13 @@ namespace VidhayakApp.Web.Controllers
             return View();
         }
 
+        
+
         public async Task<IActionResult> Logout()
         {
             if (HttpContext.Session.GetString("UserName") != null)
             {
-                HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+              await  HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                 HttpContext.Session.Remove("UserName");
                 return RedirectToAction("Login");
             }
