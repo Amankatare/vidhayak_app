@@ -27,7 +27,7 @@
                 <div class="col-sm-10">
                     <div class="card card-danger">
                         <div class="card-header">
-                            @ViewData["Title"]
+                                <h5 id="formTitle">@(ViewData["FormName"] ?? ViewData["Title"])</h5> 
                         </div>
 
                         <div class="card-body">
@@ -196,10 +196,21 @@
     </section>
     <script src="~/js/Demand.js"></script>
     <script src="~/js/DepartmentSchemeDisable.js"></script>
-    <script>
-            var formName = document.getElementById("#categoryInput");
-        console.log("formName");
-    </script>
+        <script>
+            // Add event listener for the 'change' event
+            document.getElementById("categoryInput").addEventListener("change", function () {
+                // Update the form title dynamically based on the selected category
+                var categoryInput = document.getElementById("categoryInput");
+            
+                if (categoryInput.options[categoryInput.selectedIndex].text == "Select...")
+                    document.getElementById("formTitle").innerText = "Form";
+                    else
+
+                document.getElementById("formTitle").innerText = categoryInput.options[categoryInput.selectedIndex].text;
+
+
+            });
+        </script>
 
 </body>
     }
