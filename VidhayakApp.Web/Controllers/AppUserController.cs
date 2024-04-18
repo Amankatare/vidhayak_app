@@ -38,8 +38,8 @@ namespace VidhayakApp.Web.Controllers
         //{ var viewmodel = new UserDetailAndFormDetailOnAppUserDashboardViewModel
         //    return View();
         //}
-        
 
+        [HttpGet]
         public IActionResult Dashboard()
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
@@ -94,7 +94,7 @@ namespace VidhayakApp.Web.Controllers
 
             return View(viewModel);
         }
-        
+        [HttpGet]
         public IActionResult DepartmentsCard()
         {
             var viewModel = new DepartmentViewModel();
@@ -125,7 +125,7 @@ namespace VidhayakApp.Web.Controllers
 
             return View(viewModel);
         }
-
+        [HttpGet]
         public IActionResult ComplaintDepartmentWise(int departmentId)
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
@@ -167,7 +167,7 @@ namespace VidhayakApp.Web.Controllers
             return View(userDetailFormViewModels);
         }
 
-
+        [HttpGet]
         public IActionResult Complaint(int? pageId, FilterViewModel filter)
         {
             var loggedInUserRoleId = HttpContext.Session.GetInt32("RoleId");
@@ -255,7 +255,7 @@ namespace VidhayakApp.Web.Controllers
             return View(filter);
         }
 
-
+        [HttpGet]
 
         public IActionResult Demand(int? pageId, FilterViewModel filter)
         {
@@ -342,6 +342,7 @@ namespace VidhayakApp.Web.Controllers
             return View(filter);
         }
 
+        [HttpGet]
         public IActionResult Suggestion(int? pageId, SuggestionDetailsAndStatusUpdate model)
         {
             var loggedInUserRoleId = HttpContext.Session.GetInt32("RoleId");
@@ -423,7 +424,7 @@ namespace VidhayakApp.Web.Controllers
         }
 
 
-
+        [HttpGet]
         public async Task<ActionResult> UpdateOnUserSuggestionOnAppUserDashboard(int itemId)
         {
 
@@ -519,7 +520,7 @@ namespace VidhayakApp.Web.Controllers
 
 
 
-
+        [HttpGet]
         public IActionResult Profile()
         {
             return View();
@@ -556,7 +557,7 @@ namespace VidhayakApp.Web.Controllers
             return View(viewModel);
         }
 
-
+        [HttpGet]
         public async Task<ActionResult> Create()
         {
             return View();
@@ -655,8 +656,9 @@ namespace VidhayakApp.Web.Controllers
 
             return RedirectToAction("ListUsers", "AppUser");
         }
-    
-    public async Task<ActionResult> Edit(int id)
+
+        [HttpGet]
+        public async Task<ActionResult> Edit(int id)
         { 
             var user = await _user.GetByIdAsync(id);
 

@@ -37,5 +37,16 @@ namespace VidhayakApp.Core.Services
 
             return userRoles;
         }
+
+        public async Task<Role> GetRoleByUserIdAsync(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user != null)
+            {
+                // Assuming Role is eagerly loaded
+                return user.Role;
+            }
+            return null; // User not found
+        }
     }
 }

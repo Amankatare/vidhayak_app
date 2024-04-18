@@ -28,6 +28,7 @@ namespace VidhayakApp.Web.Controllers
             _db = db;
         }
 
+        [HttpGet]
         public IActionResult Dashboard()
         {
             // Get the logged-in user's ID from session
@@ -52,37 +53,39 @@ namespace VidhayakApp.Web.Controllers
             return View();
         }
 
-            //public async Task<IActionResult> Dashboard()
-            //{
-            //    // Retrieve the user's details based on the user ID
-            //    var userId = HttpContext.Session.GetInt32("UserId");
-            //    if (userId == null)
-            //    {
-            //        // Handle if user ID is not found in the session
-            //        return RedirectToAction("Login", "Account");
-            //    }
+        //public async Task<IActionResult> Dashboard()
+        //{
+        //    // Retrieve the user's details based on the user ID
+        //    var userId = HttpContext.Session.GetInt32("UserId");
+        //    if (userId == null)
+        //    {
+        //        // Handle if user ID is not found in the session
+        //        return RedirectToAction("Login", "Account");
+        //    }
 
-            //    var user = await _userRepository.GetByIdAsync(userId.Value);
+        //    var user = await _userRepository.GetByIdAsync(userId.Value);
 
-            //    // Retrieve complaints, demands, and suggestions filled by the user from the database
+        //    // Retrieve complaints, demands, and suggestions filled by the user from the database
 
-            //    var userEntries = _dbContext.Items
-            //        .Include(i => i.User)
-            //        .Where(i => i.UserId == userId).OrderByDescending(i => i.CreatedAt)
-            //        .ToList();
+        //    var userEntries = _dbContext.Items
+        //        .Include(i => i.User)
+        //        .Where(i => i.UserId == userId).OrderByDescending(i => i.CreatedAt)
+        //        .ToList();
 
-            //    //var userEntries = _itemRepository.GetByIdAsync(userId.Value);
-            //    Console.WriteLine(userEntries);
-            //    // Pass the user entries to the view
-            //    return View(userEntries);
-            //}
+        //    //var userEntries = _itemRepository.GetByIdAsync(userId.Value);
+        //    Console.WriteLine(userEntries);
+        //    // Pass the user entries to the view
+        //    return View(userEntries);
+        //}
 
-            public IActionResult Profile()
+        [HttpGet]
+        public IActionResult Profile()
         {
             return View();
         }
 
 
+        [HttpGet]
 
         public async Task<IActionResult> Complaints(int? pageId, UserFilter filter)
         {
@@ -126,6 +129,7 @@ namespace VidhayakApp.Web.Controllers
             return View(filter);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Demand(int? pageId, UserFilter filter)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
@@ -168,6 +172,7 @@ namespace VidhayakApp.Web.Controllers
             return View(filter);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Suggestion(int? pageId, UserFilter filter)
         {
             var userId = HttpContext.Session.GetInt32("UserId");

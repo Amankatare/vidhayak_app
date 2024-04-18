@@ -31,8 +31,12 @@ namespace VidhayakApp.Web.Controllers
             _wardRepository = wardRepository;
             _itemRepository = itemRepository;
         }
+
+        [HttpGet]
+        [Route("Admin/Dashboard")]
         public IActionResult Dashboard()
         {
+            Console.WriteLine("Admin Dashboard");
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
 
             // Fetch counts of pending complaints, demands, and suggestions
@@ -86,6 +90,7 @@ namespace VidhayakApp.Web.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
         public IActionResult Departments()
         {
             var viewModel = new DepartmentViewModel();
@@ -122,6 +127,7 @@ namespace VidhayakApp.Web.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Profile()
         {
             return View();
@@ -156,13 +162,13 @@ namespace VidhayakApp.Web.Controllers
             return View(viewModel);
         }
 
-
+        [HttpGet]
         public async Task<ActionResult> Create()
         {
             return View();
         }
 
-       
+        [HttpGet]
         public IActionResult ListUsers()
         {
             // Retrieve all users from the Users table
@@ -225,7 +231,7 @@ namespace VidhayakApp.Web.Controllers
             }
             return RedirectToAction("AppUsers", "Admin");
         }
-
+        [HttpGet]
         public async Task<ActionResult> Delete(int id)
         {
             var userRecord =await _user.GetByIdAsync(id);
@@ -234,7 +240,7 @@ namespace VidhayakApp.Web.Controllers
         }
 
 
-        
+      
         public async Task<ActionResult<User>> DeleteAppUser(int id)
         {
             var userToDelete = await _user.GetByIdAsync(id);
@@ -252,6 +258,7 @@ namespace VidhayakApp.Web.Controllers
             return RedirectToAction("AppUsers");
         }
 
+        [HttpGet]
         public async Task<ActionResult> Edit(int id)
         {
             var userRecord = await _user.GetByIdAsync(id);

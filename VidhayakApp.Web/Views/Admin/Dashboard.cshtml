@@ -14,8 +14,10 @@
 
 @if(loggedInId == null)
 {
+    Console.WriteLine("loggedInId is null");
     context.Response.Redirect("/Account/Login");
 }else{
+    Console.WriteLine("loggedInId is not null");
 <html>
  <head>
 <!-- Google Font: Source Sans Pro -->

@@ -132,16 +132,16 @@ app.MapWhen(context => context.Request.Path.StartsWithSegments("/Account/Registe
     appBuilder.UseMiddleware<RegisterMiddleware>();
 });
 
-// Route for AdminMiddleware
-app.MapWhen(context => context.Request.Path.StartsWithSegments("/Admin/"), appBuilder =>
+//Route for AdminMiddleware
+app.MapWhen(context => context.Request.Path.StartsWithSegments("/Admin"), appBuilder =>
 {
     appBuilder.UseMiddleware<AdminMiddleware>();
 });
-app.MapWhen(context => context.Request.Path.StartsWithSegments("/AppUser/"), appBuilder =>
+app.MapWhen(context => context.Request.Path.StartsWithSegments("/AppUser"), appBuilder =>
 {
     appBuilder.UseMiddleware<AppUserMiddleware>();
 });
-app.MapWhen(context => context.Request.Path.StartsWithSegments("/User/"), appBuilder =>
+app.MapWhen(context => context.Request.Path.StartsWithSegments("/User"), appBuilder =>
 {
     appBuilder.UseMiddleware<UserMiddleware>();
 });
@@ -163,25 +163,23 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 
-// Admin routes
+//// Admin routes
 app.MapControllerRoute(
     name: "AdminDashboard",
-    pattern: "/Admin/Dashboard", // Unique URL pattern for Admin's dashboard
+    pattern: "Admin/Dashboard", // Unique URL pattern for Admin's dashboard
     defaults: new { controller = "Admin", action = "Dashboard" });
 
-// AppUser routes
-app.MapControllerRoute(
-    name: "AppUserDashboard",
-    pattern: "/AppUser/Dashboard", // Unique URL pattern for AppUser's dashboard
-    defaults: new { controller = "AppUser", action = "Dashboard" });
+//// AppUser routes
+//app.MapControllerRoute(
+//    name: "AppUserDashboard",
+//    pattern: "/AppUser/Dashboard", // Unique URL pattern for AppUser's dashboard
+//    defaults: new { controller = "AppUser", action = "Dashboard" });
 
-// User routes
-app.MapControllerRoute(
-    name: "UserDashboard",
-    pattern: "/User/Dashboard", // Unique URL pattern for User's dashboard
-    defaults: new { controller = "User", action = "Dashboard" });
-
-
+//// User routes
+//app.MapControllerRoute(
+//    name: "UserDashboard",
+//    pattern: "/User/Dashboard", // Unique URL pattern for User's dashboard
+//    defaults: new { controller = "User", action = "Dashboard" });
 
 
 
@@ -191,38 +189,41 @@ app.MapControllerRoute(
 
 
 
-// Admin routes
+
+
+//Admin routes
 //app.MapControllerRoute(
 //                    name: "Admin",
-//                    pattern: "Dashboard", // Define your desired URL pattern here
+//                    pattern: "/Admin/Dashboard", // Define your desired URL pattern here
 //                    defaults: new { controller = "Admin", action = "Dashboard" } // This will call Dashboard method in AdminController
 //                );
 //app.MapControllerRoute(
 //                    name: "AppUser",
-//                    pattern: "Dashboard", // Define your desired URL pattern here
+//                    pattern: "/AppUser/Dashboard", // Define your desired URL pattern here
 //                    defaults: new { controller = "AppUser", action = "Dashboard" } // This will call Dashboard method in AdminController
 //                );
 //app.MapControllerRoute(
 //                    name: "User",
-//                    pattern: "Dashboard", // Define your desired URL pattern here
+//                    pattern: "/User/Dashboard", // Define your desired URL pattern here
 //                    defaults: new { controller = "User", action = "Dashboard" } // This will call Dashboard method in AdminController
 //                );
+
 //app.MapControllerRoute(
-//                    name: "Admin",
-//                    pattern: "Dashboard", // Define your desired URL pattern here
+//                    name: "AdminDashboard",
+//                    pattern: "/Admin/Dashboard", // Define your desired URL pattern here
 //                    defaults: new { controller = "Admin", action = "Dashboard" } // This will call Dashboard method in AdminController
 //                );
-// AppUser routes
-//endpoints.MapControllerRoute(
-//    name: "AppUserDashboard",
-//    pattern: "AppUser/Dashboard",
-//    defaults: new { controller = "AppUser", action = "Dashboard" });
+////AppUser routes
+app.MapControllerRoute(
+    name: "AppUserDashboard",
+    pattern: "/AppUser/Dashboard",
+    defaults: new { controller = "AppUser", action = "Dashboard" });
 
-//// User routes
-//endpoints.MapControllerRoute(
-//    name: "UserDashboard",
-//    pattern: "User/Dashboard",
-//    defaults: new { controller = "User", action = "Dashboard" });
+// User routes
+app.MapControllerRoute(
+name: "UserDashboard",
+    pattern: "/User/Dashboard",
+    defaults: new { controller = "User", action = "Dashboard" });
 
 // Login route
 app.MapControllerRoute(
