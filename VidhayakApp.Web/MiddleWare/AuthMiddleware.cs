@@ -1,28 +1,98 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿//using Microsoft.AspNetCore.Http;
+//using System;
+//using System.Threading.Tasks;
+//using VidhayakApp.Core.Interfaces;
+//using VidhayakApp.Infrastructure.Repositories;
+
+//public class AuthMiddleware : IMiddleware
+//{
+//    private readonly IUserRepository _user;
+//    public AuthMiddleware(IUserRepository user)
+//    {
+//        _user = user;
+//    }
+
+    using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
+using VidhayakApp.Core.Interfaces;
 
 public class AuthMiddleware : IMiddleware
 {
-    
+    private readonly IUserRepository _userRepository;
+
+    public AuthMiddleware(IUserRepository userRepository)
+    {
+        _userRepository = userRepository;
+    }
+
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-        if (!IsUserAuthenticated(context))
+        var requestPath = context.Request.Path;
+
+        // Check if the request path is the index page or login page
+        if (requestPath == "/" || requestPath.StartsWithSegments("/Account/Login"))
         {
-            // User is not authenticated; redirect to the login page
-            context.Response.Redirect("~/Account/login");
+            // Allow access to the index page and login page without redirection
+            await next(context);
             return;
         }
-      
-        
-        await next(context);
-    }
-        private bool IsUserAuthenticated(HttpContext context)
-    {
-        // Implement your custom logic to check if the user is authenticated.
-        // For example, you can use session, cookies, or any other mechanism.
 
-        // For demonstration purposes, using a simple session check:
-        return context.Session.GetString("UserName") != null;
+
+
+        var loggedInUser = context.Session.GetString("UserName");
+
+        if (!string.IsNullOrEmpty(loggedInUser))
+        {
+            var userObject = await _userRepository.GetByUsernameAsync(loggedInUser);
+
+            if (userObject != null)
+            {
+                var loggedInRoleId = context.Session.GetInt32("RoleId");
+
+                if (loggedInRoleId == userObject.RoleId)
+                {
+                    // Authentication successful, proceed to next middleware
+                    await next(context);
+                    return;
+                }
+                else
+                {
+                    // User is authenticated but doesn't have the correct role
+                    context.Response.StatusCode = 403; // Forbidden
+                    return;
+                }
+            }
+        }
+
+        // User is not authenticated, redirect to login page
+        context.Response.Redirect("/Account/Login");
     }
 }
+
+//    //public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+//    //{
+
+//    //    var loggedInUser = context.Session.GetString("UserName");
+//    //    if (loggedInUser != null)
+//    //    {
+//    //        var userObject = await _user.GetByUsernameAsync(loggedInUser);
+//    //        if (userObject != null)
+//    //        {
+//    //            var loggedInRoleId = context.Session.GetInt32("RoleId");
+//    //            if (loggedInRoleId == userObject.RoleId) 
+//    //            {
+//    //                var loggedInRoleName = context.Session.GetString("RoleName");
+
+
+//    //                context.Response.Redirect("/"+loggedInRoleName+"/"+"Dashboard");
+
+//    //            }
+
+//    //        }
+//    //    }   
+
+//    //    await next(context);
+//    //}
+
+
+//}

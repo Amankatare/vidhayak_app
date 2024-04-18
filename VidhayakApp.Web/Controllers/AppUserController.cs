@@ -38,7 +38,8 @@ namespace VidhayakApp.Web.Controllers
         //{ var viewmodel = new UserDetailAndFormDetailOnAppUserDashboardViewModel
         //    return View();
         //}
-        [Authorize]
+        
+
         public IActionResult Dashboard()
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");

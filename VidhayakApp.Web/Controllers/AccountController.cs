@@ -16,7 +16,7 @@ using MySqlX.XDevAPI;
 
 namespace VidhayakApp.Web.Controllers
 {
-  
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private bool isAuthenticated = false;
@@ -116,12 +116,16 @@ namespace VidhayakApp.Web.Controllers
                     HttpContext.Session.SetInt32("RoleId", user.RoleId);
                     HttpContext.Session.SetString("RoleName", user.Role.RoleName);
                     HttpContext.Session.SetInt32("WardId", user.WardId);
+                    HttpContext.Session.SetString("IsAuthenticated", "true");
+
                     Console.WriteLine(HttpContext.Session.GetInt32("UserId"));
                     Console.WriteLine(HttpContext.Session.GetString("UserName"));
                     Console.WriteLine(HttpContext.Session.GetString("Name"));
                     Console.WriteLine(HttpContext.Session.GetInt32("RoleId"));
                     Console.WriteLine(HttpContext.Session.GetString("RoleName"));
                     Console.WriteLine(HttpContext.Session.GetInt32("WardId"));
+
+                    
 
                     ViewData["RoleId"] = user.RoleId;
                     var role = user.Role.RoleName;
@@ -311,6 +315,7 @@ namespace VidhayakApp.Web.Controllers
             {
               await  HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                 HttpContext.Session.Remove("UserName");
+                HttpContext.Session.Remove("isAuthenticated");
                 return RedirectToAction("Login");
             }
             // Handle logout logic
@@ -359,6 +364,7 @@ namespace VidhayakApp.Web.Controllers
                 // Adding User ClaimTypes
                 new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Name, user.Name), // Add user's name as a claim
+                new Claim(JwtRegisteredClaimNames.Actort,user.Role.RoleName ), 
                 new Claim(ClaimTypes.Role, user.Role.RoleName), // Add user's role as a claim
                 new Claim(ClaimTypes.MobilePhone, user.MobileNumber), // Add user's role as a claim
 
