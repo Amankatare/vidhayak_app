@@ -12,6 +12,8 @@
     var context = HttpContextAccessor.HttpContext;
     var loggedInId = context.Session.GetInt32("UserId");
     var loggedInRoleId = context.Session.GetInt32("RoleId");
+    var loggedInRoleName = context.Session.GetString("RoleName");
+
 
     if (loggedInRoleId == 2)
     {
@@ -26,10 +28,12 @@
 
 }
 
-@* @if(loggedInId == null)
+@if (loggedInId == null || loggedInRoleId == null )
 {
     context.Response.Redirect("/Account/Login");
-}else{ *@
+}
+else if (loggedInRoleName == "AppUser" && loggedInRoleId == 3 || loggedInRoleName == "Admin" && loggedInRoleId == 2)
+{
 <!DOCTYPE html>
 <html lang="en">
 
@@ -176,7 +180,10 @@
 
 </html>
 
-@* } *@
+} else
+{
+    context.Response.Redirect("/Shared/404NotFoundError");
+}
 
 
 

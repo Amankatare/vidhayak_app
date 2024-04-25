@@ -1,68 +1,31 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using VidhayakApp.Core.Interfaces;
+﻿//namespace VidhayakApp.SharedKernel.Utilities
+//{
+//    public class CustomAuthorizeAttribute : AuthorizeAttribute
+//    {
+//        private readonly string _roleName;
 
-namespace VidhayakApp.SharedKernel.Utilities
-{
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
-    public class AdminAuthorizeAttribute : AuthorizeAttribute, IAuthorizationFilter
-    {
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IRoleService _roleService;
+//        public CustomAuthorizeAttribute(string roleName)
+//        {
+//            _roleName = roleName;
+//        }
 
-        public AdminAuthorizeAttribute(IHttpContextAccessor httpContextAccessor, IRoleService roleService)
-        {
-            _httpContextAccessor = httpContextAccessor;
-            _roleService = roleService;
-        }
+//        protected override bool AuthorizeCore(HttpContextBase httpContext)
+//        {
+//            // Check if the user is authenticated
+//            if (!httpContext.User.Identity.IsAuthenticated)
+//                return false;
 
-        public async Task OnAuthorization(AuthorizationFilterContext context)
-        {
-            var httpContext = _httpContextAccessor.HttpContext;
+//            // Retrieve the user's role from the database
+//            var user = GetUserFromDatabase(httpContext.User.Identity.Name);
 
-            if (httpContext != null && httpContext.Session != null)
-            {
-                var userRole = httpContext.Session.GetString("RoleId");
-                var userId = httpContext.Session.GetInt32("UserId");
+//            // Check if the user has the required role
+//            return user != null && user.Roles.Any(r => r.RoleName == _roleName);
+//        }
 
-                if (userId.HasValue)
-                {
-                    var userRoleObject = await _roleService.GetRoleByUserIdAsync(userId.Value);
-
-                    if (userRoleObject != null)
-                    {
-                        var userRoleName = userRoleObject.RoleName;
-
-                        if (userRoleName == "Admin")
-                        {
-                            // User is authorized as Admin, allow access
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        // Role not found for the user
-                        context.Result = new StatusCodeResult(StatusCodes.Status403Forbidden);
-                        return;
-                    }
-                }
-                else
-                {
-                    // User is not authenticated
-                    context.Result = new StatusCodeResult(StatusCodes.Status401Unauthorized);
-                    return;
-                }
-            }
-
-            // Session or HttpContext is not available
-            context.Result = new StatusCodeResult(StatusCodes.Status500InternalServerError);
-
-        }
-
-        void IAuthorizationFilter.OnAuthorization(AuthorizationFilterContext context)
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
+//        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+//        {
+//            // Redirect to a custom unauthorized page or return a custom HTTP status code
+//            filterContext.Result = new HttpUnauthorizedResult("Unauthorized access");
+//        }
+//    }
+//}

@@ -14,7 +14,7 @@ using X.PagedList;
 namespace VidhayakApp.Web.Controllers
 {
     //[Authorize(Policy = "RequireUserRole")]
-    [Authorize]
+    
     public class UserController : Controller
     {
 

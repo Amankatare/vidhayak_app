@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using VidhayakApp.Core.Entities;
 using VidhayakApp.Core.Interfaces;
-using VidhayakApp.Infastructure.Repositories;
 using VidhayakApp.Infrastructure.Data;
-using VidhayakApp.SharedKernel.Utilities;
 using VidhayakApp.Web.ViewModels;
 
 namespace VidhayakApp.Web.Controllers
 {
+
+    //[Authorize(Policy = "DynamicRolePolicy")]
     [Authorize]
     public class AdminController : Controller
     {
@@ -32,8 +31,9 @@ namespace VidhayakApp.Web.Controllers
             _itemRepository = itemRepository;
         }
 
+        [Authorize]
         [HttpGet]
-        [Route("Admin/Dashboard")]
+        [Route("/Admin/Dashboard")]
         public IActionResult Dashboard()
         {
             Console.WriteLine("Admin Dashboard");
@@ -223,8 +223,8 @@ namespace VidhayakApp.Web.Controllers
                     await _db.SaveChangesAsync();
 
                     TempData["Message"] = "User created successfully.";
-                    Console.WriteLine(TempData["Message"]); 
-                    Console.WriteLine(user);
+                 
+                    
                 
 
                 }

@@ -1,21 +1,24 @@
-﻿@using VidhayakApp.Web.ViewModels.AppUser
+﻿@* @using VidhayakApp.Web.ViewModels.AppUser
 @model IEnumerable<UserDetailAndFormDetailOnAppUserDashboardViewModel>
-@* @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
- *@
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 @{
     ViewData["Title"] = "Demands";
     Layout = "~/Views/Shared/_AppUserLayout.cshtml";
-    // var context = HttpContextAccessor.HttpContext;
-    // // Use httpContext as needed
-    // var loggedInId = context.Session.GetInt32("UserId");
+     var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+     var loggedInId = context.Session.GetInt32("UserId");
+    var loggedInRoleId = context.Session.GetInt32("RoleId");
+    var loggedInRoleName = context.Session.GetString("RoleName");
 
 }
 
-@* @if(loggedInId == null)
+@if (loggedInId == null || loggedInRoleId == null )
 {
     context.Response.Redirect("/Account/Login");
-}else{
- *@
+}
+else if (loggedInRoleName == "AppUser" && loggedInRoleId != 3 || loggedInRoleName == "Admin" && loggedInRoleId != 2)
+{
 @foreach (var item in Model)
  {
 
@@ -29,4 +32,4 @@
         </div>
     </div>
  }
- @* } *@
+ @* } *@ 

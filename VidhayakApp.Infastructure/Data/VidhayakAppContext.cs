@@ -5,6 +5,10 @@ namespace VidhayakApp.Infrastructure.Data
 {
     public class VidhayakAppContext : DbContext
     {
+        public VidhayakAppContext()
+        {
+        }
+
         public VidhayakAppContext(DbContextOptions<VidhayakAppContext> options) : base(options)
         {
         }

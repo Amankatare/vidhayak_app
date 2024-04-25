@@ -12,6 +12,7 @@
     // Use httpContext as needed
     var loggedInId=context.Session.GetInt32("UserId");
     var loggedInRoleId=context.Session.GetInt32("RoleId");
+    var loggedInRoleName=context.Session.GetString("RoleName");
 }
 @if (loggedInId == null || loggedInRoleId == null)
 {
@@ -19,7 +20,7 @@
     return; // Add return to stop further execution
 
 }
-else if(loggedInRoleId == 4)
+else if (loggedInRoleId == 4 && loggedInRoleName == "User")
 {
 
 <body>
@@ -216,4 +217,8 @@ else if(loggedInRoleId == 4)
         </script>
 
 </body>
-    }
+}
+else
+{
+    context.Response.Redirect("/Shared/404NotFoundError");
+}

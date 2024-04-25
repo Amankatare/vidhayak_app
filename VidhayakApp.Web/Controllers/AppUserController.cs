@@ -12,7 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace VidhayakApp.Web.Controllers
 {
     //[Authorize(Policy = "RequireAppUserRole")]
-    [Authorize]
+    
     public class AppUserController : Controller
     {
         private readonly VidhayakAppContext _db;
@@ -129,7 +129,7 @@ namespace VidhayakApp.Web.Controllers
         public IActionResult ComplaintDepartmentWise(int departmentId)
         {
             var loggedInUser = HttpContext.Session.GetInt32("WardId");
-            Console.WriteLine(loggedInUser + "-------------------------");
+         
 
             var userDetailFormViewModels = _db.Users
                 .Join(_db.Items,
@@ -172,7 +172,7 @@ namespace VidhayakApp.Web.Controllers
         {
             var loggedInUserRoleId = HttpContext.Session.GetInt32("RoleId");
             var loggedInUserWardId = HttpContext.Session.GetInt32("WardId");
-            Console.WriteLine(loggedInUserRoleId + "-------------------------");
+        
 
             IQueryable<UserDetailAndFormDetailOnAppUserDashboardViewModel> query;
 
@@ -261,7 +261,7 @@ namespace VidhayakApp.Web.Controllers
         {
             var loggedInUserRoleId = HttpContext.Session.GetInt32("RoleId");
             var loggedInUserWardId = HttpContext.Session.GetInt32("WardId");
-            Console.WriteLine(loggedInUserWardId + "-------------------------");
+
 
             IQueryable<UserDetailAndFormDetailOnAppUserDashboardViewModel> query;
 
@@ -347,7 +347,7 @@ namespace VidhayakApp.Web.Controllers
         {
             var loggedInUserRoleId = HttpContext.Session.GetInt32("RoleId");
             var loggedInUserWardId = HttpContext.Session.GetInt32("WardId");
-            Console.WriteLine(loggedInUserWardId + "-------------------------");
+
 
             // Fetch suggestion data from the database or any other source
             IQueryable<UserDetailAndFormDetailOnAppUserDashboardViewModel> suggestions;
@@ -444,7 +444,7 @@ namespace VidhayakApp.Web.Controllers
          
             // Find the ItemId associated with the specified user ID using a join
             var itemObject = await _db.Items.FindAsync(model.ItemId);
-            Console.WriteLine(itemObject + "---------------------------------------------");
+
             itemObject.AppUserId = model.AppUserId;
             itemObject.Status = model.Status;
             itemObject.UpdatedAt = model.UpdatedAt ?? DateTime.Now.Date;
@@ -475,7 +475,7 @@ namespace VidhayakApp.Web.Controllers
 
             // Find the ItemId associated with the specified user ID using a join
             var itemObject = await _db.Items.FindAsync(id);
-            Console.WriteLine(itemObject + "---------------------------------------------");
+          
             itemObject.AppUserId = model.AppUserId;
             itemObject.Status = model.Status;
             itemObject.UpdatedAt = model.UpdatedAt ?? DateTime.Now.Date;

@@ -11,6 +11,7 @@
     var context = HttpContextAccessor.HttpContext;
     var loggedInId = context.Session.GetInt32("UserId");
     var loggedInRoleId = context.Session.GetInt32("RoleId");
+    var loggedInRoleName = context.Session.GetString("RoleName");
 
     if (loggedInRoleId == 2)
     {
@@ -28,7 +29,7 @@
 {
     context.Response.Redirect("/Account/Login");
 }
-else
+else if (loggedInRoleName == "AppUser" && loggedInRoleId == 3 || loggedInRoleName == "Admin" && loggedInRoleId == 2)
 {
     <!DOCTYPE html>
     <html lang="en">
@@ -168,6 +169,9 @@ else
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+} else
+{
+    context.Response.Redirect("/Shared/404NotFoundError");
 }
 
 <script>

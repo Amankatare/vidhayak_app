@@ -5,6 +5,10 @@
 @{
     ViewData["Title"] = "Profile";
     var context = HttpContextAccessor.HttpContext;
+    var userId = context.Session.GetInt32("UserId");
+    var loggedInRoleId = context.Session.GetInt32("RoleId");
+    var loggedInRoleName = context.Session.GetString("RoleName");
+
     try
     {
         var roleId = context.Session.GetInt32("RoleId");
@@ -36,6 +40,12 @@
     }
 
 }
+
+@if (userId == null)
+{
+    context.Response.Redirect("/Account/Login");
+}
+else if (loggedInRoleName == "Admin" && loggedInRoleId == 2 || loggedInRoleName == "AppUser" && loggedInRoleId == 3 || loggedInRoleName == "User" && loggedInRoleId == 4 )
 <link rel="stylesheet" href="~/css/Profile.css" />
 
 <div class="container rounded bg-white mt-5 mb-5">
@@ -272,7 +282,10 @@
         </div>
     </div>
 </div>
-
+} else
+{
+    context.Response.Redirect("/Shared/404PageNotFoundError");
+}
 
 
 

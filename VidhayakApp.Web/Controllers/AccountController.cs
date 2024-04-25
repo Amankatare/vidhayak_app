@@ -118,12 +118,12 @@ namespace VidhayakApp.Web.Controllers
                     HttpContext.Session.SetString("IsAuthenticated", "true");
                     HttpContext.Session.SetInt32("WardId", user.WardId);
                    
-                    Console.WriteLine(HttpContext.Session.GetInt32("UserId"));
-                    Console.WriteLine(HttpContext.Session.GetString("UserName"));
-                    Console.WriteLine(HttpContext.Session.GetString("Name"));
+                    //Console.WriteLine(HttpContext.Session.GetInt32("UserId"));
+                    //Console.WriteLine(HttpContext.Session.GetString("UserName"));
+                    //Console.WriteLine(HttpContext.Session.GetString("Name"));
                     Console.WriteLine(HttpContext.Session.GetInt32("RoleId"));
                     Console.WriteLine(HttpContext.Session.GetString("RoleName"));
-                    Console.WriteLine(HttpContext.Session.GetInt32("WardId"));
+                    
 
                     
 
@@ -190,7 +190,7 @@ namespace VidhayakApp.Web.Controllers
                             if (isValidToken)
                             {
                                 Console.WriteLine("---------------" + isValidToken + "-------------------");
-                                HttpContext.Session.SetString("JwtToken", token);
+                           
                               
                             }
 

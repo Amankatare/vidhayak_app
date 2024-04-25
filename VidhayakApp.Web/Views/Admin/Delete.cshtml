@@ -1,7 +1,25 @@
 ﻿@using VidhayakApp.Core.Entities
 @model User
 
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var context = HttpContextAccessor.HttpContext;
+    // Use httpContext as needed
+    var loggedInId = context.Session.GetInt32("UserId");
+    var loggedInRoleId = context.Session.GetInt32("RoleId");
+    var loggedInRoleName = context.Session.GetString("RoleName");
+}
+
+@if (loggedInId == null)
+{
+    Console.WriteLine("loggedInId is null");
+    context.Response.Redirect("/Account/Login");
+}
+else if (loggedInRoleName == "Admin" && loggedInRoleId == 2)
+{
   
 <form method="post">
 <div>
@@ -12,4 +30,10 @@
         </div>
         <button  asp-controller="Admin" asp-action="AppUsers"  class="btn btn-dark btn-lg active text-center" role="button" aria-pressed="true">Back To List</button>
 </div>
-</form>       
+</form>
+
+}
+else
+{
+    context.Response.Redirect("/Shared/404NotFoundError");
+}

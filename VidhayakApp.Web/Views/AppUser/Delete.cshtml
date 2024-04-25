@@ -8,17 +8,23 @@
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
     var loggedInId = context.Session.GetInt32("UserId");
-
+    var loggedInRoleId = context.Session.GetInt32("RoleId");
+    var loggedInRoleName = context.Session.GetString("RoleName");
 }
   
 @if(loggedInId == null)
 {
     context.Response.Redirect("/Account/Login");
-}else{
+}
+else if (loggedInRoleName == "AppUser" && loggedInRoleId == 3)
+{
 
 <form asp-action="DeleteConfirmed" asp-controller="AppUser" id="deleteForm" method="post">
     <input type="hidden" name="id" value="@Model.UserId" />
 </form>
 
+} else
+{
+    context.Response.Redirect("/Shared/404NotFoundError");
 }
 

@@ -9,17 +9,21 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
     var context = HttpContextAccessor.HttpContext;
     // Use httpContext as needed
+    
     var loggedInId = context.Session.GetInt32("UserId");
+    var loggedInRoleName = context.Session.GetString("RoleName");
     var tokenValue = context.Session.GetString("JwtToken");
     var loggedInRoleId = context.Session.GetInt32("RoleId");
 
     string dateToday = DateTime.Now.ToString("dd-mm-yyyy");
 }
 
-@if (loggedInId == null || tokenValue == null || loggedInRoleId == null || loggedInRoleId != 4)
+@if (loggedInId == null || loggedInRoleId == null )
 {
-    context.Response.Redirect("/Account/Login");
-}else{
+    context.Response.Redirect("Views/Account/Login.cshtml");
+}
+else if (loggedInRoleName == "User" && loggedInRoleId == 4)
+{
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +64,9 @@
 
 </html>
 
+}else
+{
+    context.Response.Redirect("/Shared/404NotFoundError");
 }
 
 

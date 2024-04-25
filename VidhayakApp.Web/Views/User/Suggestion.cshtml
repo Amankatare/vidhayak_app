@@ -13,6 +13,7 @@
     // Use httpContext as needed
     var loggedInId = context.Session.GetInt32("UserId");
     var loggedInRoleId = context.Session.GetInt32("RoleId");
+    var loggedInRoleName = context.Session.GetString("RoleName");
     var tokenValue = context.Session.GetString("JwtToken");
     string dateToday = DateTime.Now.ToString("dd-mm-yyyy");
 }
@@ -21,7 +22,7 @@
 {
     context.Response.Redirect("/Account/Login");
 }
-else
+else if (loggedInRoleName == "User" && loggedInRoleId == 4)
 {
 
     <!DOCTYPE html>
@@ -173,6 +174,9 @@ else
 
     </html>
 
+}else
+{
+    context.Response.Redirect("/Shared/404NotFoundError");
 }
 
 
